@@ -1,0 +1,309 @@
+import Image from "next/image";
+import type { ComponentType } from "react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Crown,
+  Droplet,
+  FlaskConical,
+  Flower2,
+  Headphones,
+  Heart,
+  Package,
+  ShieldCheck,
+} from "lucide-react";
+
+import type {
+  Section3Badge,
+  Section3Benefit,
+  Section3BenefitIcon,
+  Section3Content,
+  Section3MiniTrust,
+  Section3MiniTrustIcon,
+} from "@/content/section-3-hero-product";
+
+type LucideLikeIcon = ComponentType<{
+  className?: string;
+  strokeWidth?: number;
+}>;
+
+const benefitIconByName: Record<Section3BenefitIcon, LucideLikeIcon> = {
+  Flower2,
+  Droplet,
+  Heart,
+};
+
+const miniTrustIconByName: Record<Section3MiniTrustIcon, LucideLikeIcon> = {
+  ShieldCheck,
+  FlaskConical,
+  Package,
+  Headphones,
+};
+
+function LineIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+    >
+      <rect width="40" height="40" rx="9" fill="#06C755" />
+      <path
+        d="M20 8.5C12.82 8.5 7 13.28 7 19.18c0 5.29 4.7 9.72 11.04 10.56.43.09 1.01.28 1.16.64.13.32.09.82.05 1.15l-.18 1.07c-.05.32-.26 1.26 1.1.69 1.36-.57 7.35-4.33 10.02-7.41C31.95 23.8 33 21.6 33 19.18 33 13.28 27.18 8.5 20 8.5z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
+function SectionBadge({ label }: { label: string }) {
+  return (
+    <span className="inline-flex rounded-full bg-[#E91E8C] px-5 py-2 text-[11px] font-bold leading-none tracking-[0.08em] text-white uppercase shadow-[0_0_14px_rgba(233,30,140,0.35)]">
+      {label}
+    </span>
+  );
+}
+
+function ProductNameHeading({ text }: { text: string }) {
+  return (
+    <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-[0.02em] text-[#E91E8C]">
+      {text}
+    </h2>
+  );
+}
+
+function ProductStageBadge({ badge }: { badge: Section3Badge }) {
+  const isBestSeller = badge.type === "bestSeller";
+
+  return (
+    <div
+      aria-label={badge.caption}
+      className={[
+        "absolute right-4 flex flex-col items-center",
+        isBestSeller ? "top-4" : "top-[132px]",
+      ].join(" ")}
+    >
+      <div className="flex size-[74px] flex-col items-center justify-center rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(0,0,0,0.55)]">
+        {isBestSeller ? (
+          <Crown
+            aria-hidden="true"
+            className="mb-0.5 size-5 text-[#E91E8C]"
+            strokeWidth={1.5}
+          />
+        ) : null}
+
+        <span
+          className={[
+            "text-center font-extrabold leading-none tracking-[0.04em] text-white",
+            isBestSeller ? "text-[15px]" : "text-[22px]",
+          ].join(" ")}
+        >
+          {badge.topLine}
+        </span>
+        <span
+          className={[
+            "mt-0.5 text-center font-bold leading-none tracking-[0.06em] text-white",
+            isBestSeller ? "text-[11px]" : "text-[10px]",
+          ].join(" ")}
+        >
+          {badge.bottomLine}
+        </span>
+      </div>
+      <p className="mt-1 text-center text-[10px] leading-[1.3] text-white/80">
+        {badge.caption}
+      </p>
+    </div>
+  );
+}
+
+function BenefitGridItem({ item }: { item: Section3Benefit }) {
+  const Icon = benefitIconByName[item.iconName];
+
+  return (
+    <li className="flex flex-col items-center text-center">
+      <div className="flex h-5 items-center justify-center">
+        <Icon
+          aria-hidden="true"
+          className="size-5 text-[#E91E8C]"
+          strokeWidth={1.5}
+        />
+      </div>
+      <p className="mt-2 text-[13px] font-semibold leading-[1.3] text-white">
+        {item.title}
+      </p>
+      <p className="mt-[3px] text-[11px] leading-[1.3] text-white/60">
+        {item.sub}
+      </p>
+    </li>
+  );
+}
+
+function PriceBlock({
+  pricing,
+}: {
+  pricing: Section3Content["pricing"];
+}) {
+  return (
+    <div
+      aria-label={pricing.ariaLabel}
+      className="mx-4 flex items-center justify-between rounded-[12px] border border-white/8 bg-[#1A1A1A] px-4 py-[14px]"
+    >
+      <div className="flex flex-col">
+        <span className="text-[12px] leading-[1.3] text-white/[0.65]">
+          {pricing.label}
+        </span>
+        <span className="mt-1 text-[32px] font-extrabold leading-none text-[#E91E8C]">
+          {pricing.salePrice}
+        </span>
+      </div>
+
+      <div className="flex flex-col text-right">
+        <del
+          aria-label={`ราคาปกติ ${pricing.originalPrice.replace(/[.-]/g, "")} บาท`}
+          className="text-[16px] leading-none text-white/[0.45]"
+        >
+          {pricing.originalPrice}
+        </del>
+        <span className="mt-1 text-[10px] leading-[1.3] text-white/[0.45]">
+          {pricing.originalPriceLabel}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function SolidLineCTA({
+  href,
+  label,
+  ariaLabel,
+}: Section3Content["cta"]) {
+  return (
+    <a
+      aria-label={ariaLabel}
+      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      href={href}
+    >
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white">
+        <LineIcon size={24} />
+      </span>
+
+      <span className="min-w-0 flex-1 text-[17px] font-bold leading-none">
+        {label}
+      </span>
+
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/35">
+        <ChevronRight
+          aria-hidden="true"
+          className="size-5 text-white"
+          strokeWidth={2}
+        />
+      </span>
+    </a>
+  );
+}
+
+function MiniTrustCardItem({ item }: { item: Section3MiniTrust }) {
+  const Icon = miniTrustIconByName[item.iconName];
+
+  return (
+    <li className="flex flex-col items-center text-center">
+      <div className="flex h-[26px] items-center justify-center">
+        <Icon
+          aria-hidden="true"
+          className="size-[22px] text-[#E91E8C]"
+          strokeWidth={1.5}
+        />
+      </div>
+      <div className="mt-[7px] flex min-h-[29px] flex-col gap-px">
+        <span className="text-[11px] font-semibold leading-[1.3] text-white">
+          {item.title[0]}
+        </span>
+        <span className="text-[10px] leading-[1.3] text-white/60">
+          {item.title[1]}
+        </span>
+      </div>
+    </li>
+  );
+}
+
+function ScrollIndicator() {
+  return (
+    <div className="flex flex-col items-center bg-[#0A0A0A] px-0 pt-[10px] pb-4">
+      <ChevronDown
+        aria-hidden="true"
+        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite] text-[#E91E8C] opacity-80"
+        style={{ marginBottom: "-6px" }}
+      />
+      <ChevronDown
+        aria-hidden="true"
+        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite_150ms] text-[#E91E8C] opacity-35"
+      />
+    </div>
+  );
+}
+
+type Section3HeroProductProps = {
+  content: Section3Content;
+};
+
+export function Section3HeroProduct({ content }: Section3HeroProductProps) {
+  return (
+    <section
+      id="section-3-hero-product"
+      aria-label={content.ariaLabel}
+      className="bg-[#0A0A0A]"
+    >
+      <div className="px-4 pt-7 pb-4 text-center">
+        <SectionBadge label={content.sectionLabel} />
+        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white">
+          {content.superline}
+        </p>
+        <div className="mt-1">
+          <ProductNameHeading text={content.productName} />
+        </div>
+        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80">
+          {content.productTagline}
+        </p>
+      </div>
+
+      <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A]">
+        <Image
+          src={content.artwork.src}
+          alt={content.artwork.alt}
+          fill
+          sizes="(max-width: 430px) 100vw, 430px"
+          className="object-cover"
+          style={{ objectPosition: "center center" }}
+        />
+
+        {content.badges.map((badge) => (
+          <ProductStageBadge key={badge.type} badge={badge} />
+        ))}
+      </div>
+
+      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5">
+        {content.benefits.map((item) => (
+          <BenefitGridItem key={item.title} item={item} />
+        ))}
+      </ul>
+
+      <PriceBlock pricing={content.pricing} />
+
+      <div className="px-4 pt-4 pb-4">
+        <SolidLineCTA {...content.cta} />
+      </div>
+
+      <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4">
+        <ul className="grid grid-cols-4 gap-1">
+          {content.miniTrust.map((item) => (
+            <MiniTrustCardItem key={item.title.join("-")} item={item} />
+          ))}
+        </ul>
+      </div>
+
+      <ScrollIndicator />
+    </section>
+  );
+}

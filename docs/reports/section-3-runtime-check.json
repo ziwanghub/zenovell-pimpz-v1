@@ -1,0 +1,38 @@
+[
+  {
+    "width": 375,
+    "scrollWidth": 375,
+    "innerWidth": 375,
+    "hasHorizontalScroll": false,
+    "sectionFound": true,
+    "sectionTop": -0.40625,
+    "sectionHeight": 928.46875
+  },
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "hasHorizontalScroll": false,
+    "sectionFound": true,
+    "sectionTop": -0.359375,
+    "sectionHeight": 928.46875
+  },
+  {
+    "width": 414,
+    "scrollWidth": 414,
+    "innerWidth": 414,
+    "hasHorizontalScroll": false,
+    "sectionFound": true,
+    "sectionTop": -0.484375,
+    "sectionHeight": 928.46875
+  },
+  {
+    "width": 430,
+    "scrollWidth": 430,
+    "innerWidth": 430,
+    "hasHorizontalScroll": false,
+    "sectionFound": true,
+    "sectionTop": 0.15625,
+    "sectionHeight": 928.46875
+  }
+]
