@@ -55,5 +55,5 @@ Propose extraction only when all of the following are true:
 
 - Section 1 Hero is the frozen baseline
 - Section 2 Trust Bar is the frozen baseline for post-hero reusable patterns
-- Section 3 is implemented and under SA visual freeze review
+- Section 3 Hero Product is the frozen baseline for product spotlight implementation
 - Future sections should prefer section-local implementation first, then follow registry promotion rules after approval

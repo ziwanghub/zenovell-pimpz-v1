@@ -6,9 +6,9 @@ Current status:
 - Bootstrap complete
 - Hero Section 1 implemented and frozen baseline
 - Section 2 Trust Bar implemented and frozen baseline
-- Section 3 Hero Product implemented and ready for SA visual freeze review
+- Section 3 Hero Product implemented and frozen baseline
 - Visual polish deferred to final site-wide polish phase
-- Next active task: Section 4 only after Section 3 approval
+- Next active task: Section 4 Product Catalog
 - Section-by-section delivery flow prepared
 
 ## Stack
@@ -58,9 +58,9 @@ npm run validate
 - Screenshot evidence is mandatory before claiming a section is visually approved
 - Section 1 Hero is implemented and frozen as the current baseline
 - Section 2 Trust Bar is implemented and frozen as the current baseline
-- Section 3 Hero Product is implemented and pending SA freeze decision
+- Section 3 Hero Product is implemented and frozen as the current baseline
 - Visual polish items are intentionally deferred to the final site-wide polish phase
-- Next implementation task is Section 4 only after Section 3 approval
+- Next implementation task is Section 4 Product Catalog
 - Do not implement future sections together
 
 ## Workspace Structure
@@ -85,9 +85,18 @@ sections/
 
 ## Notes
 
-- Sections 1 and 2 serve as frozen implementation baselines
-- Section 3 is implemented and awaiting SA freeze review
+- Sections 1, 2, and 3 serve as frozen implementation baselines
 - Do not modify frozen sections unless explicitly instructed by SA
 - Defer Hero visual polish to the final site-wide polish phase
 - Keep content outside presentation components as sections are built
 - Optimize for working browser output over unnecessary abstraction
+
+## Current Baseline
+
+- `Section 1` Hero
+- `Section 2` Trust Bar
+- `Section 3` Hero Product
+
+## Next Active Implementation
+
+- `Section 4` Product Catalog

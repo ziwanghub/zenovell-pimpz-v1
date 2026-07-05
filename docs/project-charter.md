@@ -10,7 +10,8 @@ Create a mobile-first landing page workspace for ZENOVELL V4 that is fast to ite
 - TypeScript, Tailwind CSS, shadcn/ui
 - One section = one deliverable
 - Hero Section 1 is implemented and frozen as the current implementation baseline
-- Next active implementation task is Section 2 only
+- Sections 2 Trust Bar and 3 Hero Product are also implemented baselines
+- Next active implementation task is Section 4 Product Catalog
 
 ## Out of Scope
 
@@ -29,7 +30,8 @@ Create a mobile-first landing page workspace for ZENOVELL V4 that is fast to ite
 ## Current State
 
 - Workspace bootstrap complete
-- Hero Section 1 implemented
-- Hero frozen as implementation baseline
+- Section 1 Hero implemented and frozen
+- Section 2 Trust Bar implemented and frozen
+- Section 3 Hero Product implemented and frozen
 - Visual polish deferred to final site-wide polish phase
-- Section 2 is the next active task
+- Section 4 Product Catalog is the next active task
