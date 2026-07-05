@@ -1,0 +1,208 @@
+{
+  "checkedAt": "2026-07-05T18:19:53.769Z",
+  "appUrl": "http://127.0.0.1:3000",
+  "sectionId": "section-6-how-to-order",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 375,
+        "height": 844,
+        "label": "375x844"
+      },
+      "checks": {
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-5-why-choose-us",
+        "orderedListExists": true,
+        "stepCount": 6,
+        "stepTitles": [
+          "กดปุ่ม “ปรึกษาผ่าน LINE”",
+          "แชทกับทีมงานของเรา",
+          "เลือกสินค้าและจำนวน",
+          "ยืนยันการสั่งซื้อ",
+          "จัดส่งแบบปกปิด",
+          "รับสินค้าอย่างมั่นใจ"
+        ],
+        "stepCardsInteractive": false,
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-6/bg-how-to-order-section6.jpeg",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าผ่าน LINE"
+          }
+        ],
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "label": "390x844"
+      },
+      "checks": {
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-5-why-choose-us",
+        "orderedListExists": true,
+        "stepCount": 6,
+        "stepTitles": [
+          "กดปุ่ม “ปรึกษาผ่าน LINE”",
+          "แชทกับทีมงานของเรา",
+          "เลือกสินค้าและจำนวน",
+          "ยืนยันการสั่งซื้อ",
+          "จัดส่งแบบปกปิด",
+          "รับสินค้าอย่างมั่นใจ"
+        ],
+        "stepCardsInteractive": false,
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-6/bg-how-to-order-section6.jpeg",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าผ่าน LINE"
+          }
+        ],
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 414,
+        "height": 896,
+        "label": "414x896"
+      },
+      "checks": {
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-5-why-choose-us",
+        "orderedListExists": true,
+        "stepCount": 6,
+        "stepTitles": [
+          "กดปุ่ม “ปรึกษาผ่าน LINE”",
+          "แชทกับทีมงานของเรา",
+          "เลือกสินค้าและจำนวน",
+          "ยืนยันการสั่งซื้อ",
+          "จัดส่งแบบปกปิด",
+          "รับสินค้าอย่างมั่นใจ"
+        ],
+        "stepCardsInteractive": false,
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-6/bg-how-to-order-section6.jpeg",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าผ่าน LINE"
+          }
+        ],
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "label": "430x932"
+      },
+      "checks": {
+        "bodyScrollWidth": 430,
+        "bodyClientWidth": 430,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-5-why-choose-us",
+        "orderedListExists": true,
+        "stepCount": 6,
+        "stepTitles": [
+          "กดปุ่ม “ปรึกษาผ่าน LINE”",
+          "แชทกับทีมงานของเรา",
+          "เลือกสินค้าและจำนวน",
+          "ยืนยันการสั่งซื้อ",
+          "จัดส่งแบบปกปิด",
+          "รับสินค้าอย่างมั่นใจ"
+        ],
+        "stepCardsInteractive": false,
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-6/bg-how-to-order-section6.jpeg",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าผ่าน LINE"
+          }
+        ],
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "section-6-review-390x844-focused.png",
+      "viewport": "390x844",
+      "type": "focused"
+    },
+    {
+      "file": "section-6-full-section-390w.png",
+      "viewport": "390x844",
+      "type": "full-section"
+    }
+  ],
+  "assetFetchChecks": [
+    {
+      "assetPath": "/images/section-6/bg-how-to-order-section6.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "55774"
+    }
+  ]
+}

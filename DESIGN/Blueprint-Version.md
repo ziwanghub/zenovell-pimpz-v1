@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-M3 — Sections 1–5 Frozen Baseline
+M4 — Sections 1–6 Frozen Baseline
 
 ## Frozen Blueprints
 
@@ -13,12 +13,13 @@ M3 — Sections 1–5 Frozen Baseline
 | Section 3 | Hero Product | Frozen | v1.0 | M1 baseline |
 | Section 4 | Product Catalog | Frozen | v1.0 | M2 baseline |
 | Section 5 | Why Choose Us | Frozen | v1.0 | M3 baseline |
+| Section 6 | How To Order | Frozen | v1.0 | M4 baseline |
 
 ## Draft / Next Blueprints
 
 | Section | Name | Status | Version | Notes |
 |---|---|---|---|---|
-| Section 6 | Next Section | Draft | v0.1 | Next active blueprint |
+| Section 7 | Next Section | Draft | v0.1 | Next active blueprint |
 
 ## Rules
 
