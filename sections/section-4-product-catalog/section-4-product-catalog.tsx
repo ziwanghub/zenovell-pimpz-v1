@@ -1,0 +1,291 @@
+import Image from "next/image";
+import type { ComponentType } from "react";
+import {
+  ChevronRight,
+  Crown,
+  Droplet,
+  FlaskConical,
+  Headphones,
+  Heart,
+  LockKeyhole,
+  Package,
+  ShieldCheck,
+  Sparkles,
+  Truck,
+} from "lucide-react";
+
+import type {
+  Section4ProductCard,
+  Section4ProductCatalogContent,
+  Section4ProductFeature,
+  Section4ProductFeatureIcon,
+  Section4TrustIcon,
+  Section4TrustItem,
+} from "@/content/section-4-product-catalog";
+
+type LucideLikeIcon = ComponentType<{
+  className?: string;
+  strokeWidth?: number;
+}>;
+
+const featureIconByName: Record<Section4ProductFeatureIcon, LucideLikeIcon> = {
+  droplet: Droplet,
+  heart: Heart,
+  "flask-conical": FlaskConical,
+  sparkles: Sparkles,
+  "shield-check": ShieldCheck,
+};
+
+const trustIconByName: Record<Section4TrustIcon, LucideLikeIcon> = {
+  truck: Truck,
+  package: Package,
+  "lock-keyhole": LockKeyhole,
+  headphones: Headphones,
+};
+
+function LineIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+    >
+      <rect width="40" height="40" rx="9" fill="#06C755" />
+      <path
+        d="M20 8.5C12.82 8.5 7 13.28 7 19.18c0 5.29 4.7 9.72 11.04 10.56.43.09 1.01.28 1.16.64.13.32.09.82.05 1.15l-.18 1.07c-.05.32-.26 1.26 1.1.69 1.36-.57 7.35-4.33 10.02-7.41C31.95 23.8 33 21.6 33 19.18 33 13.28 27.18 8.5 20 8.5z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
+function SectionBadge({ label }: { label: string }) {
+  return (
+    <span className="inline-flex rounded-full bg-[#E91E8C] px-5 py-2 text-[11px] font-bold leading-none tracking-[0.08em] text-white uppercase shadow-[0_0_14px_rgba(233,30,140,0.35)]">
+      {label}
+    </span>
+  );
+}
+
+function ProductCatalogBadge({ label }: { label: string }) {
+  return (
+    <div className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full border border-[rgba(233,30,140,0.5)] bg-[rgba(10,10,10,0.9)] px-2.5 py-1 text-[10px] font-bold leading-none tracking-[0.08em] text-white shadow-[0_0_14px_rgba(233,30,140,0.25)] backdrop-blur-sm">
+      <Crown aria-hidden="true" className="size-3.5 text-[#E91E8C]" strokeWidth={1.6} />
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function ProductCardFeatureItem({
+  feature,
+  withDivider,
+}: {
+  feature: Section4ProductFeature;
+  withDivider: boolean;
+}) {
+  const Icon = featureIconByName[feature.iconName];
+
+  return (
+    <li
+      className={[
+        "flex min-w-0 flex-col items-center px-1 text-center",
+        withDivider ? "border-l border-white/8" : "",
+      ].join(" ")}
+    >
+      <Icon
+        aria-hidden="true"
+        className="size-[16px] text-[#E91E8C]"
+        strokeWidth={1.5}
+      />
+      <span className="mt-1 block text-[10px] font-semibold leading-[1.2] text-white">
+        {feature.title}
+      </span>
+      {feature.sub ? (
+        <span className="mt-0.5 block text-[10px] leading-[1.2] text-white/60">
+          {feature.sub}
+        </span>
+      ) : null}
+    </li>
+  );
+}
+
+function ProductCardPriceBlock({
+  pricing,
+}: {
+  pricing: Section4ProductCard["pricing"];
+}) {
+  return (
+    <div
+      aria-label={pricing.ariaLabel}
+      className="mt-3 flex items-end justify-between gap-2"
+    >
+      <span className="text-[20px] font-extrabold leading-none text-[#E91E8C]">
+        {pricing.salePrice}
+      </span>
+      <del className="text-[12px] leading-none text-white/[0.45]">
+        {pricing.originalPrice}
+      </del>
+    </div>
+  );
+}
+
+function ProductCardCTA({
+  cta,
+}: {
+  cta: Section4ProductCard["cta"];
+}) {
+  return (
+    <a
+      aria-label={cta.ariaLabel}
+      href={cta.href}
+      className="mt-[10px] flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[13px] font-bold leading-none text-[#E91E8C] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+    >
+      <span>{cta.label}</span>
+      <ChevronRight
+        aria-hidden="true"
+        className="size-4 shrink-0 text-[#E91E8C]"
+        strokeWidth={2}
+      />
+    </a>
+  );
+}
+
+function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
+  return (
+    <li className="overflow-hidden rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#131313]">
+      <div className="relative h-[176px] overflow-hidden bg-[#101010]">
+        <Image
+          src={product.imageSrc}
+          alt={product.imageAlt}
+          fill
+          sizes="(max-width: 430px) 50vw, 215px"
+          className="object-cover"
+          style={{ objectPosition: "center center" }}
+        />
+        {product.badge ? <ProductCatalogBadge label={product.badge.label} /> : null}
+      </div>
+
+      <div className="p-3">
+        <h3 className="text-center text-[16px] font-extrabold leading-[1.2] text-[#E91E8C]">
+          {product.title}
+        </h3>
+        <p className="mt-1 min-h-[31px] text-center text-[11px] leading-[1.35] text-white/80">
+          {product.subtitle}
+        </p>
+
+        <ul className="mt-3 grid grid-cols-3">
+          {product.features.map((feature, index) => (
+            <ProductCardFeatureItem
+              key={`${product.slug}-${feature.title}`}
+              feature={feature}
+              withDivider={index !== 0}
+            />
+          ))}
+        </ul>
+
+        <ProductCardPriceBlock pricing={product.pricing} />
+        <ProductCardCTA cta={product.cta} />
+      </div>
+    </li>
+  );
+}
+
+function CatalogTrustItem({ item }: { item: Section4TrustItem }) {
+  const Icon = trustIconByName[item.iconName];
+
+  return (
+    <li className="flex flex-col items-center px-1 text-center">
+      <Icon
+        aria-hidden="true"
+        className="size-[20px] text-[#E91E8C]"
+        strokeWidth={1.6}
+      />
+      <span className="mt-2 block text-[11px] font-semibold leading-[1.3] text-white">
+        {item.title}
+      </span>
+      <span className="mt-0.5 block text-[10px] leading-[1.3] text-white/60">
+        {item.sub}
+      </span>
+    </li>
+  );
+}
+
+function FinalLineCTA({
+  label,
+  ariaLabel,
+  href,
+}: Section4ProductCatalogContent["finalCta"]) {
+  return (
+    <a
+      aria-label={ariaLabel}
+      href={href}
+      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+    >
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white">
+        <LineIcon size={24} />
+      </span>
+
+      <span className="min-w-0 flex-1 text-[17px] font-bold leading-none">
+        {label}
+      </span>
+
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/35">
+        <ChevronRight
+          aria-hidden="true"
+          className="size-5 text-white"
+          strokeWidth={2}
+        />
+      </span>
+    </a>
+  );
+}
+
+type Section4ProductCatalogProps = {
+  content: Section4ProductCatalogContent;
+};
+
+export function Section4ProductCatalog({
+  content,
+}: Section4ProductCatalogProps) {
+  return (
+    <section
+      id="section-4-product-catalog"
+      aria-label={content.ariaLabel}
+      className="bg-[#0A0A0A] pb-6"
+    >
+      <div className="px-4 pt-7 pb-4 text-center">
+        <SectionBadge label={content.sectionLabel} />
+        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white">
+          {content.heading}
+        </h2>
+        <p className="mt-2 text-[14px] leading-[1.5] text-white/65">
+          {content.subtitle}
+        </p>
+      </div>
+
+      <ul className="grid grid-cols-2 gap-[10px] px-4">
+        {content.products.map((product) => (
+          <ProductCatalogCard key={product.slug} product={product} />
+        ))}
+      </ul>
+
+      <div className="mx-4 mt-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4">
+        <ul className="grid grid-cols-4 gap-1">
+          {content.trustItems.map((item) => (
+            <CatalogTrustItem key={item.title} item={item} />
+          ))}
+        </ul>
+      </div>
+
+      <div className="px-4 pt-4">
+        <FinalLineCTA {...content.finalCta} />
+      </div>
+
+      <p className="px-4 pt-4 text-center text-[11px] leading-[1.4] tracking-[0.04em] text-white/45">
+        {content.footerNote}
+      </p>
+    </section>
+  );
+}

@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-M1 — Section 1–3 Frozen Baseline
+M2 — Section 1–4 Frozen Baseline
 
 ## Frozen Blueprints
 
@@ -11,12 +11,13 @@ M1 — Section 1–3 Frozen Baseline
 | Section 1 | Hero | Frozen | v1.0 | M1 baseline |
 | Section 2 | Trust Bar | Frozen | v1.0 | M1 baseline |
 | Section 3 | Hero Product | Frozen | v1.0 | M1 baseline |
+| Section 4 | Product Catalog | Frozen | v1.0 | M2 baseline |
 
 ## Draft / Next Blueprints
 
 | Section | Name | Status | Version | Notes |
 |---|---|---|---|---|
-| Section 4 | Product Catalog | Draft | v0.1 | Next active blueprint |
+| Section 5 | Next Section | Draft | v0.1 | Next active blueprint |
 
 ## Rules
 

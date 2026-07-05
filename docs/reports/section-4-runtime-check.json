@@ -1,0 +1,543 @@
+{
+  "checkedAt": "2026-07-05T16:27:56.220Z",
+  "appUrl": "http://127.0.0.1:3000",
+  "sectionId": "section-4-product-catalog",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 375,
+        "height": 844,
+        "label": "375x844"
+      },
+      "checks": {
+        "allSections": [
+          null,
+          null,
+          null,
+          "section-3-hero-product",
+          "section-4-product-catalog"
+        ],
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-3-hero-product",
+        "cardCount": 6,
+        "titles": [
+          "NICKY PIMPZ BOSS",
+          "BOSS MEN",
+          "BOSS LADY",
+          "NP GEL",
+          "NP MEN'S WIPES",
+          "B21"
+        ],
+        "hasB21DisplayName": true,
+        "hasBE21DisplayName": false,
+        "imageCount": 6,
+        "images": [
+          {
+            "alt": "Nicky Pimpz Boss product bottle with ginseng root and fruit on a glowing dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Men premium stamina box on a dark pedestal with gold energy glow",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Lady product box with pink floral energy background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Gel product tube on dark pedestal with pink liquid splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Men's Wipes box and sachet on dark pedestal with cool splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "B21 product box with pink floral glow on dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          }
+        ],
+        "delCount": 6,
+        "delTexts": [
+          "1,290.-",
+          "1,290.-",
+          "1,190.-",
+          "790.-",
+          "590.-",
+          "1,590.-"
+        ],
+        "ctas": [
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NICKY PIMPZ BOSS ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS MEN ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS LADY ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP GEL ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP MEN'S WIPES ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ B21 ผ่าน LINE"
+          },
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าทั้งหมดผ่าน LINE"
+          }
+        ],
+        "allProductCtasIncludeProductName": true,
+        "finalCtaPresent": true,
+        "trustStripPresent": true,
+        "gridTemplateColumns": "166.5px 166.5px",
+        "row1SameTop": true,
+        "row2SameTop": true,
+        "col1Aligned": true,
+        "col2Aligned": true,
+        "imageAssetsReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the 6 product images are rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "label": "390x844"
+      },
+      "checks": {
+        "allSections": [
+          null,
+          null,
+          null,
+          "section-3-hero-product",
+          "section-4-product-catalog"
+        ],
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-3-hero-product",
+        "cardCount": 6,
+        "titles": [
+          "NICKY PIMPZ BOSS",
+          "BOSS MEN",
+          "BOSS LADY",
+          "NP GEL",
+          "NP MEN'S WIPES",
+          "B21"
+        ],
+        "hasB21DisplayName": true,
+        "hasBE21DisplayName": false,
+        "imageCount": 6,
+        "images": [
+          {
+            "alt": "Nicky Pimpz Boss product bottle with ginseng root and fruit on a glowing dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Men premium stamina box on a dark pedestal with gold energy glow",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Lady product box with pink floral energy background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Gel product tube on dark pedestal with pink liquid splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Men's Wipes box and sachet on dark pedestal with cool splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "B21 product box with pink floral glow on dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          }
+        ],
+        "delCount": 6,
+        "delTexts": [
+          "1,290.-",
+          "1,290.-",
+          "1,190.-",
+          "790.-",
+          "590.-",
+          "1,590.-"
+        ],
+        "ctas": [
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NICKY PIMPZ BOSS ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS MEN ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS LADY ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP GEL ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP MEN'S WIPES ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ B21 ผ่าน LINE"
+          },
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าทั้งหมดผ่าน LINE"
+          }
+        ],
+        "allProductCtasIncludeProductName": true,
+        "finalCtaPresent": true,
+        "trustStripPresent": true,
+        "gridTemplateColumns": "174px 174px",
+        "row1SameTop": true,
+        "row2SameTop": true,
+        "col1Aligned": true,
+        "col2Aligned": true,
+        "imageAssetsReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the 6 product images are rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 414,
+        "height": 896,
+        "label": "414x896"
+      },
+      "checks": {
+        "allSections": [
+          null,
+          null,
+          null,
+          "section-3-hero-product",
+          "section-4-product-catalog"
+        ],
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-3-hero-product",
+        "cardCount": 6,
+        "titles": [
+          "NICKY PIMPZ BOSS",
+          "BOSS MEN",
+          "BOSS LADY",
+          "NP GEL",
+          "NP MEN'S WIPES",
+          "B21"
+        ],
+        "hasB21DisplayName": true,
+        "hasBE21DisplayName": false,
+        "imageCount": 6,
+        "images": [
+          {
+            "alt": "Nicky Pimpz Boss product bottle with ginseng root and fruit on a glowing dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Men premium stamina box on a dark pedestal with gold energy glow",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Lady product box with pink floral energy background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Gel product tube on dark pedestal with pink liquid splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Men's Wipes box and sachet on dark pedestal with cool splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "B21 product box with pink floral glow on dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          }
+        ],
+        "delCount": 6,
+        "delTexts": [
+          "1,290.-",
+          "1,290.-",
+          "1,190.-",
+          "790.-",
+          "590.-",
+          "1,590.-"
+        ],
+        "ctas": [
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NICKY PIMPZ BOSS ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS MEN ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS LADY ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP GEL ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP MEN'S WIPES ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ B21 ผ่าน LINE"
+          },
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าทั้งหมดผ่าน LINE"
+          }
+        ],
+        "allProductCtasIncludeProductName": true,
+        "finalCtaPresent": true,
+        "trustStripPresent": true,
+        "gridTemplateColumns": "186px 186px",
+        "row1SameTop": true,
+        "row2SameTop": true,
+        "col1Aligned": true,
+        "col2Aligned": true,
+        "imageAssetsReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the 6 product images are rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "label": "430x932"
+      },
+      "checks": {
+        "allSections": [
+          null,
+          null,
+          null,
+          "section-3-hero-product",
+          "section-4-product-catalog"
+        ],
+        "bodyScrollWidth": 430,
+        "bodyClientWidth": 430,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-3-hero-product",
+        "cardCount": 6,
+        "titles": [
+          "NICKY PIMPZ BOSS",
+          "BOSS MEN",
+          "BOSS LADY",
+          "NP GEL",
+          "NP MEN'S WIPES",
+          "B21"
+        ],
+        "hasB21DisplayName": true,
+        "hasBE21DisplayName": false,
+        "imageCount": 6,
+        "images": [
+          {
+            "alt": "Nicky Pimpz Boss product bottle with ginseng root and fruit on a glowing dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Men premium stamina box on a dark pedestal with gold energy glow",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "Boss Lady product box with pink floral energy background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Gel product tube on dark pedestal with pink liquid splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "NP Men's Wipes box and sachet on dark pedestal with cool splash background",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          },
+          {
+            "alt": "B21 product box with pink floral glow on dark pedestal",
+            "complete": false,
+            "naturalWidth": 0,
+            "naturalHeight": 0
+          }
+        ],
+        "delCount": 6,
+        "delTexts": [
+          "1,290.-",
+          "1,290.-",
+          "1,190.-",
+          "790.-",
+          "590.-",
+          "1,590.-"
+        ],
+        "ctas": [
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NICKY PIMPZ BOSS ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS MEN ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ BOSS LADY ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP GEL ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ NP MEN'S WIPES ผ่าน LINE"
+          },
+          {
+            "text": "สั่งซื้อผ่าน LINE",
+            "ariaLabel": "สั่งซื้อ B21 ผ่าน LINE"
+          },
+          {
+            "text": "ปรึกษาหรือสั่งซื้อผ่าน LINE",
+            "ariaLabel": "ปรึกษาหรือสั่งซื้อสินค้าทั้งหมดผ่าน LINE"
+          }
+        ],
+        "allProductCtasIncludeProductName": true,
+        "finalCtaPresent": true,
+        "trustStripPresent": true,
+        "gridTemplateColumns": "194px 194px",
+        "row1SameTop": true,
+        "row2SameTop": true,
+        "col1Aligned": true,
+        "col2Aligned": true,
+        "imageAssetsReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the 6 product images are rendering and reachable."
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "section-4-review-390x844-focused.png",
+      "viewport": "390x844",
+      "type": "focused"
+    },
+    {
+      "file": "section-4-full-section-390w.png",
+      "viewport": "390x844",
+      "type": "full-section"
+    }
+  ],
+  "assetFetchChecks": [
+    {
+      "assetPath": "/images/section-4/products/nicky-pimpz-product3.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "347494"
+    },
+    {
+      "assetPath": "/images/section-4/products/boss-men-product1.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "443386"
+    },
+    {
+      "assetPath": "/images/section-4/products/boss-lady-product1.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "343437"
+    },
+    {
+      "assetPath": "/images/section-4/products/np-gel-product1.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "393045"
+    },
+    {
+      "assetPath": "/images/section-4/products/np-mens-wipes-product1.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "404838"
+    },
+    {
+      "assetPath": "/images/section-4/products/be21-product1.jpeg",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "341770"
+    }
+  ]
+}
