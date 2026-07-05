@@ -11,8 +11,9 @@ Current status:
 - Section 5 Why Choose Us implemented and frozen baseline
 - Section 6 How To Order implemented and frozen baseline
 - Section 7 Privacy & Shipping implemented and frozen baseline
+- Section 8 Reviews implemented and frozen baseline
 - Visual polish deferred to final site-wide polish phase
-- Next active task: Section 8
+- Next active task: Section 9
 - Section-by-section delivery flow prepared
 
 ## Stack
@@ -67,8 +68,9 @@ npm run validate
 - Section 5 Why Choose Us is implemented and frozen as the current baseline
 - Section 6 How To Order is implemented and frozen as the current baseline
 - Section 7 Privacy & Shipping is implemented and frozen as the current baseline
+- Section 8 Reviews is implemented and frozen as the current baseline
 - Visual polish items are intentionally deferred to the final site-wide polish phase
-- Next implementation task is Section 8
+- Next implementation task is Section 9
 - Do not implement future sections together
 
 ## Workspace Structure
@@ -108,7 +110,8 @@ sections/
 - `Section 5` Why Choose Us
 - `Section 6` How To Order
 - `Section 7` Privacy & Shipping
+- `Section 8` Reviews
 
 ## Next Active Implementation
 
-- `Section 8`
+- `Section 9`
