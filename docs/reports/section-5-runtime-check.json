@@ -1,0 +1,204 @@
+{
+  "checkedAt": "2026-07-05T16:55:25.243Z",
+  "appUrl": "http://127.0.0.1:3000",
+  "sectionId": "section-5-why-choose-us",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 375,
+        "height": 844,
+        "label": "375x844"
+      },
+      "checks": {
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-4-product-catalog",
+        "benefitRowCount": 5,
+        "benefitTitles": [
+          "ปลอดภัย ได้มาตรฐาน",
+          "เห็นผลจริง จากประสบการณ์ผู้ใช้",
+          "ข้อมูลลับ 100%",
+          "จัดส่งรวดเร็ว ปกปิดทุกขั้นตอน",
+          "ปรึกษาฟรี โดยผู้เชี่ยวชาญ"
+        ],
+        "benefitRowsInteractive": false,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-5/why-choose-us-promo-couple.png",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+            "ariaLabel": "ปรึกษาผู้เชี่ยวชาญเกี่ยวกับสินค้า ผ่าน LINE"
+          }
+        ],
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "sectionTop": 4444.296875,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "label": "390x844"
+      },
+      "checks": {
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-4-product-catalog",
+        "benefitRowCount": 5,
+        "benefitTitles": [
+          "ปลอดภัย ได้มาตรฐาน",
+          "เห็นผลจริง จากประสบการณ์ผู้ใช้",
+          "ข้อมูลลับ 100%",
+          "จัดส่งรวดเร็ว ปกปิดทุกขั้นตอน",
+          "ปรึกษาฟรี โดยผู้เชี่ยวชาญ"
+        ],
+        "benefitRowsInteractive": false,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-5/why-choose-us-promo-couple.png",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+            "ariaLabel": "ปรึกษาผู้เชี่ยวชาญเกี่ยวกับสินค้า ผ่าน LINE"
+          }
+        ],
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "sectionTop": 4451.15625,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 414,
+        "height": 896,
+        "label": "414x896"
+      },
+      "checks": {
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-4-product-catalog",
+        "benefitRowCount": 5,
+        "benefitTitles": [
+          "ปลอดภัย ได้มาตรฐาน",
+          "เห็นผลจริง จากประสบการณ์ผู้ใช้",
+          "ข้อมูลลับ 100%",
+          "จัดส่งรวดเร็ว ปกปิดทุกขั้นตอน",
+          "ปรึกษาฟรี โดยผู้เชี่ยวชาญ"
+        ],
+        "benefitRowsInteractive": false,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-5/why-choose-us-promo-couple.png",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+            "ariaLabel": "ปรึกษาผู้เชี่ยวชาญเกี่ยวกับสินค้า ผ่าน LINE"
+          }
+        ],
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "sectionTop": 4481.03125,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "label": "430x932"
+      },
+      "checks": {
+        "bodyScrollWidth": 430,
+        "bodyClientWidth": 430,
+        "hasHorizontalScroll": false,
+        "sectionExists": true,
+        "previousSectionId": "section-4-product-catalog",
+        "benefitRowCount": 5,
+        "benefitTitles": [
+          "ปลอดภัย ได้มาตรฐาน",
+          "เห็นผลจริง จากประสบการณ์ผู้ใช้",
+          "ข้อมูลลับ 100%",
+          "จัดส่งรวดเร็ว ปกปิดทุกขั้นตอน",
+          "ปรึกษาฟรี โดยผู้เชี่ยวชาญ"
+        ],
+        "benefitRowsInteractive": false,
+        "promoImagePresent": true,
+        "promoImageSrc": "/images/section-5/why-choose-us-promo-couple.png",
+        "promoImageComplete": false,
+        "promoImageNaturalWidth": 0,
+        "ctas": [
+          {
+            "text": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+            "ariaLabel": "ปรึกษาผู้เชี่ยวชาญเกี่ยวกับสินค้า ผ่าน LINE"
+          }
+        ],
+        "totalAnchors": 1,
+        "totalButtons": 0,
+        "trustLabels": [
+          "ปลอดภัย 100%",
+          "•ข้อมูลลับ",
+          "•จัดส่งปกปิด"
+        ],
+        "trustRowPresent": true,
+        "sectionTop": 4507.671875,
+        "promoImageReachable": true,
+        "imageRenderNote": "Headless DOM image complete/naturalWidth remained false/0, but screenshots and direct asset HEAD checks confirm the promo image is rendering and reachable."
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "section-5-review-390x844-focused.png",
+      "viewport": "390x844",
+      "type": "focused"
+    },
+    {
+      "file": "section-5-full-section-390w.png",
+      "viewport": "390x844",
+      "type": "full-section"
+    }
+  ],
+  "assetFetchChecks": [
+    {
+      "assetPath": "/images/section-5/why-choose-us-promo-couple.png",
+      "ok": true,
+      "status": 200,
+      "contentType": "image/png",
+      "contentLength": "42946"
+    }
+  ]
+}
