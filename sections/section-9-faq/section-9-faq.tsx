@@ -18,6 +18,7 @@ import type {
 } from "@/content/section-9-faq-content";
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionHeader } from "@/components/ui/section-header";
+import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { ctaDestinations } from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
@@ -123,21 +124,21 @@ function FinalLineCTA({
         })
       }
     >
-      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white">
+      <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />
-      </span>
+      </IconWrapper>
 
       <span className="min-w-0 flex-1 text-[17px] font-bold leading-none">
         {label}
       </span>
 
-      <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/35">
+      <IconWrapper size={8} className="border border-white/35">
         <ChevronRight
           aria-hidden="true"
           className="size-5 text-white"
           strokeWidth={2}
         />
-      </span>
+      </IconWrapper>
     </a>
   );
 }
