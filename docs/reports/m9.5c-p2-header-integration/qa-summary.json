@@ -1,0 +1,258 @@
+[
+  {
+    "width": 375,
+    "closedChecks": {
+      "headerCount": 1,
+      "legacyHeaderPresent": false,
+      "shellFirstTag": "DIV",
+      "shellSecondTag": "DIV",
+      "globalHeaderBeforeHero": true,
+      "fixedTop": 0,
+      "headerHeight": 61,
+      "spacerHeight": 80,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "openChecks": {
+      "drawerVisible": true,
+      "drawerId": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaControls": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaExpanded": "true",
+      "bodyOverflow": "hidden",
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "horizontalOverflow": false,
+      "dialogRight": 375,
+      "dialogWidth": 360,
+      "viewportWidth": 375
+    },
+    "initialFocus": {
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "activeAriaLabel": "ไปที่หน้าแรก"
+    },
+    "tabWrapForward": {
+      "activeTag": "BUTTON",
+      "activeText": "",
+      "activeAriaLabel": "ปิดเมนูนำทาง"
+    },
+    "tabWrapBackward": {
+      "activeTag": "A",
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAriaLabel": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "closeButtonChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "escapeChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "backdropChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "stickyAfterScroll": {
+      "headerTop": 0,
+      "heroTop": -520
+    }
+  },
+  {
+    "width": 390,
+    "closedChecks": {
+      "headerCount": 1,
+      "legacyHeaderPresent": false,
+      "shellFirstTag": "DIV",
+      "shellSecondTag": "DIV",
+      "globalHeaderBeforeHero": true,
+      "fixedTop": 0,
+      "headerHeight": 61,
+      "spacerHeight": 80,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "openChecks": {
+      "drawerVisible": true,
+      "drawerId": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaControls": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaExpanded": "true",
+      "bodyOverflow": "hidden",
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "horizontalOverflow": false,
+      "dialogRight": 390,
+      "dialogWidth": 360,
+      "viewportWidth": 390
+    },
+    "initialFocus": {
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "activeAriaLabel": "ไปที่หน้าแรก"
+    },
+    "tabWrapForward": {
+      "activeTag": "BUTTON",
+      "activeText": "",
+      "activeAriaLabel": "ปิดเมนูนำทาง"
+    },
+    "tabWrapBackward": {
+      "activeTag": "A",
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAriaLabel": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "closeButtonChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "escapeChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "backdropChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "stickyAfterScroll": {
+      "headerTop": 0,
+      "heroTop": -520
+    }
+  },
+  {
+    "width": 414,
+    "closedChecks": {
+      "headerCount": 1,
+      "legacyHeaderPresent": false,
+      "shellFirstTag": "DIV",
+      "shellSecondTag": "DIV",
+      "globalHeaderBeforeHero": true,
+      "fixedTop": 0,
+      "headerHeight": 61,
+      "spacerHeight": 80,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "openChecks": {
+      "drawerVisible": true,
+      "drawerId": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaControls": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaExpanded": "true",
+      "bodyOverflow": "hidden",
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "horizontalOverflow": false,
+      "dialogRight": 414,
+      "dialogWidth": 360,
+      "viewportWidth": 414
+    },
+    "initialFocus": {
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "activeAriaLabel": "ไปที่หน้าแรก"
+    },
+    "tabWrapForward": {
+      "activeTag": "BUTTON",
+      "activeText": "",
+      "activeAriaLabel": "ปิดเมนูนำทาง"
+    },
+    "tabWrapBackward": {
+      "activeTag": "A",
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAriaLabel": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "closeButtonChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "escapeChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "backdropChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "stickyAfterScroll": {
+      "headerTop": 0,
+      "heroTop": -520
+    }
+  },
+  {
+    "width": 430,
+    "closedChecks": {
+      "headerCount": 1,
+      "legacyHeaderPresent": false,
+      "shellFirstTag": "DIV",
+      "shellSecondTag": "DIV",
+      "globalHeaderBeforeHero": true,
+      "fixedTop": 0,
+      "headerHeight": 61,
+      "spacerHeight": 80,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "openChecks": {
+      "drawerVisible": true,
+      "drawerId": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaControls": "global-header-drawer-panel-_R_1inelb_",
+      "buttonAriaExpanded": "true",
+      "bodyOverflow": "hidden",
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "horizontalOverflow": false,
+      "dialogRight": 430,
+      "dialogWidth": 360,
+      "viewportWidth": 430
+    },
+    "initialFocus": {
+      "activeTag": "A",
+      "activeText": "หน้าแรก",
+      "activeAriaLabel": "ไปที่หน้าแรก"
+    },
+    "tabWrapForward": {
+      "activeTag": "BUTTON",
+      "activeText": "",
+      "activeAriaLabel": "ปิดเมนูนำทาง"
+    },
+    "tabWrapBackward": {
+      "activeTag": "A",
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAriaLabel": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "closeButtonChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "escapeChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "backdropChecks": {
+      "drawerVisible": false,
+      "activeAriaLabel": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    },
+    "stickyAfterScroll": {
+      "headerTop": 0,
+      "heroTop": -520
+    }
+  }
+]

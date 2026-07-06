@@ -8,7 +8,6 @@ import {
   Flower2,
   Heart,
   Lock,
-  Menu,
   Package,
   ShieldCheck,
 } from "lucide-react";
@@ -65,47 +64,6 @@ function LineIcon({ size = 28 }: { size?: number }) {
         fill="white"
       />
     </svg>
-  );
-}
-
-function HeroHeader({ content }: { content: HeroContent }) {
-  return (
-    <header
-      className="sticky top-0 z-[50] border-b border-white/8 bg-[#0A0A0A] px-4"
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
-    >
-      <div className="flex min-h-[60px] items-center justify-between gap-2 py-[10px]">
-        <div className="min-w-0 flex-1">
-          <p className="text-[17px] font-extrabold leading-none tracking-[0.04em] text-[#E91E8C]">
-            {content.brand.wordmark}
-          </p>
-          <p className="mt-0.5 text-[10px] leading-[1.4] text-white/50">
-            {content.brand.tagline}
-          </p>
-        </div>
-
-        <div className="flex shrink-0 items-center gap-1.5">
-          <button
-            aria-label={content.header.lineCta}
-            className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_16px_rgba(233,30,140,0.4)]"
-            type="button"
-          >
-            <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1">
-              <LineIcon size={15} />
-            </span>
-            <span>{content.header.lineCta}</span>
-          </button>
-
-          <button
-            aria-label={content.header.menuLabel}
-            className="flex size-9 items-center justify-center rounded-full text-white"
-            type="button"
-          >
-            <Menu className="size-5" strokeWidth={2.1} />
-          </button>
-        </div>
-      </div>
-    </header>
   );
 }
 
@@ -182,8 +140,6 @@ function ScrollIndicator() {
 export function HeroSection({ content }: HeroSectionProps) {
   return (
     <>
-      <HeroHeader content={content} />
-
       <section
         aria-label="Hero - Nicky Pimpz Boss"
         className="hero-root relative overflow-hidden bg-[#0A0A0A]"

@@ -1,0 +1,24 @@
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:10:- The current runtime header exists as `HeroHeader` inside [sections/hero/hero-section.tsx](/Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/sections/hero/hero-section.tsx:1).
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:28:- `HeroHeader` is embedded inside the Section 1 file and is therefore structurally coupled to the Hero section.
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:33:  - `heroContent.header.lineCta`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:34:  - `heroContent.header.menuLabel`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:55:  - `heroContent.header.lineCta` → `siteHeaderContent.lineCta.label`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:56:  - `heroContent.header.menuLabel` → `siteHeaderContent.menuTrigger.label`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:58:  - `heroContent.header.lineCta`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:59:  - `heroContent.header.menuLabel`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:86:- Do not lift `HeroHeader` directly into shared runtime ownership.
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:88:  - Step 1: keep existing frozen HeroHeader intact
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:91:  - Step 4: temporarily preserve runtime parity against HeroHeader during transition
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:92:  - Step 5: remove embedded HeroHeader only after parity + regression proof
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:193:- deleting `heroContent.header`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:222:- embedded HeroHeader is removed
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:223:- `heroContent.header` is deprecated/removed
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:228:- remove old HeroHeader implementation
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:229:- remove `heroContent.header`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:248:- GlobalHeader can render from `siteHeaderContent` without runtime dependence on `heroContent.header`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:282:- revert to embedded `HeroHeader`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:325:- `GlobalHeader` and embedded `HeroHeader` must never be visible at the same time.
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:369:- delete `heroContent.header`
+./docs/architecture/M9.5B-HEADER-EXTRACTION-ARCHITECTURE.md:370:- remove legacy `HeroHeader` permanently before parity is proven
+./docs/reports/m9.5c-header-extraction/M9.5C-CLOSEOUT.md:17:- Legacy `HeroHeader` does not render in normal runtime.
+./docs/reports/m9.5c-header-extraction/M9.5C-CLOSEOUT.md:83:  - `heroContent.header` remains present

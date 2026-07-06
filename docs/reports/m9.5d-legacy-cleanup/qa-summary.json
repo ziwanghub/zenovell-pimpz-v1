@@ -1,0 +1,98 @@
+[
+  {
+    "width": 375,
+    "closed": {
+      "headerCount": 1,
+      "legacyHeaderCount": 0,
+      "headerTop": 0,
+      "headerHeight": 61,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "open": {
+      "drawerVisible": true,
+      "bodyOverflow": "hidden",
+      "activeAria": "ไปที่หน้าแรก",
+      "horizontalOverflow": false
+    },
+    "closedAfterEsc": {
+      "drawerVisible": false,
+      "activeAria": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    }
+  },
+  {
+    "width": 390,
+    "closed": {
+      "headerCount": 1,
+      "legacyHeaderCount": 0,
+      "headerTop": 0,
+      "headerHeight": 61,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "open": {
+      "drawerVisible": true,
+      "bodyOverflow": "hidden",
+      "activeAria": "ไปที่หน้าแรก",
+      "horizontalOverflow": false
+    },
+    "closedAfterEsc": {
+      "drawerVisible": false,
+      "activeAria": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    }
+  },
+  {
+    "width": 414,
+    "closed": {
+      "headerCount": 1,
+      "legacyHeaderCount": 0,
+      "headerTop": 0,
+      "headerHeight": 61,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "open": {
+      "drawerVisible": true,
+      "bodyOverflow": "hidden",
+      "activeAria": "ไปที่หน้าแรก",
+      "horizontalOverflow": false
+    },
+    "closedAfterEsc": {
+      "drawerVisible": false,
+      "activeAria": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    }
+  },
+  {
+    "width": 430,
+    "closed": {
+      "headerCount": 1,
+      "legacyHeaderCount": 0,
+      "headerTop": 0,
+      "headerHeight": 61,
+      "heroTop": 80,
+      "safeAreaPadding": "env(safe-area-inset-top)",
+      "horizontalOverflow": false,
+      "footerExists": true
+    },
+    "open": {
+      "drawerVisible": true,
+      "bodyOverflow": "hidden",
+      "activeAria": "ไปที่หน้าแรก",
+      "horizontalOverflow": false
+    },
+    "closedAfterEsc": {
+      "drawerVisible": false,
+      "activeAria": "เปิดเมนูนำทาง",
+      "bodyOverflow": "hidden auto"
+    }
+  }
+]

@@ -15,14 +15,12 @@ export type HeroTrustItem = {
 };
 
 export type HeroContent = {
+  // Section 1 Hero body content authority.
+  // Global header authority lives in `content/site-header.ts`.
   brand: {
     wordmark: string;
     tagline: string;
     subbrand: string;
-  };
-  header: {
-    lineCta: string;
-    menuLabel: string;
   };
   headline: HeroHeadlineLine[];
   subheadline: string[];
@@ -40,10 +38,6 @@ export const heroContent: HeroContent = {
     wordmark: "ZENOVELL",
     tagline: "Modern Intimate Wellness",
     subbrand: "NICKY PIMPZ BOSS",
-  },
-  header: {
-    lineCta: "ปรึกษาผ่าน LINE",
-    menuLabel: "เมนู",
   },
   headline: [
     { text: "ปลุกความ", tone: "light" },

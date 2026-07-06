@@ -1,5 +1,11 @@
+import { GlobalHeader } from "@/components/layout/global-header";
 import { MobileShell } from "@/components/layout/mobile-shell";
 import { heroContent } from "@/content/hero";
+import { siteHeaderContent } from "@/content/site-header";
+import {
+  ctaDestinations,
+  siteNavigationGroups,
+} from "@/content/site-navigation";
 import { section2TrustBarContent } from "@/content/section-2-trust-bar";
 import { section3HeroProductContent } from "@/content/section-3-hero-product";
 import { section4ProductCatalogContent } from "@/content/section-4-product-catalog";
@@ -21,11 +27,19 @@ import { Section8Reviews } from "@/sections/section-8-reviews";
 import { Section10FinalCta } from "@/sections/section-10-final-cta";
 import { Section11Footer } from "@/sections/section-11-footer";
 import { Section9Faq } from "@/sections/section-9-faq";
+import { mapGlobalHeaderProps } from "@/lib/global-header-mapper";
+
+const globalHeaderProps = mapGlobalHeaderProps(
+  siteHeaderContent,
+  siteNavigationGroups,
+  ctaDestinations,
+);
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-page-bg)] text-[var(--color-text-primary)]">
       <MobileShell>
+        <GlobalHeader {...globalHeaderProps} />
         <HeroSection content={heroContent} />
         <Section2TrustBar content={section2TrustBarContent} />
         <Section3HeroProduct content={section3HeroProductContent} />

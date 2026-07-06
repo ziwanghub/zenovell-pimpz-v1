@@ -1,0 +1,74 @@
+[
+  {
+    "width": 375,
+    "prepared": {
+      "count": 11,
+      "firstText": "",
+      "firstAria": "ปิดเมนูนำทาง",
+      "lastText": "การสั่งซื้อผ่าน LINE",
+      "lastAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "backwardTrap": {
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "forwardTrap": {
+      "activeText": "",
+      "activeAria": "ปิดเมนูนำทาง"
+    }
+  },
+  {
+    "width": 390,
+    "prepared": {
+      "count": 11,
+      "firstText": "",
+      "firstAria": "ปิดเมนูนำทาง",
+      "lastText": "การสั่งซื้อผ่าน LINE",
+      "lastAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "backwardTrap": {
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "forwardTrap": {
+      "activeText": "",
+      "activeAria": "ปิดเมนูนำทาง"
+    }
+  },
+  {
+    "width": 414,
+    "prepared": {
+      "count": 11,
+      "firstText": "",
+      "firstAria": "ปิดเมนูนำทาง",
+      "lastText": "การสั่งซื้อผ่าน LINE",
+      "lastAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "backwardTrap": {
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "forwardTrap": {
+      "activeText": "",
+      "activeAria": "ปิดเมนูนำทาง"
+    }
+  },
+  {
+    "width": 430,
+    "prepared": {
+      "count": 11,
+      "firstText": "",
+      "firstAria": "ปิดเมนูนำทาง",
+      "lastText": "การสั่งซื้อผ่าน LINE",
+      "lastAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "backwardTrap": {
+      "activeText": "การสั่งซื้อผ่าน LINE",
+      "activeAria": "ไปที่การสั่งซื้อผ่าน LINE"
+    },
+    "forwardTrap": {
+      "activeText": "",
+      "activeAria": "ปิดเมนูนำทาง"
+    }
+  }
+]
