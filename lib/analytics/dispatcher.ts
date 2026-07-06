@@ -1,5 +1,6 @@
 import type { AnalyticsAdapter, AnalyticsPayload } from "./types";
 import type { AnalyticsEvent } from "./events";
+import { adapterRegistry } from "./adapters/adapter-registry";
 
 /**
  * Vendor-neutral Analytics Dispatcher.
@@ -15,24 +16,23 @@ import type { AnalyticsEvent } from "./events";
  * Adapters are added later in P3D.
  */
 export class AnalyticsDispatcher {
-  private adapters: AnalyticsAdapter[] = [];
   private isEnabled = true;
 
   /**
-   * Register an adapter. Multiple adapters can be registered (e.g. GA4 + custom).
-   * Adapters must be idempotent and non-throwing.
+   * Register an adapter. Delegates to AdapterRegistry (single source of truth).
    */
   registerAdapter(adapter: AnalyticsAdapter): void {
-    if (!this.adapters.includes(adapter)) {
-      this.adapters.push(adapter);
-    }
+    adapterRegistry.register(adapter);
   }
 
   /**
-   * Remove a previously registered adapter.
+   * Remove a previously registered adapter by name (via registry).
    */
   unregisterAdapter(adapter: AnalyticsAdapter): void {
-    this.adapters = this.adapters.filter((a) => a !== adapter);
+    const name = adapter.getName?.();
+    if (name) {
+      adapterRegistry.unregister(name);
+    }
   }
 
   /**
@@ -60,8 +60,10 @@ export class AnalyticsDispatcher {
         ...payload,
       };
 
-      // Dispatch to all adapters. Never let one adapter break others.
-      this.adapters.forEach((adapter) => {
+      // Dispatch to all adapters from the single source of truth (AdapterRegistry).
+      // Never let one adapter break others.
+      const currentAdapters = adapterRegistry.getAll();
+      currentAdapters.forEach((adapter) => {
         try {
           adapter.track(enrichedPayload);
         } catch (err) {

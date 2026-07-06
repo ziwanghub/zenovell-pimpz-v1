@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentType } from "react";
 import {
   Award,
@@ -19,6 +21,8 @@ import type {
   Section11FooterPaymentItem,
   Section11FooterSocialItem,
 } from "@/content/section-11-footer";
+import { ctaDestinations } from "@/content/site-navigation";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -230,6 +234,13 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
               href={item.href}
               aria-label={item.ariaLabel}
               className="group flex items-start gap-1.5 text-[11.5px] leading-[1.35] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
+              onClick={() =>
+                analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
+                  surface: "footer",
+                  label: item.label,
+                  destination: item.href,
+                })
+              }
             >
               <ChevronRight
                 aria-hidden="true"
@@ -249,6 +260,10 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
   const Icon = contactIconByName[item.iconName];
   const sharedClassName =
     "group flex items-start gap-3 rounded-[14px] border border-transparent px-2.5 py-2.5 transition-[border-color,background-color,color] duration-150";
+
+  const resolvedHref = item.destinationId
+    ? ctaDestinations.find((d) => d.id === item.destinationId)?.href || item.href || "#"
+    : item.href || "#";
 
   const content = (
     <>
@@ -281,9 +296,16 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
 
   return (
     <a
-      href={item.href}
+      href={resolvedHref}
       aria-label={item.ariaLabel}
       className={`${sharedClassName} text-white/78 hover:border-[rgba(233,30,140,0.18)] hover:bg-[rgba(233,30,140,0.04)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]`}
+      onClick={() =>
+        analytics.track(AnalyticsEvents.CONTACT_CLICK, {
+          surface: "footer",
+          label: item.label,
+          destination: resolvedHref,
+        })
+      }
     >
       {content}
     </a>
@@ -298,6 +320,13 @@ function FooterSocialIconLink({ item }: { item: Section11FooterSocialItem }) {
       href={item.href}
       aria-label={item.ariaLabel}
       className="flex size-12 items-center justify-center rounded-full border border-[rgba(233,30,140,0.28)] bg-[radial-gradient(circle_at_35%_30%,rgba(233,30,140,0.16),rgba(17,17,17,0.94)_72%)] text-[#FF4DA6] shadow-[0_0_12px_rgba(233,30,140,0.1)] transition-[transform,border-color,box-shadow] duration-150 hover:-translate-y-0.5 hover:border-[rgba(233,30,140,0.42)] hover:shadow-[0_0_18px_rgba(233,30,140,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
+      onClick={() =>
+        analytics.track(AnalyticsEvents.SOCIAL_CLICK, {
+          surface: "footer",
+          label: item.ariaLabel,
+          destination: item.href,
+        })
+      }
     >
       <Icon aria-hidden="true" className="size-[22px]" strokeWidth={1.9} />
     </a>

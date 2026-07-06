@@ -38,6 +38,12 @@ const globalHeaderProps = mapGlobalHeaderProps(
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-page-bg)] text-[var(--color-text-primary)]">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#E91E8C] focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:rounded focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Skip to main content
+      </a>
       <MobileShell>
         <GlobalHeader {...globalHeaderProps} />
         <HeroSection content={heroContent} />

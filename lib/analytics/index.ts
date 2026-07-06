@@ -17,3 +17,6 @@ export * from "./dispatcher";
 export { analytics } from "./dispatcher";
 export type { AnalyticsPayload, AnalyticsAdapter } from "./types";
 export type { AnalyticsEvent } from "./events";
+
+// Adapter Foundation (M10-P3D-1)
+export * as adapters from "./adapters";

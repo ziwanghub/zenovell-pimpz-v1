@@ -42,4 +42,14 @@ export interface AnalyticsAdapter {
    * Adapters must not throw; they should fail silently or log in dev.
    */
   track(payload: AnalyticsPayload): void;
+
+  /**
+   * Optional: return a name for the adapter (used by registry).
+   */
+  getName?(): string;
+
+  /**
+   * Optional: perform initialization when the adapter is registered.
+   */
+  initialize?(): void | Promise<void>;
 }

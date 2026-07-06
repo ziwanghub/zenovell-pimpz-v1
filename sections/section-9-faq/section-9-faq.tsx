@@ -16,6 +16,8 @@ import type {
   Section9FaqItem,
   Section9TrustItem,
 } from "@/content/section-9-faq-content";
+import { ctaDestinations } from "@/content/site-navigation";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -83,6 +85,7 @@ function FaqSupportCard({
 }: {
   supportCard: Section9FaqContent["supportCard"];
 }) {
+  const resolvedHref = ctaDestinations.find((d) => d.id === supportCard.destinationId)?.href || "#";
   return (
     <div className="mx-4 mt-4 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-3">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
@@ -105,9 +108,16 @@ function FaqSupportCard({
       </div>
 
       <a
-        href={supportCard.href}
+        href={resolvedHref}
         aria-label={supportCard.ctaAriaLabel}
         className="inline-flex h-11 shrink-0 items-center gap-2 rounded-[14px] bg-[#E91E8C] px-3 text-[14px] font-bold leading-none text-white shadow-[0_0_18px_rgba(233,30,140,0.35)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_24px_rgba(233,30,140,0.44)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+        onClick={() =>
+          analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
+            surface: "faq",
+            label: supportCard.ctaLabel,
+            destination: resolvedHref,
+          })
+        }
       >
         <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white">
           <LineIcon size={18} />
@@ -121,13 +131,21 @@ function FaqSupportCard({
 function FinalLineCTA({
   label,
   ariaLabel,
-  href,
+  destinationId,
 }: Section9FaqContent["primaryCta"]) {
+  const resolvedHref = ctaDestinations.find((d) => d.id === destinationId)?.href || "#";
   return (
     <a
       aria-label={ariaLabel}
-      href={href}
+      href={resolvedHref}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={() =>
+        analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
+          surface: "faq",
+          label,
+          destination: resolvedHref,
+        })
+      }
     >
       <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white">
         <LineIcon size={24} />
@@ -189,7 +207,21 @@ function FaqItemRow({
         type="button"
         aria-expanded={isOpen}
         aria-controls={panelId}
-        onClick={onOpen}
+        onClick={() => {
+          const willExpand = !isOpen;
+          onOpen();
+          if (willExpand) {
+            analytics.track(AnalyticsEvents.FAQ_EXPAND, {
+              surface: "faq",
+              label: item.question,
+            });
+          } else {
+            analytics.track(AnalyticsEvents.FAQ_COLLAPSE, {
+              surface: "faq",
+              label: item.question,
+            });
+          }
+        }}
         className="flex w-full items-center gap-3 px-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
       >
         <FaqQuestionBadge />
@@ -244,7 +276,7 @@ type Section9FaqProps = {
 
 export function Section9Faq({ content }: Section9FaqProps) {
   const defaultOpenItem = content.items.find((item) => item.defaultOpen) ?? content.items[0];
-  const [openItemId, setOpenItemId] = useState(defaultOpenItem.id);
+  const [openItemId, setOpenItemId] = useState<string | null>(defaultOpenItem.id);
 
   return (
     <section
@@ -269,9 +301,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
             item={item}
             isOpen={openItemId === item.id}
             onOpen={() => {
-              if (openItemId !== item.id) {
-                setOpenItemId(item.id);
-              }
+              setOpenItemId(openItemId === item.id ? null : item.id);
             }}
           />
         ))}

@@ -21,6 +21,7 @@ export type Section11FooterContactItem = {
   ariaLabel?: string;
   iconName: "line" | "phone" | "mail" | "map-pin";
   interactive: boolean;
+  destinationId?: string;
 };
 
 export type Section11FooterSocialItem = {
@@ -244,6 +245,7 @@ export const section11FooterContent: Section11FooterContent = {
       ariaLabel: "ติดต่อ LINE Official @zenovell",
       iconName: "line",
       interactive: true,
+      destinationId: "header-line",
     },
     {
       id: "phone",

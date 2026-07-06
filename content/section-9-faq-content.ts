@@ -30,12 +30,12 @@ export type Section9FaqContent = {
     descriptionLines: [string, string];
     ctaLabel: string;
     ctaAriaLabel: string;
-    href: string;
+    destinationId: string;
   };
   primaryCta: {
     label: string;
     ariaLabel: string;
-    href: string;
+    destinationId: string;
   };
   trustItems: [Section9TrustItem, Section9TrustItem, Section9TrustItem];
 };
@@ -119,12 +119,12 @@ export const section9FaqContent: Section9FaqContent = {
     descriptionLines: ["ทีมงานพร้อมให้คำแนะนำ", "อย่างเป็นส่วนตัว"],
     ctaLabel: "ปรึกษาผ่าน LINE",
     ctaAriaLabel: "ปรึกษาผ่าน LINE กับทีมงาน",
-    href: "#",
+    destinationId: "support-line",
   },
   primaryCta: {
     label: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
     ariaLabel: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
-    href: "#",
+    destinationId: "hero-line",
   },
   trustItems: [
     { iconName: "shield-check", label: "ปลอดภัย 100%" },

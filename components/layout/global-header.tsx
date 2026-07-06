@@ -12,6 +12,7 @@ import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 
 import type { GlobalHeaderProps } from "@/lib/global-header-mapper";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
 const DRAWER_TITLE_ID_PREFIX = "global-header-drawer-title";
 const DRAWER_PANEL_ID_PREFIX = "global-header-drawer-panel";
@@ -54,6 +55,7 @@ export function GlobalHeader({
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
+    analytics.track(AnalyticsEvents.DRAWER_CLOSE, { surface: "header" });
   };
 
   const lockBodyScroll = (lock: boolean) => {
@@ -175,6 +177,13 @@ export function GlobalHeader({
                 aria-label={lineCta.ariaLabel}
                 className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_16px_rgba(233,30,140,0.4)]"
                 href={lineCta.href}
+                onClick={() =>
+                  analytics.track(AnalyticsEvents.HEADER_CTA_CLICK, {
+                    surface: "header",
+                    label: lineCta.label,
+                    destination: lineCta.href,
+                  })
+                }
               >
                 <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1">
                   <LineIcon size={15} />
@@ -189,7 +198,15 @@ export function GlobalHeader({
                 aria-label={menuTrigger.ariaLabel}
                 className="flex size-9 items-center justify-center rounded-full text-white"
                 type="button"
-                onClick={() => setIsDrawerOpen((current) => !current)}
+                onClick={() => {
+                  const next = !isDrawerOpen;
+                  setIsDrawerOpen(next);
+                  if (next) {
+                    analytics.track(AnalyticsEvents.MENU_OPEN, { surface: "header" });
+                  } else {
+                    // close will be tracked in closeDrawer
+                  }
+                }}
               >
                 <Menu className="size-5" strokeWidth={2.1} />
               </button>
@@ -248,7 +265,10 @@ export function GlobalHeader({
                     aria-label="ปิดเมนูนำทาง"
                     className="flex size-10 items-center justify-center rounded-full text-white"
                     type="button"
-                    onClick={closeDrawer}
+                    onClick={() => {
+                      closeDrawer();
+                      analytics.track(AnalyticsEvents.DRAWER_CLOSE, { surface: "header" });
+                    }}
                   >
                     <X className="size-5" strokeWidth={2.1} />
                   </button>
@@ -266,7 +286,14 @@ export function GlobalHeader({
                           aria-label={item.ariaLabel}
                           className="flex min-h-12 items-center rounded-2xl border border-white/8 bg-white/[0.03] px-4 text-[15px] font-medium text-white/92 transition-colors hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
                           href={item.href}
-                          onClick={closeDrawer}
+                          onClick={() => {
+                            closeDrawer();
+                            analytics.track(AnalyticsEvents.NAVIGATION_CLICK, {
+                              surface: "drawer",
+                              label: item.label,
+                              destination: item.href,
+                            });
+                          }}
                         >
                           {item.label}
                         </Link>

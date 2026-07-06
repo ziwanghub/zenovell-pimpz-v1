@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import type { ComponentType } from "react";
 import {
@@ -22,6 +24,7 @@ import type {
   Section4TrustIcon,
   Section4TrustItem,
 } from "@/content/section-4-product-catalog";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -141,6 +144,13 @@ function ProductCardCTA({
       aria-label={cta.ariaLabel}
       href={cta.href}
       className="mt-[10px] flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[13px] font-bold leading-none text-[#E91E8C] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={() =>
+        analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+          surface: "section",
+          label: cta.label,
+          destination: cta.href,
+        })
+      }
     >
       <span>{cta.label}</span>
       <ChevronRight
@@ -222,6 +232,13 @@ function FinalLineCTA({
       aria-label={ariaLabel}
       href={href}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={() =>
+        analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+          surface: "section",
+          label,
+          destination: href,
+        })
+      }
     >
       <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white">
         <LineIcon size={24} />
