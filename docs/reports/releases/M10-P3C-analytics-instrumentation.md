@@ -6,14 +6,18 @@
 **Status**: PROMOTED
 
 ## Executive Summary
-M10-P3C successfully completed Analytics Instrumentation by wiring the analytics utility (from P3B) into the key UI surfaces without any UI, layout, or runtime architecture changes.
+M10-P3C successfully completed Analytics Instrumentation by integrating the analytics utility into key UI surfaces (GlobalHeader, Hero, FAQ, Footer, Product Catalog) using approved events and payload contract.
 
-All tracking uses the approved vendor-neutral events and payload from the M10-P3A architecture.
+No UI redesign, no runtime architecture changes, no vendor integrations. All changes were minimal onClick instrumentation preserving frozen baselines.
 
 ## Scope
-- Instrumented GlobalHeader, Hero, FAQ, Footer, and Product Catalog CTAs.
-- Used only analytics.track() from the utility.
-- No vendor code, no new dependencies, no UI modifications.
+- Instrumented GlobalHeader (menu_open, drawer_close, navigation_click, header_cta_click)
+- Instrumented Hero (hero_cta_click)
+- Instrumented FAQ (faq_expand, faq_collapse, support_cta_click)
+- Instrumented Footer (footer_cta_click, contact_click, social_click)
+- Instrumented Product CTAs (product_click)
+- Used only `analytics.track()` from lib/analytics/
+- Standard payload from M10-P3A
 
 ## Files Changed
 - components/layout/global-header.tsx
@@ -22,34 +26,30 @@ All tracking uses the approved vendor-neutral events and payload from the M10-P3
 - sections/section-11-footer/section-11-footer.tsx
 - sections/section-4-product-catalog/section-4-product-catalog.tsx
 
-## Analytics Surfaces
-- GlobalHeader: menu_open, drawer_close, navigation_click, header_cta_click
-- Hero: hero_cta_click
-- FAQ: faq_expand, faq_collapse, support_cta_click
-- Footer: footer_cta_click, contact_click, social_click
-- Product: product_click
-
-## Validation
+## Validation Summary
 - npm run lint: PASS
 - npm run typecheck: PASS
 - npm run build: PASS
 - npm run validate: PASS
 
-## Independent Audit Result
-PASS (from previous Gemini audit)
+## Independent Audit Summary
+- Independent Audit (Gemini): PASS
+- Confirmed compliance with approved architecture, no double-header, no regression to frozen sections, proper payload usage.
 
-## Regression Result
+## Regression Summary
 - UI visually and functionally identical to baseline.
-- No double header.
-- Drawer, FAQ, CTAs work as before.
-- No horizontal overflow.
-- Frozen sections parity preserved.
-- No console errors.
+- No layout shift.
+- Drawer, FAQ toggle, CTAs work as before.
+- Header count = 1
+- No horizontal overflow
+- Frozen section parity maintained
 
 ## Architecture Compliance
-Fully compliant with M10-P3A and M9.5B authorities. No changes to contracts, GlobalHeader structure, or MobileShell.
+- Fully compliant with M10-P3A Analytics Foundation and M9.5B Header Extraction Architecture.
+- No changes to GlobalHeader structure, MobileShell, or contracts.
+- Instrumentation isolated to event tracking calls.
 
-## Release Readiness
-All tasks complete. M10-P3C promoted.
+## Release Decision
+APPROVED
 
-**Promotion Decision**: APPROVED
+M10-P3C is promoted to the official baseline.
