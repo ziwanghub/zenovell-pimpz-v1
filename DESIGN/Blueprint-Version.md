@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-M8 — Sections 1–10 Frozen Baseline
+M9 — Sections 1–11 Frozen Baseline
 
 ## Frozen Blueprints
 
@@ -18,12 +18,13 @@ M8 — Sections 1–10 Frozen Baseline
 | Section 8 | Reviews | Frozen | v1.0 | M6 baseline |
 | Section 9 | FAQ | Frozen | v1.0 | M7 baseline |
 | Section 10 | Final CTA | Frozen | v1.0 | M8 baseline |
+| Section 11 | Footer | Frozen | v1.0 | M9 baseline |
 
 ## Draft / Next Blueprints
 
 | Section | Name | Status | Version | Notes |
 |---|---|---|---|---|
-| Section 11 | Next Section | Draft | v0.1 | Next active blueprint |
+| Section 12 | Next Section | Draft | v0.1 | Site-wide polish / next active phase |
 
 ## Rules
 

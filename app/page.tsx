@@ -8,6 +8,7 @@ import { section6HowToOrderContent } from "@/content/section-6-how-to-order";
 import { section7PrivacyShippingContent } from "@/content/section-7-privacy-shipping";
 import { section8ReviewsContent } from "@/content/section-8-reviews";
 import { section10FinalCtaContent } from "@/content/section-10-final-cta";
+import { section11FooterContent } from "@/content/section-11-footer";
 import { section9FaqContent } from "@/content/section-9-faq-content";
 import { HeroSection } from "@/sections/hero";
 import { Section2TrustBar } from "@/sections/section-2-trust-bar";
@@ -18,6 +19,7 @@ import { Section6HowToOrder } from "@/sections/section-6-how-to-order";
 import { Section7PrivacyShipping } from "@/sections/section-7-privacy-shipping";
 import { Section8Reviews } from "@/sections/section-8-reviews";
 import { Section10FinalCta } from "@/sections/section-10-final-cta";
+import { Section11Footer } from "@/sections/section-11-footer";
 import { Section9Faq } from "@/sections/section-9-faq";
 
 export default function Home() {
@@ -34,6 +36,7 @@ export default function Home() {
         <Section8Reviews content={section8ReviewsContent} />
         <Section9Faq content={section9FaqContent} />
         <Section10FinalCta content={section10FinalCtaContent} />
+        <Section11Footer content={section11FooterContent} />
       </MobileShell>
     </main>
   );

@@ -13,8 +13,10 @@ Current status:
 - Section 7 Privacy & Shipping implemented and frozen baseline
 - Section 8 Reviews implemented and frozen baseline
 - Section 9 FAQ implemented and frozen baseline
+- Section 10 Final CTA implemented and frozen baseline
+- Section 11 Footer implemented and frozen baseline
 - Visual polish deferred to final site-wide polish phase
-- Next active task: Section 10
+- Next active task: Site-wide Polish Pass
 - Section-by-section delivery flow prepared
 
 ## Stack
@@ -71,8 +73,10 @@ npm run validate
 - Section 7 Privacy & Shipping is implemented and frozen as the current baseline
 - Section 8 Reviews is implemented and frozen as the current baseline
 - Section 9 FAQ is implemented and frozen as the current baseline
+- Section 10 Final CTA is implemented and frozen as the current baseline
+- Section 11 Footer is implemented and frozen as the current baseline
 - Visual polish items are intentionally deferred to the final site-wide polish phase
-- Next implementation task is Section 10
+- Next active phase is the site-wide polish pass
 - Do not implement future sections together
 
 ## Workspace Structure
@@ -97,7 +101,7 @@ sections/
 
 ## Notes
 
-- Sections 1, 2, 3, 4, 5, 6, 7, 8, and 9 serve as frozen implementation baselines
+- Sections 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 11 serve as frozen implementation baselines
 - Do not modify frozen sections unless explicitly instructed by SA
 - Defer Hero visual polish to the final site-wide polish phase
 - Keep content outside presentation components as sections are built
@@ -114,7 +118,9 @@ sections/
 - `Section 7` Privacy & Shipping
 - `Section 8` Reviews
 - `Section 9` FAQ
+- `Section 10` Final CTA
+- `Section 11` Footer
 
-## Next Active Implementation
+## Next Active Phase
 
-- `Section 10`
+- `Site-wide Polish Pass`
