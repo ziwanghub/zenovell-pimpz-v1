@@ -52,6 +52,14 @@ export function GlobalHeader({
   const drawerPanelId = `${DRAWER_PANEL_ID_PREFIX}-${instanceId}`;
   const canUsePortal = typeof document !== "undefined";
 
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
+  const lockBodyScroll = (lock: boolean) => {
+    document.body.style.overflow = lock ? "hidden" : "";
+  };
+
   useEffect(() => {
     if (!visibility.showShadowOnScroll) {
       return;
@@ -67,19 +75,26 @@ export function GlobalHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [visibility.showShadowOnScroll]);
 
+  const wasOpenRef = useRef(false);
+
   useEffect(() => {
     if (!isDrawerOpen) {
-      document.body.style.overflow = "";
-      menuButtonRef.current?.focus();
+      lockBodyScroll(false);
+      if (wasOpenRef.current) {
+        // only restore on actual close, not on initial mount
+        menuButtonRef.current?.focus();
+      }
+      wasOpenRef.current = false;
       return;
     }
 
-    document.body.style.overflow = "hidden";
+    wasOpenRef.current = true;
+    lockBodyScroll(true);
     firstDrawerLinkRef.current?.focus();
 
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsDrawerOpen(false);
+        closeDrawer();
         return;
       }
 
@@ -113,7 +128,7 @@ export function GlobalHeader({
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "";
+      lockBodyScroll(false);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isDrawerOpen]);
@@ -187,17 +202,20 @@ export function GlobalHeader({
         ? createPortal(
             <div
               className="fixed inset-0 z-[80]"
+              // Portal-based drawer for consistent layering outside MobileShell
             >
+              {/* Backdrop layer for visual and click-to-close */}
               <div
                 aria-hidden="true"
                 className="absolute inset-0 bg-black/65"
-                onClick={() => setIsDrawerOpen(false)}
+                onClick={closeDrawer}
               />
 
+              {/* Transparent click catcher for full area coverage */}
               <div
                 aria-hidden="true"
                 className="absolute inset-0"
-                onClick={() => setIsDrawerOpen(false)}
+                onClick={closeDrawer}
               />
 
               <div
@@ -230,7 +248,7 @@ export function GlobalHeader({
                     aria-label="ปิดเมนูนำทาง"
                     className="flex size-10 items-center justify-center rounded-full text-white"
                     type="button"
-                    onClick={() => setIsDrawerOpen(false)}
+                    onClick={closeDrawer}
                   >
                     <X className="size-5" strokeWidth={2.1} />
                   </button>
@@ -248,7 +266,7 @@ export function GlobalHeader({
                           aria-label={item.ariaLabel}
                           className="flex min-h-12 items-center rounded-2xl border border-white/8 bg-white/[0.03] px-4 text-[15px] font-medium text-white/92 transition-colors hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
                           href={item.href}
-                          onClick={() => setIsDrawerOpen(false)}
+                          onClick={closeDrawer}
                         >
                           {item.label}
                         </Link>
