@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties, ComponentType } from "react";
 import {
   ChevronDown,
@@ -16,8 +13,6 @@ import {
 } from "lucide-react";
 
 import type { HeroBenefit, HeroContent, HeroTrustItem } from "@/content/hero";
-import { ctaDestinations } from "@/content/site-navigation";
-import { analytics, AnalyticsEvents } from "@/lib/analytics";
 
 const BACKGROUND_IMAGE_SRC = "/images/hero/bg-hero-section1.jpeg";
 
@@ -131,12 +126,12 @@ function ScrollIndicator() {
     <div className="hero-scroll-indicator flex flex-col items-center bg-[#0A0A0A] px-0 pt-[10px] pb-4">
       <ChevronDown
         aria-hidden="true"
-        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite] motion-reduce:animate-none text-[#E91E8C] opacity-80"
+        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite] text-[#E91E8C] opacity-80"
         style={{ marginBottom: "-6px" }}
       />
       <ChevronDown
         aria-hidden="true"
-        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite_150ms] motion-reduce:animate-none text-[#E91E8C] opacity-35"
+        className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite_150ms] text-[#E91E8C] opacity-35"
       />
     </div>
   );
@@ -146,7 +141,6 @@ export function HeroSection({ content }: HeroSectionProps) {
   return (
     <>
       <section
-        id="main-content"
         aria-label="Hero - Nicky Pimpz Boss"
         className="hero-root relative overflow-hidden bg-[#0A0A0A]"
       >
@@ -156,7 +150,6 @@ export function HeroSection({ content }: HeroSectionProps) {
           aria-hidden="true"
           fill
           priority
-          fetchPriority="high"
           sizes="(max-width: 430px) 100vw, 430px"
           className="hero-background scale-[1.05] object-cover"
           style={{ objectPosition: "61% top" }}
@@ -233,42 +226,29 @@ export function HeroSection({ content }: HeroSectionProps) {
           </div>
 
           <div className="hero-cta-block px-[14px] pt-[28px] pb-[28px]">
-            {(() => {
-              const heroLineDest = ctaDestinations.find((d) => d.id === content.cta.destinationId) || ctaDestinations.find((d) => d.id === "hero-line");
-              const resolvedHref = heroLineDest?.href || "#";
-              return (
-                <Link
-                  href={resolvedHref}
-                  aria-label={content.cta.label}
-                  className="hero-primary-cta flex w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left"
-                  style={ctaButtonStyle}
-                  onClick={() =>
-                    analytics.track(AnalyticsEvents.HERO_CTA_CLICK, {
-                      surface: "hero",
-                      label: content.cta.primary,
-                      destination: resolvedHref,
-                    })
-                  }
-                >
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">
-                    <LineIcon size={28} />
-                  </div>
+            <button
+              aria-label={content.cta.label}
+              className="hero-primary-cta flex w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left"
+              style={ctaButtonStyle}
+              type="button"
+            >
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">
+                <LineIcon size={28} />
+              </div>
 
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[12px] leading-[1.3] text-white/75">
-                      {content.cta.eyebrow}
-                    </p>
-                    <p className="text-[20px] font-bold leading-[1.2] text-white">
-                      {content.cta.primary}
-                    </p>
-                  </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-[12px] leading-[1.3] text-white/75">
+                  {content.cta.eyebrow}
+                </p>
+                <p className="text-[20px] font-bold leading-[1.2] text-white">
+                  {content.cta.primary}
+                </p>
+              </div>
 
-                  <div className="flex size-[34px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)]">
-                    <ChevronRight aria-hidden="true" className="size-[18px] text-[#E91E8C]" />
-                  </div>
-                </Link>
-              );
-            })()}
+              <div className="flex size-[34px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)]">
+                <ChevronRight aria-hidden="true" className="size-[18px] text-[#E91E8C]" />
+              </div>
+            </button>
           </div>
         </div>
       </section>
