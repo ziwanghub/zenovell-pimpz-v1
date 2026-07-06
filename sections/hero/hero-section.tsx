@@ -150,6 +150,7 @@ export function HeroSection({ content }: HeroSectionProps) {
           aria-hidden="true"
           fill
           priority
+          fetchPriority="high"
           sizes="(max-width: 430px) 100vw, 430px"
           className="hero-background scale-[1.05] object-cover"
           style={{ objectPosition: "61% top" }}
