@@ -20,7 +20,7 @@ import type {
   Section6TrustItem,
 } from "@/content/section-6-how-to-order";
 import { LineIcon } from "@/components/ui/line-icon";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -199,16 +199,16 @@ export function Section6HowToOrder({
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] pb-6"
     >
-      <div className="px-4 pt-7 pb-4 text-center">
-        <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white">
-          {content.heading.split(" ผ่าน LINE")[0]}
-          <span className="text-[#E91E8C]"> ผ่าน LINE</span>
-        </h2>
-        <p className="mt-2 text-[14px] leading-[1.5] text-white/65">
-          {content.subtitle}
-        </p>
-      </div>
+      <SectionHeader
+        label={content.sectionLabel}
+        heading={
+          <>
+            {content.heading.split(" ผ่าน LINE")[0]}
+            <span className="text-[#E91E8C]"> ผ่าน LINE</span>
+          </>
+        }
+        description={content.subtitle}
+      />
 
       <ol className="space-y-2.5 px-4">
         {content.steps.map((item, index) => (

@@ -19,7 +19,7 @@ import type {
   Section7TrustItem,
 } from "@/content/section-7-privacy-shipping";
 import { LineIcon } from "@/components/ui/line-icon";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -251,15 +251,11 @@ export function Section7PrivacyShipping({
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] pb-6"
     >
-      <div className="px-4 pt-7 pb-4 text-center">
-        <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.2] tracking-[-0.01em] text-white">
-          {content.heading}
-        </h2>
-        <p className="mt-2 text-[14px] leading-[1.5] text-white/65">
-          {content.subtitle}
-        </p>
-      </div>
+      <SectionHeader
+        label={content.sectionLabel}
+        heading={content.heading}
+        description={content.subtitle}
+      />
 
       <ul className="grid grid-cols-2 gap-[10px] px-4">
         {content.cards.map((card) => (
