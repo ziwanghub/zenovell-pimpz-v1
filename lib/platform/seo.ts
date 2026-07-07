@@ -345,3 +345,41 @@ export function generateKnowledgeStructuredData(knowledge: Knowledge) {
     breadcrumb: generateKnowledgeBreadcrumbJsonLd(knowledge),
   };
 }
+
+// ============================================
+// Phase 5G: Site-level SEO / AI SEO
+// Organization, WebSite, and enhancements
+// ============================================
+
+export function generateOrganizationJsonLd(baseUrl = 'https://zenovell.com') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ZENOVELL',
+    url: baseUrl,
+    logo: `${baseUrl}/images/logo.png`, // use existing assets if available
+    description: 'Premium wellness products for men and women.',
+    sameAs: [], // add social if available
+  };
+}
+
+export function generateWebSiteJsonLd(baseUrl = 'https://zenovell.com') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ZENOVELL',
+    url: baseUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${baseUrl}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+export function generateSiteStructuredData(baseUrl = 'https://zenovell.com') {
+  return {
+    organization: generateOrganizationJsonLd(baseUrl),
+    website: generateWebSiteJsonLd(baseUrl),
+  };
+}
