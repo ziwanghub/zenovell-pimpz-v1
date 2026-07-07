@@ -16,7 +16,7 @@ import { ProductFAQ } from '@/components/platform/product-faq';
 import { ProductRelatedProducts } from '@/components/platform/product-related-products';
 
 interface ProductPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const result = loadProductBySlug(params.slug);
+  const { slug } = await params;
+  const result = loadProductBySlug(slug);
 
   if (!result.found || !result.entity) {
     return {
@@ -39,8 +40,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return generateProductMetadata(product);
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const result = loadProductBySlug(params.slug);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = await params;
+  const result = loadProductBySlug(slug);
 
   if (!result.found || !result.entity) {
     notFound();

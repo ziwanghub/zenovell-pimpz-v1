@@ -14,7 +14,7 @@ import { KnowledgeRelated } from '@/components/platform/knowledge-related';
 import { KnowledgeCta } from '@/components/platform/knowledge-cta';
 
 interface KnowledgePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -23,7 +23,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: KnowledgePageProps): Promise<Metadata> {
-  const result = loadKnowledgeBySlug(params.slug);
+  const { slug } = await params;
+  const result = loadKnowledgeBySlug(slug);
 
   if (!result.found || !result.entity) {
     return {
@@ -34,8 +35,9 @@ export async function generateMetadata({ params }: KnowledgePageProps): Promise<
   return generateKnowledgeMetadata(result.entity);
 }
 
-export default function KnowledgePage({ params }: KnowledgePageProps) {
-  const result = loadKnowledgeBySlug(params.slug);
+export default async function KnowledgePage({ params }: KnowledgePageProps) {
+  const { slug } = await params;
+  const result = loadKnowledgeBySlug(slug);
 
   if (!result.found || !result.entity) {
     notFound();
@@ -59,7 +61,7 @@ export default function KnowledgePage({ params }: KnowledgePageProps) {
         relatedKnowledge={knowledge.relatedKnowledge}
       />
 
-      <KnowledgeCta knowledge={knowledge} slug={params.slug} />
+      <KnowledgeCta knowledge={knowledge} slug={slug} />
 
       {/* Structured Data (JSON-LD) */}
       <script

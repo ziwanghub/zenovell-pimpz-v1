@@ -17,7 +17,7 @@ import { InformationRelatedProducts } from '@/components/platform/information-re
 import { InformationCta } from '@/components/platform/information-cta';
 
 interface InformationPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: InformationPageProps): Promise<Metadata> {
-  const result = loadInformationBySlug(params.slug);
+  const { slug } = await params;
+  const result = loadInformationBySlug(slug);
 
   if (!result.found || !result.entity) {
     return {
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }: InformationPageProps): Promis
   return generateInformationMetadata(info);
 }
 
-export default function InformationPage({ params }: InformationPageProps) {
-  const result = loadInformationBySlug(params.slug);
+export default async function InformationPage({ params }: InformationPageProps) {
+  const { slug } = await params;
+  const result = loadInformationBySlug(slug);
 
   if (!result.found || !result.entity) {
     notFound();
@@ -68,7 +70,7 @@ export default function InformationPage({ params }: InformationPageProps) {
 
       <InformationRelatedProducts relatedSlugs={info.relatedProducts} />
 
-      <InformationCta info={info} slug={params.slug} />
+      <InformationCta info={info} slug={slug} />
 
       {/* Structured Data (JSON-LD) */}
       <script
