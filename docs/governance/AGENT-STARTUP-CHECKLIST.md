@@ -53,7 +53,10 @@ Run the verification suite to ensure the repository builds and passes typechecks
 npm run validate
 ```
 
-### Step 10: Begin Work
+### Step 10: Verify Reporting Level
+Consult [LEAN-REPORTING-POLICY.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/LEAN-REPORTING-POLICY.md) before creating any report. If the active task is classified as Level B (Intermediate Work Package) or Level C (Silent / Terminal Operations), creating a new markdown documentation file is **strictly prohibited**. Report progress only via the specified chat template.
+
+### Step 11: Begin Work
 Proceed with planning, documentation, or implementation according to the Work Package directions.
 
 ---
@@ -63,3 +66,4 @@ Proceed with planning, documentation, or implementation according to the Work Pa
 - [REPOSITORY-AUTHORITY-GUIDE.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/REPOSITORY-AUTHORITY-GUIDE.md)
 - [REPOSITORY-DECISION-MATRIX.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/REPOSITORY-DECISION-MATRIX.md)
 - [AI-ONBOARDING.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/AI-ONBOARDING.md)
+- [LEAN-REPORTING-POLICY.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/LEAN-REPORTING-POLICY.md)

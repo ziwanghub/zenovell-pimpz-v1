@@ -200,6 +200,7 @@ Every agent must execute this checklist at startup:
 *   **Startup Checklist**: [AGENT-STARTUP-CHECKLIST.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/AGENT-STARTUP-CHECKLIST.md)
 *   **Authority Model**: [REPOSITORY-AUTHORITY-GUIDE.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/REPOSITORY-AUTHORITY-GUIDE.md)
 *   **Decision Matrix**: [REPOSITORY-DECISION-MATRIX.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/REPOSITORY-DECISION-MATRIX.md)
+*   **Lean Reporting Policy**: [LEAN-REPORTING-POLICY.md](file:///Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active/docs/governance/LEAN-REPORTING-POLICY.md)
 
 ---
 **End of REPOSITORY-STRUCTURE-GUIDE.md**
