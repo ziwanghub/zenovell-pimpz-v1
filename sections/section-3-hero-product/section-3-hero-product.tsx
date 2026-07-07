@@ -27,7 +27,9 @@ import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { featuredProduct } from "@/content/products";
+import Link from 'next/link';
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -249,27 +251,50 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           {content.superline}
         </p>
         <div className="mt-1">
-          <ProductNameHeading text={content.productName} />
+          <Link
+            href={`/products/${featuredProduct.slug}`}
+            onClick={() =>
+              analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+                surface: "section",
+                label: content.productName,
+                destination: `/products/${featuredProduct.slug}`,
+              })
+            }
+          >
+            <ProductNameHeading text={content.productName} />
+          </Link>
         </div>
         <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80">
           {content.productTagline}
         </p>
       </div>
 
-      <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A]">
-        <Image
-          src={content.artwork.src}
-          alt={content.artwork.alt}
-          fill
-          sizes="(max-width: 430px) 100vw, 430px"
-          className="object-cover"
-          style={{ objectPosition: "center center" }}
-        />
+      <Link
+        href={`/products/${featuredProduct.slug}`}
+        aria-label={`View details for ${content.productName}`}
+        onClick={() =>
+          analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+            surface: "section",
+            label: content.productName,
+            destination: `/products/${featuredProduct.slug}`,
+          })
+        }
+      >
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A]">
+          <Image
+            src={content.artwork.src}
+            alt={content.artwork.alt}
+            fill
+            sizes="(max-width: 430px) 100vw, 430px"
+            className="object-cover"
+            style={{ objectPosition: "center center" }}
+          />
 
-        {content.badges.map((badge) => (
-          <ProductStageBadge key={badge.type} badge={badge} />
-        ))}
-      </div>
+          {content.badges.map((badge) => (
+            <ProductStageBadge key={badge.type} badge={badge} />
+          ))}
+        </div>
+      </Link>
 
       <ul className="grid grid-cols-3 gap-x-2 px-4 py-5">
         {content.benefits.map((item) => (

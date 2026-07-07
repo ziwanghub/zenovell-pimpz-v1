@@ -30,6 +30,7 @@ import { LineIcon } from "@/components/ui/line-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { products as commerceProducts } from "@/content/products";
+import Link from 'next/link';
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -174,21 +175,44 @@ function ProductCardCTA({
 function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
   return (
     <li className="overflow-hidden rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#131313]">
-      <div className="relative h-[176px] overflow-hidden bg-[#101010]">
-        <Image
-          src={product.imageSrc}
-          alt={product.imageAlt}
-          fill
-          sizes="(max-width: 430px) 50vw, 215px"
-          className="object-cover"
-          style={{ objectPosition: "center center" }}
-        />
-        {product.badge ? <ProductCatalogBadge label={product.badge.label} /> : null}
-      </div>
+      <Link
+        href={`/products/${product.slug}`}
+        aria-label={`View details for ${product.title}`}
+        onClick={() =>
+          analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+            surface: "section",
+            label: product.title,
+            destination: `/products/${product.slug}`,
+          })
+        }
+      >
+        <div className="relative h-[176px] overflow-hidden bg-[#101010]">
+          <Image
+            src={product.imageSrc}
+            alt={product.imageAlt}
+            fill
+            sizes="(max-width: 430px) 50vw, 215px"
+            className="object-cover"
+            style={{ objectPosition: "center center" }}
+          />
+          {product.badge ? <ProductCatalogBadge label={product.badge.label} /> : null}
+        </div>
+      </Link>
 
       <div className="p-3">
         <h3 className="text-center text-[16px] font-extrabold leading-[1.2] text-[#E91E8C]">
-          {product.title}
+          <Link
+            href={`/products/${product.slug}`}
+            onClick={() =>
+              analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+                surface: "section",
+                label: product.title,
+                destination: `/products/${product.slug}`,
+              })
+            }
+          >
+            {product.title}
+          </Link>
         </h3>
         <p className="mt-1 min-h-[31px] text-center text-[11px] leading-[1.35] text-white/80">
           {product.subtitle}

@@ -55,7 +55,7 @@ type CtaDestinationShape = {
 export type CtaSurface =
   | "header-line"
   | "hero-line"
-  | "featured-line"
+  | "featured-product-line"
   | "product-grid-card"
   | "product-grid-final"
   | "faq-support"
