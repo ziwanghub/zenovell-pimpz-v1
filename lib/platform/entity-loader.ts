@@ -14,6 +14,9 @@
 import type { Product } from '@/content/products';
 import { products } from '@/content/products';
 
+import type { Information } from '@/content/information';
+import { getAllInformation, getInformationBySlug } from '@/content/information';
+
 export type EntityType = 'product' | 'information' | 'knowledge';
 
 export interface EntityLoadResult<T = unknown> {
@@ -50,8 +53,29 @@ export function loadProductBySku(sku: string): EntityLoadResult<Product> {
 }
 
 /**
- * Generic entity loader stub.
- * Will be expanded in 5B+ for Information and Knowledge entities.
+ * Load an Information page by slug from Information Authority.
+ */
+export function loadInformationBySlug(slug: string): EntityLoadResult<Information> {
+  const info = getInformationBySlug(slug) ?? null;
+
+  return {
+    entity: info,
+    found: info !== null,
+    type: 'information',
+  };
+}
+
+/**
+ * Get all available information pages.
+ * Returns a copy to prevent mutation.
+ */
+export function getAllInformationPages(): Information[] {
+  return [...getAllInformation()];
+}
+
+/**
+ * Generic entity loader.
+ * Supports product (existing) and information (Phase 5D).
  */
 export function loadEntity(type: EntityType, identifier: string): EntityLoadResult {
   if (type === 'product') {
@@ -62,7 +86,11 @@ export function loadEntity(type: EntityType, identifier: string): EntityLoadResu
     return loadProductBySku(identifier);
   }
 
-  // Placeholder for future entity types
+  if (type === 'information') {
+    return loadInformationBySlug(identifier);
+  }
+
+  // Placeholder for future entity types (e.g. knowledge)
   return {
     entity: null,
     found: false,

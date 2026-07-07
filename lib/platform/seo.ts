@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { Product } from '@/content/products';
+import type { Information } from '@/content/information';
 
 /**
  * SEO / AI SEO / Structured Data utilities for Product Landing Platform (WP-10)
@@ -153,5 +154,99 @@ export function generateProductStructuredData(product: Product) {
   return {
     product: generateProductJsonLd(product),
     breadcrumb: generateBreadcrumbJsonLd(product),
+  };
+}
+
+// ============================================
+// Phase 5D: Information SEO / Structured Data
+// ============================================
+
+export interface InformationSEOMetadata {
+  title: string;
+  description: string;
+  keywords?: string[];
+  openGraph?: {
+    title: string;
+    description: string;
+  };
+  canonical?: string;
+}
+
+export interface InformationJsonLd {
+  '@context': string;
+  '@type': string;
+  name: string;
+  description?: string;
+  url?: string;
+}
+
+export function generateInformationMetadata(
+  info: Information,
+  baseUrl = 'https://zenovell.com'
+): Metadata {
+  const canonical = `${baseUrl}/information/${info.slug}`;
+
+  return {
+    title: info.seo.title,
+    description: info.seo.description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: info.seo.title,
+      description: info.seo.description,
+      url: canonical,
+      type: 'website',
+    },
+    twitter: {
+      title: info.seo.title,
+      description: info.seo.description,
+      card: 'summary',
+    },
+    keywords: info.seo.keywords,
+  };
+}
+
+export function generateInformationJsonLd(info: Information, baseUrl = 'https://zenovell.com'): InformationJsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: info.title,
+    description: info.description || info.seo.description,
+    url: `${baseUrl}/information/${info.slug}`,
+  };
+}
+
+export function generateInformationBreadcrumbJsonLd(info: Information, baseUrl = 'https://zenovell.com') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Information',
+        item: `${baseUrl}/information`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: info.title,
+        item: `${baseUrl}/information/${info.slug}`,
+      },
+    ],
+  };
+}
+
+export function generateInformationStructuredData(info: Information) {
+  return {
+    webpage: generateInformationJsonLd(info),
+    breadcrumb: generateInformationBreadcrumbJsonLd(info),
   };
 }

@@ -1,47 +1,89 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+
+import {
+  getAllInformationPages,
+  loadInformationBySlug,
+} from '@/lib/platform/entity-loader';
+import {
+  generateInformationMetadata,
+  generateInformationStructuredData,
+} from '@/lib/platform/seo';
+
+import { InformationHero } from '@/components/platform/information-hero';
+import { InformationContent } from '@/components/platform/information-content';
+import { InformationTrust } from '@/components/platform/information-trust';
+import { InformationRelatedProducts } from '@/components/platform/information-related-products';
+import { InformationCta } from '@/components/platform/information-cta';
 
 interface InformationPageProps {
   params: { slug: string };
 }
 
-// Phase 5B Dynamic Routing Foundation skeleton for Information Pages.
-// This establishes the route and metadata foundation.
-// Full content and template will be implemented in Phase 5D.
-// Uses slug for metadata (no new content sources per scope).
-
 export async function generateStaticParams() {
-  // No static data for information pages in 5B foundation.
-  // Return empty to keep dynamic. This helps Next.js type system for new routes.
-  return [];
+  const all = getAllInformationPages();
+  return all.map((info) => ({ slug: info.slug }));
 }
 
 export async function generateMetadata({ params }: InformationPageProps): Promise<Metadata> {
-  const { slug } = params;
-  const title = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-  return {
-    title: `${title} | ZENOVELL`,
-    description: `Information about ${title} on ZENOVELL. Learn more and connect via LINE.`,
-  };
+  const result = loadInformationBySlug(params.slug);
+
+  if (!result.found || !result.entity) {
+    return {
+      title: 'Information Not Found | ZENOVELL',
+    };
+  }
+
+  const info = result.entity;
+  return generateInformationMetadata(info);
 }
 
 export default function InformationPage({ params }: InformationPageProps) {
-  const { slug } = params;
+  const result = loadInformationBySlug(params.slug);
 
-  // Dynamic route loaded. Entity loading for related products can be added in 5F.
+  if (!result.found || !result.entity) {
+    notFound();
+  }
+
+  const info = result.entity;
+
+  // Basic Commerce Context support is handled inside InformationCta
+  // (research intent + landing page enrichment for LINE handoff)
+
+  const structuredData = generateInformationStructuredData(info);
+
+  // Extract highlights for trust section (from sections if present)
+  const trustHighlights = info.sections
+    .filter((s) => s.type === 'highlight' && s.body)
+    .map((s) => s.body!)
+    .slice(0, 3);
+
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold capitalize">{slug.replace(/-/g, ' ')}</h1>
+    <>
+      <InformationHero info={info} />
 
-      <div className="mt-8 rounded border border-dashed border-gray-300 p-6">
-        <p className="text-sm text-gray-500">
-          Phase 5B Dynamic Routing Foundation skeleton.
-          <br />
-          This route is now dynamically available at /information/{slug}.
-          <br />
-          Full template and content in Phase 5D.
-        </p>
-      </div>
-    </div>
+      <InformationContent sections={info.sections} />
+
+      <InformationTrust highlights={trustHighlights.length > 0 ? trustHighlights : undefined} />
+
+      <InformationRelatedProducts relatedSlugs={info.relatedProducts} />
+
+      <InformationCta info={info} slug={params.slug} />
+
+      {/* Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.webpage),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.breadcrumb),
+        }}
+      />
+    </>
   );
 }
 
