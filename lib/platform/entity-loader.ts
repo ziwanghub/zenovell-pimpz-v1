@@ -17,6 +17,9 @@ import { products } from '@/content/products';
 import type { Information } from '@/content/information';
 import { getAllInformation, getInformationBySlug } from '@/content/information';
 
+import type { Knowledge } from '@/content/knowledge';
+import { getAllKnowledge, getKnowledgeBySlug } from '@/content/knowledge';
+
 export type EntityType = 'product' | 'information' | 'knowledge';
 
 export interface EntityLoadResult<T = unknown> {
@@ -74,8 +77,29 @@ export function getAllInformationPages(): Information[] {
 }
 
 /**
+ * Load a Knowledge page by slug from Knowledge Authority.
+ */
+export function loadKnowledgeBySlug(slug: string): EntityLoadResult<Knowledge> {
+  const knowledge = getKnowledgeBySlug(slug) ?? null;
+
+  return {
+    entity: knowledge,
+    found: knowledge !== null,
+    type: 'knowledge',
+  };
+}
+
+/**
+ * Get all available knowledge pages.
+ * Returns a copy to prevent mutation.
+ */
+export function getAllKnowledgePages(): Knowledge[] {
+  return [...getAllKnowledge()];
+}
+
+/**
  * Generic entity loader.
- * Supports product (existing) and information (Phase 5D).
+ * Supports product, information (5D), and knowledge (5E).
  */
 export function loadEntity(type: EntityType, identifier: string): EntityLoadResult {
   if (type === 'product') {
@@ -90,7 +114,10 @@ export function loadEntity(type: EntityType, identifier: string): EntityLoadResu
     return loadInformationBySlug(identifier);
   }
 
-  // Placeholder for future entity types (e.g. knowledge)
+  if (type === 'knowledge') {
+    return loadKnowledgeBySlug(identifier);
+  }
+
   return {
     entity: null,
     found: false,

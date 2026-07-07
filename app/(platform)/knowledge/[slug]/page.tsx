@@ -1,46 +1,80 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+
+import { getAllKnowledgePages, loadKnowledgeBySlug } from '@/lib/platform/entity-loader';
+import {
+  generateKnowledgeMetadata,
+  generateKnowledgeStructuredData,
+} from '@/lib/platform/seo';
+
+import { KnowledgeHero } from '@/components/platform/knowledge-hero';
+import { KnowledgeArticle } from '@/components/platform/knowledge-article';
+import { KnowledgeTakeaways } from '@/components/platform/knowledge-takeaways';
+import { KnowledgeRelated } from '@/components/platform/knowledge-related';
+import { KnowledgeCta } from '@/components/platform/knowledge-cta';
 
 interface KnowledgePageProps {
   params: { slug: string };
 }
 
-// Phase 5B Dynamic Routing Foundation skeleton for Knowledge Pages.
-// This establishes the route and metadata foundation.
-// Full content and template will be implemented in Phase 5E.
-// Uses slug for metadata (no new content sources per scope).
-
 export async function generateStaticParams() {
-  // No static data for knowledge pages in 5B foundation.
-  // Return empty to keep dynamic. This helps Next.js type system for new routes.
-  return [];
+  const all = getAllKnowledgePages();
+  return all.map((k) => ({ slug: k.slug }));
 }
 
 export async function generateMetadata({ params }: KnowledgePageProps): Promise<Metadata> {
-  const { slug } = params;
-  const title = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-  return {
-    title: `${title} | ZENOVELL Knowledge`,
-    description: `Knowledge base: ${title}. Educational content from ZENOVELL.`,
-  };
+  const result = loadKnowledgeBySlug(params.slug);
+
+  if (!result.found || !result.entity) {
+    return {
+      title: 'Knowledge Not Found | ZENOVELL',
+    };
+  }
+
+  return generateKnowledgeMetadata(result.entity);
 }
 
 export default function KnowledgePage({ params }: KnowledgePageProps) {
-  const { slug } = params;
+  const result = loadKnowledgeBySlug(params.slug);
+
+  if (!result.found || !result.entity) {
+    notFound();
+  }
+
+  const knowledge = result.entity;
+
+  const structuredData = generateKnowledgeStructuredData(knowledge);
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold capitalize">{slug.replace(/-/g, ' ')}</h1>
+    <>
+      <KnowledgeHero knowledge={knowledge} />
 
-      <div className="mt-8 rounded border border-dashed border-gray-300 p-6">
-        <p className="text-sm text-gray-500">
-          Phase 5B Dynamic Routing Foundation skeleton.
-          <br />
-          This route is now dynamically available at /knowledge/{slug}.
-          <br />
-          Full template and content in Phase 5E.
-        </p>
-      </div>
-    </div>
+      <KnowledgeArticle content={knowledge.content} />
+
+      <KnowledgeTakeaways takeaways={knowledge.keyTakeaways} />
+
+      <KnowledgeRelated
+        relatedProducts={knowledge.relatedProducts}
+        relatedInformation={knowledge.relatedInformation}
+        relatedKnowledge={knowledge.relatedKnowledge}
+      />
+
+      <KnowledgeCta knowledge={knowledge} slug={params.slug} />
+
+      {/* Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.webpage),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.breadcrumb),
+        }}
+      />
+    </>
   );
 }
 

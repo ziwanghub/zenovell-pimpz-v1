@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { Product } from '@/content/products';
 import type { Information } from '@/content/information';
+import type { Knowledge } from '@/content/knowledge';
 
 /**
  * SEO / AI SEO / Structured Data utilities for Product Landing Platform (WP-10)
@@ -248,5 +249,99 @@ export function generateInformationStructuredData(info: Information) {
   return {
     webpage: generateInformationJsonLd(info),
     breadcrumb: generateInformationBreadcrumbJsonLd(info),
+  };
+}
+
+// ============================================
+// Phase 5E: Knowledge SEO / Structured Data
+// ============================================
+
+export interface KnowledgeSEOMetadata {
+  title: string;
+  description: string;
+  keywords?: string[];
+  openGraph?: {
+    title: string;
+    description: string;
+  };
+  canonical?: string;
+}
+
+export interface KnowledgeJsonLd {
+  '@context': string;
+  '@type': string;
+  name: string;
+  description?: string;
+  url?: string;
+}
+
+export function generateKnowledgeMetadata(
+  knowledge: Knowledge,
+  baseUrl = 'https://zenovell.com'
+): Metadata {
+  const canonical = `${baseUrl}/knowledge/${knowledge.slug}`;
+
+  return {
+    title: knowledge.seo.title,
+    description: knowledge.seo.description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: knowledge.seo.title,
+      description: knowledge.seo.description,
+      url: canonical,
+      type: 'website',
+    },
+    twitter: {
+      title: knowledge.seo.title,
+      description: knowledge.seo.description,
+      card: 'summary',
+    },
+    keywords: knowledge.seo.keywords,
+  };
+}
+
+export function generateKnowledgeJsonLd(knowledge: Knowledge, baseUrl = 'https://zenovell.com'): KnowledgeJsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': knowledge.structuredDataType,
+    name: knowledge.title,
+    description: knowledge.description || knowledge.seo.description,
+    url: `${baseUrl}/knowledge/${knowledge.slug}`,
+  };
+}
+
+export function generateKnowledgeBreadcrumbJsonLd(knowledge: Knowledge, baseUrl = 'https://zenovell.com') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Knowledge',
+        item: `${baseUrl}/knowledge`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: knowledge.title,
+        item: `${baseUrl}/knowledge/${knowledge.slug}`,
+      },
+    ],
+  };
+}
+
+export function generateKnowledgeStructuredData(knowledge: Knowledge) {
+  return {
+    webpage: generateKnowledgeJsonLd(knowledge),
+    breadcrumb: generateKnowledgeBreadcrumbJsonLd(knowledge),
   };
 }
