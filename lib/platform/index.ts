@@ -10,6 +10,7 @@
 // Re-export key loaders and persistence for convenience
 export * from './entity-loader';
 export * from '../commerce/persistence';
+export * from './seo';
 
 // Common platform types
 export interface PlatformPageParams {

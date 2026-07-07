@@ -2,7 +2,18 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { getAllProducts, loadProductBySlug } from '@/lib/platform/entity-loader';
-import { generatePlatformTitle } from '@/lib/platform';
+import {
+  generateProductMetadata,
+  generateProductStructuredData,
+} from '@/lib/platform/seo';
+import { ProductHero } from '@/components/platform/product-hero';
+import { ProductBenefits } from '@/components/platform/product-benefits';
+import { ProductIngredients } from '@/components/platform/product-ingredients';
+import { ProductHowToUse } from '@/components/platform/product-how-to-use';
+import { ProductTrustSignals } from '@/components/platform/product-trust-signals';
+import { ProductReviews } from '@/components/platform/product-reviews';
+import { ProductFAQ } from '@/components/platform/product-faq';
+import { ProductRelatedProducts } from '@/components/platform/product-related-products';
 
 interface ProductPageProps {
   params: { slug: string };
@@ -12,12 +23,6 @@ export async function generateStaticParams() {
   const all = getAllProducts();
   return all.map((p) => ({ slug: p.slug }));
 }
-
-// Phase 5B Dynamic Routing Foundation for Product Landing Page.
-// This completes the dynamic routing, generateStaticParams, and generateMetadata foundation.
-// Full Mini Landing Page template (Hero, Benefits, Ingredients, etc.) will be implemented in 5C.
-// Commerce Context reading / persistence will be wired in 5F.
-// No visual design changes, no CTA wiring beyond preparation, no homepage impact.
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const result = loadProductBySlug(params.slug);
@@ -30,11 +35,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   const product = result.entity;
 
-  return {
-    title: generatePlatformTitle(product.title),
-    description: product.subtitle || `Learn more about ${product.title} on ZENOVELL.`,
-    // Future: openGraph, other metadata from Product Authority + content layer
-  };
+  // WP-10: Enhanced SEO / AI SEO / OpenGraph using reusable helper
+  return generateProductMetadata(product);
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
@@ -46,23 +48,62 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   const product = result.entity;
 
-  // Phase 5B routing foundation complete.
-  // The page successfully loads the product entity via Entity Loader.
-  // Full template in 5C. Context wiring in 5F.
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">{product.title}</h1>
-      <p className="mt-2 text-gray-600">{product.subtitle}</p>
+  // Temporary binding: use features as benefits fallback until Rich Content Layer is populated
+  const benefits = product.features?.map((f) => ({
+    title: f.title,
+    description: f.sub,
+  }));
 
-      <div className="mt-8 rounded border border-dashed border-gray-300 p-6">
-        <p className="text-sm text-gray-500">
-          Phase 5A Platform Structure skeleton.
-          <br />
-          Full Product Landing Page template coming in Phase 5C.
-          <br />
-          This page successfully loads from Product Authority (slug: {product.slug}, sku: {product.sku}).
-        </p>
-      </div>
-    </div>
+  // Trust Signals fallback from badge + features (trust-oriented)
+  const trustSignals = [
+    ...(product.badge ? [{ title: product.badge.label }] : []),
+    ...(product.features || []).map((f) => ({
+      title: f.title,
+      subtitle: f.sub,
+    })),
+  ];
+
+  // Related Products: derive from Product Authority, exclude current, simple limit
+  const allProducts = getAllProducts();
+  const relatedProducts = allProducts
+    .filter((p) => p.slug !== product.slug)
+    .slice(0, 4)
+    .map((p) => ({
+      slug: p.slug,
+      title: p.title,
+      pricing: p.pricing,
+      imageSrc: p.imageSrc,
+    }));
+
+  // WP-10: Generate Structured Data (Product + Breadcrumb)
+  const structuredData = generateProductStructuredData(product);
+
+  // WP-02 to WP-10: Full Product Landing Foundation (Hero through Related + SEO/Structured Data)
+  // Rich content currently falls back or shows safe empty state.
+  return (
+    <>
+      <ProductHero product={product} />
+      <ProductBenefits benefits={benefits} />
+      <ProductIngredients ingredients={undefined} />
+      <ProductHowToUse howToUse={undefined} />
+      <ProductTrustSignals trustSignals={trustSignals} />
+      <ProductReviews reviews={undefined} />
+      <ProductFAQ faq={undefined} />
+      <ProductRelatedProducts relatedProducts={relatedProducts} />
+
+      {/* WP-10: Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.product),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData.breadcrumb),
+        }}
+      />
+    </>
   );
 }
