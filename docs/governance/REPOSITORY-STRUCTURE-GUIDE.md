@@ -112,6 +112,7 @@ The codebase implements a strict unidirectional dependency structure:
 | `lib/platform/` | Platform | Entity loader and metadata wrappers | Platform Architect |
 | `lib/commerce/` | Domain | Pure commerce business rules | Lead SA |
 | `docs/architecture/` | Governance | Decision records, blueprints, locks | Chief Architect |
+| `docs/governance/` | Governance | Core policies including DEVELOPMENT-WORKFLOW-v2.md | System Architect |
 | `docs/reports/` | Governance | Historical audit records (Read-Only) | Independent Auditor |
 
 ---
@@ -124,13 +125,15 @@ Decisions are governed by a strict hierarchy of authority. Lower levels cannot o
             ↓
   [ Architectural Decision Record (ADR) ]
             ↓
-  [ Milestone Blueprint ]
+  [ Milestone Blueprint ]                 ← Architectural Authority (v2.0+)
+            ↓
+  [ DEVELOPMENT-WORKFLOW-v2.md ]          ← Official Process (Phase 5D+)
             ↓
   [ Phase Scope Lock ]
             ↓
-  [ Production Readiness Gate / Release Strategy ]
+  [ Batch Implementation + Validation + Audit ]
             ↓
-  [ Work Package Implementation Plan ]    ← Lowest Authority
+  [ Production Readiness Gate / Release Strategy ]
 ```
 
 ---
@@ -162,8 +165,9 @@ During Phase 5 development, the following areas are **strictly frozen** and must
 Every agent must execute this checklist at startup:
 1.  **Workspace Verification**: Run git diagnostics to confirm the working directory matches the canonical workspace.
 2.  **Verify Phase**: Query `docs/architecture/` to confirm the active milestone phase.
-3.  **Read the Scope Lock**: Inspect `PHASE5-COMMERCE-EXPERIENCE-SCOPE-LOCK.md` to identify allowed vs forbidden changes.
-4.  **Validate**: Run `npm run validate` before starting work to confirm a green baseline.
+3.  **Read Development Workflow v2.0**: Consult `DEVELOPMENT-WORKFLOW-v2.md` (effective Phase 5D). All work follows Blueprint → Scope Lock → Batch Implementation → Audit gates.
+4.  **Read the Scope Lock**: Inspect the active Scope Lock to identify allowed vs forbidden changes.
+5.  **Validate**: Run `npm run validate` before starting work to confirm a green baseline.
 
 ---
 
@@ -179,6 +183,7 @@ Every agent must execute this checklist at startup:
 -   **Scope Lock Bypass**: Implementing features (like motion libraries or CMS interfaces) that are explicitly deferred.
 -   **Context Loss**: Navigating between routes without passing the `CommerceContext` query payload.
 -   **Mixing States**: Implementing layout designs before component contracts are established.
+-   **Workflow Violation**: Bypassing DEVELOPMENT-WORKFLOW-v2.md gates (Blueprint → Scope Lock → Batch) for Phase 5D+ work.
 
 ---
 
