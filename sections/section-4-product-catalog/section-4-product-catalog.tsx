@@ -25,9 +25,11 @@ import type {
   Section4TrustItem,
 } from "@/content/section-4-product-catalog";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { products as commerceProducts } from "@/content/products";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -113,21 +115,51 @@ function ProductCardPriceBlock({
 
 function ProductCardCTA({
   cta,
+  product,
 }: {
   cta: Section4ProductCard["cta"];
+  product: Section4ProductCard;
 }) {
   return (
     <a
       aria-label={cta.ariaLabel}
       href={cta.href}
       className="mt-[10px] flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[13px] font-bold leading-none text-[#E91E8C] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-      onClick={() =>
+      onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
           label: cta.label,
           destination: cta.href,
-        })
-      }
+        });
+
+        const fullProduct = commerceProducts.find((p) => p.slug === product.slug);
+        if (fullProduct) {
+          activateLineCta({
+            product: {
+              slug: fullProduct.slug,
+              sku: fullProduct.sku,
+              title: fullProduct.title,
+              cta: fullProduct.cta,
+            },
+            surface: "product-grid-card",
+            landingPage: "/",
+            intent: "high_intent",
+            source: "product-grid",
+          });
+        } else {
+          // fallback non-product if data not found
+          activateLineCta({
+            title: cta.label,
+            surface: "product-grid-card",
+            landingPage: "/",
+            intent: "high_intent",
+            source: "product-grid",
+          });
+        }
+
+        // Ensure LINE handoff; prevent any navigation (href is placeholder)
+        e.preventDefault();
+      }}
     >
       <span>{cta.label}</span>
       <ChevronRight
@@ -173,7 +205,7 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
         </ul>
 
         <ProductCardPriceBlock pricing={product.pricing} />
-        <ProductCardCTA cta={product.cta} />
+        <ProductCardCTA cta={product.cta} product={product} />
       </div>
     </li>
   );
@@ -209,13 +241,24 @@ function FinalLineCTA({
       aria-label={ariaLabel}
       href={href}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-      onClick={() =>
+      onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
           label,
           destination: href,
-        })
-      }
+        });
+
+        activateLineCta({
+          title: label,
+          surface: "product-grid-final",
+          landingPage: "/",
+          intent: "high_intent",
+          source: "product-grid",
+        });
+
+        // Ensure LINE handoff
+        e.preventDefault();
+      }}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />

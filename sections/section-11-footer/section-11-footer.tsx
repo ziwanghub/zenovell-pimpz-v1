@@ -24,6 +24,7 @@ import type {
 import { ctaDestinations } from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { SectionBadge } from "@/components/ui/section-badge";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -227,13 +228,23 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
               href={item.href}
               aria-label={item.ariaLabel}
               className="group flex items-start gap-1.5 text-[11.5px] leading-[1.35] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
-              onClick={() =>
+              onClick={(e) => {
                 analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
                   surface: "footer",
                   label: item.label,
                   destination: item.href,
                 })
-              }
+                if (item.id === "line-order") {
+                  activateLineCta({
+                    title: item.label,
+                    surface: "footer-line",
+                    landingPage: "/",
+                    intent: "high_intent",
+                    source: "footer",
+                  });
+                  e.preventDefault();
+                }
+              }}
             >
               <ChevronRight
                 aria-hidden="true"
@@ -292,13 +303,23 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
       href={resolvedHref}
       aria-label={item.ariaLabel}
       className={`${sharedClassName} text-white/78 hover:border-[rgba(233,30,140,0.18)] hover:bg-[rgba(233,30,140,0.04)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]`}
-      onClick={() =>
+      onClick={(e) => {
         analytics.track(AnalyticsEvents.CONTACT_CLICK, {
           surface: "footer",
           label: item.label,
           destination: resolvedHref,
         })
-      }
+        if (item.id === "line") {
+          activateLineCta({
+            title: item.label,
+            surface: "footer-line",
+            landingPage: "/",
+            intent: "high_intent",
+            source: "footer",
+          });
+          e.preventDefault();
+        }
+      }}
     >
       {content}
     </a>

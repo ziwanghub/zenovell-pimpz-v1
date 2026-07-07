@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import type { ComponentType } from "react";
 import {
@@ -21,6 +23,7 @@ import type {
 } from "@/content/section-10-final-cta";
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -249,6 +252,17 @@ function FinalLineCta({
       href={primaryCta.href}
       aria-label={primaryCta.ariaLabel}
       className="block rounded-[22px] bg-[#E91E8C] px-5 py-4 text-white shadow-[0_0_24px_rgba(233,30,140,0.38)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_30px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={(e) => {
+        activateLineCta({
+          title: primaryCta.label,
+          surface: "final-cta",
+          landingPage: "/",
+          intent: "high_intent",
+          source: "final-cta",
+        });
+
+        e.preventDefault();
+      }}
     >
       <div className="flex items-center gap-3">
         <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">

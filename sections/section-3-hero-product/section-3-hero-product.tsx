@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import type { ComponentType } from "react";
 import {
@@ -24,6 +26,8 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { featuredProduct } from "@/content/products";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -155,12 +159,19 @@ function SolidLineCTA({
   href,
   label,
   ariaLabel,
-}: Section3Content["cta"]) {
+  onClick,
+}: Section3Content["cta"] & { onClick?: () => void }) {
   return (
     <a
       aria-label={ariaLabel}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-      href={href}
+      href={href || "#"}
+      onClick={(e) => {
+        if (onClick) {
+          onClick();
+          e.preventDefault();
+        }
+      }}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />
@@ -269,7 +280,23 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
       <PriceBlock pricing={content.pricing} />
 
       <div className="px-4 pt-4 pb-4">
-        <SolidLineCTA {...content.cta} />
+        <SolidLineCTA
+          {...content.cta}
+          onClick={() =>
+            activateLineCta({
+              product: {
+                slug: featuredProduct.slug,
+                sku: featuredProduct.sku,
+                title: featuredProduct.title,
+                cta: featuredProduct.cta,
+              },
+              surface: "featured-product-line",
+              landingPage: "/",
+              intent: "high_intent",
+              source: "featured-product",
+            })
+          }
+        />
       </div>
 
       <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4">

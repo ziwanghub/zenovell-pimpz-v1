@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import type { ComponentType } from "react";
 import {
@@ -21,6 +23,7 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -159,12 +162,13 @@ function ProductArtwork({
   );
 }
 
-function SolidLineCTA({ label }: { label: string }) {
+function SolidLineCTA({ label, onClick }: { label: string; onClick?: () => void }) {
   return (
     <button
       aria-label={label}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)]"
       type="button"
+      onClick={onClick}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />
@@ -237,7 +241,18 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
       <ProductArtwork {...content.artwork} />
 
       <div className="px-4 pt-6">
-        <SolidLineCTA label={content.cta.label} />
+        <SolidLineCTA
+          label={content.cta.label}
+          onClick={() =>
+            activateLineCta({
+              title: content.cta.label,
+              surface: "trust-line",
+              landingPage: "/",
+              intent: "high_intent",
+              source: "trust-bar",
+            })
+          }
+        />
       </div>
 
       <MicroTrustRow items={content.microTrustItems} />

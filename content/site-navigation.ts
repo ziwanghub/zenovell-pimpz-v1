@@ -480,11 +480,11 @@ export const ctaDestinations: CtaDestination[] = [
   {
     id: "header-line",
     label: "ปรึกษาผ่าน LINE",
-    href: "#line-primary",
-    kind: "placeholder",
+    href: "https://line.me/ti/p/@zenovell",
+    kind: "line",
     ariaLabel: "ปรึกษาผ่าน LINE",
     analyticsEventKey: "line_click",
-    placeholderSafe: true,
+    placeholderSafe: false,
   },
   {
     id: "hero-line",

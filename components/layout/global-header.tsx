@@ -13,6 +13,7 @@ import { Menu, X } from "lucide-react";
 
 import type { GlobalHeaderProps } from "@/lib/global-header-mapper";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { LineIcon } from "@/components/ui/line-icon";
 
 const DRAWER_TITLE_ID_PREFIX = "global-header-drawer-title";
@@ -160,13 +161,26 @@ export function GlobalHeader({
                 aria-label={lineCta.ariaLabel}
                 className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_16px_rgba(233,30,140,0.4)]"
                 href={lineCta.href}
-                onClick={() =>
+                onClick={(e) => {
+                  // Preserve existing analytics
                   analytics.track(AnalyticsEvents.HEADER_CTA_CLICK, {
                     surface: "header",
                     label: lineCta.label,
                     destination: lineCta.href,
-                  })
-                }
+                  });
+
+                  // Activate LINE with Commerce Context using shared helper (Batch 1)
+                  activateLineCta({
+                    title: lineCta.label,
+                    surface: "header-line",
+                    landingPage: "/",
+                    intent: "high_intent",
+                    source: "header",
+                  });
+
+                  // Use rich contextual open; fallback href remains for accessibility / no-JS
+                  e.preventDefault();
+                }}
               >
                 <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1">
                   <LineIcon size={15} />

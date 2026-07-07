@@ -22,7 +22,7 @@ import { buildLineMessage } from "./line-message-builder";
  * Minimal Product shape from Product Authority (content/products.ts).
  * Avoids direct module dependency for CI compatibility in release patches.
  */
-type ProductShape = {
+export type ProductShape = {
   slug: string;
   sku: string;
   title: string;
@@ -55,9 +55,16 @@ type CtaDestinationShape = {
 export type CtaSurface =
   | "header-line"
   | "hero-line"
+  | "featured-line"
+  | "product-grid-card"
+  | "product-grid-final"
+  | "faq-support"
+  | "faq-primary"
+  | "final-cta"
+  | "footer-line"
+  | "footer-contact-line"
   | "section-line"
   | "support-line"
-  | "footer-line"
   | (string & {}); // allow future surfaces
 
 /**

@@ -21,6 +21,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { ctaDestinations } from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -88,13 +89,23 @@ function FaqSupportCard({
         href={resolvedHref}
         aria-label={supportCard.ctaAriaLabel}
         className="inline-flex h-11 shrink-0 items-center gap-2 rounded-[14px] bg-[#E91E8C] px-3 text-[14px] font-bold leading-none text-white shadow-[0_0_18px_rgba(233,30,140,0.35)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_24px_rgba(233,30,140,0.44)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-        onClick={() =>
+        onClick={(e) => {
           analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
             surface: "faq",
             label: supportCard.ctaLabel,
             destination: resolvedHref,
-          })
-        }
+          });
+
+          activateLineCta({
+            title: supportCard.ctaLabel,
+            surface: "support-line",
+            landingPage: "/",
+            intent: "inquiry",
+            source: "faq-support",
+          });
+
+          e.preventDefault();
+        }}
       >
         <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white">
           <LineIcon size={18} />
@@ -116,13 +127,23 @@ function FinalLineCTA({
       aria-label={ariaLabel}
       href={resolvedHref}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-      onClick={() =>
+      onClick={(e) => {
         analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
           surface: "faq",
           label,
           destination: resolvedHref,
-        })
-      }
+        });
+
+        activateLineCta({
+          title: label,
+          surface: "faq-line",
+          landingPage: "/",
+          intent: "high_intent",
+          source: "faq",
+        });
+
+        e.preventDefault();
+      }}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />

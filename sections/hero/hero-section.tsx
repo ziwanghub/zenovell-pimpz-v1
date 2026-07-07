@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import type { CSSProperties, ComponentType } from "react";
 import {
@@ -13,6 +15,8 @@ import {
 } from "lucide-react";
 
 import type { HeroBenefit, HeroContent, HeroTrustItem } from "@/content/hero";
+import { analytics, AnalyticsEvents } from "@/lib/analytics";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { LineIcon } from "@/components/ui/line-icon";
 
 const BACKGROUND_IMAGE_SRC = "/images/hero/bg-hero-section1.jpeg";
@@ -215,6 +219,22 @@ export function HeroSection({ content }: HeroSectionProps) {
               className="hero-primary-cta flex w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left"
               style={ctaButtonStyle}
               type="button"
+              onClick={() => {
+                // Preserve / add analytics consistent with other CTAs
+                analytics.track(AnalyticsEvents.HERO_CTA_CLICK, {
+                  surface: "hero",
+                  label: content.cta.label,
+                });
+
+                // Activate using Batch 1 shared pattern
+                activateLineCta({
+                  title: content.cta.label,
+                  surface: "hero-line",
+                  landingPage: "/",
+                  intent: "high_intent",
+                  source: "hero",
+                });
+              }}
             >
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">
                 <LineIcon size={28} />
