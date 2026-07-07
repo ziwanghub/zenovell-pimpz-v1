@@ -1,0 +1,78 @@
+{
+  "auditId": "M10-P1A",
+  "date": "2026-07-06",
+  "status": "completed",
+  "baseline": "v4.1.0-m9.5-platform-foundation",
+  "scope": [
+    "app/page.tsx",
+    "components/layout/global-header.tsx",
+    "sections/hero/hero-section.tsx",
+    "sections/section-9-faq/section-9-faq.tsx",
+    "sections/section-11-footer/section-11-footer.tsx",
+    "shared interactive destination authorities"
+  ],
+  "validation": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "validate": "PASS"
+  },
+  "browserQa": {
+    "attempted": true,
+    "devServerUrl": "http://localhost:3001",
+    "viewportsRequested": [375, 390, 414, 430],
+    "completed": false,
+    "blocker": "In-app browser surface unavailable for localhost in this session",
+    "checksRequested": [
+      "Tab order",
+      "Shift+Tab order",
+      "drawer keyboard open/close",
+      "FAQ keyboard interaction",
+      "focus visibility",
+      "no lost focus after drawer close",
+      "no horizontal scroll"
+    ]
+  },
+  "findings": {
+    "p0": [
+      {
+        "id": "P0-01",
+        "title": "Hero primary CTA is inert",
+        "file": "sections/hero/hero-section.tsx"
+      }
+    ],
+    "p1": [
+      {
+        "id": "P1-01",
+        "title": "Header, FAQ, and footer expose placeholder or missing CTA destinations"
+      },
+      {
+        "id": "P1-02",
+        "title": "Drawer focus return logic may steal focus unexpectedly"
+      },
+      {
+        "id": "P1-03",
+        "title": "FAQ disclosure cannot collapse the currently open item"
+      }
+    ],
+    "p2": [
+      {
+        "id": "P2-01",
+        "title": "No skip-link path found"
+      },
+      {
+        "id": "P2-02",
+        "title": "Footer payment methods lack stronger grouping semantics"
+      },
+      {
+        "id": "P2-03",
+        "title": "Reduced-motion handling not evident for Hero scroll indicator"
+      },
+      {
+        "id": "P2-04",
+        "title": "Low-opacity microcopy should be contrast-checked"
+      }
+    ]
+  },
+  "readyForM10P1B": "YES"
+}
