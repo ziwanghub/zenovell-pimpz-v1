@@ -1,3 +1,5 @@
+import { featuredProduct } from "./products";
+
 export type Section3BadgeType = "bestSeller" | "capsules";
 
 export type Section3Badge = {
@@ -57,8 +59,9 @@ export const section3HeroProductContent: Section3Content = {
   sectionLabel: "SECTION 3",
   ariaLabel: "สินค้าแนะนำ Nicky Pimpz Boss",
   superline: "สินค้าแนะนำ",
-  productName: "NICKY PIMPZ BOSS",
-  productTagline: "เชรมฟื้นฟูความมั่นใจ กระชับ อิ่มฟู",
+  // Core product data now sourced from central Product Authority
+  productName: featuredProduct.title,
+  productTagline: featuredProduct.subtitle,
   badges: [
     {
       type: "bestSeller",
@@ -80,14 +83,14 @@ export const section3HeroProductContent: Section3Content = {
   ],
   pricing: {
     label: "พิเศษวันนี้",
-    salePrice: "990.-",
-    originalPrice: "1,290.-",
+    salePrice: featuredProduct.pricing.sale.display,
+    originalPrice: featuredProduct.pricing.original.display,
     originalPriceLabel: "ราคาปกติ",
-    ariaLabel: "ราคาพิเศษวันนี้ 990 บาท ราคาปกติ 1290 บาท",
+    ariaLabel: `ราคาพิเศษวันนี้ ${featuredProduct.pricing.sale.display.replace(".", "")} บาท ราคาปกติ ${featuredProduct.pricing.original.display.replace(".", "")} บาท`,
   },
   cta: {
-    label: "สั่งซื้อผ่าน LINE",
-    ariaLabel: "สั่งซื้อ Nicky Pimpz Boss ผ่าน LINE",
+    label: featuredProduct.cta.label,
+    ariaLabel: featuredProduct.cta.ariaLabel,
     href: "#",
   },
   miniTrust: [
