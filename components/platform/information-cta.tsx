@@ -1,7 +1,10 @@
 'use client';
 
 import type { Information } from '@/content/information';
-import type { CommerceContext } from '@/lib/commerce/context';
+import { createCommerceContext } from '@/lib/commerce/context';
+import { saveCommerceContext, clearCommerceContext, loadCommerceContext } from '@/lib/commerce/persistence';
+import { buildCommerceEvent, CommerceEvents, commerceEventDispatcher } from '@/lib/commerce/events';
+import { buildNonProductLineMessage } from '@/lib/commerce/line-message-builder';
 
 interface InformationCtaProps {
   info: Information;
@@ -10,30 +13,31 @@ interface InformationCtaProps {
 
 export function InformationCta({ info, slug }: InformationCtaProps) {
   const handleLineCta = () => {
-    const context: CommerceContext = {
+    const persisted = loadCommerceContext();
+    const base = createCommerceContext({
       source: 'information-page',
       entrySurface: 'cta',
       landingPage: `/information/${slug}`,
       intent: 'research',
-      utm: {},
-      timestamp: new Date().toISOString(),
-    };
+    });
+    const context = persisted ? { ...persisted, ...base, timestamp: base.timestamp } : base;
 
-    // Build a context-rich message for general inquiries (no specific product required)
-    const contextLine = [
-      `Page: ${info.title}`,
-      `URL: ${context.landingPage}`,
-      `Intent: ${context.intent}`,
-      `Source: ${context.source}`,
-      context.timestamp ? `At: ${context.timestamp}` : '',
-    ]
-      .filter(Boolean)
-      .join(' | ');
+    const message = buildNonProductLineMessage(info.title, context);
 
-    const message = `Hello ZENOVELL,\n\nI'm reaching out from the information page.\n\n${contextLine}\n\nPlease assist me. Thank you!`;
+    // Dispatch event
+    commerceEventDispatcher.dispatch(
+      buildCommerceEvent(CommerceEvents.LINE_CLICK, {
+        context,
+        lineMessage: message,
+      })
+    );
+
+    saveCommerceContext(context);
 
     const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
     window.open(lineUrl, '_blank');
+
+    clearCommerceContext();
   };
 
   return (

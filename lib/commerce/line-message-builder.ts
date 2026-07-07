@@ -171,3 +171,26 @@ export function buildResearchLineMessage(
     includeIntent: false,
   });
 }
+
+/**
+ * Additive helper for non-product surfaces (Information, Knowledge).
+ * Builds a consistent context-rich message for research/intent flows.
+ * Does not require ProductShape. Additive only - does not affect Product path.
+ */
+export function buildNonProductLineMessage(
+  title: string,
+  context: CommerceContext,
+  prefix: string = 'Hello ZENOVELL'
+): string {
+  const contextLine = [
+    `Topic: ${title}`,
+    `URL: ${context.landingPage}`,
+    `Intent: ${context.intent}`,
+    `Source: ${context.source}`,
+    context.timestamp ? `At: ${context.timestamp}` : '',
+  ]
+    .filter(Boolean)
+    .join(' | ');
+
+  return `${prefix},\n\nI'm reaching out from the page.\n\n${contextLine}\n\nPlease assist me. Thank you!`;
+}

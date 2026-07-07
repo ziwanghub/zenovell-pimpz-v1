@@ -3,8 +3,10 @@
 import Image from 'next/image';
 
 import type { Product } from '@/content/products';
-import { buildLineMessage } from '@/lib/commerce/line-message-builder';
-import type { CommerceContext } from '@/lib/commerce/context';
+import { createContextFromProduct } from '@/lib/commerce/context';
+import { saveCommerceContext, clearCommerceContext, loadCommerceContext } from '@/lib/commerce/persistence';
+import { buildCommerceEvent, CommerceEvents, commerceEventDispatcher } from '@/lib/commerce/events';
+import { createCtaPayload } from '@/lib/commerce/cta-contract';
 
 interface ProductHeroProps {
   product: Product;
@@ -12,23 +14,39 @@ interface ProductHeroProps {
 
 export function ProductHero({ product }: ProductHeroProps) {
   const handleLineCta = () => {
-    // Minimal context for foundation (can be enriched later via Commerce Context)
-    const context: CommerceContext = {
-      source: 'product-landing',
-      entrySurface: 'hero',
-      landingPage: `/products/${product.slug}`,
-      intent: 'inquiry',
-      utm: {},
-      timestamp: new Date().toISOString(),
-    };
+    // Load persisted for continuity
+    const persisted = loadCommerceContext();
+    const base = createContextFromProduct(
+      { slug: product.slug, sku: product.sku, title: product.title },
+      {
+        source: 'product-landing',
+        entrySurface: 'hero',
+        landingPage: `/products/${product.slug}`,
+        intent: 'inquiry',
+      }
+    );
+    const context = persisted ? { ...persisted, ...base, timestamp: base.timestamp } : base;
 
-    const message = buildLineMessage(product, context, {
-      includePrice: true,
-    });
+    // Use CTA Contract for standardized payload
+    const payload = createCtaPayload(product, context, 'hero-line');
 
-    // Open LINE with pre-filled message (text link for broad compatibility)
-    const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
+    // Dispatch event
+    commerceEventDispatcher.dispatch(
+      buildCommerceEvent(CommerceEvents.LINE_CLICK, {
+        product,
+        context,
+        lineMessage: payload.lineMessage,
+      })
+    );
+
+    // Persist context
+    saveCommerceContext(context);
+
+    // Open LINE
+    const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(payload.lineMessage)}`;
     window.open(lineUrl, '_blank');
+
+    clearCommerceContext();
   };
 
   const hasDiscount = product.pricing.sale.amount < product.pricing.original.amount;

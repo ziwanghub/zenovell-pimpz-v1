@@ -1,7 +1,10 @@
 'use client';
 
 import type { Knowledge } from '@/content/knowledge';
-import type { CommerceContext } from '@/lib/commerce/context';
+import { createCommerceContext } from '@/lib/commerce/context';
+import { saveCommerceContext, clearCommerceContext, loadCommerceContext } from '@/lib/commerce/persistence';
+import { buildCommerceEvent, CommerceEvents, commerceEventDispatcher } from '@/lib/commerce/events';
+import { buildNonProductLineMessage } from '@/lib/commerce/line-message-builder';
 
 interface KnowledgeCtaProps {
   knowledge: Knowledge;
@@ -10,25 +13,30 @@ interface KnowledgeCtaProps {
 
 export function KnowledgeCta({ knowledge, slug }: KnowledgeCtaProps) {
   const handleLineCta = () => {
-    const context: CommerceContext = {
+    const persisted = loadCommerceContext();
+    const base = createCommerceContext({
       source: 'knowledge-page',
       entrySurface: 'cta',
       landingPage: `/knowledge/${slug}`,
       intent: 'research',
-      utm: {},
-      timestamp: new Date().toISOString(),
-    };
+    });
+    const context = persisted ? { ...persisted, ...base, timestamp: base.timestamp } : base;
 
-    const contextLine = [
-      `Topic: ${knowledge.title}`,
-      `URL: ${context.landingPage}`,
-      `Intent: ${context.intent}`,
-    ].join(' | ');
+    const message = buildNonProductLineMessage(knowledge.title, context);
 
-    const message = `Hello ZENOVELL,\n\nI'm reading the knowledge page and would like more information.\n\n${contextLine}\n\nThank you!`;
+    commerceEventDispatcher.dispatch(
+      buildCommerceEvent(CommerceEvents.LINE_CLICK, {
+        context,
+        lineMessage: message,
+      })
+    );
+
+    saveCommerceContext(context);
 
     const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
     window.open(lineUrl, '_blank');
+
+    clearCommerceContext();
   };
 
   return (
