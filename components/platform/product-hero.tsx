@@ -3,10 +3,7 @@
 import Image from 'next/image';
 
 import type { Product } from '@/content/products';
-import { createContextFromProduct } from '@/lib/commerce/context';
-import { saveCommerceContext, clearCommerceContext, loadCommerceContext } from '@/lib/commerce/persistence';
-import { buildCommerceEvent, CommerceEvents, commerceEventDispatcher } from '@/lib/commerce/events';
-import { createCtaPayload } from '@/lib/commerce/cta-contract';
+import { activateLineCta } from '@/lib/commerce/cta-activation';
 
 interface ProductHeroProps {
   product: Product;
@@ -14,39 +11,18 @@ interface ProductHeroProps {
 
 export function ProductHero({ product }: ProductHeroProps) {
   const handleLineCta = () => {
-    // Load persisted for continuity
-    const persisted = loadCommerceContext();
-    const base = createContextFromProduct(
-      { slug: product.slug, sku: product.sku, title: product.title },
-      {
-        source: 'product-landing',
-        entrySurface: 'hero',
-        landingPage: `/products/${product.slug}`,
-        intent: 'inquiry',
-      }
-    );
-    const context = persisted ? { ...persisted, ...base, timestamp: base.timestamp } : base;
-
-    // Use CTA Contract for standardized payload
-    const payload = createCtaPayload(product, context, 'hero-line');
-
-    // Dispatch event
-    commerceEventDispatcher.dispatch(
-      buildCommerceEvent(CommerceEvents.LINE_CLICK, {
-        product,
-        context,
-        lineMessage: payload.lineMessage,
-      })
-    );
-
-    // Persist context
-    saveCommerceContext(context);
-
-    // Open LINE
-    const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(payload.lineMessage)}`;
-    window.open(lineUrl, '_blank');
-
-    clearCommerceContext();
+    activateLineCta({
+      product: {
+        slug: product.slug,
+        sku: product.sku,
+        title: product.title,
+        cta: product.cta,
+      },
+      surface: 'hero-line',
+      landingPage: `/products/${product.slug}`,
+      intent: 'inquiry',
+      source: 'product-landing',
+    });
   };
 
   const hasDiscount = product.pricing.sale.amount < product.pricing.original.amount;

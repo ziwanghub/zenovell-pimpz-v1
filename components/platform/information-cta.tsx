@@ -1,10 +1,7 @@
 'use client';
 
 import type { Information } from '@/content/information';
-import { createCommerceContext } from '@/lib/commerce/context';
-import { saveCommerceContext, clearCommerceContext, loadCommerceContext } from '@/lib/commerce/persistence';
-import { buildCommerceEvent, CommerceEvents, commerceEventDispatcher } from '@/lib/commerce/events';
-import { buildNonProductLineMessage } from '@/lib/commerce/line-message-builder';
+import { activateLineCta } from '@/lib/commerce/cta-activation';
 
 interface InformationCtaProps {
   info: Information;
@@ -13,31 +10,13 @@ interface InformationCtaProps {
 
 export function InformationCta({ info, slug }: InformationCtaProps) {
   const handleLineCta = () => {
-    const persisted = loadCommerceContext();
-    const base = createCommerceContext({
-      source: 'information-page',
-      entrySurface: 'cta',
+    activateLineCta({
+      title: info.title,
+      surface: 'cta',
       landingPage: `/information/${slug}`,
       intent: 'research',
+      source: 'information-page',
     });
-    const context = persisted ? { ...persisted, ...base, timestamp: base.timestamp } : base;
-
-    const message = buildNonProductLineMessage(info.title, context);
-
-    // Dispatch event
-    commerceEventDispatcher.dispatch(
-      buildCommerceEvent(CommerceEvents.LINE_CLICK, {
-        context,
-        lineMessage: message,
-      })
-    );
-
-    saveCommerceContext(context);
-
-    const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
-    window.open(lineUrl, '_blank');
-
-    clearCommerceContext();
   };
 
   return (
