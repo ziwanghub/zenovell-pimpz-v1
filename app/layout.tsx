@@ -4,6 +4,10 @@ import "./globals.css";
 import { DevCacheGuard } from "@/app/dev-cache-guard";
 import { cn } from "@/lib/utils";
 
+// Batch 3: Analytics Interface Alignment - Initialization
+// Exactly one call site, noop only, idempotent
+import { initializeAnalyticsAdapters } from "@/lib/analytics/adapters";
+
 const sarabun = Sarabun({
   subsets: ["latin", "thai"],
   weight: ["400", "600", "700", "800"],
@@ -56,6 +60,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Exactly one initialization call for Analytics (Batch 3 requirement)
+  // - noop only for this batch
+  // - idempotent
+  // - safe for App Router (no side effects on server render)
+  initializeAnalyticsAdapters(["noop"]);
+
   const baseUrl = 'https://zenovell.com';
   const siteData = {
     '@context': 'https://schema.org',

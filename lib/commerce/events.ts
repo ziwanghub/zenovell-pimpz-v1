@@ -25,6 +25,10 @@ import type { Product } from "../../content/products";
 import type { CommerceContext, UtmParams, Intent } from "./context";
 import type { CtaPayload } from "./cta-contract";
 
+// Bridge import for Analytics Interface Alignment (Batch 3)
+// This is the ONLY place in Commerce that is allowed to cross to Analytics
+import { bridgeCommerceEventToAnalytics } from "@/lib/analytics/bridge/commerce-analytics-bridge";
+
 /* ============================================
  * 1. Event Types
  * ============================================ */
@@ -149,8 +153,16 @@ export interface CommerceEventDispatcher {
  */
 export class NoopCommerceEventDispatcher implements CommerceEventDispatcher {
   dispatch(event: CommerceEventPayload): void {
-    // Intentionally empty - pure contract foundation
-    // In later phases, adapters (GA4, Meta, LINE, etc.) will be attached here.
+    // Pure commerce dispatch (noop for now)
+    // In later phases, real commerce adapters may be attached here.
+
+    // Batch 3: Wire to Analytics via the dedicated Bridge only
+    // This is allowed because we are in the Commerce Event Dispatcher wiring point
+    // The actual invocation of Analytics Dispatcher happens inside the Bridge
+    if (event.eventName === 'line_click' || event.eventName.includes('conversion') || event.eventName.includes('consultation')) {
+      bridgeCommerceEventToAnalytics(event);
+    }
+
     void event;
   }
 }
