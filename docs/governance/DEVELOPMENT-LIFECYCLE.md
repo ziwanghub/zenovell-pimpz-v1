@@ -13,6 +13,15 @@ This document defines the standard Development Lifecycle for building production
 
 The lifecycle separates **Development** from **Release** to avoid confusing technical completeness with operational readiness.
 
+Where a project has an SA-approved roadmap authority, that roadmap defines:
+- official phase ordering
+- phase relationship boundaries
+- post-phase transition rules
+- downstream entry criteria
+
+Lifecycle governs *how* phases are executed.
+Roadmap authority governs *which* phases come next and under what business/architecture conditions.
+
 ---
 
 ## 2. Principles
@@ -286,3 +295,5 @@ Only then is the phase (and eventually Development Complete) declared.
 This document is Level A (Permanent Governance Record) per LEAN-REPORTING-POLICY.md.
 
 It is project-independent and intended for reuse.
+## Roadmap Reference
+This lifecycle is governed by the official locked roadmap in docs/ROADMAP.md. See that document for the current phase sequence, entry criteria, and post-Phase 6 freeze policy.

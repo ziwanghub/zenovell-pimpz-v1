@@ -6,6 +6,11 @@
 **Governing Documents**: ADR-001, ADR-002, ADR-003, COMMERCE-FOUNDATION-COMPLETE.md, PHASE5-COMMERCE-EXPERIENCE-SCOPE-LOCK.md, PRODUCTION-READINESS-GATE-v1.md  
 **Purpose**: Define how the ZENOVELL-PIMPZ LINE-First Commerce Landing Platform will be released to production, separating the long-term architectural Roadmap from the actual production launch and incremental delivery plan.
 
+**Roadmap Authority Reference**:
+- `docs/ROADMAP.md` is the official post-Phase-6 roadmap authority for this project track.
+- This Release Strategy must be interpreted in alignment with that roadmap authority.
+- If a conflict exists between historical roadmap wording and the locked roadmap authority, the locked roadmap authority wins.
+
 ---
 
 ## 1. Core Principle: Roadmap ≠ Release Plan
