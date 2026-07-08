@@ -28,6 +28,7 @@ import type { CommerceContext } from './context';
 import {
   createCommerceContext,
   createContextFromProduct,
+  mergeCommerceContext,
 } from './context';
 import {
   saveCommerceContext,
@@ -112,11 +113,12 @@ export function performLineHandoff(params: {
  * This is the recommended entry point for Batch 2+.
  * It handles:
  * - Context creation via official helpers
- * - Merge with persisted context (persisted values have highest priority)
+ * - Merge with persisted context via canonical mergeCommerceContext()
  * - Message building via canonical builders
  * - Delegation to performLineHandoff
  *
  * Stays thin: no business logic, no UI, just orchestration.
+ * All merge policy is delegated to mergeCommerceContext() in context.ts.
  */
 export function activateLineCta(options: ActivateLineCtaOptions): void {
   const {
@@ -153,13 +155,11 @@ export function activateLineCta(options: ActivateLineCtaOptions): void {
         campaign,
       });
 
-  // 2. Merge with any persisted context — persisted has highest priority for returning users
-  //    (previous intent, source, campaign, utm etc. are preserved over the current baseContext)
-  //    Current timestamp always wins to reflect "now".
+  // 2. Merge using the canonical policy (Batch 2)
+  //    - Current interaction owns: entrySurface, landingPage, intent, product, sku, timestamp
+  //    - Persisted only fills attribution fields when missing in current
   const persisted = loadCommerceContext();
-  const context: CommerceContext = persisted
-    ? { ...baseContext, ...persisted, timestamp: baseContext.timestamp }
-    : baseContext;
+  const context: CommerceContext = mergeCommerceContext(baseContext, persisted);
 
   // 3. Build message using the correct canonical builder
   let message: string;

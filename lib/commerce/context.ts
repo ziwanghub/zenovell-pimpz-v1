@@ -114,3 +114,80 @@ export function isCommerceContext(value: unknown): value is CommerceContext {
     typeof (value as CommerceContext).timestamp === "string"
   );
 }
+
+/**
+ * Canonical Commerce Context Merge Policy (Phase 6C Batch 2)
+ *
+ * This is the SINGLE SOURCE OF TRUTH for merging current interaction context
+ * with persisted context.
+ *
+ * ## Guiding Principles (locked in Blueprint)
+ * 1. Current Interaction is the Source of Truth for interaction semantics.
+ * 2. Persisted Context is an Attribution Fallback only.
+ * 3. Merge logic must exist in exactly one location.
+ * 4. All CTA surfaces must consume the same merge policy.
+ * 5. No UI component may implement its own merge logic.
+ *
+ * ## Ownership Rules
+ * Current interaction ALWAYS owns (never overridden by persisted):
+ *   - entrySurface
+ *   - landingPage
+ *   - intent
+ *   - product
+ *   - sku
+ *   - timestamp
+ *
+ * Persisted context MAY contribute ONLY when the value is absent in current:
+ *   - source
+ *   - campaign
+ *   - medium (via utm)
+ *   - utm
+ *   - referrer (if present in persisted)
+ *
+ * timestamp is ALWAYS taken from baseContext (the current interaction).
+ *
+ * @param baseContext - The context built from the current CTA interaction.
+ * @param persistedContext - Previously saved context (if any).
+ * @returns A new CommerceContext object following the canonical policy.
+ */
+export function mergeCommerceContext(
+  baseContext: CommerceContext,
+  persistedContext?: CommerceContext | null
+): CommerceContext {
+  // Start with a shallow copy of base (current interaction wins by default)
+  const result: CommerceContext = { ...baseContext };
+
+  if (!persistedContext) {
+    return result;
+  }
+
+  // Attribution fields: only fill from persisted if absent in current
+  if (!result.source && persistedContext.source) {
+    result.source = persistedContext.source;
+  }
+
+  if (!result.campaign && persistedContext.campaign) {
+    result.campaign = persistedContext.campaign;
+  }
+
+  // utm handling: if current has no utm, take from persisted
+  if (!result.utm && persistedContext.utm) {
+    result.utm = { ...persistedContext.utm };
+  }
+
+  // referrer: not a top-level field in current interface.
+  // If persisted has it (future-proofing), we do not add it to avoid
+  // introducing new fields in this batch. Policy is documented above.
+
+  // Explicitly ensure critical current fields (defense in depth)
+  result.entrySurface = baseContext.entrySurface;
+  result.landingPage = baseContext.landingPage;
+  result.intent = baseContext.intent;
+  result.product = baseContext.product;
+  result.sku = baseContext.sku;
+
+  // timestamp ALWAYS from current base
+  result.timestamp = baseContext.timestamp;
+
+  return result;
+}
