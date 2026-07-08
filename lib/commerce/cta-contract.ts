@@ -1,22 +1,27 @@
 /**
- * CTA Contract (Phase 4D)
+ * CTA Contract (Phase 6C Standardized)
  *
  * Reusable, dependency-injected CTA contract layer for the LINE-First Commerce Landing Platform.
+ *
+ * Supports both Product and Non-Product CTA surfaces.
  *
  * Connects:
  * - Product Authority (content/products.ts)
  * - Commerce Context (lib/commerce/context.ts)
  * - LINE Message Builder (lib/commerce/line-message-builder.ts)
  *
- * This is the contract interface + pure payload builders.
+ * This is the canonical contract interface + pure payload builders.
  * No runtime integration, no UI, no behavior changes.
+ *
+ * Phase 6C standardization: product and non-product paths unified under contract.
+ * Preserves all existing runtime behavior and surface names from Phase 6A/6B.
  *
  * Per ADR-001, Scope Lock, and Roadmap: formalizes CTA taxonomy and ensures
  * every CTA surface can produce consistent Commerce Context + LINE message.
  */
 
 import type { CommerceContext } from "./context";
-import { buildLineMessage } from "./line-message-builder";
+import { buildLineMessage, buildNonProductLineMessage } from "./line-message-builder";
 
 /**
  * Minimal Product shape from Product Authority (content/products.ts).
@@ -36,6 +41,14 @@ export type ProductShape = {
     saleDisplay: string;
     originalDisplay: string;
   };
+};
+
+/**
+ * Minimal Non-Product shape for non-product CTA surfaces.
+ * Used for support, consultation, FAQ, etc.
+ */
+export type NonProductShape = {
+  title: string;
 };
 
 /**
@@ -76,6 +89,16 @@ export interface ICtaContract {
    */
   createPayload(
     product: ProductShape,
+    context: CommerceContext,
+    surface: CtaSurface,
+    baseDestination?: Partial<CtaDestinationShape>
+  ): CtaPayload;
+
+  /**
+   * Build a commerce-enriched CTA payload for non-product surfaces.
+   */
+  createNonProductPayload(
+    title: string,
     context: CommerceContext,
     surface: CtaSurface,
     baseDestination?: Partial<CtaDestinationShape>
@@ -135,6 +158,36 @@ export const defaultCtaContract: ICtaContract = {
       surface,
     };
   },
+
+  createNonProductPayload(
+    title: string,
+    context: CommerceContext,
+    surface: CtaSurface,
+    baseDestination?: Partial<CtaDestinationShape>
+  ): CtaPayload {
+    const enrichedContext: CommerceContext = {
+      ...context,
+      entrySurface: surface,
+    };
+
+    const lineMessage = buildNonProductLineMessage(title, enrichedContext);
+
+    const label = baseDestination?.label ?? title;
+    const ariaLabel = baseDestination?.ariaLabel ?? title;
+    const href = baseDestination?.href ?? "#line-primary";
+
+    const id = baseDestination?.id ?? `${surface}`;
+
+    return {
+      id,
+      label,
+      ariaLabel,
+      href,
+      lineMessage,
+      commerceContext: enrichedContext,
+      surface,
+    };
+  },
 };
 
 /**
@@ -147,6 +200,15 @@ export function createCtaPayload(
   baseDestination?: Partial<CtaDestinationShape>
 ): CtaPayload {
   return defaultCtaContract.createPayload(product, context, surface, baseDestination);
+}
+
+export function createNonProductCtaPayload(
+  title: string,
+  context: CommerceContext,
+  surface: CtaSurface,
+  baseDestination?: Partial<CtaDestinationShape>
+): CtaPayload {
+  return defaultCtaContract.createNonProductPayload(title, context, surface, baseDestination);
 }
 
 /**
