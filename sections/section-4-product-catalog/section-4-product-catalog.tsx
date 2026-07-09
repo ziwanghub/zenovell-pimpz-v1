@@ -79,14 +79,14 @@ function ProductCardFeatureItem({
     >
       <Icon
         aria-hidden="true"
-        className="size-[16px] text-[#E91E8C]"
+        className="size-[14px] text-[#E91E8C]"
         strokeWidth={1.5}
       />
-      <span className="mt-1 block text-[10px] font-semibold leading-[1.2] text-white">
+      <span className="mt-0.5 block h-[11px] text-[9px] font-semibold leading-[1.15] text-white/90">
         {feature.title}
       </span>
       {feature.sub ? (
-        <span className="mt-0.5 block text-[10px] leading-[1.2] text-white/60">
+        <span className="mt-0.5 block h-[10px] text-[8px] leading-[1.15] text-white/70">
           {feature.sub}
         </span>
       ) : null}
@@ -102,12 +102,12 @@ function ProductCardPriceBlock({
   return (
     <div
       aria-label={pricing.ariaLabel}
-      className="mt-3 flex items-end justify-between gap-2"
+      className="flex h-[26px] items-end justify-between gap-2"
     >
-      <span className="text-[20px] font-extrabold leading-none text-[#E91E8C]">
+      <span className="text-[20px] font-extrabold leading-none text-[#E91E8C] md:text-[22px]">
         {pricing.salePrice}
       </span>
-      <del className="text-[12px] leading-none text-white/[0.45]">
+      <del className="text-[11px] leading-none text-white/[0.45] md:text-[12px]">
         {pricing.originalPrice}
       </del>
     </div>
@@ -125,7 +125,7 @@ function ProductCardCTA({
     <a
       aria-label={cta.ariaLabel}
       href={cta.href}
-      className="mt-[10px] flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[13px] font-bold leading-none text-[#E91E8C] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[12px] font-bold leading-none text-[#E91E8C] md:text-[13px] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
       onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
@@ -174,7 +174,7 @@ function ProductCardCTA({
 
 function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
   return (
-    <li className="overflow-hidden rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#131313]">
+    <li className="group flex flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#121212]">
       <Link
         href={`/products/${product.slug}`}
         aria-label={`View details for ${product.title}`}
@@ -186,12 +186,12 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
           })
         }
       >
-        <div className="relative h-[176px] overflow-hidden bg-[#101010]">
+        <div className="relative h-[176px] overflow-hidden bg-[#101010] transition-transform duration-200 group-hover:scale-[1.02]">
           <Image
             src={product.imageSrc}
             alt={product.imageAlt}
             fill
-            sizes="(max-width: 430px) 50vw, 215px"
+            sizes="(max-width: 430px) 50vw, (max-width: 768px) 30vw, 200px"
             className="object-cover"
             style={{ objectPosition: "center center" }}
           />
@@ -199,26 +199,30 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
         </div>
       </Link>
 
-      <div className="p-3">
-        <h3 className="text-center text-[16px] font-extrabold leading-[1.2] text-[#E91E8C]">
-          <Link
-            href={`/products/${product.slug}`}
-            onClick={() =>
-              analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
-                surface: "section",
-                label: product.title,
-                destination: `/products/${product.slug}`,
-              })
-            }
-          >
-            {product.title}
-          </Link>
-        </h3>
-        <p className="mt-1 min-h-[31px] text-center text-[11px] leading-[1.35] text-white/80">
-          {product.subtitle}
-        </p>
+      <div className="flex flex-1 flex-col p-3.5 md:p-4">
+        {/* Region 2: Title + Fit - fixed min-height for identical baseline start of benefits */}
+        <div className="min-h-[62px]">
+          <h3 className="line-clamp-2 text-center text-[14px] font-extrabold leading-[1.2] text-[#E91E8C] md:text-[15px]">
+            <Link
+              href={`/products/${product.slug}`}
+              onClick={() =>
+                analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
+                  surface: "section",
+                  label: product.title,
+                  destination: `/products/${product.slug}`,
+                })
+              }
+            >
+              {product.title}
+            </Link>
+          </h3>
+          <p className="line-clamp-2 mt-1 min-h-[30px] text-center text-[11px] leading-[1.3] text-white/80 md:text-[12px] md:leading-[1.3]">
+            {product.subtitle}
+          </p>
+        </div>
 
-        <ul className="mt-3 grid grid-cols-3">
+        {/* Region 3: Benefits - fixed min-height for identical height */}
+        <ul className="mt-1.5 grid min-h-[40px] grid-cols-3 gap-1">
           {product.features.map((feature, index) => (
             <ProductCardFeatureItem
               key={`${product.slug}-${feature.title}`}
@@ -228,8 +232,11 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
           ))}
         </ul>
 
-        <ProductCardPriceBlock pricing={product.pricing} />
-        <ProductCardCTA cta={product.cta} product={product} />
+        {/* Region 4: Price + CTA - anchored with fixed price region height for baseline */}
+        <div className="mt-auto flex flex-col gap-1.5">
+          <ProductCardPriceBlock pricing={product.pricing} />
+          <ProductCardCTA cta={product.cta} product={product} />
+        </div>
       </div>
     </li>
   );
@@ -245,10 +252,10 @@ function CatalogTrustItem({ item }: { item: Section4TrustItem }) {
         className="size-[20px] text-[#E91E8C]"
         strokeWidth={1.6}
       />
-      <span className="mt-2 block text-[11px] font-semibold leading-[1.3] text-white">
+      <span className="mt-1.5 block text-[9px] font-semibold leading-[1.2] text-white md:text-[10px] md:leading-[1.2]">
         {item.title}
       </span>
-      <span className="mt-0.5 block text-[10px] leading-[1.3] text-white/60">
+      <span className="mt-0.5 block text-[8px] leading-[1.15] text-white/65">
         {item.sub}
       </span>
     </li>
@@ -322,14 +329,14 @@ export function Section4ProductCatalog({
         description={content.subtitle}
       />
 
-      <ul className="grid grid-cols-2 gap-[10px] px-4">
+      <ul className="grid grid-cols-2 items-stretch gap-3 px-3 md:gap-4 md:px-4 md:grid-cols-3">
         {content.products.map((product) => (
           <ProductCatalogCard key={product.slug} product={product} />
         ))}
       </ul>
 
-      <div className="mx-4 mt-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4">
-        <ul className="grid grid-cols-4 gap-1">
+      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-3 py-3.5">
+        <ul className="grid grid-cols-4 gap-1.5">
           {content.trustItems.map((item) => (
             <CatalogTrustItem key={item.title} item={item} />
           ))}
@@ -340,7 +347,7 @@ export function Section4ProductCatalog({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <p className="px-4 pt-4 text-center text-[11px] leading-[1.4] tracking-[0.04em] text-white/45">
+      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3]">
         {content.footerNote}
       </p>
     </section>

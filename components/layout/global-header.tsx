@@ -129,8 +129,8 @@ export function GlobalHeader({
         aria-hidden="true"
         style={{
           height: visibility.safeAreaTop
-            ? "calc(60px + env(safe-area-inset-top) + 20px)"
-            : "80px",
+            ? "calc(60px + env(safe-area-inset-top) + 6px)"
+            : "66px",
         }}
       />
 
@@ -141,7 +141,7 @@ export function GlobalHeader({
           style={headerStyle}
         >
           <div
-            className={`flex min-h-[60px] items-center justify-between gap-2 py-[10px] transition-shadow ${
+            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow ${
               isScrolled
                 ? "shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
                 : ""
@@ -159,7 +159,7 @@ export function GlobalHeader({
             <div className="flex shrink-0 items-center gap-1.5">
               <Link
                 aria-label={lineCta.ariaLabel}
-                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_16px_rgba(233,30,140,0.4)]"
+                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_20px_rgba(233,30,140,0.45)]"
                 href={lineCta.href}
                 onClick={(e) => {
                   // Preserve existing analytics
@@ -237,7 +237,7 @@ export function GlobalHeader({
                 id={drawerPanelId}
                 aria-labelledby={drawerTitleId}
                 aria-modal="true"
-                className="absolute top-0 right-0 flex h-[100svh] w-full max-w-[360px] flex-col border-l border-white/10 bg-[#0A0A0A] shadow-[-18px_0_48px_rgba(0,0,0,0.42)]"
+                className="absolute top-0 right-0 flex h-[100svh] w-full max-w-[min(92vw,380px)] flex-col border-l border-white/10 bg-[#0A0A0A] shadow-[-18px_0_48px_rgba(0,0,0,0.42)]"
                 role="dialog"
               >
                 <div
@@ -251,11 +251,11 @@ export function GlobalHeader({
                   <div>
                     <p
                       id={drawerTitleId}
-                      className="text-sm font-bold tracking-[0.08em] text-[#E91E8C] uppercase"
+                      className="text-[15px] font-bold tracking-[0.08em] text-[#E91E8C]"
                     >
-                      {menuTrigger.label}
+                      {brand.wordmark}
                     </p>
-                    <p className="mt-1 text-xs text-white/55">{brand.wordmark}</p>
+                    <p className="mt-0.5 text-[11px] text-white/60">{brand.tagline}</p>
                   </div>
 
                   <button
@@ -281,7 +281,7 @@ export function GlobalHeader({
                         <Link
                           ref={index === 0 ? firstDrawerLinkRef : undefined}
                           aria-label={item.ariaLabel}
-                          className="flex min-h-12 items-center rounded-2xl border border-white/8 bg-white/[0.03] px-4 text-[15px] font-medium text-white/92 transition-colors hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                          className="flex min-h-[48px] items-center rounded-2xl border border-white/10 bg-[#171717] px-4 text-[15px] font-medium text-white/92 transition-colors hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
                           href={item.href}
                           onClick={() => {
                             closeDrawer();

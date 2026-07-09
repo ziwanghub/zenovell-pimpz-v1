@@ -19,7 +19,7 @@ import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { LineIcon } from "@/components/ui/line-icon";
 
-const BACKGROUND_IMAGE_SRC = "/images/hero/bg-hero-section1.jpeg";
+const BACKGROUND_IMAGE_SRC = "/images/hero/bg-ph6d-section-1-hero-v2.jpeg";
 
 const ctaButtonStyle: CSSProperties = {
   boxShadow:
@@ -139,8 +139,8 @@ export function HeroSection({ content }: HeroSectionProps) {
           priority
           fetchPriority="high"
           sizes="(max-width: 430px) 100vw, 430px"
-          className="hero-background scale-[1.05] object-cover"
-          style={{ objectPosition: "61% top" }}
+          className="hero-background scale-[0.94] object-cover"
+          style={{ objectPosition: "74% 18%" }}
         />
 
         <div
@@ -148,38 +148,34 @@ export function HeroSection({ content }: HeroSectionProps) {
           className="hero-scrim-left pointer-events-none absolute inset-0 z-[1]"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,10,10,0.84) 0%, rgba(10,10,10,0.70) 30%, rgba(10,10,10,0.40) 50%, rgba(10,10,10,0.08) 76%, transparent 100%)",
+              "linear-gradient(90deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.62) 28%, rgba(10,10,10,0.34) 45%, rgba(10,10,10,0.1) 63%, rgba(10,10,10,0.02) 79%, transparent 100%)",
           }}
         />
         <div
           aria-hidden="true"
-          className="hero-scrim-top pointer-events-none absolute top-0 right-0 left-0 z-[1] h-20"
+          className="hero-scrim-top pointer-events-none absolute top-0 right-0 left-0 z-[1] h-24"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, transparent 100%)",
+              "linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.16) 58%, transparent 100%)",
           }}
         />
         <div
           aria-hidden="true"
-          className="hero-scrim-bottom pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-[220px]"
+          className="hero-scrim-bottom pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-[196px]"
           style={{
             background:
-              "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.58) 46%, transparent 100%)",
+              "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.56) 34%, rgba(10,10,10,0.18) 58%, transparent 100%)",
           }}
         />
 
         <div className="hero-content-wrapper relative z-[2]">
-          <div className="hero-content-column max-w-[62%] px-4 pt-[22px]">
-            <p className="hero-subbrand mb-[6px] text-[10px] font-bold tracking-[0.22em] text-[#E91E8C] uppercase">
+          <div className="hero-content-column max-w-[52%] px-4 pt-[12px] min-[375px]:max-w-[51%] min-[375px]:pt-[16px] min-[414px]:max-w-[50%] min-[414px]:pt-[20px]">
+            <p className="hero-subbrand mb-[10px] text-[10px] font-bold tracking-[0.22em] text-[#E91E8C] uppercase">
               {content.brand.subbrand}
             </p>
 
             <h1
-              className="hero-headline mb-[10px] font-extrabold tracking-[-0.01em]"
-              style={{
-                fontSize: "clamp(38px, 11.5vw, 50px)",
-                lineHeight: 1.07,
-              }}
+              className="hero-headline mb-4 font-extrabold tracking-[0em] text-[clamp(28px,8.4vw,36px)] leading-[1.24] [text-shadow:0_2px_12px_rgba(0,0,0,0.18)] min-[375px]:mb-[18px] min-[375px]:text-[clamp(30px,8.5vw,39px)] min-[375px]:leading-[1.2] min-[414px]:mb-5 min-[414px]:tracking-[-0.004em] min-[414px]:text-[clamp(33px,8.4vw,43px)] min-[414px]:leading-[1.16]"
             >
               {content.headline.map((line) => (
                 <span
@@ -191,7 +187,7 @@ export function HeroSection({ content }: HeroSectionProps) {
               ))}
             </h1>
 
-            <p className="hero-subheadline mb-4 text-[14px] leading-[1.55] text-white/75">
+            <p className="hero-subheadline mb-6 max-w-[90%] text-[13px] leading-[1.68] text-white/78 min-[375px]:mb-7 min-[375px]:max-w-[88%] min-[375px]:text-[14px] min-[375px]:leading-[1.62]">
               {content.subheadline.map((line, index) => (
                 <span key={line} className="block">
                   {line}
@@ -202,18 +198,18 @@ export function HeroSection({ content }: HeroSectionProps) {
 
             <div
               aria-hidden="true"
-              className="hero-divider mb-[18px] h-[2.5px] w-[34px] rounded-[2px] bg-[#E91E8C]"
+              className="hero-divider mb-6 h-[2.5px] w-[34px] rounded-[2px] bg-[#E91E8C] min-[375px]:mb-7"
               style={dividerStyle}
             />
 
-            <ul className="hero-benefits flex list-none flex-col gap-[14px] p-0">
+            <ul className="hero-benefits flex list-none flex-col gap-[16px] p-0 min-[375px]:gap-[18px]">
               {content.benefits.map((item) => (
                 <BenefitListItem key={item.title} item={item} />
               ))}
             </ul>
           </div>
 
-          <div className="hero-cta-block px-[14px] pt-[28px] pb-[28px]">
+          <div className="hero-cta-block px-[14px] pt-[30px] pb-[28px] min-[375px]:pt-[34px] min-[414px]:pt-[38px]">
             <button
               aria-label={content.cta.label}
               className="hero-primary-cta flex w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left"
