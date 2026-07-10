@@ -48,6 +48,31 @@ The active project `ZENOVELL-PIMPZ-V4-Active/` contains the following directorie
 
 ---
 
+## 4.5 Platform Documentation Architecture
+
+The canonical navigation layer for documentation governance is:
+
+**`DESIGN/Platform-Documentation-Architecture/`**
+
+This is now the single source of truth for:
+- AI agent navigation (starting point)
+- Workspace boundaries and module status
+- Document classification (ACTIVE / FROZEN / REFERENCE / ARCHIVE)
+- Authority and dependency chains
+
+Key files:
+- `AI-ENTRYPOINT.md` — Mandatory starting point for all AI agents
+- `WORKSPACE-MANIFEST.md` — Current workspace boundaries
+- `DOCUMENT-MAP.md` — Classified inventory of documents
+- `DEPENDENCY-MAP.md` — Authority hierarchy
+- `GOVERNANCE-CONTRACT.md` — Governance rules and principles
+
+This layer governs discoverability for Landing Page (FROZEN), Product Page (Authority ACTIVE, Implementation NOT AUTHORIZED), and future modules.
+
+See: `DESIGN/Platform-Documentation-Architecture/AI-ENTRYPOINT.md`
+
+---
+
 ## 5. Folder Responsibilities
 
 ### `app/(platform)/`

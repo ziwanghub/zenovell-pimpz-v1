@@ -31,6 +31,21 @@ For more details, see [REPOSITORY-STRUCTURE-GUIDE.md](file:///Users/zinwang/Work
 
 ---
 
+## 2.5 Mandatory Documentation Governance Reading Order
+
+**Before reading any other documentation or implementation files, all AI agents and human contributors must follow this order:**
+
+1. Read `DESIGN/Platform-Documentation-Architecture/AI-ENTRYPOINT.md`
+2. Read `DESIGN/Platform-Documentation-Architecture/WORKSPACE-MANIFEST.md`
+3. Read `DESIGN/Platform-Documentation-Architecture/DOCUMENT-MAP.md`
+4. Read `DESIGN/Platform-Documentation-Architecture/DEPENDENCY-MAP.md`
+
+Repository-wide searches should **not** be the default behavior. The Platform Documentation Architecture is the canonical governance layer for navigation and classification of ACTIVE, FROZEN, and REFERENCE documents.
+
+See: [AI-ENTRYPOINT.md](/Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/DESIGN/Platform-Documentation-Architecture/AI-ENTRYPOINT.md)
+
+---
+
 ## 3. Mandatory Workspace Constraint
 All development must occur exclusively within this workspace path:
 `/Users/zinwang/Workspace/project/ZENOVELL-V4-PIMPZ/PROJECTS/ZENOVELL-PIMPZ-V4-Active`
