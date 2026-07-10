@@ -34,7 +34,7 @@ export type Section11FooterSocialItem = {
 export type Section11FooterPaymentItem = {
   id: string;
   label: string;
-  variant: "visa" | "mastercard" | "promptpay" | "cod";
+  variant: "visa" | "mastercard" | "jcb" | "promptpay";
 };
 
 export type Section11FooterContent = {
@@ -250,10 +250,10 @@ export const section11FooterContent: Section11FooterContent = {
     {
       id: "phone",
       label: "โทรศัพท์",
-      value: "099-124-4289",
+      value: "092-956-5523",
       subtext: "(10:00 - 22:00 น.)",
-      href: "tel:0991244289",
-      ariaLabel: "โทรหาเซโนเวลล์ที่ 099-124-4289",
+      href: "tel:0929565523",
+      ariaLabel: "โทรหาเซโนเวลล์ที่ 092-956-5523",
       iconName: "phone",
       interactive: true,
     },
@@ -328,7 +328,7 @@ export const section11FooterContent: Section11FooterContent = {
   payments: [
     { id: "visa", label: "VISA", variant: "visa" },
     { id: "mastercard", label: "Mastercard", variant: "mastercard" },
+    { id: "jcb", label: "JCB", variant: "jcb" },
     { id: "promptpay", label: "PromptPay", variant: "promptpay" },
-    { id: "cod", label: "COD", variant: "cod" },
   ],
 };
