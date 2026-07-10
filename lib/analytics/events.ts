@@ -24,6 +24,8 @@ export const AnalyticsEvents = {
   SOCIAL_CLICK: "social_click" as const,
   MENU_OPEN: "menu_open" as const,
   MENU_CLICK: "menu_click" as const,
+  // GTM-mapped primary conversion (Commerce LINE_CLICK → analytics line_cta_click)
+  LINE_CTA_CLICK: "line_cta_click" as const,
 } as const;
 
 export type AnalyticsEvent =

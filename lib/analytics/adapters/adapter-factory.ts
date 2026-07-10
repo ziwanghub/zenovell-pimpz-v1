@@ -1,20 +1,21 @@
 import type { AnalyticsAdapter } from "../types";
 import { NoopAdapter } from "./noop-adapter";
 import { GA4Adapter } from "./ga4-adapter";
+import { GTMAdapter } from "./gtm-adapter";
 
 /**
  * AdapterFactory
  * 
  * Simple factory for creating adapter instances by name.
  * 
- * In M10-P3D-1 this only supports "noop".
- * Future phases (P3D-2+) will extend this to support real vendors
- * without changing the dispatcher.
+ * Supports:
+ * - "noop" (default safe fallback)
+ * - "ga4" (skeleton, not activated in this GTM-only flow)
+ * - "gtm" (GTM / dataLayer adapter)
  */
 export class AdapterFactory {
   /**
    * Create an adapter instance by adapter name.
-   * Currently only supports 'noop'.
    */
   static create(name: string): AnalyticsAdapter {
     switch (name.toLowerCase()) {
@@ -22,6 +23,8 @@ export class AdapterFactory {
         return new NoopAdapter();
       case "ga4":
         return new GA4Adapter();
+      case "gtm":
+        return new GTMAdapter();
       default:
         // Safe fallback
         return new NoopAdapter();
@@ -30,9 +33,8 @@ export class AdapterFactory {
 
   /**
    * List of supported adapter names.
-   * This will grow when real adapters are added in later patches.
    */
   static getSupportedAdapters(): string[] {
-    return ["noop", "ga4"];
+    return ["noop", "ga4", "gtm"];
   }
 }

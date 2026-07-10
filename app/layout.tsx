@@ -4,9 +4,10 @@ import "./globals.css";
 import { DevCacheGuard } from "@/app/dev-cache-guard";
 import { cn } from "@/lib/utils";
 
-// Batch 3: Analytics Interface Alignment - Initialization
-// Exactly one call site, noop only, idempotent
+// Analytics initialization (GTM is sole authority)
 import { initializeAnalyticsAdapters } from "@/lib/analytics/adapters";
+import { GoogleTagManager } from "@/components/analytics/google-tag-manager";
+import { isValidGtmContainerId } from "@/lib/analytics/gtm-validation";
 
 const sarabun = Sarabun({
   subsets: ["latin", "thai"],
@@ -60,11 +61,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Exactly one initialization call for Analytics (Batch 3 requirement)
-  // - noop only for this batch
-  // - idempotent
-  // - safe for App Router (no side effects on server render)
-  initializeAnalyticsAdapters(["noop"]);
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
+  // Single analytics initialization point.
+  // GTM is the sole tag authority.
+  // - When NEXT_PUBLIC_GTM_ID is present AND valid (GTM-XXXX...) → register GTM adapter
+  // - Otherwise → safe noop (dev / misconfig / invalid value)
+  // The call is kept at module render time for compatibility with existing abstraction.
+  // Adapters themselves are SSR-safe (they no-op when !window).
+  if (isValidGtmContainerId(gtmId)) {
+    initializeAnalyticsAdapters(["gtm"]);
+  } else {
+    initializeAnalyticsAdapters(["noop"]);
+  }
 
   const baseUrl = 'https://zenovell.com';
   const siteData = {
@@ -94,6 +103,8 @@ export default function RootLayout({
     <html lang="th" className={cn("font-sans", sarabun.variable)}>
       <body>
         <DevCacheGuard />
+        {/* GTM mounted exactly once at root. GTM is the single tag authority. */}
+        <GoogleTagManager gtmId={gtmId} />
         {children}
         <script
           type="application/ld+json"

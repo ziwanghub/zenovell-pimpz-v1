@@ -15,14 +15,24 @@ import type { AnalyticsPayload } from '@/lib/analytics/types';
  * - No adapter knowledge
  * - Commerce layer remains analytics-agnostic
  * - Analytics layer remains commerce-agnostic (receives standard AnalyticsPayload)
+ *
+ * LINE_CLICK (commerce domain) is mapped to the analytics event "line_cta_click"
+ * per GTM authority contract. All other commerce events pass through with original name.
  */
 export function bridgeCommerceEventToAnalytics(commerceEvent: CommerceEventPayload): void {
+  // Map the canonical commerce LINE_CLICK to the approved analytics event name
+  // Commerce uses lowercase "line_click" (see lib/commerce/events.ts)
+  const analyticsEventName =
+    commerceEvent.eventName === 'line_click'
+      ? 'line_cta_click'
+      : commerceEvent.eventName;
+
+  // Build structured payload
   const payload: AnalyticsPayload = {
-    event: commerceEvent.eventName,
+    event: analyticsEventName,
     surface: commerceEvent.entrySurface,
-    destination: commerceEvent.landingPage,
-    // Map key commerce fields into metadata to preserve information
-    // without polluting the top-level AnalyticsPayload schema
+    destination: 'line_oa', // canonical for LINE handoff
+    // Map key commerce fields into metadata
     metadata: {
       product: commerceEvent.product,
       sku: commerceEvent.sku,
@@ -33,11 +43,13 @@ export function bridgeCommerceEventToAnalytics(commerceEvent: CommerceEventPaylo
       commerceContext: commerceEvent.commerceContext,
       lineMessagePreview: commerceEvent.lineMessagePreview,
       price: commerceEvent.price,
+      // Explicit structured params for dataLayer / GTM
+      page_path: commerceEvent.landingPage,
+      link_url: 'https://lin.ee/syjmYE2',
     },
     timestamp: commerceEvent.timestamp,
   };
 
-  // The Bridge is the only one that calls analytics.track() for commerce events
-  // Using unknown cast to satisfy strict typing while allowing commerce event names
-  analytics.track(commerceEvent.eventName as unknown as Parameters<typeof analytics.track>[0], payload);
+  // Dispatch via the central analytics singleton (will reach GTMAdapter when registered)
+  analytics.track(analyticsEventName as unknown as Parameters<typeof analytics.track>[0], payload);
 }
