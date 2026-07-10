@@ -48,6 +48,7 @@ import {
   type CtaPayload,
   type CtaSurface,
   type ProductShape,
+  LINE_OA_URL,
 } from './cta-contract';
 
 /**
@@ -97,8 +98,11 @@ export function performLineHandoff(params: {
   // Persist before handoff (for continuity on return)
   saveCommerceContext(context);
 
-  // Real handoff using the established pattern
-  const lineUrl = buildLineHandoffUrl(message);
+  // RC1.1: Use canonical OA destination instead of share-prefill URL.
+  // This prevents the "Share with" dialog in LINE app.
+  // The pre-filled message is still built and dispatched for analytics/context.
+  // Direct OA access takes priority for RC1.1.
+  const lineUrl = LINE_OA_URL;
   if (typeof window !== 'undefined') {
     window.open(lineUrl, '_blank');
   }

@@ -24,6 +24,13 @@ import type { CommerceContext } from "./context";
 import { buildLineMessage, buildNonProductLineMessage } from "./line-message-builder";
 
 /**
+ * Canonical LINE Official Account destination (RC1.1 centralized authority).
+ * This is the single source of truth for all website CTAs.
+ * Verified candidate for ZENOVELL OA add-friend / chat flow.
+ */
+export const LINE_OA_URL = "https://lin.ee/syjmYE2";
+
+/**
  * Minimal Product shape from Product Authority (content/products.ts).
  * Avoids direct module dependency for CI compatibility in release patches.
  */
