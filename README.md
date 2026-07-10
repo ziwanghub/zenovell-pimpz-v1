@@ -48,6 +48,20 @@ npm run dev
 
 Open `http://localhost:3000` in your browser.
 
+## Documentation Architecture
+
+The canonical navigation layer and governance for all documentation across the platform is located at:
+
+**DESIGN/Platform-Documentation-Architecture/AI-ENTRYPOINT.md**
+
+This is the mandatory starting point for understanding:
+- Current authority documents
+- Frozen baselines (Landing Page)
+- Active vs reference materials
+- Implementation authorization status
+
+All AI agents and contributors should begin here before exploring other documentation.
+
 ## Validation Commands
 
 ```bash
