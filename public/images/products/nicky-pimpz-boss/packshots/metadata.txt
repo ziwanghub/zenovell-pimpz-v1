@@ -1,0 +1,14 @@
+Packshot Metadata (Freeze Snapshot)
+Product: Nicky Pimpz Boss
+SKU: NPB-001
+Asset Type: Packshot
+Version: 1.0 (Product Data Freeze)
+Status: APPROVED
+Files:
+- nicky-pimpz-product3.jpeg (source)
+- nicky-pimpz-boss-packshot-final.webp (production)
+- variants: web, mobile, thumbnail
+Approval: Production Lead + Design Lead (via S6 validation)
+Date: 2026-07-10
+Evidence: FT-S6 + this freeze package
+Cross-ref: Hero, Gallery consistency verified in S1/S6.

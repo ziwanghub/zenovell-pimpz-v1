@@ -1,0 +1,4 @@
+Marketplace Thumbnails + Gallery
+- Shopee/Lazada crops
+- Gallery set variants
+- Consistent product identity.

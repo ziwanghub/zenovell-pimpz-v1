@@ -1,0 +1,14 @@
+Gallery Assets for Nicky Pimpz Boss
+Status: APPROVED
+Views (per A2 + Blueprint 04):
+- front: Premium front packaging view
+- back: Back label + certifications
+- side: Side profile with volume
+- detail: Ingredient texture / callout
+- lifestyle: In-use context
+- packaging: Box + trust elements
+- close-up: Capsule/product macro
+Primary: nicky-pimpz-product3.jpeg
+Thumbnails: touch-friendly for 344-430+
+Captions: Entity aligned, non-redundant
+Production: High-res, consistent lighting per packshot refinement notes. No redesign.

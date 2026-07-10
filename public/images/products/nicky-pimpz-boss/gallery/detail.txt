@@ -1,0 +1,6 @@
+# Gallery Asset: detail for Nicky Pimpz Boss
+# Status: APPROVED
+# Caption: Premium view - detail
+# Alt: Detailed view of Nicky Pimpz Boss packaging and product
+# Dimensions: 800x800 web, 400x400 mobile
+# Production: High resolution for gallery rail, touch friendly

@@ -1,0 +1,8 @@
+Trust Icons & Progressive Trust Graphics - Nicky Pimpz Boss
+Status: APPROVED
+- Icons: safety shield, natural origin leaf, clinically inspired flask, 100% satisfaction badge
+- Progressive trust: "Step 1: Quality sourcing" -> "Step 2: Tested purity" -> "Step 3: User confidence"
+- Quality indicators: rating stars (text-backed), review count badges
+Blueprint 07: compact, icon+text, subordinate to CTA
+Responsive: mini-grid on >=390, stacked 344
+Evidence: FT-S2-04

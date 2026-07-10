@@ -1,0 +1,5 @@
+Ads Variants
+- Google: square/landscape crops
+- Meta: story/feed
+- TikTok: vertical
+Branded with trust signals from S2/S4.

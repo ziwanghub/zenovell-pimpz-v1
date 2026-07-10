@@ -1,0 +1,12 @@
+Ingredient Photography - Nicky Pimpz Boss
+Status: APPROVED
+Domain: Ingredient Assets (WP1)
+Contents:
+- High-res photos of primary ingredients: โสม (ginseng), berry extracts, plant extracts
+- Clean white background + natural lighting per Asset Authority
+- Macro shots for composition diagrams
+Alt texts: descriptive, entity-linked (e.g. "Premium Korean ginseng root 200mg - source for Nicky Pimpz Boss capsules")
+Responsive: Optimized for 344-430 + desktop detail views
+Blueprint 09 compliance: factual, non-decorative, paired with data
+Evidence ref: FT-S2-01
+No redesign. Followed frozen authority.

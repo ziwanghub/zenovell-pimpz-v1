@@ -1,0 +1,15 @@
+Production Hero Asset for Nicky Pimpz Boss
+Status: APPROVED
+Variants Delivered:
+- Transparent Master: transparent-master.png
+- WebP: webp-version.webp
+- Retina: retina@2x.webp
+- Mobile: mobile-344.webp
+- Tablet: tablet-390.webp
+- Desktop: desktop-430.webp
+- Production Hero: production-hero.webp
+Alt: Nicky Pimpz Boss premium capsule bottle with ginseng root and fruit on glowing dark pedestal
+Badge: BEST SELLER
+Rating: 4.8 (1246 reviews)
+Quick Trust Signals: 100% safe, 7-day money back, clinically inspired
+Production Notes: Per frozen Asset Authority + Blueprint 02. All responsive variants aligned to 344/390/430 viewports. No redesign.

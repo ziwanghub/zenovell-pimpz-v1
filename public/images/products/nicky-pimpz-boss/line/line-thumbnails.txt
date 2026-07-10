@@ -1,0 +1,5 @@
+LINE Chat + Rich Message
+- line-npb-thumb.webp
+- Rich message payload visuals
+- Handoff to LINE OA commerce.
+Consistent with promotion CTA.

@@ -1,0 +1,10 @@
+Scientific Evidence Graphics - Nicky Pimpz Boss
+Status: APPROVED
+Domain: Evidence Assets (WP1)
+- Summary graphics for key studies (ginseng for circulation/energy, berry antioxidants)
+- "Clinically inspired" visual callouts (no fabricated claims)
+- Before/after style trust curves (illustrative)
+- Quality proof: batch test icons, purity % visuals
+Blueprint 07 alignment: authenticity cues, regulatory shorthand, compact trust items
+Responsive: stacked on mobile, grid on 390+
+Evidence ref: Supports Content Evidence domain.

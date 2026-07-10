@@ -1,0 +1,3 @@
+FAQ Illustrations + Support
+- Icons for common questions (safety, results timing, usage)
+- Visual cues for answers (no overload)

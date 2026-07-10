@@ -1,0 +1,5 @@
+Review Cards + Testimonial Graphics
+- Avg rating 4.8 (1246 reviews)
+- Featured: 3-4 user quotes (women 25-45, confidence gains)
+- Avatars + outcome badges
+Scannable, mobile friendly, DOM text for rating/quote.
