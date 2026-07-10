@@ -78,12 +78,12 @@ function PrivacyIconCircle({ iconName }: { iconName: Section7PrivacyIcon }) {
 
 function PrivacyShippingInfoCard({ card }: { card: Section7PrivacyCard }) {
   return (
-    <li className="rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center min-h-[170px]">
       <PrivacyIconCircle iconName={card.iconName} />
-      <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white">
+      <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white line-clamp-2">
         {card.title}
       </h3>
-      <div className="mt-2 space-y-1 text-[11px] leading-[1.45] text-white/68">
+      <div className="mt-2 space-y-1 text-[11px] leading-[1.45] text-white/68 min-h-[52px]">
         {card.lines.map((line) => (
           <p key={line}>{line}</p>
         ))}
@@ -104,7 +104,7 @@ function PrivacyShippingShieldCard({
         className="absolute inset-0 bg-[radial-gradient(circle_at_18%_70%,rgba(233,30,140,0.22),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(233,30,140,0.12),transparent_26%)]"
       />
       <div className="relative flex items-center gap-4">
-        <div className="relative flex min-h-[188px] w-[40%] min-w-[112px] items-center justify-center rounded-[16px] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.22),rgba(10,10,10,0.06)_58%,transparent_74%)]">
+        <div className="relative flex min-h-[160px] w-[38%] min-w-[100px] items-center justify-center rounded-[16px] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.22),rgba(10,10,10,0.06)_58%,transparent_74%)] md:min-h-[188px] md:w-[40%] md:min-w-[112px]">
           <ShieldCheck
             aria-hidden="true"
             className="size-[110px] text-[#FF4DA6] drop-shadow-[0_0_18px_rgba(233,30,140,0.46)]"
@@ -258,7 +258,7 @@ export function Section7PrivacyShipping({
         description={content.subtitle}
       />
 
-      <ul className="grid grid-cols-2 gap-[10px] px-4">
+      <ul className="grid grid-cols-2 items-stretch gap-[10px] px-4">
         {content.cards.map((card) => (
           <PrivacyShippingInfoCard key={card.title} card={card} />
         ))}
@@ -271,7 +271,7 @@ export function Section7PrivacyShipping({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex items-center justify-center gap-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (

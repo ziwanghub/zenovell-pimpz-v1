@@ -72,7 +72,7 @@ function HowToOrderStepItem({
         <HowToOrderStepNumber value={item.stepNumber} />
       </div>
 
-      <div className="flex min-h-[88px] items-center gap-4 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-[14px]">
+      <div className="flex min-h-[96px] items-center gap-4 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-[14px]">
         <div className="flex size-[54px] shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.14)] bg-[#171017]">
           <Icon
             aria-hidden="true"
@@ -113,7 +113,7 @@ function HowToOrderPromoCard({
       </div>
 
       <div className="relative flex min-h-[126px] items-center">
-        <div className="flex max-w-[62%] min-w-0 flex-col justify-center px-5 py-4">
+        <div className="flex max-w-[65%] min-w-0 flex-col justify-center px-4 py-4 md:max-w-[62%] md:px-5">
           <div className="flex items-center gap-3">
             <ShieldCheck
               aria-hidden="true"
@@ -227,7 +227,7 @@ export function Section6HowToOrder({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex items-center justify-center gap-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (

@@ -69,14 +69,14 @@ function WhyChooseBenefitIcon({
 
 function WhyChooseBenefitItem({ item }: { item: Section5BenefitItem }) {
   return (
-    <li className="grid min-h-[96px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-4 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-[14px]">
+    <li className="grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)]">
       <WhyChooseBenefitIcon iconName={item.iconName} />
 
       <div className="min-w-0">
-        <h3 className="text-[15px] font-extrabold leading-[1.25] text-white">
+        <h3 className="text-[15px] font-extrabold leading-[1.28] text-white min-[390px]:text-[16px]">
           {item.title}
         </h3>
-        <p className="mt-1 text-[11px] leading-[1.5] text-white/68">
+        <p className="mt-1.5 text-[11px] leading-[1.52] text-white/68 min-[390px]:text-[11.5px]">
           {item.description}
         </p>
       </div>
@@ -96,27 +96,28 @@ function WhyChoosePromoCard({
   promo: Section5WhyChooseUsContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-3 min-h-[132px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#160B11]">
+    <div className="relative mx-4 mt-4 min-h-[154px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
           alt={promo.imageAlt}
           fill
           sizes="(max-width: 430px) 100vw, 430px"
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: "76% center" }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.96)_0%,rgba(22,11,17,0.84)_38%,rgba(22,11,17,0.2)_72%,rgba(22,11,17,0.08)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.97)_0%,rgba(22,11,17,0.92)_34%,rgba(22,11,17,0.4)_62%,rgba(22,11,17,0.1)_100%)]" />
       </div>
 
-      <div className="relative flex min-h-[132px] items-center">
-        <div className="flex max-w-[62%] min-w-0 flex-col justify-center px-5 py-4">
-          <p className="text-[14px] font-bold leading-[1.3] text-white">
+      <div className="relative flex min-h-[154px] items-center">
+        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-5 min-[390px]:max-w-[54%]">
+          <p className="text-[14px] font-bold leading-[1.32] text-white min-[390px]:text-[15px]">
             {promo.title}
           </p>
-          <p className="mt-1 text-[14px] font-bold leading-[1.3] text-[#E91E8C]">
+          <p className="mt-1.5 text-[15px] font-extrabold leading-[1.28] text-[#E91E8C] min-[390px]:text-[16px]">
             {promo.highlight}
           </p>
-          <p className="mt-2 text-[12px] leading-[1.45] text-white/72">
+          <p className="mt-2.5 max-w-[92%] text-[12px] leading-[1.5] text-white/72">
             {promo.description}
           </p>
         </div>
@@ -134,13 +135,13 @@ function FinalLineCTA({
     <a
       aria-label={ariaLabel}
       href={href}
-      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex h-[58px] w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.42),0_10px_30px_rgba(0,0,0,0.18)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />
       </IconWrapper>
 
-      <span className="min-w-0 flex-1 text-[17px] font-bold leading-none">
+      <span className="min-w-0 flex-1 text-[16px] font-bold leading-none min-[390px]:text-[17px]">
         {label}
       </span>
 
@@ -185,19 +186,19 @@ export function Section5WhyChooseUs({
     <section
       id="section-5-why-choose-us"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-7"
     >
-      <div className="px-4 pt-7 pb-[18px] text-center">
+      <div className="px-4 pt-8 pb-5 text-center">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white">
+        <h2 className="mt-3.5 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[14px] leading-[1.5] text-white/65">
+        <p className="mt-2.5 text-[14px] leading-[1.55] text-white/65">
           {content.subtitle}
         </p>
       </div>
 
-      <ul className="space-y-2.5 px-4">
+      <ul className="space-y-3 px-4">
         {content.benefits.map((item) => (
           <WhyChooseBenefitItem key={item.title} item={item} />
         ))}
@@ -205,11 +206,11 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-[14px]">
+      <div className="px-4 pt-[18px]">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex items-center justify-center gap-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-4 text-center">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? <span aria-hidden="true" className="text-white/28">•</span> : null}

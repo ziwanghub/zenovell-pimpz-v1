@@ -82,19 +82,19 @@ function FinalBenefitItem({ item }: { item: Section10BenefitItem }) {
   const Icon = benefitIconByName[item.iconName];
 
   return (
-    <li className="flex items-center gap-3.5 border-b border-[rgba(233,30,140,0.14)] py-3.5 last:border-b-0 last:pb-0 first:pt-0">
-      <div className="flex size-[46px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.28)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.1),rgba(233,30,140,0.03)_72%)] shadow-[0_0_14px_rgba(233,30,140,0.09)]">
+    <li className="flex items-center gap-3 border-b border-[rgba(233,30,140,0.14)] py-3 last:border-b-0 last:pb-0 first:pt-0 md:gap-3.5 md:py-3.5">
+      <div className="flex size-[42px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.28)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.1),rgba(233,30,140,0.03)_72%)] shadow-[0_0_14px_rgba(233,30,140,0.09)] md:size-[46px]">
         <Icon
           aria-hidden="true"
-          className="size-[22px] text-[#FF4DA6]"
+          className="size-[20px] text-[#FF4DA6] md:size-[22px]"
           strokeWidth={1.9}
         />
       </div>
       <div className="min-w-0">
-        <p className="text-[15px] font-extrabold leading-[1.15] text-white">
+        <p className="text-[14px] font-extrabold leading-[1.15] text-white md:text-[15px]">
           {item.title}
         </p>
-        <p className="mt-1.5 text-[12px] leading-[1.4] text-white/70">
+        <p className="mt-1 text-[11px] leading-[1.35] text-white/70 md:mt-1.5 md:text-[12px] md:leading-[1.4]">
           {item.description}
         </p>
       </div>
@@ -112,14 +112,14 @@ function AvatarCluster({
         <div
           key={avatar.id}
           aria-hidden="true"
-          className={`relative flex size-[46px] items-center justify-center overflow-hidden rounded-full border-[2.5px] border-[#130D11] text-[15px] font-bold leading-none ring-1 ring-[rgba(255,255,255,0.08)] shadow-[0_0_14px_rgba(233,30,140,0.18)] ${avatarToneClassByName[avatar.tone]} ${
+          className={`relative flex size-[40px] items-center justify-center overflow-hidden rounded-full border-[2.5px] border-[#130D11] text-[13px] font-bold leading-none ring-1 ring-[rgba(255,255,255,0.08)] shadow-[0_0_14px_rgba(233,30,140,0.18)] md:size-[46px] md:text-[15px] ${avatarToneClassByName[avatar.tone]} ${
             index > 0 ? "-ml-2" : ""
           }`}
         >
           {avatar.initials}
         </div>
       ))}
-      <div className="-ml-2 flex size-[46px] items-center justify-center rounded-full border-[2.5px] border-[#130D11] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),rgba(18,13,16,1)_72%)] text-[12px] font-bold leading-none text-white ring-1 ring-[rgba(255,255,255,0.08)] shadow-[0_0_14px_rgba(233,30,140,0.18)]">
+      <div className="-ml-2 flex size-[40px] items-center justify-center rounded-full border-[2.5px] border-[#130D11] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),rgba(18,13,16,1)_72%)] text-[11px] font-bold leading-none text-white ring-1 ring-[rgba(255,255,255,0.08)] shadow-[0_0_14px_rgba(233,30,140,0.18)] md:size-[46px] md:text-[12px]">
         {overflowLabel}
       </div>
     </div>
@@ -132,8 +132,8 @@ function SocialProofStrip({
   socialProof: Section10FinalCtaContent["socialProof"];
 }) {
   return (
-    <div className="mx-4 mt-4 rounded-[18px] border border-[rgba(233,30,140,0.28)] bg-[linear-gradient(180deg,rgba(19,13,17,0.98),rgba(15,10,13,0.98))] px-4 py-[18px] shadow-[0_0_22px_rgba(233,30,140,0.1)]">
-      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3.5">
+    <div className="mx-3 mt-3 rounded-[18px] border border-[rgba(233,30,140,0.28)] bg-[linear-gradient(180deg,rgba(19,13,17,0.98),rgba(15,10,13,0.98))] px-3 py-3.5 shadow-[0_0_22px_rgba(233,30,140,0.1)] md:mx-4 md:mt-4 md:px-4 md:py-[18px]">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
         <AvatarCluster
           avatars={socialProof.avatars}
           overflowLabel={socialProof.overflowLabel}
@@ -143,25 +143,25 @@ function SocialProofStrip({
         />
 
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center justify-between gap-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="min-w-0">
-              <p className="text-[16px] font-extrabold leading-[1.15] tracking-[-0.01em] text-[#FF4DA6]">
+              <p className="text-[15px] font-extrabold leading-[1.15] tracking-[-0.01em] text-[#FF4DA6] md:text-[16px]">
                 {socialProof.trustCountLabel}
               </p>
-              <p className="mt-1 text-[12px] leading-[1.35] text-white/80">
+              <p className="mt-0.5 text-[11px] leading-[1.3] text-white/80 md:mt-1 md:text-[12px] md:leading-[1.35]">
                 {socialProof.trustDescription}
               </p>
             </div>
 
             <div
               aria-label={socialProof.starsLabel}
-              className="flex shrink-0 gap-1.5 rounded-full border border-[rgba(233,30,140,0.18)] bg-[rgba(233,30,140,0.05)] px-2.5 py-1.5 shadow-[inset_0_0_10px_rgba(233,30,140,0.08)]"
+              className="flex shrink-0 gap-1 rounded-full border border-[rgba(233,30,140,0.18)] bg-[rgba(233,30,140,0.05)] px-2 py-1 shadow-[inset_0_0_10px_rgba(233,30,140,0.08)] md:gap-1.5 md:px-2.5 md:py-1.5"
             >
               {Array.from({ length: 5 }, (_, index) => (
                 <Star
                   key={index}
                   aria-hidden="true"
-                  className="size-[15px] fill-[#E91E8C] text-[#E91E8C] drop-shadow-[0_0_5px_rgba(233,30,140,0.35)]"
+                  className="size-[13px] fill-[#E91E8C] text-[#E91E8C] drop-shadow-[0_0_5px_rgba(233,30,140,0.35)] md:size-[15px]"
                   strokeWidth={1.8}
                 />
               ))}
@@ -177,11 +177,11 @@ function GuaranteeShield() {
   return (
     <div
       aria-hidden="true"
-      className="relative flex size-[96px] shrink-0 items-center justify-center rounded-[24px] border border-[rgba(233,30,140,0.24)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] shadow-[0_0_22px_rgba(233,30,140,0.16)]"
+      className="relative flex size-[82px] shrink-0 items-center justify-center rounded-[22px] border border-[rgba(233,30,140,0.24)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] shadow-[0_0_22px_rgba(233,30,140,0.16)] md:size-[96px] md:rounded-[24px]"
     >
-      <div className="absolute inset-3 rounded-[20px] border border-[rgba(233,30,140,0.12)]" />
+      <div className="absolute inset-2.5 rounded-[18px] border border-[rgba(233,30,140,0.12)] md:inset-3 md:rounded-[20px]" />
       <ShieldCheck
-        className="size-12 text-[#FF4DA6] drop-shadow-[0_0_10px_rgba(233,30,140,0.45)]"
+        className="size-10 text-[#FF4DA6] drop-shadow-[0_0_10px_rgba(233,30,140,0.45)] md:size-12"
         strokeWidth={2.1}
       />
     </div>
@@ -194,18 +194,18 @@ function GuaranteeCard({
   guaranteeCard: Section10FinalCtaContent["guaranteeCard"];
 }) {
   return (
-    <div className="mx-4 mt-4 rounded-[18px] border border-[rgba(233,30,140,0.24)] bg-[#130D11] px-[18px] py-[18px] shadow-[0_0_16px_rgba(233,30,140,0.06)]">
-      <div className="grid grid-cols-[1.2fr_1px_0.95fr] items-center gap-[18px]">
-        <div className="flex min-w-0 items-center gap-3.5">
+    <div className="mx-3 mt-3 rounded-[18px] border border-[rgba(233,30,140,0.24)] bg-[#130D11] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.06)] md:mx-4 md:mt-4 md:px-[18px] md:py-[18px]">
+      <div className="grid grid-cols-[1.1fr_1px_0.95fr] items-center gap-3 md:grid-cols-[1.2fr_1px_0.95fr] md:gap-[18px]">
+        <div className="flex min-w-0 items-center gap-3">
           <GuaranteeShield />
           <div className="min-w-0">
-            <p className="text-[18px] font-extrabold leading-[1.15] text-white">
+            <p className="text-[17px] font-extrabold leading-[1.15] text-white md:text-[18px]">
               {guaranteeCard.title}
             </p>
-            <p className="mt-2 text-[14px] font-bold leading-[1.35] text-[#E91E8C]">
+            <p className="mt-1.5 text-[13px] font-bold leading-[1.3] text-[#E91E8C] md:mt-2 md:text-[14px] md:leading-[1.35]">
               {guaranteeCard.highlight}
             </p>
-            <p className="mt-1.5 text-[12px] leading-[1.35] text-white/72">
+            <p className="mt-1 text-[11px] leading-[1.3] text-white/72 md:mt-1.5 md:text-[12px] md:leading-[1.35]">
               {guaranteeCard.description}
             </p>
           </div>
@@ -213,23 +213,23 @@ function GuaranteeCard({
 
         <div
           aria-hidden="true"
-          className="h-full min-h-[104px] w-px bg-[linear-gradient(180deg,rgba(233,30,140,0.02),rgba(233,30,140,0.24),rgba(233,30,140,0.02))]"
+          className="h-full min-h-[88px] w-px bg-[linear-gradient(180deg,rgba(233,30,140,0.02),rgba(233,30,140,0.24),rgba(233,30,140,0.02))] md:min-h-[104px]"
         />
 
         <div className="min-w-0">
-          <div className="flex items-center gap-3.5">
-            <div className="flex size-[58px] shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.05)]">
+          <div className="flex items-center gap-2.5 md:gap-3.5">
+            <div className="flex size-[50px] shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.05)] md:size-[58px] md:rounded-[16px]">
               <Package
                 aria-hidden="true"
-                className="size-8 text-[#FF4DA6]"
+                className="size-7 text-[#FF4DA6] md:size-8"
                 strokeWidth={1.8}
               />
             </div>
             <div className="min-w-0">
-              <p className="text-[17px] font-extrabold leading-[1.1] text-white">
+              <p className="text-[15px] font-extrabold leading-[1.1] text-white md:text-[17px]">
                 {guaranteeCard.shippingTitle}
               </p>
-              <div className="mt-1.5 text-[12px] leading-[1.35] text-white/72">
+              <div className="mt-1 text-[11px] leading-[1.3] text-white/72 md:mt-1.5 md:text-[12px] md:leading-[1.35]">
                 {guaranteeCard.shippingLines.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -251,7 +251,7 @@ function FinalLineCta({
     <a
       href={primaryCta.href}
       aria-label={primaryCta.ariaLabel}
-      className="block rounded-[22px] bg-[#E91E8C] px-5 py-4 text-white shadow-[0_0_24px_rgba(233,30,140,0.38)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_30px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="block rounded-[22px] bg-[#E91E8C] px-4 py-3.5 text-white shadow-[0_0_24px_rgba(233,30,140,0.38)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_30px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] md:px-5 md:py-4"
       onClick={(e) => {
         activateLineCta({
           title: primaryCta.label,
@@ -264,24 +264,24 @@ function FinalLineCta({
         e.preventDefault();
       }}
     >
-      <div className="flex items-center gap-3">
-        <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">
-          <LineIcon size={28} />
+      <div className="flex items-center gap-2.5 md:gap-3">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white md:size-12">
+          <LineIcon size={24} />
         </span>
 
         <div className="min-w-0 flex-1">
-          <p className="text-[17px] font-extrabold leading-[1.15]">
+          <p className="text-[16px] font-extrabold leading-[1.15] md:text-[17px]">
             {primaryCta.label}
           </p>
-          <p className="mt-1 text-[12px] leading-[1.35] text-white/88">
+          <p className="mt-0.5 text-[11px] leading-[1.3] text-white/88 md:mt-1 md:text-[12px] md:leading-[1.35]">
             {primaryCta.description}
           </p>
         </div>
 
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/35">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-white/35 md:size-10">
           <ChevronRight
             aria-hidden="true"
-            className="size-6 text-white"
+            className="size-5 text-white md:size-6"
             strokeWidth={2}
           />
         </span>
@@ -294,17 +294,17 @@ function FinalTrustItem({ item }: { item: Section10TrustItem }) {
   const Icon = trustIconByName[item.iconName];
 
   return (
-    <div className="flex min-w-0 items-start gap-2.5">
+    <div className="flex min-w-0 items-start gap-2">
       <Icon
         aria-hidden="true"
-        className="mt-0.5 size-5 shrink-0 text-[#E91E8C]"
+        className="mt-0.5 size-[18px] shrink-0 text-[#E91E8C] md:size-5"
         strokeWidth={1.9}
       />
       <div className="min-w-0">
-        <p className="text-[12px] font-bold leading-[1.2] text-white">
+        <p className="text-[11px] font-bold leading-[1.2] text-white md:text-[12px]">
           {item.title}
         </p>
-        <p className="mt-1 text-[11px] leading-[1.3] text-white/65">
+        <p className="mt-0.5 text-[10px] leading-[1.25] text-white/65 md:mt-1 md:text-[11px] md:leading-[1.3]">
           {item.description}
         </p>
       </div>
@@ -321,9 +321,9 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
     <section
       id="section-10-final-cta"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-7"
+      className="bg-[#0A0A0A] pb-8"
     >
-      <div className="px-4 pt-7 pb-4 text-center">
+      <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4">
         <SectionBadge label={content.sectionLabel} />
         <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px]">
           <span className="block">
@@ -341,9 +341,9 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
         </p>
       </div>
 
-      <div className="px-4">
-        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-4">
-          <div className="relative min-h-[312px] overflow-hidden rounded-[24px]">
+      <div className="px-3 md:px-4">
+        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4">
+          <div className="relative min-h-[268px] md:min-h-[312px] overflow-hidden rounded-[24px]">
             <Image
               src={content.heroArtwork.src}
               alt={content.heroArtwork.alt}
@@ -365,20 +365,20 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
       <SocialProofStrip socialProof={content.socialProof} />
       <GuaranteeCard guaranteeCard={content.guaranteeCard} />
 
-      <div className="px-4 pt-5">
+      <div className="px-3 pt-4 md:px-4 md:pt-5">
         <FinalLineCta primaryCta={content.primaryCta} />
       </div>
 
-      <div className="px-4 pt-5">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-4.5 rounded-[18px] px-1 py-1">
+      <div className="px-3 pt-4 md:px-4 md:pt-5">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5">
           {content.trustItems.map((item) => (
             <FinalTrustItem key={item.id} item={item} />
           ))}
         </div>
       </div>
 
-      <div className="px-4 pt-5 text-center">
-        <p className="text-[15px] leading-[1.45] text-white/82">
+      <div className="px-3 pt-4 text-center md:px-4 md:pt-5">
+        <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45]">
           {content.finalReassurance.prefix}{" "}
           <span className="font-bold text-[#E91E8C]">
             {content.finalReassurance.highlight}

@@ -60,12 +60,12 @@ function ReviewSummaryCard({
 }) {
   return (
     <div className="mx-4 rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4">
-      <div className="grid grid-cols-[44%_56%] gap-4">
+      <div className="grid grid-cols-[40%_60%] gap-3 min-[375px]:grid-cols-[44%_56%] min-[375px]:gap-4">
         <div className="border-r border-[rgba(233,30,140,0.16)] pr-4 text-center">
           <p className="text-[14px] leading-[1.35] text-white/72">
             {summary.title}
           </p>
-          <p className="mt-2 text-[60px] font-extrabold leading-none text-[#FF4DA6]">
+          <p className="mt-2 text-[48px] font-extrabold leading-none text-[#FF4DA6] min-[375px]:text-[54px] min-[390px]:text-[60px]">
             {summary.score}
           </p>
           <div className="mt-2 flex justify-center gap-1">
@@ -130,12 +130,12 @@ function ReviewProductChip({ product }: { product: Section8ReviewCard["product"]
 
 function ReviewCard({ review }: { review: Section8ReviewCard }) {
   return (
-    <li className="rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px]">
       <div className="flex gap-3">
         <ReviewAvatar initial={review.initial} />
 
         <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex min-h-[42px] items-start justify-between gap-3">
             <div className="min-w-0">
               <h3 className="text-[16px] font-extrabold leading-[1.2] text-white">
                 {review.name}
@@ -166,9 +166,9 @@ function ReviewCard({ review }: { review: Section8ReviewCard }) {
             <ReviewPurchaseBadge label={review.purchaseBadge} />
           </div>
 
-          <div className="mt-3 space-y-1.5 text-[14px] leading-[1.5] text-white/86">
+          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86">
             {review.reviewLines.map((line) => (
-              <p key={line}>{line}</p>
+              <p key={line} className="line-clamp-2">{line}</p>
             ))}
           </div>
 
@@ -292,7 +292,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex items-center justify-center gap-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (

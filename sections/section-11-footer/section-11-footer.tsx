@@ -60,17 +60,6 @@ const socialIconByPlatform: Record<
   tiktok: TikTokApproxIcon,
 };
 
-const paymentBadgeClassByVariant: Record<
-  Section11FooterPaymentItem["variant"],
-  string
-> = {
-  visa: "tracking-[0.12em] text-[#9EC5FF]",
-  mastercard:
-    "bg-[linear-gradient(90deg,rgba(255,112,67,0.18),rgba(255,193,7,0.16))] text-[#FFD59B]",
-  promptpay: "tracking-[0.03em] text-[#C7D6FF]",
-  cod: "tracking-[0.02em] text-white/90",
-};
-
 function MessageCircleLineIcon({
   className,
 }: {
@@ -221,13 +210,13 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
         </h3>
       </div>
 
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-5 space-y-3">
         {column.items.map((item) => (
           <li key={item.id}>
             <a
               href={item.href}
               aria-label={item.ariaLabel}
-              className="group flex items-start gap-1.5 text-[11.5px] leading-[1.35] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
+              className="group flex items-start gap-2 text-[11.5px] leading-[1.45] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
               onClick={(e) => {
                 analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
                   surface: "footer",
@@ -263,7 +252,7 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
 function ContactItem({ item }: { item: Section11FooterContactItem }) {
   const Icon = contactIconByName[item.iconName];
   const sharedClassName =
-    "group flex items-start gap-3 rounded-[14px] border border-transparent px-2.5 py-2.5 transition-[border-color,background-color,color] duration-150";
+    "group flex items-start gap-3.5 rounded-[14px] border border-transparent px-2.5 py-3 transition-[border-color,background-color,color] duration-150";
 
   const resolvedHref = item.destinationId
     ? ctaDestinations.find((d) => d.id === item.destinationId)?.href || item.href || "#"
@@ -271,7 +260,7 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
 
   const content = (
     <>
-      <span className="flex size-11 shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.24)] bg-[linear-gradient(180deg,rgba(233,30,140,0.12),rgba(233,30,140,0.04))] shadow-[0_0_10px_rgba(233,30,140,0.08)]">
+      <span className="flex size-12 shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.24)] bg-[linear-gradient(180deg,rgba(233,30,140,0.12),rgba(233,30,140,0.04))] shadow-[0_0_10px_rgba(233,30,140,0.08)]">
         <Icon
           aria-hidden="true"
           className="size-[22px] text-[#FF4DA6]"
@@ -282,11 +271,11 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
         <p className="text-[12px] font-bold leading-none text-white">
           {item.label}
         </p>
-        <p className="mt-2 text-[13px] font-semibold leading-[1.25] text-white/90">
+        <p className="mt-2.5 text-[13px] font-semibold leading-[1.34] text-white/90">
           {item.value}
         </p>
         {item.subtext ? (
-          <p className="mt-1 text-[11px] leading-[1.3] text-white/60">
+          <p className="mt-2 text-[11px] leading-[1.5] text-white/60">
             {item.subtext}
           </p>
         ) : null}
@@ -348,11 +337,53 @@ function FooterSocialIconLink({ item }: { item: Section11FooterSocialItem }) {
 }
 
 function FooterPaymentBadge({ item }: { item: Section11FooterPaymentItem }) {
+  const sharedClassName =
+    "flex min-h-[46px] w-full items-center justify-center rounded-[12px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]";
+
+  if (item.variant === "visa") {
+    return (
+      <span className={sharedClassName} aria-label={item.label}>
+        <svg aria-hidden="true" viewBox="0 0 64 24" className="h-5 w-[50px]">
+          <text x="5" y="17" fill="#2E6BFF" fontSize="14" fontWeight="800" fontFamily="Arial, sans-serif" letterSpacing="1.2">VISA</text>
+        </svg>
+      </span>
+    );
+  }
+
+  if (item.variant === "mastercard") {
+    return (
+      <span className={sharedClassName} aria-label={item.label}>
+        <svg aria-hidden="true" viewBox="0 0 64 24" className="h-5 w-[50px]">
+          <circle cx="24" cy="12" r="7" fill="#EA5B0C" />
+          <circle cx="38" cy="12" r="7" fill="#FFB600" fillOpacity="0.9" />
+        </svg>
+      </span>
+    );
+  }
+
+  if (item.variant === "jcb") {
+    return (
+      <span className={sharedClassName} aria-label={item.label}>
+        <svg aria-hidden="true" viewBox="0 0 64 24" className="h-5 w-[50px]">
+          <rect x="10" y="4" width="14" height="16" rx="3" fill="#005BAC" />
+          <rect x="24" y="4" width="14" height="16" rx="3" fill="#E60012" />
+          <rect x="38" y="4" width="14" height="16" rx="3" fill="#009944" />
+          <text x="14" y="16" fill="white" fontSize="9" fontWeight="800" fontFamily="Arial, sans-serif">J</text>
+          <text x="28" y="16" fill="white" fontSize="9" fontWeight="800" fontFamily="Arial, sans-serif">C</text>
+          <text x="42" y="16" fill="white" fontSize="9" fontWeight="800" fontFamily="Arial, sans-serif">B</text>
+        </svg>
+      </span>
+    );
+  }
+
   return (
-    <span
-      className={`inline-flex min-h-10 items-center justify-center rounded-[12px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-3 py-2 text-[11px] font-extrabold uppercase shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] ${paymentBadgeClassByVariant[item.variant]}`}
-    >
-      {item.label}
+    <span className={sharedClassName} aria-label={item.label}>
+      <svg aria-hidden="true" viewBox="0 0 84 24" className="h-5 w-[58px]">
+        <text x="6" y="15" fill="#1C4AA1" fontSize="8.2" fontWeight="700" fontFamily="Arial, sans-serif">PromptPay</text>
+        <rect x="56" y="6" width="7" height="7" rx="1.5" fill="#E74C3C" />
+        <rect x="62" y="6" width="7" height="7" rx="1.5" fill="#3498DB" />
+        <rect x="59" y="12" width="7" height="7" rx="1.5" fill="#2ECC71" />
+      </svg>
     </span>
   );
 }
@@ -364,6 +395,7 @@ export function Section11Footer({
 }) {
   return (
     <footer
+      id="section-11-footer"
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white"
     >
@@ -379,16 +411,16 @@ export function Section11Footer({
 
       <FooterDividerAccent />
 
-      <nav aria-label="เมนูส่วนท้าย" className="mt-5">
-        <div className="grid grid-cols-3 divide-x divide-[rgba(255,255,255,0.08)]">
+      <nav aria-label="เมนูส่วนท้าย" className="mt-6">
+        <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)]">
           {content.navColumns.map((column) => (
             <FooterLinkColumn key={column.id} column={column} />
           ))}
         </div>
       </nav>
 
-      <div className="mt-7 grid grid-cols-2 gap-3">
-        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-3 py-3.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
+      <div className="mt-8 grid grid-cols-2 gap-4">
+        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
           <div className="flex items-center gap-2.5 px-2.5">
             <span className="flex size-8 items-center justify-center rounded-full border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.06)]">
               <MessageCircleLineIcon
@@ -401,14 +433,14 @@ export function Section11Footer({
             </h3>
           </div>
 
-          <div className="mt-3 space-y-1.5">
+          <div className="mt-4 space-y-4">
             {content.contacts.map((item) => (
               <ContactItem key={item.id} item={item} />
             ))}
           </div>
         </section>
 
-        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-3 py-3.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
+        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
           <div className="text-center">
             <h3 className="text-[12px] font-extrabold text-[#FF4DA6]">
               {content.socialCard.title}
@@ -418,14 +450,14 @@ export function Section11Footer({
             </p>
           </div>
 
-          <div className="mt-4 flex justify-center gap-2">
+          <div className="mt-6 flex justify-center gap-3.5">
             {content.socialCard.items.map((item) => (
               <FooterSocialIconLink key={item.id} item={item} />
             ))}
           </div>
 
           <div
-            className="mt-4 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[linear-gradient(180deg,rgba(233,30,140,0.06),rgba(17,17,17,0.92))] px-3 py-3.5"
+            className="mt-6 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[linear-gradient(180deg,rgba(233,30,140,0.06),rgba(17,17,17,0.92))] px-4 py-4.5"
           >
             <div className="flex items-start gap-3">
               <span className="flex size-11 shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.22)] bg-[rgba(233,30,140,0.06)]">
@@ -439,7 +471,7 @@ export function Section11Footer({
                 <p className="text-[15px] font-extrabold leading-[1.15] text-[#FF4DA6]">
                   {content.privacyPanel.title}
                 </p>
-                <div className="mt-2 space-y-1 text-[11px] leading-[1.35] text-white/72">
+                <div className="mt-2.5 space-y-1.5 text-[11px] leading-[1.4] text-white/72">
                   {content.privacyPanel.lines.map((line) => (
                     <p key={line}>{line}</p>
                   ))}
@@ -450,7 +482,7 @@ export function Section11Footer({
         </section>
       </div>
 
-      <section className="mt-4 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.07)]">
+      <section className="mt-5 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-5 shadow-[0_0_16px_rgba(233,30,140,0.07)]">
         <div className="flex items-center gap-3.5">
           <span className="flex size-12 shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
             <Award
@@ -463,35 +495,37 @@ export function Section11Footer({
             <p className="text-[16px] font-extrabold leading-[1.15] text-[#FF4DA6]">
               {content.guarantee.title}
             </p>
-            <p className="mt-1.5 text-[13px] leading-[1.4] text-white/78">
+            <p className="mt-2 text-[13px] leading-[1.45] text-white/78">
               {content.guarantee.description}
             </p>
           </div>
         </div>
       </section>
 
-      <div className="mt-6 flex items-end justify-between gap-4 border-b border-white/8 pb-4">
+      <div className="mt-7 border-b border-white/8 pb-5">
+        <div className="flex flex-col gap-4 min-[390px]:flex-row min-[390px]:items-end min-[390px]:justify-between min-[390px]:gap-4">
         <div className="min-w-0">
           <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
             {content.brand.name}
           </p>
-          <p className="mt-2 text-[13px] leading-[1.3] text-white/72">
+          <p className="mt-2.5 text-[13px] leading-[1.35] text-white/72">
             {content.brand.tagline}
           </p>
         </div>
 
-        <div className="min-w-0 text-right">
+        <div className="min-w-0 space-y-1 text-right">
           <p className="text-[12px] leading-[1.4] text-white/70">
             {content.legal.copyright}
           </p>
-          <p className="mt-1 text-[12px] leading-[1.4] text-white/56">
+          <p className="text-[12px] leading-[1.4] text-white/56">
             {content.legal.rights}
           </p>
         </div>
+        </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-[minmax(0,1.1fr)_minmax(0,1.9fr)] items-center gap-3">
-        <div className="flex min-w-0 items-center gap-2.5 rounded-[14px] border border-white/8 bg-[rgba(255,255,255,0.03)] px-3 py-2.5">
+      <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] min-[390px]:items-center">
+        <div className="flex min-w-0 items-center gap-2.5 rounded-[14px] border border-white/8 bg-[rgba(255,255,255,0.03)] px-3 py-3">
           <span className="flex size-9 shrink-0 items-center justify-center rounded-[12px] border border-white/8 bg-[rgba(255,255,255,0.04)]">
             <Lock
               aria-hidden="true"
@@ -511,7 +545,7 @@ export function Section11Footer({
 
         <div
           aria-label="วิธีชำระเงินที่รองรับ"
-          className="grid grid-cols-4 gap-2"
+          className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4"
         >
           {content.payments.map((item) => (
             <FooterPaymentBadge key={item.id} item={item} />

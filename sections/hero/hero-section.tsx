@@ -128,6 +128,7 @@ export function HeroSection({ content }: HeroSectionProps) {
   return (
     <>
       <section
+        id="hero"
         aria-label="Hero - Nicky Pimpz Boss"
         className="hero-root relative overflow-hidden bg-[#0A0A0A]"
       >

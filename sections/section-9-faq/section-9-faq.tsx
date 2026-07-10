@@ -38,12 +38,12 @@ function FaqShieldIllustration() {
   return (
     <div
       aria-hidden="true"
-      className="relative flex min-h-[112px] items-center justify-center rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] shadow-[0_0_26px_rgba(233,30,140,0.18)]"
+      className="relative flex min-h-[88px] items-center justify-center rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] shadow-[0_0_26px_rgba(233,30,140,0.18)] md:min-h-[112px]"
     >
       <div className="absolute inset-x-4 bottom-3 h-4 rounded-full bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.22),rgba(233,30,140,0)_72%)]" />
       <div className="absolute inset-4 rounded-[16px] border border-[rgba(233,30,140,0.08)]" />
       <ShieldCheck
-        className="size-14 text-[#FF4DA6] drop-shadow-[0_0_12px_rgba(233,30,140,0.55)]"
+        className="size-10 text-[#FF4DA6] drop-shadow-[0_0_12px_rgba(233,30,140,0.55)] md:size-14"
         strokeWidth={2.1}
       />
     </div>
@@ -224,7 +224,7 @@ function FaqItemRow({
       >
         <FaqQuestionBadge />
         <span
-          className={`min-w-0 flex-1 text-[16px] leading-[1.35] ${
+          className={`line-clamp-2 min-w-0 flex-1 text-[16px] leading-[1.35] ${
             isOpen ? "font-extrabold text-[#FF4DA6]" : "font-medium text-white"
           }`}
         >
@@ -254,7 +254,7 @@ function FaqItemRow({
           aria-labelledby={buttonId}
           className="px-4 pb-4"
         >
-          <div className="grid grid-cols-[104px_minmax(0,1fr)] gap-3 border-t border-[rgba(233,30,140,0.12)] pt-4">
+          <div className="grid grid-cols-[88px_minmax(0,1fr)] gap-3 border-t border-[rgba(233,30,140,0.12)] pt-4 md:grid-cols-[104px_minmax(0,1fr)]">
             <FaqShieldIllustration />
             <div className="space-y-1.5 pt-1 text-[14px] leading-[1.55] text-white/82">
               {item.answerLines.map((line) => (
@@ -288,7 +288,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
         description={content.description}
       />
 
-      <ul className="space-y-3 px-4">
+      <ul className="space-y-3 px-3 md:px-4">
         {content.items.map((item) => (
           <FaqItemRow
             key={item.id}
@@ -303,11 +303,11 @@ export function Section9Faq({ content }: Section9FaqProps) {
 
       <FaqSupportCard supportCard={content.supportCard} />
 
-      <div className="px-4 pt-[14px]">
+      <div className="px-3 pt-3 md:px-4 md:pt-[14px]">
         <FinalLineCTA {...content.primaryCta} />
       </div>
 
-      <ul className="flex items-center justify-center gap-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3 pt-3 md:px-4 md:pt-4 text-center">
         {content.trustItems.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (
