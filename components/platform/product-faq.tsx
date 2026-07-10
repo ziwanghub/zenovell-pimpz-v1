@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -12,51 +13,98 @@ interface ProductFAQProps {
 }
 
 export function ProductFAQ({ faq }: ProductFAQProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const baseId = useId();
+  const [openIndex, setOpenIndex] = useState(0);
 
-  // Safe empty state when rich content is absent
   if (!faq || faq.length === 0) {
     return (
-      <div className="bg-zinc-950 px-6 py-10 text-center text-sm text-white/50">
-        FAQ data not available yet.
-      </div>
+      <section className="px-4 py-4 text-white md:px-0" aria-labelledby={`${baseId}-heading`}>
+        <div className="mx-auto max-w-[430px] rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.96),rgba(8,8,10,0.98))] px-5 py-6 text-center text-sm text-white/55">
+          <h2 id={`${baseId}-heading`} className="text-lg font-semibold text-white">
+            คำถามที่มักเกิดก่อนตัดสินใจ
+          </h2>
+          <p className="mt-2">คำถามที่พบบ่อยจะปรากฏที่นี่เมื่อมีข้อมูลพร้อมแสดงผล</p>
+        </div>
+      </section>
     );
   }
 
   const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(index);
   };
 
   return (
-    <div className="bg-zinc-950 px-6 py-10 text-white">
+    <section className="px-4 py-4 text-white md:px-0" aria-labelledby={`${baseId}-heading`}>
       <div className="mx-auto max-w-[430px]">
-        <h2 className="mb-6 text-2xl font-semibold tracking-tight">FAQ</h2>
+        <div className="mb-3">
+          <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            FAQ
+          </div>
+          <h2
+            id={`${baseId}-heading`}
+            className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white"
+          >
+            คำถามที่มักเกิดก่อนตัดสินใจ
+          </h2>
+          <p className="mt-1 text-[13px] leading-5 text-white/62">
+            รวมคำถามสำคัญจากข้อมูลสินค้าจริง เพื่อช่วยให้ตัดสินใจได้เร็วและชัดเจนขึ้น
+          </p>
+        </div>
 
-        <div className="space-y-2">
-          {faq.map((item, index) => (
-            <div
-              key={index}
-              className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden"
-            >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex justify-between items-center px-5 py-4 text-left font-medium hover:bg-white/5 transition-colors"
-                aria-expanded={openIndex === index}
+        <div className="space-y-2.5">
+          {faq.map((item, index) => {
+            const isOpen = openIndex === index;
+            const triggerId = `${baseId}-faq-trigger-${index}`;
+            const panelId = `${baseId}-faq-panel-${index}`;
+
+            return (
+              <div
+                key={`${item.question}-${index}`}
+                className="overflow-hidden rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
               >
-                <span>{item.question}</span>
-                <span className="text-xl leading-none select-none">
-                  {openIndex === index ? '−' : '+'}
-                </span>
-              </button>
-              {openIndex === index && (
-                <div className="px-5 pb-4 text-sm text-white/80 border-t border-white/10 pt-3">
-                  {item.answer}
+                <button
+                  id={triggerId}
+                  type="button"
+                  onClick={() => toggle(index)}
+                  className="flex min-h-14 w-full items-center justify-between gap-4 px-4.5 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f96] focus-visible:ring-offset-2 focus-visible:ring-offset-[#120c18]"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                >
+                  <span className="text-[15px] font-medium leading-5.5 text-white">
+                    {item.question}
+                  </span>
+                  <span className="inline-flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60">
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={[
+                        'h-4 w-4 transition-transform duration-200',
+                        isOpen ? 'rotate-180 text-white' : '',
+                      ].join(' ')}
+                    />
+                  </span>
+                </button>
+
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={triggerId}
+                  aria-hidden={!isOpen}
+                  className={[
+                    'grid transition-[grid-template-rows,opacity] duration-200 ease-out',
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-70',
+                  ].join(' ')}
+                >
+                  <div className="overflow-hidden">
+                    <div className="border-t border-white/10 px-4.5 pb-3.5 pt-3 text-[14px] leading-5.5 text-white/78">
+                      {item.answer}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -127,7 +127,7 @@ export const siteNavigationGroups: [
       {
         id: "catalog",
         label: "สินค้าทั้งหมด",
-        href: "#section-4",
+        href: "#section-4-product-catalog",
         kind: "anchor",
         ariaLabel: "ไปที่สินค้าทั้งหมด",
         visibility: {
@@ -140,7 +140,7 @@ export const siteNavigationGroups: [
       {
         id: "about",
         label: "เกี่ยวกับเรา",
-        href: "#section-5",
+        href: "#section-5-why-choose-us",
         kind: "anchor",
         ariaLabel: "ไปที่เกี่ยวกับเรา",
         visibility: {
@@ -153,7 +153,7 @@ export const siteNavigationGroups: [
       {
         id: "reviews",
         label: "รีวิวลูกค้า",
-        href: "#section-8",
+        href: "#section-8-reviews",
         kind: "anchor",
         ariaLabel: "ไปที่รีวิวลูกค้า",
         visibility: {
@@ -166,7 +166,7 @@ export const siteNavigationGroups: [
       {
         id: "faq",
         label: "คำถามที่พบบ่อย",
-        href: "#section-9",
+        href: "#section-9-faq",
         kind: "anchor",
         ariaLabel: "ไปที่คำถามที่พบบ่อย",
         visibility: {
@@ -179,7 +179,7 @@ export const siteNavigationGroups: [
       {
         id: "ordering",
         label: "วิธีการสั่งซื้อ",
-        href: "#section-6",
+        href: "#section-6-how-to-order",
         kind: "anchor",
         ariaLabel: "ไปที่วิธีการสั่งซื้อ",
         visibility: {
@@ -206,7 +206,7 @@ export const siteNavigationGroups: [
       {
         id: "contact",
         label: "ติดต่อเรา",
-        href: "#section-11",
+        href: "#section-11-footer",
         kind: "anchor",
         ariaLabel: "ไปที่ติดต่อเรา",
         visibility: {
@@ -308,7 +308,7 @@ export const siteNavigationGroups: [
       {
         id: "consulting",
         label: "ให้คำปรึกษา",
-        href: "#line-primary",
+        href: "https://line.me/ti/p/@zenovell",
         kind: "line",
         ariaLabel: "ไปที่บริการให้คำปรึกษา",
         visibility: {
@@ -321,7 +321,7 @@ export const siteNavigationGroups: [
       {
         id: "line-order",
         label: "การสั่งซื้อผ่าน LINE",
-        href: "#line-primary",
+        href: "https://line.me/ti/p/@zenovell",
         kind: "line",
         ariaLabel: "ไปที่การสั่งซื้อผ่าน LINE",
         visibility: {
