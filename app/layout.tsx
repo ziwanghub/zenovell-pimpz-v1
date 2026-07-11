@@ -4,10 +4,9 @@ import "./globals.css";
 import { DevCacheGuard } from "@/app/dev-cache-guard";
 import { cn } from "@/lib/utils";
 
-// Analytics initialization (GTM is sole authority)
-import { initializeAnalyticsAdapters } from "@/lib/analytics/adapters";
+// GTM script loader + client-side adapter registration (RC1.x)
+import { AnalyticsBootstrap } from "@/components/analytics/analytics-bootstrap";
 import { GoogleTagManager } from "@/components/analytics/google-tag-manager";
-import { isValidGtmContainerId } from "@/lib/analytics/gtm-validation";
 
 const sarabun = Sarabun({
   subsets: ["latin", "thai"],
@@ -63,17 +62,9 @@ export default function RootLayout({
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
-  // Single analytics initialization point.
-  // GTM is the sole tag authority.
-  // - When NEXT_PUBLIC_GTM_ID is present AND valid (GTM-XXXX...) → register GTM adapter
-  // - Otherwise → safe noop (dev / misconfig / invalid value)
-  // The call is kept at module render time for compatibility with existing abstraction.
-  // Adapters themselves are SSR-safe (they no-op when !window).
-  if (isValidGtmContainerId(gtmId)) {
-    initializeAnalyticsAdapters(["gtm"]);
-  } else {
-    initializeAnalyticsAdapters(["noop"]);
-  }
+  // Adapter registration lives in AnalyticsBootstrap (client useEffect only).
+  // Do not call initializeAnalyticsAdapters from this Server Component —
+  // RSC and client runtimes do not share adapterRegistry module state.
 
   const baseUrl = 'https://zenovell.com';
   const siteData = {
@@ -103,7 +94,9 @@ export default function RootLayout({
     <html lang="th" className={cn("font-sans", sarabun.variable)}>
       <body>
         <DevCacheGuard />
-        {/* GTM mounted exactly once at root. GTM is the single tag authority. */}
+        {/* Client adapter bootstrap — must run in browser before CTA analytics. */}
+        <AnalyticsBootstrap />
+        {/* GTM script mounted once at root. GTM is the single tag authority. */}
         <GoogleTagManager gtmId={gtmId} />
         {children}
         <script
