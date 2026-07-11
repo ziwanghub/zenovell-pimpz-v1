@@ -18,7 +18,7 @@
 - GTM container installed (GTM-P7MSP66X)
 - Google tag configured (G-J8HYPV9S4N)
 - GA4 base tracking and page_view
-- LINE canonical authority defined (PENDING full audit)
+- LINE canonical authority defined (PENDING full audit - see Blocked/Pending)
 - Application static path for line_cta_click
 
 ## Partially Verified
@@ -54,6 +54,38 @@ Inspect the GTM line_cta_click tag pause and malware-warning state before author
 5. .z-mos/state/project-state.json for operational state
 6. CURRENT-OPERATING-STATE.md as human/agent boot context
 7. Shutdown/restart checkpoints as historical handoff snapshots (do not override newer state)
+
+## Cold Start Protocol
+
+Version:
+1.0
+
+Continuity Model:
+Repository-Driven
+
+Validation:
+
+✓ Grok CLI
+✓ Codex Independent Cold Start
+
+Current Result:
+
+PASS_WITH_WARNINGS
+
+Purpose:
+
+A newly started AI agent must be able to reconstruct
+the complete operational state from repository-owned
+artifacts without relying on previous chat history.
+
+Primary Authority:
+
+1. Git
+2. .z-mos/state/production-services.json
+3. intent.card.json
+4. truth.contract.json
+5. project-state.json
+6. CURRENT-OPERATING-STATE.md
 
 ## Stop Conditions
 Reference the active profile (ZENOVELL-PRODUCTION-INTEGRATION-PROFILE.md).
