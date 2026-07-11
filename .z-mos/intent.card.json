@@ -1,0 +1,44 @@
+{
+  "schema_version": "3.0.0-agent",
+  "intent": {
+    "objective": "Complete Production Integration and Client Delivery for ZENOVELL-PIMPZ-V4, focusing on GTM/GA4 integration verification.",
+    "strategy": "Verify line_cta_click dataLayer push in active GTM Preview session, repair any GTM tag issues (paused/malware), then mark as Key Event and publish after verification.",
+    "risk_acknowledgement": "Low - static trace passed, runtime verification pending in GTM Preview"
+  },
+  "system": {
+    "scope_files": [
+      "app/layout.tsx",
+      "components/analytics/**",
+      "lib/analytics/**",
+      "lib/commerce/**",
+      "docs/ANALYTICS-GTM-INTEGRATION.md",
+      ".z-mos/**"
+    ],
+    "required_tests": [
+      "npm run validate"
+    ],
+    "stop_conditions": [
+      "GTM publish without active verification",
+      "line_cta_click not confirmed in Data Layer"
+    ],
+    "rollback_plan": "Revert to previous commit if verification fails, preserve GTM-P7MSP66X configuration.",
+    "truth_snapshot_ref": ".z-mos/truth.contract.json"
+  },
+  "agent": {
+    "allowed_tools": ["read", "write-docs", "zmos-state"],
+    "allowed_actions": ["read", "write", "verify"],
+    "max_steps": 50,
+    "termination_conditions": [
+      "attempt to publish GTM without verification",
+      "modification of application source or GTM/GA4 config"
+    ],
+    "enforcement": "hard-block"
+  },
+  "current_phase": "Production Integration and Client Delivery",
+  "next_safe_action": "Inspect the GTM line_cta_click tag pause and malware-warning state before authorizing any GTM publication or additional event verification.",
+  "blockers": [
+    "active line_cta_click runtime verification incomplete",
+    "GA4 Event tag paused with malware warning",
+    "GTM workspace not authorized for publish"
+  ]
+}

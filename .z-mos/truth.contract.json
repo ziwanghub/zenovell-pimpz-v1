@@ -1,0 +1,14 @@
+{
+  "contract_version": "0.5.0",
+  "generated_at": "2026-07-11T12:00:00Z",
+  "contract_hash": "checkpoint-audit-2026-07-11",
+  "code_ref": "0fcd689d2473cec0e7f6de7b982a16fb07473eba",
+  "runtime_ref": "zmos-gen4-clean",
+  "env_ref": "production-preview",
+  "data_ref": "GTM-P7MSP66X + G-J8HYPV9S4N",
+  "asset_ref": "beta.zenovell.com",
+  "gate_state": "verification-pending",
+  "confidence": 0.85,
+  "unknowns": ["active dataLayer verification in GTM Preview", "GA4 tag malware status"],
+  "verdict": "CONTINUE_WITH_RISK"
+}

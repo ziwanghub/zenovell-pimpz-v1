@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "profile": "ZENOVELL_PRODUCTION_INTEGRATION_PROFILE",
+  "updatedAt": "2026-07-11T12:00:00Z",
+  "updatedBy": "grok-cli",
+  "services": {
+    "github": {
+      "repository": "ziwanghub/zenovell-pimpz-v1",
+      "branch": "main",
+      "commit": "0fcd689d2473cec0e7f6de7b982a16fb07473eba",
+      "status": "VERIFIED",
+      "notes": "Up to date with origin/main. Only unrelated untracked report file."
+    },
+    "hostinger": {
+      "site": "https://beta.zenovell.com",
+      "environment_variable": "NEXT_PUBLIC_GTM_ID=GTM-P7MSP66X",
+      "status": "DEPLOYED",
+      "notes": "Environment variable configured per previous deployment. Production preview active."
+    },
+    "gtm": {
+      "container_id": "GTM-P7MSP66X",
+      "google_tag_destination": "G-J8HYPV9S4N",
+      "container_installed": "CONFIGURED",
+      "google_tag_configured": "CONFIGURED",
+      "line_cta_click_tag": "BLOCKED",
+      "publish_status": "BLOCKED",
+      "warnings": ["paused / malware-warning on line_cta_click tag"],
+      "notes": "Container and Google tag installed. line_cta_click tag requires review before publish. No full runtime evidence without warning."
+    },
+    "ga4": {
+      "property": "ZENOVELL Production",
+      "stream": "ZENOVELL Website",
+      "measurement_id": "G-J8HYPV9S4N",
+      "base_tracking": "CONFIGURED",
+      "line_cta_click_verification": "PARTIALLY_VERIFIED",
+      "notes": "Base tracking and page_view observed in prior sessions. line_cta_click pending active Data Layer verification in current session."
+    },
+    "lineOa": {
+      "canonical_url": "https://lin.ee/syjmYE2",
+      "live_dom_evidence": "https://line.me/ti/p/@zenovell observed in prior audit",
+      "status": "PENDING",
+      "notes": "Authority drift audit required. Canonical must be enforced."
+    },
+    "searchConsole": {
+      "status": "NOT_STARTED",
+      "notes": "Deferred per current sprint focus."
+    },
+    "googleAds": {
+      "status": "NOT_STARTED",
+      "notes": "Deferred per current sprint focus."
+    },
+    "clientDelivery": {
+      "status": "PENDING",
+      "notes": "Awaiting smoke test, integration verification, and GTM publish after verification."
+    }
+  },
+  "currentBlockers": [
+    "GTM line_cta_click tag paused/malware warning review required",
+    "active line_cta_click runtime verification incomplete",
+    "LINE URL authority drift audit pending"
+  ],
+  "nextSafeAction": "Inspect the GTM line_cta_click tag pause and malware-warning state before authorizing any GTM publication or additional event verification."
+}
