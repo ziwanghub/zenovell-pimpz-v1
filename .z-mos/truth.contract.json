@@ -1,14 +1,19 @@
 {
   "contract_version": "0.5.0",
-  "generated_at": "2026-07-11T12:00:00Z",
-  "contract_hash": "checkpoint-audit-2026-07-11",
-  "code_ref": "0fcd689d2473cec0e7f6de7b982a16fb07473eba",
-  "runtime_ref": "zmos-gen4-clean",
-  "env_ref": "production-preview",
+  "generated_at": "2026-07-11T12:30:00Z",
+  "contract_hash": "rc3-closure-2026-07-11",
+  "code_ref": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
+  "runtime_ref": "beta.zenovell.com",
+  "env_ref": "production-candidate",
   "data_ref": "GTM-P7MSP66X + G-J8HYPV9S4N",
   "asset_ref": "beta.zenovell.com",
-  "gate_state": "verification-pending",
-  "confidence": 0.85,
-  "unknowns": ["active dataLayer verification in GTM Preview", "GA4 tag malware status"],
-  "verdict": "CONTINUE_WITH_RISK"
+  "gate_state": "rc3-complete-gtm-publish-pending",
+  "confidence": 0.93,
+  "unknowns": [
+    "GTM Ecommerce setting residual on line_cta_click tag before publish",
+    "GTM tag pause/warning residual before publish",
+    "public post-publish conversion path"
+  ],
+  "verdict": "CONTINUE_WITH_RISK",
+  "notes": "RC1–RC3 application and Preview/Realtime paths verified. Do not publish GTM or switch production domain without separate authorization."
 }

@@ -1,16 +1,14 @@
 {
   "schema_version": "3.0.0-agent",
   "intent": {
-    "objective": "Complete Production Integration and Client Delivery for ZENOVELL-PIMPZ-V4, focusing on GTM/GA4 integration verification.",
-    "strategy": "Verify line_cta_click dataLayer push in active GTM Preview session, repair any GTM tag issues (paused/malware), then mark as Key Event and publish after verification.",
-    "risk_acknowledgement": "Low - static trace passed, runtime verification pending in GTM Preview"
+    "objective": "Advance Production Integration after RC3 COMPLETE: prepare next approved release gate while keeping beta.zenovell.com as Production Candidate and zenovell.com unreleased.",
+    "strategy": "Do not change application source. Verify GTM publish prerequisites (Ecommerce, pause, warnings) before any GTM publish authorization. Then proceed to Search Console / Ads readiness / full smoke only under explicit Owner gates.",
+    "risk_acknowledgement": "Low for application path (RC1–RC3 verified). Residual risk is GTM publish configuration debt and unreleased production domain."
   },
   "system": {
     "scope_files": [
-      "app/layout.tsx",
-      "components/analytics/**",
-      "lib/analytics/**",
-      "lib/commerce/**",
+      "docs/handoff/**",
+      "docs/reports/phase6/**",
       "docs/ANALYTICS-GTM-INTEGRATION.md",
       ".z-mos/**"
     ],
@@ -18,10 +16,11 @@
       "npm run validate"
     ],
     "stop_conditions": [
-      "GTM publish without active verification",
-      "line_cta_click not confirmed in Data Layer"
+      "GTM publish without explicit Owner authorization",
+      "application source change without proven defect",
+      "production switch to zenovell.com without Production Gate"
     ],
-    "rollback_plan": "Revert to previous commit if verification fails, preserve GTM-P7MSP66X configuration.",
+    "rollback_plan": "Documentation/state-only rollback via git revert of RC3 closure commit. Application runtime remains d16191f-based RC1+RC2 code.",
     "truth_snapshot_ref": ".z-mos/truth.contract.json"
   },
   "agent": {
@@ -29,16 +28,24 @@
     "allowed_actions": ["read", "write", "verify"],
     "max_steps": 50,
     "termination_conditions": [
-      "attempt to publish GTM without verification",
-      "modification of application source or GTM/GA4 config"
+      "attempt to publish GTM without verification and authorization",
+      "modification of application source or GTM/GA4 config without authority"
     ],
     "enforcement": "hard-block"
   },
   "current_phase": "Production Integration and Client Delivery",
-  "next_safe_action": "Inspect the GTM line_cta_click tag pause and malware-warning state before authorizing any GTM publication or additional event verification.",
+  "rc_status": {
+    "RC1": "COMPLETE",
+    "RC2": "COMPLETE",
+    "RC3": "COMPLETE"
+  },
+  "next_safe_action": "Prepare and execute the next approved Production Integration release gate without changing application source; verify GTM publish prerequisites before any publish authorization.",
   "blockers": [
-    "active line_cta_click runtime verification incomplete",
-    "GA4 Event tag paused with malware warning",
-    "GTM workspace not authorized for publish"
+    "GTM publication not authorized",
+    "GTM publish prerequisites (Ecommerce/pause/warning) open until Owner UI re-confirm",
+    "Published public GTM conversion path not verified after publish",
+    "Search Console not started",
+    "Google Ads not started",
+    "Production switch not authorized"
   ]
 }

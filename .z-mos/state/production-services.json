@@ -1,63 +1,82 @@
 {
   "schemaVersion": "1.0.0",
   "profile": "ZENOVELL_PRODUCTION_INTEGRATION_PROFILE",
-  "updatedAt": "2026-07-11T12:00:00Z",
+  "updatedAt": "2026-07-11T12:30:00Z",
   "updatedBy": "grok-cli",
+  "sourceHeadAtClosure": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
+  "rcGates": {
+    "RC1": "COMPLETE",
+    "RC2": "COMPLETE",
+    "RC3": "COMPLETE"
+  },
   "services": {
     "github": {
       "repository": "ziwanghub/zenovell-pimpz-v1",
       "branch": "main",
-      "commit": "0fcd689d2473cec0e7f6de7b982a16fb07473eba",
+      "commit": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
       "status": "VERIFIED",
-      "notes": "Up to date with origin/main. Only unrelated untracked report file."
+      "notes": "RC3 closure records application source HEAD d16191f (RC1+RC2 code). Documentation closure commit may supersede HEAD after push."
     },
     "hostinger": {
       "site": "https://beta.zenovell.com",
       "environment_variable": "NEXT_PUBLIC_GTM_ID=GTM-P7MSP66X",
       "status": "DEPLOYED",
-      "notes": "Environment variable configured per previous deployment. Production preview active."
+      "role": "PRODUCTION_CANDIDATE",
+      "notes": "Beta serves RC2 application markers; Production Candidate only. zenovell.com unreleased."
     },
     "gtm": {
       "container_id": "GTM-P7MSP66X",
       "google_tag_destination": "G-J8HYPV9S4N",
       "container_installed": "CONFIGURED",
       "google_tag_configured": "CONFIGURED",
-      "line_cta_click_tag": "BLOCKED",
-      "publish_status": "BLOCKED",
-      "warnings": ["paused / malware-warning on line_cta_click tag"],
-      "notes": "Container and Google tag installed. line_cta_click tag requires review before publish. No full runtime evidence without warning."
+      "line_cta_click_preview": "VERIFIED",
+      "line_cta_click_tag": "VERIFIED_IN_PREVIEW",
+      "publish_status": "NOT_AUTHORIZED",
+      "published_public_conversion_path": "NOT_YET_VERIFIED_AFTER_PUBLISH",
+      "warnings": [],
+      "open_before_publish": [
+        "Send Ecommerce data setting on line_cta_click tag — MUST BE VERIFIED BEFORE GTM PUBLISH",
+        "Ecommerce Object {{Event}} — MUST BE VERIFIED BEFORE GTM PUBLISH",
+        "Tag pause state — MUST BE VERIFIED BEFORE GTM PUBLISH",
+        "Workspace warning/malware residual state — MUST BE VERIFIED BEFORE GTM PUBLISH"
+      ],
+      "notes": "RC3 closed on Preview + Realtime + app parameter contract. Do not publish without separate authorization."
     },
     "ga4": {
       "property": "ZENOVELL Production",
       "stream": "ZENOVELL Website",
       "measurement_id": "G-J8HYPV9S4N",
       "base_tracking": "CONFIGURED",
-      "line_cta_click_verification": "PARTIALLY_VERIFIED",
-      "notes": "Base tracking and page_view observed in prior sessions. line_cta_click pending active Data Layer verification in current session."
+      "line_cta_click_verification": "VERIFIED",
+      "notes": "Realtime reception verified under Preview path. Post-publish live path not yet verified."
     },
     "lineOa": {
       "canonical_url": "https://lin.ee/syjmYE2",
-      "live_dom_evidence": "https://line.me/ti/p/@zenovell observed in prior audit",
-      "status": "PENDING",
-      "notes": "Authority drift audit required. Canonical must be enforced."
+      "basic_id": "@362lupso",
+      "legacy_runtime_url_count": 0,
+      "status": "VERIFIED",
+      "notes": "RC2 resolved secondary CTA legacy href drift. Official lin.ee redirect to @362lupso verified."
     },
     "searchConsole": {
       "status": "NOT_STARTED",
-      "notes": "Deferred per current sprint focus."
+      "notes": "Deferred to next approved phase after RC3."
     },
     "googleAds": {
       "status": "NOT_STARTED",
-      "notes": "Deferred per current sprint focus."
+      "notes": "Deferred per roadmap."
     },
     "clientDelivery": {
       "status": "PENDING",
-      "notes": "Awaiting smoke test, integration verification, and GTM publish after verification."
+      "notes": "Awaiting GTM publish gate, Search Console, Ads readiness, full smoke, and production switch authorization."
     }
   },
   "currentBlockers": [
-    "GTM line_cta_click tag paused/malware warning review required",
-    "active line_cta_click runtime verification incomplete",
-    "LINE URL authority drift audit pending"
+    "GTM publication not authorized",
+    "GTM publish prerequisites (Ecommerce/pause/warning) must be verified before publish",
+    "Published public GTM conversion path not verified after publish",
+    "Search Console not started",
+    "Google Ads not started",
+    "Production switch to zenovell.com not authorized"
   ],
-  "nextSafeAction": "Inspect the GTM line_cta_click tag pause and malware-warning state before authorizing any GTM publication or additional event verification."
+  "nextSafeAction": "Prepare and execute the next approved Production Integration release gate without changing application source; verify GTM publish prerequisites before any publish authorization."
 }

@@ -1,9 +1,10 @@
 # Analytics — GTM + GA4 Integration (Implementation Note)
 
-**Date**: 2026-07-10  
-**Status**: Implemented (pre-deployment)  
-**GTM Container**: GTM-P7MSP66X (beta.zenovell.com)  
+**Date**: 2026-07-10
+**Status**: Application + RC3 verification COMPLETE on Production Candidate (beta). GTM **publication** remains pending separate authorization.
+**GTM Container**: GTM-P7MSP66X (beta.zenovell.com)
 **GA4 Measurement ID**: G-J8HYPV9S4N (configured in GTM only)
+**RC3 Closure**: `docs/reports/phase6/RC3-GTM-ANALYTICS-PARAMETER-CONTRACT-CLOSURE.md`
 
 ## Core Rules
 
@@ -81,17 +82,38 @@ npm run build
 npm run validate
 ```
 
+## RC3 Verified State (2026-07-11)
+
+Application (beta Production Candidate):
+
+- Client analytics bootstrap registers GTM adapter in browser runtime.
+- `line_cta_click` enters `window.dataLayer` once per click.
+- Parameter contract verified for 14/14 LINE CTA surfaces.
+- Canonical `link_url` = `https://lin.ee/syjmYE2`.
+
+GTM / GA4 (Preview path — Owner evidence):
+
+- Preview connected to beta.zenovell.com
+- Google tag G-J8HYPV9S4N detected
+- Trigger matched; GA4 Event tag fired for `line_cta_click`
+- GA4 Realtime received `line_cta_click`
+
+**Not completed in RC3:**
+
+- GTM container **publish**
+- Post-publish public conversion verification
+- Final clearance of Ecommerce / pause / warning settings before publish
+
 ## Post-Deploy Manual Steps (Owner)
 
 1. Set `NEXT_PUBLIC_GTM_ID=GTM-P7MSP66X` in Hostinger environment for the beta site.
-2. Redeploy.
+2. Redeploy application when source changes require it.
 3. Open GTM Preview → connect https://beta.zenovell.com
 4. Verify container loads once, correct ID, LINE CTAs emit `line_cta_click`.
-5. In GTM (later):
-   - Add Google tag → Measurement ID = G-J8HYPV9S4N
-   - Create GA4 Event tag for `line_cta_click` with Data Layer variables for parameters.
+5. Confirm Google tag Measurement ID = G-J8HYPV9S4N and GA4 Event tag parameters map dataLayer fields.
 6. Validate via Tag Assistant + GA4 Realtime / DebugView.
-7. Publish GTM container version **only after** successful preview.
+7. Before publish: verify Ecommerce toggles, tag pause, and warning state.
+8. Publish GTM container version **only after** explicit Owner authorization (separate gate from RC3).
 
 ## Rollback
 

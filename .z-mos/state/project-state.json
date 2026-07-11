@@ -1,8 +1,17 @@
 {
   "current_phase": "Production Integration and Client Delivery",
-  "active_gate": "verification",
-  "next_safe_action": "Inspect the GTM line_cta_click tag pause and malware-warning state before authorizing any GTM publication or additional event verification.",
-  "current_working_blocker": "line_cta_click runtime verification incomplete + GA4 Event tag paused/malware warning",
+  "active_gate": "gtm-publish-prerequisites",
+  "rc_status": {
+    "RC1": "COMPLETE",
+    "RC2": "COMPLETE",
+    "RC3": "COMPLETE"
+  },
+  "next_safe_action": "Prepare and execute the next approved Production Integration release gate without changing application source; verify GTM publish prerequisites before any publish authorization.",
+  "current_working_blocker": "GTM publication pending authorization; Ecommerce/pause/warning must be verified before publish",
   "last_updated": "2026-07-11",
-  "commit": "0fcd689d2473cec0e7f6de7b982a16fb07473eba"
+  "commit": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
+  "beta": "https://beta.zenovell.com",
+  "production": "https://zenovell.com",
+  "production_status": "UNRELEASED",
+  "beta_status": "PRODUCTION_CANDIDATE"
 }
