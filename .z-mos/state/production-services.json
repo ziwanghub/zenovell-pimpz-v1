@@ -1,82 +1,90 @@
 {
   "schemaVersion": "1.0.0",
   "profile": "ZENOVELL_PRODUCTION_INTEGRATION_PROFILE",
-  "updatedAt": "2026-07-11T12:30:00Z",
+  "updatedAt": "2026-07-11T18:00:00Z",
   "updatedBy": "grok-cli",
-  "sourceHeadAtClosure": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
+  "analyticsIntegration": "COMPLETE",
+  "analyticsInfrastructure": "FROZEN_PRODUCTION_BASELINE",
   "rcGates": {
     "RC1": "COMPLETE",
     "RC2": "COMPLETE",
-    "RC3": "COMPLETE"
+    "RC3": "COMPLETE",
+    "RC4A": "COMPLETE",
+    "RC4B": "COMPLETE",
+    "RC4C": "COMPLETE"
   },
   "services": {
     "github": {
       "repository": "ziwanghub/zenovell-pimpz-v1",
       "branch": "main",
-      "commit": "d16191fa86895921edb2c7b2c26ce8ecc706c18a",
+      "commit": "5fd651815a339263b68cda4854167c34fae9408e",
       "status": "VERIFIED",
-      "notes": "RC3 closure records application source HEAD d16191f (RC1+RC2 code). Documentation closure commit may supersede HEAD after push."
+      "notes": "Aligned origin/main at analytics closeout drafting. New closeout commit may supersede HEAD after authorized push."
     },
     "hostinger": {
       "site": "https://beta.zenovell.com",
       "environment_variable": "NEXT_PUBLIC_GTM_ID=GTM-P7MSP66X",
       "status": "DEPLOYED",
       "role": "PRODUCTION_CANDIDATE",
-      "notes": "Beta serves RC2 application markers; Production Candidate only. zenovell.com unreleased."
+      "notes": "Production Candidate only. zenovell.com unreleased."
     },
     "gtm": {
       "container_id": "GTM-P7MSP66X",
       "google_tag_destination": "G-J8HYPV9S4N",
       "container_installed": "CONFIGURED",
       "google_tag_configured": "CONFIGURED",
-      "line_cta_click_preview": "VERIFIED",
-      "line_cta_click_tag": "VERIFIED_IN_PREVIEW",
-      "publish_status": "NOT_AUTHORIZED",
-      "published_public_conversion_path": "NOT_YET_VERIFIED_AFTER_PUBLISH",
-      "warnings": [],
-      "open_before_publish": [
-        "Send Ecommerce data setting on line_cta_click tag — MUST BE VERIFIED BEFORE GTM PUBLISH",
-        "Ecommerce Object {{Event}} — MUST BE VERIFIED BEFORE GTM PUBLISH",
-        "Tag pause state — MUST BE VERIFIED BEFORE GTM PUBLISH",
-        "Workspace warning/malware residual state — MUST BE VERIFIED BEFORE GTM PUBLISH"
-      ],
-      "notes": "RC3 closed on Preview + Realtime + app parameter contract. Do not publish without separate authorization."
+      "container_version": "2",
+      "publish_status": "PUBLISHED",
+      "line_cta_click_tag": "LIVE",
+      "custom_parameter_delivery": "VERIFIED_DEBUGVIEW_PRE_PUBLISH",
+      "published_public_conversion_path": "VERIFIED_REALTIME_MOBILE",
+      "configuration_change_required": false,
+      "notes": "Version 2 published. Live Realtime page_view + line_cta_click from real mobile usage. Full multi-surface CTA retest deferred (QA-001)."
     },
     "ga4": {
       "property": "ZENOVELL Production",
       "stream": "ZENOVELL Website",
       "measurement_id": "G-J8HYPV9S4N",
-      "base_tracking": "CONFIGURED",
+      "base_tracking": "VERIFIED",
       "line_cta_click_verification": "VERIFIED",
-      "notes": "Realtime reception verified under Preview path. Post-publish live path not yet verified."
+      "notes": "Realtime receives page_view and line_cta_click from real mobile usage. DebugView custom params verified before publish."
     },
     "lineOa": {
       "canonical_url": "https://lin.ee/syjmYE2",
       "basic_id": "@362lupso",
       "legacy_runtime_url_count": 0,
-      "status": "VERIFIED",
-      "notes": "RC2 resolved secondary CTA legacy href drift. Official lin.ee redirect to @362lupso verified."
+      "status": "VERIFIED"
     },
     "searchConsole": {
       "status": "NOT_STARTED",
-      "notes": "Deferred to next approved phase after RC3."
+      "notes": "Next-phase production readiness item."
     },
     "googleAds": {
       "status": "NOT_STARTED",
-      "notes": "Deferred per roadmap."
+      "notes": "Next-phase production readiness item."
     },
     "clientDelivery": {
       "status": "PENDING",
-      "notes": "Awaiting GTM publish gate, Search Console, Ads readiness, full smoke, and production switch authorization."
+      "notes": "Awaiting UI/UX freeze, SEO, Search Console, Ads prep, smoke, QA-001, domain switch."
     }
   },
+  "deferredQa": [
+    {
+      "id": "QA-001",
+      "title": "CTA Surface Regression Test",
+      "status": "DEFERRED",
+      "trigger": "After UI/UX Freeze; before zenovell.com production release",
+      "blocks_analytics_infrastructure": false,
+      "authority": "docs/governance/backlog/QA-001-CTA-SURFACE-REGRESSION.md"
+    }
+  ],
   "currentBlockers": [
-    "GTM publication not authorized",
-    "GTM publish prerequisites (Ecommerce/pause/warning) must be verified before publish",
-    "Published public GTM conversion path not verified after publish",
+    "UI/UX Freeze not complete",
     "Search Console not started",
-    "Google Ads not started",
+    "Google Ads readiness not started",
+    "Full device/browser smoke pending",
+    "QA-001 CTA surface regression deferred",
     "Production switch to zenovell.com not authorized"
   ],
-  "nextSafeAction": "Prepare and execute the next approved Production Integration release gate without changing application source; verify GTM publish prerequisites before any publish authorization."
+  "nextSafeAction": "Begin Production Readiness Review before zenovell.com release: UI/UX freeze path, SEO/Search Console/Ads prep as authorized; run QA-001 only after UI/UX Freeze."
 }

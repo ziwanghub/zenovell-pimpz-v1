@@ -1,14 +1,15 @@
 {
   "schema_version": "3.0.0-agent",
   "intent": {
-    "objective": "Advance Production Integration after RC3 COMPLETE: prepare next approved release gate while keeping beta.zenovell.com as Production Candidate and zenovell.com unreleased.",
-    "strategy": "Do not change application source. Verify GTM publish prerequisites (Ecommerce, pause, warnings) before any GTM publish authorization. Then proceed to Search Console / Ads readiness / full smoke only under explicit Owner gates.",
-    "risk_acknowledgement": "Low for application path (RC1–RC3 verified). Residual risk is GTM publish configuration debt and unreleased production domain."
+    "objective": "Complete Production Readiness Review before zenovell.com release while keeping beta.zenovell.com as Production Candidate.",
+    "strategy": "Analytics Integration is COMPLETE. Do not change application analytics or GTM unless a defect is proven. Advance UI/UX freeze, SEO, Search Console, Ads prep, smoke tests; run QA-001 CTA Surface Regression after UI/UX Freeze; only then authorize domain switch.",
+    "risk_acknowledgement": "Low for analytics infrastructure (published GTM v2 + live Realtime). Residual risk is incomplete UI freeze and deferred full CTA surface retest (QA-001)."
   },
   "system": {
     "scope_files": [
       "docs/handoff/**",
       "docs/reports/phase6/**",
+      "docs/governance/backlog/**",
       "docs/ANALYTICS-GTM-INTEGRATION.md",
       ".z-mos/**"
     ],
@@ -16,11 +17,11 @@
       "npm run validate"
     ],
     "stop_conditions": [
-      "GTM publish without explicit Owner authorization",
       "application source change without proven defect",
-      "production switch to zenovell.com without Production Gate"
+      "GTM/GA4 change without proven defect and Owner authorization",
+      "production switch to zenovell.com without Production Gate + QA-001"
     ],
-    "rollback_plan": "Documentation/state-only rollback via git revert of RC3 closure commit. Application runtime remains d16191f-based RC1+RC2 code.",
+    "rollback_plan": "Documentation/state-only revert. Application and published GTM v2 remain as last verified live configuration.",
     "truth_snapshot_ref": ".z-mos/truth.contract.json"
   },
   "agent": {
@@ -28,24 +29,28 @@
     "allowed_actions": ["read", "write", "verify"],
     "max_steps": 50,
     "termination_conditions": [
-      "attempt to publish GTM without verification and authorization",
-      "modification of application source or GTM/GA4 config without authority"
+      "backend/admin/CRM/checkout implementation during production readiness",
+      "unauthorized production domain switch"
     ],
     "enforcement": "hard-block"
   },
-  "current_phase": "Production Integration and Client Delivery",
+  "current_phase": "Production Readiness Review before zenovell.com release",
+  "analytics_integration": "COMPLETE",
   "rc_status": {
     "RC1": "COMPLETE",
     "RC2": "COMPLETE",
-    "RC3": "COMPLETE"
+    "RC3": "COMPLETE",
+    "RC4A": "COMPLETE",
+    "RC4B": "COMPLETE",
+    "RC4C": "COMPLETE"
   },
-  "next_safe_action": "Prepare and execute the next approved Production Integration release gate without changing application source; verify GTM publish prerequisites before any publish authorization.",
+  "next_safe_action": "Begin Production Readiness Review: prioritize UI/UX freeze and SEO/Search Console/Ads prep; schedule QA-001 after UI/UX Freeze.",
   "blockers": [
-    "GTM publication not authorized",
-    "GTM publish prerequisites (Ecommerce/pause/warning) open until Owner UI re-confirm",
-    "Published public GTM conversion path not verified after publish",
+    "UI/UX Freeze incomplete",
     "Search Console not started",
-    "Google Ads not started",
-    "Production switch not authorized"
+    "Google Ads readiness not started",
+    "Full device/browser smoke pending",
+    "QA-001 deferred until UI/UX Freeze",
+    "zenovell.com production switch not authorized"
   ]
 }
