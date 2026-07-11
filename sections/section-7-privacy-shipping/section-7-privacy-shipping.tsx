@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentType } from "react";
 import {
   ChevronRight,
@@ -21,6 +23,8 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -179,8 +183,18 @@ function PrivacyShippingSupportRow({
 
       <a
         aria-label={supportRow.cta.ariaLabel}
-        href={supportRow.cta.href}
+        href={LINE_OA_URL}
         className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold leading-none text-white shadow-[0_0_16px_rgba(233,30,140,0.34)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_24px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+        onClick={(e) => {
+          activateLineCta({
+            title: supportRow.cta.label,
+            surface: "privacy-support-line",
+            landingPage: "/",
+            intent: "inquiry",
+            source: "privacy-shipping",
+          });
+          e.preventDefault();
+        }}
       >
         <LineIcon size={20} />
         <span className="hidden min-[390px]:inline">{supportRow.cta.label}</span>
@@ -193,13 +207,22 @@ function PrivacyShippingSupportRow({
 function FinalLineCTA({
   label,
   ariaLabel,
-  href,
 }: Section7PrivacyShippingContent["finalCta"]) {
   return (
     <a
       aria-label={ariaLabel}
-      href={href}
+      href={LINE_OA_URL}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={(e) => {
+        activateLineCta({
+          title: label,
+          surface: "privacy-final-line",
+          landingPage: "/",
+          intent: "high_intent",
+          source: "privacy-shipping",
+        });
+        e.preventDefault();
+      }}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />

@@ -283,13 +283,29 @@ export function GlobalHeader({
                           aria-label={item.ariaLabel}
                           className="flex min-h-[48px] items-center rounded-2xl border border-white/10 bg-[#171717] px-4 text-[15px] font-medium text-white/92 transition-colors hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
                           href={item.href}
-                          onClick={() => {
+                          onClick={(e) => {
                             closeDrawer();
                             analytics.track(AnalyticsEvents.NAVIGATION_CLICK, {
                               surface: "drawer",
                               label: item.label,
                               destination: item.href,
                             });
+
+                            // RC2: LINE-intent drawer items use shared CTA + analytics contract
+                            if (item.id === "consulting" || item.id === "line-order") {
+                              activateLineCta({
+                                title: item.label,
+                                surface:
+                                  item.id === "consulting"
+                                    ? "drawer-consulting"
+                                    : "drawer-line-order",
+                                landingPage: "/",
+                                intent:
+                                  item.id === "consulting" ? "inquiry" : "high_intent",
+                                source: "drawer",
+                              });
+                              e.preventDefault();
+                            }
                           }}
                         >
                           {item.label}

@@ -1,3 +1,5 @@
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
+
 export type SiteLinkKind =
   | "route"
   | "anchor"
@@ -308,7 +310,7 @@ export const siteNavigationGroups: [
       {
         id: "consulting",
         label: "ให้คำปรึกษา",
-        href: "https://line.me/ti/p/@zenovell",
+        href: LINE_OA_URL,
         kind: "line",
         ariaLabel: "ไปที่บริการให้คำปรึกษา",
         visibility: {
@@ -321,7 +323,7 @@ export const siteNavigationGroups: [
       {
         id: "line-order",
         label: "การสั่งซื้อผ่าน LINE",
-        href: "https://line.me/ti/p/@zenovell",
+        href: LINE_OA_URL,
         kind: "line",
         ariaLabel: "ไปที่การสั่งซื้อผ่าน LINE",
         visibility: {
@@ -480,7 +482,7 @@ export const ctaDestinations: CtaDestination[] = [
   {
     id: "header-line",
     label: "ปรึกษาผ่าน LINE",
-    href: "https://line.me/ti/p/@zenovell",
+    href: LINE_OA_URL,
     kind: "line",
     ariaLabel: "ปรึกษาผ่าน LINE",
     analyticsEventKey: "line_click",

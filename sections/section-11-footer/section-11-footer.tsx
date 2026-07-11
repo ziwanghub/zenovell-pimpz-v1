@@ -25,6 +25,7 @@ import { ctaDestinations } from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -211,17 +212,22 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
       </div>
 
       <ul className="mt-5 space-y-3">
-        {column.items.map((item) => (
+        {column.items.map((item) => {
+          const isLineIntent =
+            item.id === "line-order" || item.id === "consulting";
+          const itemHref = isLineIntent ? LINE_OA_URL : item.href;
+
+          return (
           <li key={item.id}>
             <a
-              href={item.href}
+              href={itemHref}
               aria-label={item.ariaLabel}
               className="group flex items-start gap-2 text-[11.5px] leading-[1.45] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
               onClick={(e) => {
                 analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
                   surface: "footer",
                   label: item.label,
-                  destination: item.href,
+                  destination: itemHref,
                 })
                 if (item.id === "line-order") {
                   activateLineCta({
@@ -229,6 +235,16 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
                     surface: "footer-line",
                     landingPage: "/",
                     intent: "high_intent",
+                    source: "footer",
+                  });
+                  e.preventDefault();
+                } else if (item.id === "consulting") {
+                  // RC2 F-02: footer consulting → shared LINE CTA contract
+                  activateLineCta({
+                    title: item.label,
+                    surface: "footer-consulting-line",
+                    landingPage: "/",
+                    intent: "inquiry",
                     source: "footer",
                   });
                   e.preventDefault();
@@ -243,7 +259,8 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
               <span>{item.label}</span>
             </a>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

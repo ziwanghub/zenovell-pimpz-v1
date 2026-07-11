@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import type { ComponentType } from "react";
 import {
@@ -21,6 +23,8 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -129,13 +133,22 @@ function WhyChoosePromoCard({
 function FinalLineCTA({
   label,
   ariaLabel,
-  href,
 }: Section5WhyChooseUsContent["finalCta"]) {
   return (
     <a
       aria-label={ariaLabel}
-      href={href}
+      href={LINE_OA_URL}
       className="flex h-[58px] w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.42),0_10px_30px_rgba(0,0,0,0.18)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      onClick={(e) => {
+        activateLineCta({
+          title: label,
+          surface: "why-choose-us-line",
+          landingPage: "/",
+          intent: "high_intent",
+          source: "why-choose-us",
+        });
+        e.preventDefault();
+      }}
     >
       <IconWrapper size={10} className="bg-white">
         <LineIcon size={24} />
