@@ -414,14 +414,14 @@ export function Section11Footer({
     <footer
       id="section-11-footer"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white"
+      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:px-0 min-[1280px]:pt-10"
     >
       <div className="text-center">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white">
+        <h2 className="mt-3 text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[13px] leading-[1.45] text-white/72">
+        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.description}
         </p>
       </div>
@@ -436,7 +436,7 @@ export function Section11Footer({
         </div>
       </nav>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 min-[1280px]:mt-10 min-[1280px]:gap-8">
+      <div className="mt-8 grid grid-cols-2 gap-4 min-[1280px]:mt-10 min-[1280px]:gap-10">
         <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
           <div className="flex items-center gap-2.5 px-2.5">
             <span className="flex size-8 items-center justify-center rounded-full border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.06)]">

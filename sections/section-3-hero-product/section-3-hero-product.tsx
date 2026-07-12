@@ -51,7 +51,7 @@ const miniTrustIconByName: Record<Section3MiniTrustIcon, LucideLikeIcon> = {
 
 function ProductNameHeading({ text }: { text: string }) {
   return (
-    <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-[0.02em] text-[#E91E8C]">
+    <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-[0.02em] text-[#E91E8C] min-[1280px]:text-[42px] min-[1280px]:leading-[1.02] min-[1536px]:text-[46px]">
       {text}
     </h2>
   );
@@ -137,7 +137,7 @@ function PriceBlock({
         <span className="text-[12px] leading-[1.3] text-white/[0.65]">
           {pricing.label}
         </span>
-        <span className="mt-1 text-[32px] font-extrabold leading-none text-[#E91E8C]">
+        <span className="mt-1 text-[32px] font-extrabold leading-none text-[#E91E8C] min-[1280px]:text-[38px]">
           {pricing.salePrice}
         </span>
       </div>
@@ -166,7 +166,7 @@ function SolidLineCTA({
   return (
     <a
       aria-label={ariaLabel}
-      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:h-[52px] min-[1280px]:w-fit min-[1280px]:min-w-[220px] min-[1280px]:px-6"
       href={href || "#"}
       onClick={(e) => {
         if (onClick) {
@@ -247,7 +247,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     >
       <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
         <SectionBadge label={content.sectionLabel} />
-        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white">
+        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white min-[1280px]:text-[19px] min-[1280px]:leading-[1.35]">
           {content.superline}
         </p>
         <div className="mt-1">
@@ -264,7 +264,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
             <ProductNameHeading text={content.productName} />
           </Link>
         </div>
-        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80">
+        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3 min-[1280px]:max-w-[460px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.55]">
           {content.productTagline}
         </p>
       </div>
@@ -281,7 +281,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           })
         }
       >
-        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[420px] min-[1280px]:rounded-[18px]">
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[440px] min-[1280px]:rounded-[22px]">
           <Image
             src={content.artwork.src}
             alt={content.artwork.alt}
@@ -298,7 +298,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
       </Link>
 
       <div className="min-[1280px]:col-start-2 min-[1280px]:row-start-2 min-[1280px]:flex min-[1280px]:flex-col min-[1280px]:gap-5">
-      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5 min-[1280px]:grid-cols-3 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:py-0">
+      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5 min-[1280px]:grid-cols-3 min-[1280px]:gap-5 min-[1280px]:px-0 min-[1280px]:py-0">
         {content.benefits.map((item) => (
           <BenefitGridItem key={item.title} item={item} />
         ))}
@@ -326,8 +326,8 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         />
       </div>
 
-      <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4 min-[1280px]:mx-0 min-[1280px]:mb-0 min-[1280px]:px-4">
-        <ul className="grid grid-cols-4 gap-1">
+      <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4 min-[1280px]:mx-0 min-[1280px]:mb-0 min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
+        <ul className="grid grid-cols-4 gap-1 min-[1280px]:gap-3">
           {content.miniTrust.map((item) => (
             <MiniTrustCardItem key={item.title.join("-")} item={item} />
           ))}

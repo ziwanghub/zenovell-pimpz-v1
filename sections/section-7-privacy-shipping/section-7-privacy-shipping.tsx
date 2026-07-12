@@ -82,7 +82,7 @@ function PrivacyIconCircle({ iconName }: { iconName: Section7PrivacyIcon }) {
 
 function PrivacyShippingInfoCard({ card }: { card: Section7PrivacyCard }) {
   return (
-    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center min-h-[170px] min-[1280px]:min-h-0 min-[1280px]:px-4 min-[1280px]:py-5">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center min-h-[170px] min-[1280px]:min-h-[220px] min-[1280px]:rounded-[20px] min-[1280px]:px-5 min-[1280px]:py-6">
       <PrivacyIconCircle iconName={card.iconName} />
       <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white line-clamp-2">
         {card.title}
@@ -163,7 +163,7 @@ function PrivacyShippingSupportRow({
   supportRow: Section7PrivacyShippingContent["supportRow"];
 }) {
   return (
-    <div className="mx-4 mt-3 flex items-center gap-3 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] p-4 min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:px-5">
+    <div className="mx-4 mt-3 flex items-center gap-3 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] p-4 min-[1280px]:mx-0 min-[1280px]:mt-6 min-[1280px]:rounded-[20px] min-[1280px]:px-6 min-[1280px]:py-5">
       <div className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.3)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.16),rgba(10,10,10,0.98)_72%)]">
         <Headphones
           aria-hidden="true"
@@ -281,7 +281,7 @@ export function Section7PrivacyShipping({
         description={content.subtitle}
       />
 
-      <ul className="grid grid-cols-2 items-stretch gap-[10px] px-4 min-[1280px]:grid-cols-4 min-[1280px]:gap-5 min-[1280px]:px-0">
+      <ul className="grid grid-cols-2 items-stretch gap-[10px] px-4 min-[1280px]:grid-cols-4 min-[1280px]:gap-6 min-[1280px]:px-0">
         {content.cards.map((card) => (
           <PrivacyShippingInfoCard key={card.title} card={card} />
         ))}
@@ -290,7 +290,7 @@ export function Section7PrivacyShipping({
       <PrivacyShippingShieldCard shieldCard={content.shieldCard} />
       <PrivacyShippingSupportRow supportRow={content.supportRow} />
 
-      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-5">
+      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 

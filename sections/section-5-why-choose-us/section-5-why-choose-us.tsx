@@ -79,7 +79,7 @@ function WhyChooseBenefitItem({
   desktopPlacement?: string;
 }) {
   return (
-    <li className={`grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)] ${desktopPlacement}`}>
+    <li className={`grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)] min-[1280px]:min-h-[126px] min-[1280px]:rounded-[22px] min-[1280px]:gap-4 min-[1280px]:px-5 min-[1280px]:py-5 ${desktopPlacement}`}>
       <WhyChooseBenefitIcon iconName={item.iconName} />
 
       <div className="min-w-0">
@@ -106,13 +106,13 @@ function WhyChoosePromoCard({
   promo: Section5WhyChooseUsContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-4 min-h-[154px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)]">
+    <div className="relative mx-4 mt-4 min-h-[154px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)] min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[208px] min-[1280px]:rounded-[24px]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
           alt={promo.imageAlt}
           fill
-          sizes="(max-width: 430px) 100vw, 430px"
+          sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 1200px"
           className="object-cover"
           style={{ objectPosition: "76% center" }}
         />
@@ -120,7 +120,7 @@ function WhyChoosePromoCard({
       </div>
 
       <div className="relative flex min-h-[154px] items-center">
-        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-5 min-[390px]:max-w-[54%]">
+        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-5 min-[390px]:max-w-[54%] min-[1280px]:max-w-[44%] min-[1280px]:px-7">
           <p className="text-[14px] font-bold leading-[1.32] text-white min-[390px]:text-[15px]">
             {promo.title}
           </p>
@@ -207,17 +207,17 @@ export function Section5WhyChooseUs({
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] pb-7"
     >
-      <div className="px-4 pt-8 pb-5 text-center">
+      <div className="px-4 pt-8 pb-5 text-center min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3.5 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px]">
+        <h2 className="mt-3.5 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
           {content.heading}
         </h2>
-        <p className="mt-2.5 text-[14px] leading-[1.55] text-white/65">
+        <p className="mt-2.5 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.subtitle}
         </p>
       </div>
 
-      <ul className="space-y-3 px-4 min-[1280px]:grid min-[1280px]:grid-cols-6 min-[1280px]:gap-5 min-[1280px]:space-y-0 min-[1280px]:px-0">
+      <ul className="space-y-3 px-4 min-[1280px]:grid min-[1280px]:grid-cols-6 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.benefits.map((item, index) => (
           <WhyChooseBenefitItem
             key={item.title}
@@ -235,7 +235,7 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-[18px]">
+      <div className="px-4 pt-[18px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
