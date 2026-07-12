@@ -140,7 +140,7 @@ export function GlobalHeader({
       <div className="fixed inset-x-0 top-0 z-[50]">
         <header
           aria-label={ariaLabel}
-          className="mx-auto w-full max-w-[430px] border-b border-white/8 bg-[#0A0A0A] px-4 min-[1280px]:max-w-none min-[1280px]:px-0"
+          className="mx-auto w-full max-w-[430px] border-b border-white/8 bg-[#0A0A0A] px-4 min-[690px]:max-w-none min-[690px]:px-0 min-[1280px]:max-w-none min-[1280px]:px-0"
           style={headerStyle}
         >
           <div
