@@ -127,7 +127,7 @@ function TrustCard({
   statement: Section2TrustBarContent["trustStatement"];
 }) {
   return (
-    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)]">
+    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14">
       <ul className="grid grid-cols-4 gap-[6px] pb-[14px]">
         {items.map((item) => (
           <TrustCardItem key={`${item.icon}-${item.title[0]}`} item={item} />
@@ -221,9 +221,9 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
   return (
     <section
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A]"
+      className="bg-[#0A0A0A] min-[1280px]:py-8"
     >
-      <div className="px-4 pt-7 pb-5 text-center">
+      <div className="px-4 pt-7 pb-5 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14">
         <SectionBadge label={content.sectionLabel} />
         <div className="mt-3">
           <SectionHeading lines={content.heading} />

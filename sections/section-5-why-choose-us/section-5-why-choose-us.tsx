@@ -71,9 +71,15 @@ function WhyChooseBenefitIcon({
   );
 }
 
-function WhyChooseBenefitItem({ item }: { item: Section5BenefitItem }) {
+function WhyChooseBenefitItem({
+  item,
+  desktopPlacement = "",
+}: {
+  item: Section5BenefitItem;
+  desktopPlacement?: string;
+}) {
   return (
-    <li className="grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)]">
+    <li className={`grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)] ${desktopPlacement}`}>
       <WhyChooseBenefitIcon iconName={item.iconName} />
 
       <div className="min-w-0">
@@ -199,7 +205,7 @@ export function Section5WhyChooseUs({
     <section
       id="section-5-why-choose-us"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-7"
+      className="bg-[#0A0A0A] pb-7 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <div className="px-4 pt-8 pb-5 text-center">
         <SectionBadge label={content.sectionLabel} />
@@ -211,9 +217,19 @@ export function Section5WhyChooseUs({
         </p>
       </div>
 
-      <ul className="space-y-3 px-4">
-        {content.benefits.map((item) => (
-          <WhyChooseBenefitItem key={item.title} item={item} />
+      <ul className="space-y-3 px-4 min-[1280px]:grid min-[1280px]:grid-cols-6 min-[1280px]:gap-5 min-[1280px]:space-y-0 min-[1280px]:px-0">
+        {content.benefits.map((item, index) => (
+          <WhyChooseBenefitItem
+            key={item.title}
+            item={item}
+            desktopPlacement={
+              index === 3
+                ? "min-[1280px]:col-start-2 min-[1280px]:col-span-2"
+                : index === 4
+                  ? "min-[1280px]:col-start-4 min-[1280px]:col-span-2"
+                  : "min-[1280px]:col-span-2"
+            }
+          />
         ))}
       </ul>
 

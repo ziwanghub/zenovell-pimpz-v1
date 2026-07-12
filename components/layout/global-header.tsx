@@ -137,11 +137,11 @@ export function GlobalHeader({
       <div className="fixed inset-x-0 top-0 z-[50]">
         <header
           aria-label={ariaLabel}
-          className="mx-auto w-full max-w-[430px] border-b border-white/8 bg-[#0A0A0A] px-4"
+          className="mx-auto w-full max-w-[430px] border-b border-white/8 bg-[#0A0A0A] px-4 min-[1280px]:max-w-none min-[1280px]:px-0"
           style={headerStyle}
         >
           <div
-            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow ${
+            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[1280px]:mx-auto min-[1280px]:min-h-[72px] min-[1280px]:max-w-[1200px] min-[1366px]:max-w-[1240px] min-[1536px]:max-w-[1320px] ${
               isScrolled
                 ? "shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
                 : ""
@@ -155,6 +155,29 @@ export function GlobalHeader({
                 {brand.tagline}
               </p>
             </div>
+
+            <nav
+              aria-label="เมนูนำทางหลักสำหรับเดสก์ท็อป"
+              className="hidden min-w-0 flex-1 items-center justify-center gap-5 min-[1280px]:flex min-[1366px]:gap-7"
+            >
+              {drawerItems.map((item) => (
+                <Link
+                  key={item.id}
+                  aria-label={item.ariaLabel}
+                  className="whitespace-nowrap text-[13px] font-medium text-white/75 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  href={item.href}
+                  onClick={() => {
+                    analytics.track(AnalyticsEvents.NAVIGATION_CLICK, {
+                      surface: "header",
+                      label: item.label,
+                      destination: item.href,
+                    });
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
             <div className="flex shrink-0 items-center gap-1.5">
               <Link
@@ -193,7 +216,7 @@ export function GlobalHeader({
                 aria-controls={drawerPanelId}
                 aria-expanded={isDrawerOpen}
                 aria-label={menuTrigger.ariaLabel}
-                className="flex size-9 items-center justify-center rounded-full text-white"
+                className="flex size-9 items-center justify-center rounded-full text-white min-[1280px]:hidden"
                 type="button"
                 onClick={() => {
                   const next = !isDrawerOpen;

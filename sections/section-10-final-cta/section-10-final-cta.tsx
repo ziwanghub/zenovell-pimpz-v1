@@ -321,7 +321,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
     <section
       id="section-10-final-cta"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-8"
+      className="bg-[#0A0A0A] pb-8 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4">
         <SectionBadge label={content.sectionLabel} />
@@ -342,8 +342,8 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
       </div>
 
       <div className="px-3 md:px-4">
-        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4">
-          <div className="relative min-h-[268px] md:min-h-[312px] overflow-hidden rounded-[24px]">
+        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4 min-[1280px]:grid-cols-[1.15fr_0.85fr] min-[1280px]:gap-10">
+          <div className="relative min-h-[268px] md:min-h-[312px] overflow-hidden rounded-[24px] min-[1280px]:min-h-[420px]">
             <Image
               src={content.heroArtwork.src}
               alt={content.heroArtwork.alt}
@@ -362,15 +362,17 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
         </div>
       </div>
 
-      <SocialProofStrip socialProof={content.socialProof} />
-      <GuaranteeCard guaranteeCard={content.guaranteeCard} />
+      <div className="min-[1280px]:mx-auto min-[1280px]:w-full min-[1280px]:max-w-[1080px]">
+        <SocialProofStrip socialProof={content.socialProof} />
+        <GuaranteeCard guaranteeCard={content.guaranteeCard} />
+      </div>
 
-      <div className="px-3 pt-4 md:px-4 md:pt-5">
+      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCta primaryCta={content.primaryCta} />
       </div>
 
       <div className="px-3 pt-4 md:px-4 md:pt-5">
-        <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:grid-cols-4 min-[1280px]:gap-6 min-[1280px]:px-0">
           {content.trustItems.map((item) => (
             <FinalTrustItem key={item.id} item={item} />
           ))}

@@ -65,7 +65,7 @@ function FaqSupportCard({
 }) {
   const resolvedHref = ctaDestinations.find((d) => d.id === supportCard.destinationId)?.href || "#";
   return (
-    <div className="mx-4 mt-4 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-3">
+    <div className="mx-4 mt-4 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-3 min-[1280px]:mx-auto min-[1280px]:max-w-[768px]">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
         <Headset
           aria-hidden="true"
@@ -280,7 +280,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
     <section
       id="section-9-faq"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -288,7 +288,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
         description={content.description}
       />
 
-      <ul className="space-y-3 px-3 md:px-4">
+      <ul className="space-y-3 px-3 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:px-0">
         {content.items.map((item) => (
           <FaqItemRow
             key={item.id}
@@ -303,7 +303,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
 
       <FaqSupportCard supportCard={content.supportCard} />
 
-      <div className="px-3 pt-3 md:px-4 md:pt-[14px]">
+      <div className="px-3 pt-3 md:px-4 md:pt-[14px] min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:px-0">
         <FinalLineCTA {...content.primaryCta} />
       </div>
 

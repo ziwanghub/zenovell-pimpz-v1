@@ -110,7 +110,7 @@ function TrustStrip({ items }: { items: HeroTrustItem[] }) {
 
 function ScrollIndicator() {
   return (
-    <div className="hero-scroll-indicator flex flex-col items-center bg-[#0A0A0A] px-0 pt-[10px] pb-4">
+    <div className="hero-scroll-indicator flex flex-col items-center bg-[#0A0A0A] px-0 pt-[10px] pb-4 min-[1280px]:hidden">
       <ChevronDown
         aria-hidden="true"
         className="size-[22px] animate-[hero-bob_2.1s_ease-in-out_infinite] text-[#E91E8C] opacity-80"
@@ -130,7 +130,7 @@ export function HeroSection({ content }: HeroSectionProps) {
       <section
         id="hero"
         aria-label="Hero - Nicky Pimpz Boss"
-        className="hero-root relative overflow-hidden bg-[#0A0A0A]"
+        className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[1280px]:min-h-[600px]"
       >
         <Image
           src={BACKGROUND_IMAGE_SRC}
@@ -169,8 +169,9 @@ export function HeroSection({ content }: HeroSectionProps) {
           }}
         />
 
-        <div className="hero-content-wrapper relative z-[2]">
-          <div className="hero-content-column max-w-[52%] px-4 pt-[12px] min-[375px]:max-w-[51%] min-[375px]:pt-[16px] min-[414px]:max-w-[50%] min-[414px]:pt-[20px]">
+        <div className="hero-content-wrapper relative z-[2] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-2 min-[1280px]:items-center min-[1280px]:gap-12 min-[1280px]:px-10 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14">
+          <div className="contents min-[1280px]:block">
+          <div className="hero-content-column max-w-[52%] px-4 pt-[12px] min-[375px]:max-w-[51%] min-[375px]:pt-[16px] min-[414px]:max-w-[50%] min-[414px]:pt-[20px] min-[1280px]:max-w-none min-[1280px]:px-0 min-[1280px]:pt-0">
             <p className="hero-subbrand mb-[10px] text-[10px] font-bold tracking-[0.22em] text-[#E91E8C] uppercase">
               {content.brand.subbrand}
             </p>
@@ -210,7 +211,7 @@ export function HeroSection({ content }: HeroSectionProps) {
             </ul>
           </div>
 
-          <div className="hero-cta-block px-[14px] pt-[30px] pb-[28px] min-[375px]:pt-[34px] min-[414px]:pt-[38px]">
+          <div className="hero-cta-block px-[14px] pt-[30px] pb-[28px] min-[375px]:pt-[34px] min-[414px]:pt-[38px] min-[1280px]:px-0 min-[1280px]:pt-8 min-[1280px]:pb-0">
             <button
               aria-label={content.cta.label}
               className="hero-primary-cta flex w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left"
@@ -250,6 +251,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                 <ChevronRight aria-hidden="true" className="size-[18px] text-[#E91E8C]" />
               </div>
             </button>
+          </div>
           </div>
         </div>
       </section>

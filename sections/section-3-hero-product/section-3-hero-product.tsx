@@ -243,9 +243,9 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     <section
       id="section-3-hero-product"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A]"
+      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-2 min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14"
     >
-      <div className="px-4 pt-7 pb-4 text-center">
+      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-span-2 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-8">
         <SectionBadge label={content.sectionLabel} />
         <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white">
           {content.superline}
@@ -280,7 +280,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           })
         }
       >
-        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A]">
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[480px] min-[1280px]:rounded-[18px]">
           <Image
             src={content.artwork.src}
             alt={content.artwork.alt}
@@ -296,13 +296,16 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         </div>
       </Link>
 
-      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5">
+      <div className="contents min-[1280px]:block">
+      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5 min-[1280px]:grid-cols-3 min-[1280px]:gap-x-4 min-[1280px]:px-0 min-[1280px]:py-6">
         {content.benefits.map((item) => (
           <BenefitGridItem key={item.title} item={item} />
         ))}
       </ul>
 
-      <PriceBlock pricing={content.pricing} />
+      <div className="min-[1280px]:px-0">
+        <PriceBlock pricing={content.pricing} />
+      </div>
 
       <div className="px-4 pt-4 pb-4">
         <SolidLineCTA
@@ -324,15 +327,18 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         />
       </div>
 
-      <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4">
+      <div className="mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4 min-[1280px]:mx-0 min-[1280px]:mb-0 min-[1280px]:px-4">
         <ul className="grid grid-cols-4 gap-1">
           {content.miniTrust.map((item) => (
             <MiniTrustCardItem key={item.title.join("-")} item={item} />
           ))}
         </ul>
       </div>
+      </div>
 
-      <ScrollIndicator />
+      <div className="min-[1280px]:col-span-2 min-[1280px]:hidden">
+        <ScrollIndicator />
+      </div>
     </section>
   );
 }

@@ -288,11 +288,11 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
         <p className="text-[12px] font-bold leading-none text-white">
           {item.label}
         </p>
-        <p className="mt-2.5 text-[13px] font-semibold leading-[1.34] text-white/90">
+        <p className="mt-2.5 break-words text-[13px] font-semibold leading-[1.34] text-white/90">
           {item.value}
         </p>
         {item.subtext ? (
-          <p className="mt-2 text-[11px] leading-[1.5] text-white/60">
+          <p className="mt-2 break-words text-[11px] leading-[1.5] text-white/60">
             {item.subtext}
           </p>
         ) : null}
@@ -414,7 +414,7 @@ export function Section11Footer({
     <footer
       id="section-11-footer"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white"
+      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <div className="text-center">
         <SectionBadge label={content.sectionLabel} />
@@ -428,15 +428,15 @@ export function Section11Footer({
 
       <FooterDividerAccent />
 
-      <nav aria-label="เมนูส่วนท้าย" className="mt-6">
-        <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)]">
+      <nav aria-label="เมนูส่วนท้าย" className="mt-6 min-[1280px]:mt-8">
+        <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)] min-[1280px]:gap-x-8">
           {content.navColumns.map((column) => (
             <FooterLinkColumn key={column.id} column={column} />
           ))}
         </div>
       </nav>
 
-      <div className="mt-8 grid grid-cols-2 gap-4">
+      <div className="mt-8 grid grid-cols-2 gap-4 min-[1280px]:mt-10 min-[1280px]:gap-8">
         <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
           <div className="flex items-center gap-2.5 px-2.5">
             <span className="flex size-8 items-center justify-center rounded-full border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.06)]">
@@ -499,7 +499,7 @@ export function Section11Footer({
         </section>
       </div>
 
-      <section className="mt-5 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-5 shadow-[0_0_16px_rgba(233,30,140,0.07)]">
+      <section className="mt-5 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-5 shadow-[0_0_16px_rgba(233,30,140,0.07)] min-[1280px]:mt-8 min-[1280px]:px-6">
         <div className="flex items-center gap-3.5">
           <span className="flex size-12 shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
             <Award
@@ -519,7 +519,7 @@ export function Section11Footer({
         </div>
       </section>
 
-      <div className="mt-7 border-b border-white/8 pb-5">
+      <div className="mt-7 border-b border-white/8 pb-5 min-[1280px]:mt-10">
         <div className="flex flex-col gap-4 min-[390px]:flex-row min-[390px]:items-end min-[390px]:justify-between min-[390px]:gap-4">
         <div className="min-w-0">
           <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
@@ -541,7 +541,7 @@ export function Section11Footer({
         </div>
       </div>
 
-      <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] min-[390px]:items-center">
+      <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] min-[390px]:items-center min-[1280px]:gap-6">
         <div className="flex min-w-0 items-center gap-2.5 rounded-[14px] border border-white/8 bg-[rgba(255,255,255,0.03)] px-3 py-3">
           <span className="flex size-9 shrink-0 items-center justify-center rounded-[12px] border border-white/8 bg-[rgba(255,255,255,0.04)]">
             <Lock
@@ -562,7 +562,7 @@ export function Section11Footer({
 
         <div
           aria-label="วิธีชำระเงินที่รองรับ"
-          className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4"
+          className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4 min-[1280px]:gap-4"
         >
           {content.payments.map((item) => (
             <FooterPaymentBadge key={item.id} item={item} />

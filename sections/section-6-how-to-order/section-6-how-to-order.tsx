@@ -58,9 +58,11 @@ function HowToOrderStepNumber({ value }: { value: string }) {
 function HowToOrderStepItem({
   item,
   isLast,
+  showDesktopConnector,
 }: {
   item: Section6StepItem;
   isLast: boolean;
+  showDesktopConnector: boolean;
 }) {
   const Icon = stepIconByName[item.iconName];
 
@@ -70,7 +72,13 @@ function HowToOrderStepItem({
         {!isLast ? (
           <span
             aria-hidden="true"
-            className="absolute top-[54px] bottom-[-10px] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)]"
+            className="absolute top-[54px] bottom-[-10px] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)] min-[1280px]:hidden"
+          />
+        ) : null}
+        {showDesktopConnector ? (
+          <span
+            aria-hidden="true"
+            className="hidden min-[1280px]:absolute min-[1280px]:top-1/2 min-[1280px]:left-full min-[1280px]:z-0 min-[1280px]:h-px min-[1280px]:w-5 min-[1280px]:bg-[linear-gradient(90deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)] min-[1280px]:translate-x-1/2"
           />
         ) : null}
         <HowToOrderStepNumber value={item.stepNumber} />
@@ -211,7 +219,7 @@ export function Section6HowToOrder({
     <section
       id="section-6-how-to-order"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -224,12 +232,13 @@ export function Section6HowToOrder({
         description={content.subtitle}
       />
 
-      <ol className="space-y-2.5 px-4">
+      <ol className="space-y-2.5 px-4 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-5 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.steps.map((item, index) => (
           <HowToOrderStepItem
             key={item.stepNumber}
             item={item}
             isLast={index === content.steps.length - 1}
+            showDesktopConnector={index % 3 !== 2 && index !== content.steps.length - 1}
           />
         ))}
       </ol>

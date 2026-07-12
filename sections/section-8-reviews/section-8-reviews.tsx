@@ -134,7 +134,7 @@ function ReviewProductChip({ product }: { product: Section8ReviewCard["product"]
 
 function ReviewCard({ review }: { review: Section8ReviewCard }) {
   return (
-    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px]">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px] min-[1280px]:min-h-0">
       <div className="flex gap-3">
         <ReviewAvatar initial={review.initial} />
 
@@ -170,9 +170,9 @@ function ReviewCard({ review }: { review: Section8ReviewCard }) {
             <ReviewPurchaseBadge label={review.purchaseBadge} />
           </div>
 
-          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86">
+          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86 min-[1280px]:min-h-0">
             {review.reviewLines.map((line) => (
-              <p key={line} className="line-clamp-2">{line}</p>
+              <p key={line} className="line-clamp-2 min-[1280px]:line-clamp-none">{line}</p>
             ))}
           </div>
 
@@ -283,7 +283,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
     <section
       id="section-8-reviews"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -293,7 +293,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
 
       <ReviewSummaryCard summary={content.summary} />
 
-      <ul className="space-y-3 px-4 pt-3">
+      <ul className="space-y-3 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-5 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.reviews.map((review) => (
           <ReviewCard key={`${review.initial}-${review.name}`} review={review} />
         ))}
