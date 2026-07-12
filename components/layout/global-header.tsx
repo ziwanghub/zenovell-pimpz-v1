@@ -132,19 +132,19 @@ export function GlobalHeader({
         aria-hidden="true"
         style={{
           height: visibility.safeAreaTop
-            ? "calc(60px + env(safe-area-inset-top) + 6px)"
-            : "66px",
+            ? "calc(var(--platform-header-offset, 66px) + env(safe-area-inset-top))"
+            : "var(--platform-header-offset, 66px)",
         }}
       />
 
       <div className="fixed inset-x-0 top-0 z-[50]">
         <header
           aria-label={ariaLabel}
-          className="mx-auto w-full max-w-[430px] border-b border-white/8 bg-[#0A0A0A] px-4 min-[690px]:max-w-none min-[690px]:px-0 min-[1280px]:max-w-none min-[1280px]:px-0"
+          className="platform-header-frame border-b border-white/8 bg-[#0A0A0A]"
           style={headerStyle}
         >
           <div
-            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[690px]:px-6 min-[768px]:px-8 min-[820px]:px-9 min-[912px]:px-10 min-[1024px]:px-12 min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:min-h-[68px] min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(150px,180px)_minmax(0,1fr)_auto] min-[1280px]:items-center min-[1280px]:gap-x-6 min-[1280px]:px-0 min-[1366px]:max-w-[1240px] min-[1366px]:gap-x-8 min-[1536px]:max-w-[1320px] ${
+            className={`flex min-h-[var(--platform-header-min-height,60px)] items-center justify-between gap-2.5 py-2 transition-shadow min-[690px]:gap-3 min-[820px]:gap-3.5 min-[1280px]:grid min-[1280px]:grid-cols-[minmax(150px,180px)_minmax(0,1fr)_auto] min-[1280px]:items-center min-[1280px]:gap-x-6 min-[1366px]:gap-x-8 ${
               isScrolled
                 ? "shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
                 : ""
@@ -154,7 +154,7 @@ export function GlobalHeader({
               <p className="text-[17px] font-extrabold leading-none tracking-[0.04em] text-[#E91E8C] min-[1280px]:text-[19px]">
                 {brand.wordmark}
               </p>
-              <p className="mt-0.5 text-[10px] leading-[1.4] text-white/50 min-[1280px]:text-[9px] min-[1280px]:leading-[1.35]">
+              <p className="mt-0.5 text-[10px] leading-[1.4] text-white/50 min-[820px]:text-[11px] min-[820px]:leading-[1.35] min-[1280px]:text-[9px] min-[1280px]:leading-[1.35]">
                 {brand.tagline}
               </p>
             </div>
@@ -182,10 +182,10 @@ export function GlobalHeader({
               ))}
             </nav>
 
-            <div className="flex shrink-0 items-center gap-1.5 min-[1280px]:justify-self-end">
+            <div className="flex shrink-0 items-center gap-1.5 min-[690px]:gap-2 min-[1280px]:justify-self-end">
               <Link
                 aria-label={lineCta.ariaLabel}
-                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_20px_rgba(233,30,140,0.45)] min-[1280px]:h-11 min-[1280px]:min-w-[174px] min-[1280px]:gap-2 min-[1280px]:pr-4 min-[1280px]:pl-2"
+                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_20px_rgba(233,30,140,0.45)] min-[690px]:h-11 min-[690px]:w-auto min-[690px]:min-w-[160px] min-[690px]:gap-1.5 min-[690px]:pr-3.5 min-[690px]:pl-1.5 min-[690px]:text-[11px] min-[820px]:min-w-[172px] min-[820px]:gap-2 min-[820px]:pr-4 min-[820px]:pl-2 min-[820px]:text-[12px] min-[1280px]:min-w-[174px] min-[1280px]:text-[13px] min-[1280px]:font-semibold"
                 href={lineCta.href}
                 onClick={(e) => {
                   // Preserve existing analytics
@@ -208,10 +208,10 @@ export function GlobalHeader({
                   e.preventDefault();
                 }}
               >
-                <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1 min-[1280px]:h-8 min-[1280px]:min-w-8">
+                <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1 min-[690px]:h-8 min-[690px]:min-w-8">
                   <LineIcon size={15} />
                 </span>
-                <span className="min-[1280px]:text-[13px] min-[1280px]:font-semibold">
+                <span>
                   {lineCta.label}
                 </span>
               </Link>
@@ -221,7 +221,7 @@ export function GlobalHeader({
                 aria-controls={drawerPanelId}
                 aria-expanded={isDrawerOpen}
                 aria-label={menuTrigger.ariaLabel}
-                className="flex size-9 items-center justify-center rounded-full text-white min-[1280px]:hidden"
+                className="flex size-10 items-center justify-center rounded-full text-white min-[690px]:size-11 min-[1280px]:hidden"
                 type="button"
                 onClick={() => {
                   const next = !isDrawerOpen;
@@ -265,11 +265,11 @@ export function GlobalHeader({
                 id={drawerPanelId}
                 aria-labelledby={drawerTitleId}
                 aria-modal="true"
-                className="absolute top-0 right-0 flex h-[100svh] w-full max-w-[min(92vw,380px)] flex-col border-l border-white/10 bg-[#0A0A0A] shadow-[-18px_0_48px_rgba(0,0,0,0.42)]"
+                className="absolute top-0 right-0 flex h-[100svh] w-full max-w-[min(92vw,380px)] flex-col border-l border-white/10 bg-[#0A0A0A] shadow-[-18px_0_48px_rgba(0,0,0,0.42)] min-[690px]:max-w-[min(78vw,420px)] min-[820px]:max-w-[min(62vw,460px)]"
                 role="dialog"
               >
                 <div
-                  className="flex items-center justify-between border-b border-white/8 px-4 py-4"
+                  className="flex items-center justify-between border-b border-white/8 px-4 py-4 min-[690px]:px-6 min-[820px]:px-7"
                   style={{
                     paddingTop: visibility.safeAreaTop
                       ? "max(1rem, env(safe-area-inset-top))"
@@ -288,7 +288,7 @@ export function GlobalHeader({
 
                   <button
                     aria-label="ปิดเมนูนำทาง"
-                    className="flex size-10 items-center justify-center rounded-full text-white"
+                    className="flex size-11 items-center justify-center rounded-full text-white"
                     type="button"
                     onClick={() => {
                       closeDrawer();
@@ -301,7 +301,7 @@ export function GlobalHeader({
 
                 <nav
                   aria-label="เมนูนำทางหลัก"
-                  className="flex-1 overflow-y-auto px-4 py-5"
+                  className="flex-1 overflow-y-auto px-4 py-5 min-[690px]:px-6 min-[820px]:px-7"
                 >
                   <ul className="space-y-2">
                     {drawerItems.map((item, index) => (
