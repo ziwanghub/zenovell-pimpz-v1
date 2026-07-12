@@ -20,8 +20,8 @@ export function ProductTrustSignals({ trustSignals, evidence }: ProductTrustSign
   }
 
   return (
-    <section className="hidden px-4 py-5 text-white md:px-0">
-      <div className="mx-auto max-w-[430px]">
+    <section className="hidden px-4 py-5 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame">
         <div className="mb-4">
           <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
             Trust Snapshot

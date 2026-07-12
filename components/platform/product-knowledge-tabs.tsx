@@ -89,8 +89,8 @@ export function ProductKnowledgeTabs({
   };
 
   return (
-    <section className="px-4 py-4 text-white md:px-0" aria-labelledby={`${baseId}-heading`}>
-      <div className="mx-auto max-w-[430px]">
+    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={`${baseId}-heading`}>
+      <div className="platform-shell-frame">
         <div className="rounded-[24px] border border-white/9 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-4 shadow-[0_16px_34px_rgba(0,0,0,0.2)]">
           <div className="mb-2.5">
             <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">

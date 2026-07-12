@@ -9,15 +9,15 @@ interface InformationContentProps {
 export function InformationContent({ sections }: InformationContentProps) {
   if (!sections || sections.length === 0) {
     return (
-      <div className="px-6 py-10 text-center text-sm text-white/50">
+      <div className="px-6 py-10 text-center text-sm text-white/50 min-[690px]:px-0">
         Content not available yet.
       </div>
     );
   }
 
   return (
-    <div className="bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-[430px] space-y-10">
+    <div className="bg-zinc-950 px-6 py-10 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame space-y-10">
         {sections.map((section, index) => (
           <div key={index}>
             {section.title && (

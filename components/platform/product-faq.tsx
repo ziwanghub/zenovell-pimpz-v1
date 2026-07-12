@@ -18,8 +18,8 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
 
   if (!faq || faq.length === 0) {
     return (
-      <section className="px-4 py-4 text-white md:px-0" aria-labelledby={`${baseId}-heading`}>
-        <div className="mx-auto max-w-[430px] rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.96),rgba(8,8,10,0.98))] px-5 py-6 text-center text-sm text-white/55">
+      <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={`${baseId}-heading`}>
+        <div className="platform-shell-frame rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.96),rgba(8,8,10,0.98))] px-5 py-6 text-center text-sm text-white/55">
           <h2 id={`${baseId}-heading`} className="text-lg font-semibold text-white">
             คำถามที่มักเกิดก่อนตัดสินใจ
           </h2>
@@ -34,8 +34,8 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
   };
 
   return (
-    <section className="px-4 py-4 text-white md:px-0" aria-labelledby={`${baseId}-heading`}>
-      <div className="mx-auto max-w-[430px]">
+    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={`${baseId}-heading`}>
+      <div className="platform-shell-frame">
         <div className="mb-3">
           <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
             FAQ

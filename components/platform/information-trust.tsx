@@ -10,8 +10,8 @@ export function InformationTrust({ highlights }: InformationTrustProps) {
   }
 
   return (
-    <div className="bg-zinc-950 px-6 py-8 text-white">
-      <div className="mx-auto max-w-[430px]">
+    <div className="bg-zinc-950 px-6 py-8 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame">
         <div className="text-sm font-medium tracking-widest text-white/60 mb-4">TRUST &amp; COMPLIANCE</div>
         <div className="grid grid-cols-1 gap-3">
           {highlights.map((text, i) => (

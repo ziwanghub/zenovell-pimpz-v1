@@ -9,9 +9,9 @@ export function ProductBreadcrumb({ productTitle }: ProductBreadcrumbProps) {
   return (
     <nav
       aria-label="เส้นทางหน้าสินค้า"
-      className="px-4 pb-1.5 pt-3 text-white/72 md:px-0"
+      className="px-4 pb-1.5 pt-3 text-white/72 min-[690px]:px-0"
     >
-      <div className="mx-auto flex max-w-[430px] flex-wrap items-center gap-1 text-[11px] leading-5 sm:text-[12px]">
+      <div className="platform-shell-frame flex flex-wrap items-center gap-1 text-[11px] leading-5 sm:text-[12px]">
         <Link
           href="/"
           className="inline-flex items-center gap-1 rounded-full px-1 py-0.5 text-white/58 transition hover:text-white"

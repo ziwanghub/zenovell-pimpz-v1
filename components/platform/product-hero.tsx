@@ -42,8 +42,8 @@ export function ProductHero({ product }: ProductHeroProps) {
   ];
 
   return (
-    <section className="px-4 pb-1 pt-1.5 text-white md:px-0">
-      <div className="mx-auto max-w-[430px]">
+    <section className="px-4 pb-1 pt-1.5 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame">
         <div className="mb-0.5 text-[10px] font-medium text-[#ff2f96]">
           ผลิตภัณฑ์แนะนำ
         </div>
