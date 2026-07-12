@@ -144,7 +144,7 @@ export function GlobalHeader({
           style={headerStyle}
         >
           <div
-            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:min-h-[68px] min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(150px,180px)_minmax(0,1fr)_auto] min-[1280px]:items-center min-[1280px]:gap-x-6 min-[1366px]:max-w-[1240px] min-[1366px]:gap-x-8 min-[1536px]:max-w-[1320px] ${
+            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[690px]:px-6 min-[768px]:px-8 min-[820px]:px-9 min-[912px]:px-10 min-[1024px]:px-12 min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:min-h-[68px] min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(150px,180px)_minmax(0,1fr)_auto] min-[1280px]:items-center min-[1280px]:gap-x-6 min-[1280px]:px-0 min-[1366px]:max-w-[1240px] min-[1366px]:gap-x-8 min-[1536px]:max-w-[1320px] ${
               isScrolled
                 ? "shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
                 : ""
