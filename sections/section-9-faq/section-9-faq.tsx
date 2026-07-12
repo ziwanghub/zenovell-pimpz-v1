@@ -280,7 +280,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
     <section
       id="section-9-faq"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
+      className="bg-[#0A0A0A] pb-6"
     >
       <SectionHeader
         label={content.sectionLabel}

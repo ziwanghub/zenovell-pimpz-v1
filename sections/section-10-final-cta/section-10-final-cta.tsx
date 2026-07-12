@@ -321,7 +321,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
     <section
       id="section-10-final-cta"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-8 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
+      className="bg-[#0A0A0A] pb-8"
     >
       <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4">
         <SectionBadge label={content.sectionLabel} />

@@ -205,7 +205,7 @@ export function Section5WhyChooseUs({
     <section
       id="section-5-why-choose-us"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-7 min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
+      className="bg-[#0A0A0A] pb-7"
     >
       <div className="px-4 pt-8 pb-5 text-center">
         <SectionBadge label={content.sectionLabel} />

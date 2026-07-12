@@ -414,7 +414,7 @@ export function Section11Footer({
     <footer
       id="section-11-footer"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:mx-auto min-[1280px]:max-w-[1280px] min-[1280px]:px-10 min-[1366px]:max-w-[1336px] min-[1366px]:px-12 min-[1536px]:max-w-[1432px] min-[1536px]:px-14"
+      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white"
     >
       <div className="text-center">
         <SectionBadge label={content.sectionLabel} />
