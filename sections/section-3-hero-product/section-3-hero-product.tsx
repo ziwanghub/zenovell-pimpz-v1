@@ -131,7 +131,7 @@ function PriceBlock({
   return (
     <div
       aria-label={pricing.ariaLabel}
-      className="mx-4 flex items-center justify-between rounded-[12px] border border-white/8 bg-[#1A1A1A] px-4 py-[14px]"
+      className="mx-4 flex items-center justify-between rounded-[12px] border border-white/8 bg-[#1A1A1A] px-4 py-[14px] min-[1280px]:mx-0"
     >
       <div className="flex flex-col">
         <span className="text-[12px] leading-[1.3] text-white/[0.65]">
@@ -243,9 +243,9 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     <section
       id="section-3-hero-product"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-2 min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14"
+      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:gap-x-10 min-[1536px]:px-14"
     >
-      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-span-2 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-8">
+      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
         <SectionBadge label={content.sectionLabel} />
         <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white">
           {content.superline}
@@ -272,6 +272,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
       <Link
         href={`/products/${featuredProduct.slug}`}
         aria-label={`View details for ${content.productName}`}
+        className="min-[1280px]:col-start-1 min-[1280px]:row-start-1 min-[1280px]:row-span-2"
         onClick={() =>
           analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
             surface: "section",
@@ -280,12 +281,12 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           })
         }
       >
-        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[480px] min-[1280px]:rounded-[18px]">
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[420px] min-[1280px]:rounded-[18px]">
           <Image
             src={content.artwork.src}
             alt={content.artwork.alt}
             fill
-            sizes="(max-width: 430px) 100vw, 430px"
+            sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 50vw"
             className="object-cover"
             style={{ objectPosition: "center center" }}
           />
@@ -296,18 +297,16 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         </div>
       </Link>
 
-      <div className="contents min-[1280px]:block">
-      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5 min-[1280px]:grid-cols-3 min-[1280px]:gap-x-4 min-[1280px]:px-0 min-[1280px]:py-6">
+      <div className="min-[1280px]:col-start-2 min-[1280px]:row-start-2 min-[1280px]:flex min-[1280px]:flex-col min-[1280px]:gap-5">
+      <ul className="grid grid-cols-3 gap-x-2 px-4 py-5 min-[1280px]:grid-cols-3 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:py-0">
         {content.benefits.map((item) => (
           <BenefitGridItem key={item.title} item={item} />
         ))}
       </ul>
 
-      <div className="min-[1280px]:px-0">
-        <PriceBlock pricing={content.pricing} />
-      </div>
+      <PriceBlock pricing={content.pricing} />
 
-      <div className="px-4 pt-4 pb-4">
+      <div className="px-4 pt-4 pb-4 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0">
         <SolidLineCTA
           {...content.cta}
           onClick={() =>
