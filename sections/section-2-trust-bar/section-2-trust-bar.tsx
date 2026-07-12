@@ -127,8 +127,8 @@ function TrustCard({
   statement: Section2TrustBarContent["trustStatement"];
 }) {
   return (
-    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14">
-      <ul className="grid grid-cols-4 gap-[6px] pb-[14px]">
+    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-0 min-[1280px]:rounded-[18px] min-[1280px]:px-6 min-[1280px]:py-5">
+      <ul className="grid grid-cols-4 gap-[6px] pb-[14px] min-[1280px]:gap-5 min-[1280px]:pb-4">
         {items.map((item) => (
           <TrustCardItem key={`${item.icon}-${item.title[0]}`} item={item} />
         ))}
@@ -149,7 +149,7 @@ function ProductArtwork({
   height,
 }: Section2TrustBarContent["artwork"]) {
   return (
-    <div className="mt-1">
+    <div className="mt-1 min-[1280px]:hidden">
       <Image
         src={src}
         alt={alt}
@@ -198,7 +198,7 @@ function MicroTrustItem({ item }: { item: Section2MicroTrustItem }) {
 
 function MicroTrustRow({ items }: { items: Section2MicroTrustItem[] }) {
   return (
-    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-[14px] pb-6">
+    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-[14px] pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-4 min-[1280px]:pb-0">
       {items.map((item, index) => (
         <div key={item.text} className="flex items-center gap-2">
           <MicroTrustItem item={item} />
@@ -221,9 +221,9 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
   return (
     <section
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] min-[1280px]:py-8"
+      className="bg-[#0A0A0A] min-[1280px]:py-5"
     >
-      <div className="px-4 pt-7 pb-5 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:px-14">
+      <div className="px-4 pt-7 pb-5 text-center min-[1280px]:hidden">
         <SectionBadge label={content.sectionLabel} />
         <div className="mt-3">
           <SectionHeading lines={content.heading} />
@@ -240,7 +240,7 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
 
       <ProductArtwork {...content.artwork} />
 
-      <div className="px-4 pt-6">
+      <div className="px-4 pt-6 min-[1280px]:hidden">
         <SolidLineCTA
           label={content.cta.label}
           onClick={() =>
