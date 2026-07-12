@@ -36,6 +36,9 @@ export function GlobalHeader({
   const drawerTitleId = `${DRAWER_TITLE_ID_PREFIX}-${instanceId}`;
   const drawerPanelId = `${DRAWER_PANEL_ID_PREFIX}-${instanceId}`;
   const canUsePortal = typeof document !== "undefined";
+  const desktopNavItems = drawerItems.filter(
+    (item) => item.id !== "consulting" && item.id !== "line-order",
+  );
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
@@ -141,30 +144,30 @@ export function GlobalHeader({
           style={headerStyle}
         >
           <div
-            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[1280px]:mx-auto min-[1280px]:min-h-[72px] min-[1280px]:max-w-[1200px] min-[1366px]:max-w-[1240px] min-[1536px]:max-w-[1320px] ${
+            className={`flex min-h-[60px] items-center justify-between gap-3 py-2 transition-shadow min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:min-h-[68px] min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(150px,180px)_minmax(0,1fr)_auto] min-[1280px]:items-center min-[1280px]:gap-x-6 min-[1366px]:max-w-[1240px] min-[1366px]:gap-x-8 min-[1536px]:max-w-[1320px] ${
               isScrolled
                 ? "shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
                 : ""
             }`}
           >
-            <div className="min-w-0 flex-1">
-              <p className="text-[17px] font-extrabold leading-none tracking-[0.04em] text-[#E91E8C]">
+            <div className="min-w-0 flex-1 min-[1280px]:min-w-[150px] min-[1280px]:flex-none">
+              <p className="text-[17px] font-extrabold leading-none tracking-[0.04em] text-[#E91E8C] min-[1280px]:text-[19px]">
                 {brand.wordmark}
               </p>
-              <p className="mt-0.5 text-[10px] leading-[1.4] text-white/50">
+              <p className="mt-0.5 text-[10px] leading-[1.4] text-white/50 min-[1280px]:text-[9px] min-[1280px]:leading-[1.35]">
                 {brand.tagline}
               </p>
             </div>
 
             <nav
               aria-label="เมนูนำทางหลักสำหรับเดสก์ท็อป"
-              className="hidden min-w-0 flex-1 items-center justify-center gap-5 min-[1280px]:flex min-[1366px]:gap-7"
+              className="hidden min-w-0 flex-1 items-center justify-center min-[1280px]:flex min-[1280px]:gap-[18px] min-[1366px]:gap-6 min-[1536px]:gap-7"
             >
-              {drawerItems.map((item) => (
+              {desktopNavItems.map((item) => (
                 <Link
                   key={item.id}
                   aria-label={item.ariaLabel}
-                  className="whitespace-nowrap text-[13px] font-medium text-white/75 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  className="whitespace-nowrap text-[12px] font-medium leading-[1.25] text-white/75 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] min-[1366px]:text-[13px]"
                   href={item.href}
                   onClick={() => {
                     analytics.track(AnalyticsEvents.NAVIGATION_CLICK, {
@@ -179,10 +182,10 @@ export function GlobalHeader({
               ))}
             </nav>
 
-            <div className="flex shrink-0 items-center gap-1.5">
+            <div className="flex shrink-0 items-center gap-1.5 min-[1280px]:justify-self-end">
               <Link
                 aria-label={lineCta.ariaLabel}
-                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_20px_rgba(233,30,140,0.45)]"
+                className="inline-flex h-10 w-[168px] items-center gap-1 rounded-full bg-[#E91E8C] pr-3 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-[0_0_20px_rgba(233,30,140,0.45)] min-[1280px]:h-11 min-[1280px]:min-w-[174px] min-[1280px]:gap-2 min-[1280px]:pr-4 min-[1280px]:pl-2"
                 href={lineCta.href}
                 onClick={(e) => {
                   // Preserve existing analytics
@@ -205,10 +208,12 @@ export function GlobalHeader({
                   e.preventDefault();
                 }}
               >
-                <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1">
+                <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-1 min-[1280px]:h-8 min-[1280px]:min-w-8">
                   <LineIcon size={15} />
                 </span>
-                <span>{lineCta.label}</span>
+                <span className="min-[1280px]:text-[13px] min-[1280px]:font-semibold">
+                  {lineCta.label}
+                </span>
               </Link>
 
               <button
