@@ -189,7 +189,7 @@ function MicroTrustItem({ item }: { item: Section2MicroTrustItem }) {
 
 function MicroTrustRow({ items }: { items: Section2MicroTrustItem[] }) {
   return (
-    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-4 min-[1280px]:pb-2">
+    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-5 min-[1280px]:pb-6">
       {items.map((item, index) => (
         <div key={item.text} className="flex items-center gap-2">
           <MicroTrustItem item={item} />
@@ -218,7 +218,7 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
     <section
       id="section-2-trust-bar"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pt-6 pb-1 min-[1280px]:pt-8 min-[1280px]:pb-4"
+      className="bg-[#0A0A0A] pt-6 pb-1 min-[1280px]:pt-10 min-[1280px]:pb-8"
     >
       <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[760px] min-[1280px]:px-0">
         <SectionHeading lines={content.heading} />

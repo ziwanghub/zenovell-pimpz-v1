@@ -219,7 +219,7 @@ export function Section6HowToOrder({
     <section
       id="section-6-how-to-order"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:pb-10"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -249,7 +249,7 @@ export function Section6HowToOrder({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center min-[1280px]:pt-5">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (

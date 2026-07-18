@@ -322,7 +322,7 @@ export function Section4ProductCatalog({
     <section
       id="section-4-product-catalog"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:pb-10"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -336,7 +336,7 @@ export function Section4ProductCatalog({
         ))}
       </ul>
 
-      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-2.5 py-3.5 min-[390px]:px-3 min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[92px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
+      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-2.5 py-3.5 min-[390px]:px-3 min-[1280px]:mx-0 min-[1280px]:mt-8 min-[1280px]:min-h-[92px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
         <ul className="grid grid-cols-4 gap-1 min-[390px]:gap-1.5 min-[1280px]:gap-7">
           {content.trustItems.map((item) => (
             <CatalogTrustItem key={item.title} item={item} />
@@ -348,7 +348,7 @@ export function Section4ProductCatalog({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:px-0 min-[1280px]:pt-5">
+      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:px-0 min-[1280px]:pt-6">
         {content.footerNote}
       </p>
     </section>

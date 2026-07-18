@@ -472,7 +472,7 @@ export function Section11Footer({
     <footer
       id="section-11-footer"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:px-0 min-[1280px]:pt-10"
+      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:px-0 min-[1280px]:pt-14 min-[1280px]:pb-12"
     >
       <div className="text-center">
         {/* Development section badge intentionally not rendered (S11-F09). */}

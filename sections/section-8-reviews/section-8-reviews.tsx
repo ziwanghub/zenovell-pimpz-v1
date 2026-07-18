@@ -309,7 +309,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
     <section
       id="section-8-reviews"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:pb-10"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -319,7 +319,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
 
       <ReviewSummaryCard summary={content.summary} />
 
-      <ul className="space-y-2.5 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
+      <ul className="space-y-2.5 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0 min-[1280px]:pt-5">
         {content.reviews.map((review) => (
           <ReviewCard key={`${review.initial}-${review.name}`} review={review} />
         ))}
@@ -336,7 +336,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center min-[1280px]:pt-5">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (
