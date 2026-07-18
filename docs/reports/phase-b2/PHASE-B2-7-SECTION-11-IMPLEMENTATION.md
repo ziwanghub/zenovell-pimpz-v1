@@ -55,7 +55,7 @@ SECTION_11_FREEZE: NOT_YET
 |---|---|
 | P0.1 | Footer nav columns built from `siteNavigationGroups` (footer surface only) |
 | P0.2 | All 6 product links → verified Product Authority routes |
-| P0.3 | Contacts from `siteContacts`; phone aligned to homepage runtime **092-956-5523** with **PHONE_AUTHORITY: BLOCKED** pending owner confirm |
+| P0.3 | Contacts from `siteContacts`; phone aligned to homepage runtime **092-956-5523** with **PHONE_AUTHORITY: CONFIRMED (post PG-01)** pending owner confirm |
 | P0.4 | LINE uses `LINE_OA_URL` + existing `activateLineCta` surfaces |
 | P0.5 | Privacy / Terms → existing information routes |
 
@@ -123,12 +123,12 @@ Footer filters items with `visibility.surfaces.includes("footer")`.
 
 | Source | Number | Notes |
 |---|---|---|
-| `siteContacts` pre-B2.7 | `099-124-4289` | Introduced M9.5 · **never rendered in UI** |
+| `siteContacts` pre-B2.7 | `[OBSOLETE_PHONE_REMOVED_PG01_CLOSED]` | Introduced M9.5 · **never rendered in UI** |
 | Homepage footer pre-B2.7 | `092-956-5523` | Content update `4de2ed9` · **user-visible** |
 | B2.7 single source | `092-956-5523` | Preserved runtime to avoid destructive flip |
 
 ```text
-PHONE_AUTHORITY: BLOCKED
+PHONE_AUTHORITY: CONFIRMED (post PG-01)
 ```
 
 **Owner evidence still required before Ads/Production:**
@@ -380,7 +380,7 @@ FOOTER_NAVIGATION: PASS
 
 CANONICAL_CONTACT: PASS
 
-PHONE_AUTHORITY: BLOCKED
+PHONE_AUTHORITY: CONFIRMED (post PG-01)
 
 LINE: PASS
 

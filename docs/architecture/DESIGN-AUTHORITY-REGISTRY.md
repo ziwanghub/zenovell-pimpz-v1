@@ -125,7 +125,7 @@ These are **architectural** authorities. Design component authorities below must
 | **ADR** | **ADR-007 NOT CREATED** |
 | **Consumers today** | Homepage only |
 | **Evidence** | Phase B2.7 audit + limited implementation (feature branch) |
-| **Notes** | Pattern is strong (contact, trust, payments, LINE). Not system-wide until platform pages mount the same footer and phone authority is owner-confirmed. |
+| **Notes** | Pattern is strong (contact, trust, payments, LINE). Phone authority CONFIRMED (`092-956-5523` via `siteContacts`). Not system-wide until platform pages mount the same footer. |
 
 ### 5.2 Product Card Authority
 
@@ -198,13 +198,15 @@ These are **architectural** authorities. Design component authorities below must
 
 | ID | Gap | Severity |
 |---|---|---|
-| REG-G01 | Phone authority still BLOCKED (owner confirmation) | High before Ads |
+| REG-G01 | Phone authority | **CLOSED (C1)** — CONFIRMED `092-956-5523` |
 | REG-G02 | Footer not on platform pages | Medium |
 | REG-G03 | Social URLs missing / icons hidden | Medium brand |
-| REG-G04 | Legal pages are stubs (content quality) | Medium compliance |
+| REG-G04 | Legal pages content quality | **Reduced (C1)** — Thai PDPA/Terms production draft published; legal counsel sign-off still recommended |
 | REG-G05 | ADR-004/005/006 historically lived on feature branches — now indexed here | Process (addressed in B3) |
-| REG-G06 | Unmerged B2 section stacks vs `main` hygiene | Release process |
+| REG-G06 | Unmerged B2 section stacks vs `main` hygiene | **CLOSED** (integrated main `9025fca`+) |
 | REG-G07 | Desktop adaptive incomplete | Deferred by design |
+| REG-G08 | Hostinger deploy SHA identity + cache purge | High for RC (ops) |
+| REG-G09 | Analytics runtime observation on beta | Medium before Ads |
 
 ---
 
@@ -222,5 +224,6 @@ These are **architectural** authorities. Design component authorities below must
 | Version | Date | Change |
 |---|---|---|
 | v1 | 2026-07-18 | Initial registry · Phase B3 · after PR #18 merge |
+| v1.1 | 2026-07-19 | Phase C1 · phone CONFIRMED · legal draft upgrade · gap status refresh |
 
 **Supersession:** Future ADR-00x that conflicts with this registry must update this file in the same PR.
