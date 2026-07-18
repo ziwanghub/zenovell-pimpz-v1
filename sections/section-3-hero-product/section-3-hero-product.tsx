@@ -243,7 +243,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     <section
       id="section-3-hero-product"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:gap-x-10 min-[1536px]:px-14"
+      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-14 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:gap-x-10 min-[1536px]:px-14"
     >
       <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
         <SectionBadge label={content.sectionLabel} />

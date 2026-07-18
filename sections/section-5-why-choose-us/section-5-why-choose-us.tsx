@@ -192,9 +192,9 @@ export function Section5WhyChooseUs({
     <section
       id="section-5-why-choose-us"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:pb-10"
     >
-      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-9 min-[1280px]:pb-5">
+      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-12 min-[1280px]:pb-7">
         <SectionBadge label={content.sectionLabel} />
         <h2 className="mt-3 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-3.5 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
           {content.heading}
@@ -226,7 +226,7 @@ export function Section5WhyChooseUs({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center min-[1280px]:pt-5">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? <span aria-hidden="true" className="text-white/28">•</span> : null}

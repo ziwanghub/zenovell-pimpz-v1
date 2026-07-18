@@ -323,9 +323,9 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
     <section
       id="section-10-final-cta"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-8"
+      className="bg-[#0A0A0A] pb-8 min-[1280px]:pb-12"
     >
-      <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4 min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
+      <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4 min-[1280px]:px-0 min-[1280px]:pt-12 min-[1280px]:pb-7">
         <SectionBadge label={content.sectionLabel} />
         <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           <span className="block">
@@ -369,11 +369,11 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
         <GuaranteeCard guaranteeCard={content.guaranteeCard} />
       </div>
 
-      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:px-0 min-[1280px]:pt-7">
+      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:px-0 min-[1280px]:pt-8">
         <FinalLineCta primaryCta={content.primaryCta} />
       </div>
 
-      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:px-0">
+      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:px-0 min-[1280px]:pt-6">
         <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:grid-cols-4 min-[1280px]:gap-6 min-[1280px]:px-0">
           {content.trustItems.map((item) => (
             <FinalTrustItem key={item.id} item={item} />
@@ -381,7 +381,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
         </div>
       </div>
 
-      <div className="px-3 pt-4 text-center md:px-4 md:pt-5 min-[1280px]:px-0">
+      <div className="px-3 pt-4 text-center md:px-4 md:pt-5 min-[1280px]:px-0 min-[1280px]:pt-6">
         <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45]">
           {content.finalReassurance.prefix}{" "}
           <span className="font-bold text-[#E91E8C]">

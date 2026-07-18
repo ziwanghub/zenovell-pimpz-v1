@@ -9,7 +9,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ label, heading, description }: SectionHeaderProps) {
   return (
-    <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
+    <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-12 min-[1280px]:pb-7">
       <SectionBadge label={label} />
       <h2 className="mt-3 text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18] min-[1536px]:text-[36px]">
         {heading}

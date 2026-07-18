@@ -256,7 +256,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
     <section
       id="section-9-faq"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-6"
+      className="bg-[#0A0A0A] pb-6 min-[1280px]:pb-10"
     >
       <SectionHeader
         label={content.sectionLabel}
@@ -264,7 +264,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
         description={content.description}
       />
 
-      <ul className="space-y-2.5 px-3 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:space-y-3 min-[1280px]:px-0">
+      <ul className="space-y-2.5 px-3 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:space-y-3.5 min-[1280px]:px-0">
         {content.items.map((item) => (
           <FaqItemRow
             key={item.id}
@@ -283,7 +283,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
         <FinalLineCTA {...content.primaryCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3 pt-3 md:px-4 md:pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-3 pt-3 md:px-4 md:pt-4 text-center min-[1280px]:pt-5">
         {content.trustItems.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (
