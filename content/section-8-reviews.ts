@@ -134,12 +134,15 @@ export const section8ReviewsContent: Section8ReviewsContent = {
     description: "รีวิวจริงจากผู้ใช้หลายพันคน",
     ctaLabel: "ดูรีวิวเพิ่มเติมใน LINE",
     ariaLabel: "ดูรีวิวเพิ่มเติมใน LINE จากผู้ใช้จริง",
-    href: "#",
+    // Runtime destination is LINE_OA_URL via activateLineCta (surface: reviews-more-line).
+    // Field retained for content contract compatibility; not used as a raw href.
+    href: "https://lin.ee/syjmYE2",
   },
   finalCta: {
     label: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
     ariaLabel: "ปรึกษาหรือสั่งซื้อสินค้าผ่าน LINE",
-    href: "#",
+    // Runtime destination is LINE_OA_URL via activateLineCta (surface: reviews-final-line).
+    href: "https://lin.ee/syjmYE2",
   },
   trustRow: [
     { iconName: "shield-check", label: "ปลอดภัย 100%" },

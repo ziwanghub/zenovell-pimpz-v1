@@ -41,7 +41,7 @@ function ReviewDistributionBar({
 }) {
   return (
     <div className="grid grid-cols-[28px_minmax(0,1fr)_36px] items-center gap-2">
-      <span className="text-[14px] font-medium leading-none text-white">
+      <span className="text-[13px] font-medium leading-none text-white/90">
         {item.label}
       </span>
       <div className="h-2 rounded-full bg-[#22131A]">
@@ -50,7 +50,7 @@ function ReviewDistributionBar({
           style={{ width: `${item.percentage}%` }}
         />
       </div>
-      <span className="text-right text-[14px] leading-none text-white/78">
+      <span className="text-right text-[13px] leading-none text-white/72">
         {item.percentageLabel}
       </span>
     </div>
@@ -66,28 +66,33 @@ function ReviewSummaryCard({
     <div className="mx-4 rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-[1280px]:mx-0 min-[1280px]:rounded-[22px] min-[1280px]:p-5">
       <div className="grid grid-cols-[40%_60%] gap-3 min-[375px]:grid-cols-[44%_56%] min-[375px]:gap-4">
         <div className="border-r border-[rgba(233,30,140,0.16)] pr-4 text-center">
-          <p className="text-[14px] leading-[1.35] text-white/72">
+          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/45">
+            Reviews
+          </p>
+          <p className="mt-1 text-[13px] leading-[1.35] text-white/68">
             {summary.title}
           </p>
-          <p className="mt-2 text-[48px] font-extrabold leading-none text-[#FF4DA6] min-[375px]:text-[54px] min-[390px]:text-[60px]">
+          <p
+            className="mt-2 text-[48px] font-extrabold leading-none tracking-[-0.03em] text-[#FF4DA6] min-[375px]:text-[54px] min-[390px]:text-[56px]"
+            aria-label={`คะแนนเฉลี่ย ${summary.score} จาก 5 ดาว ${summary.reviewCountLabel}`}
+          >
             {summary.score}
           </p>
-          <div className="mt-2 flex justify-center gap-1">
+          <div className="mt-2 flex justify-center gap-1" aria-hidden="true">
             {Array.from({ length: 5 }, (_, index) => (
               <Star
                 key={index}
-                aria-hidden="true"
-                className="size-4 fill-[#E91E8C] text-[#E91E8C]"
-                strokeWidth={1.8}
+                className="size-4 fill-yellow-400 text-yellow-400"
+                strokeWidth={1.6}
               />
             ))}
           </div>
-          <p className="mt-2 text-[14px] leading-none text-white/72">
+          <p className="mt-2 text-[13px] leading-none text-white/62">
             {summary.reviewCountLabel}
           </p>
         </div>
 
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           {summary.distribution.map((item) => (
             <ReviewDistributionBar key={item.label} item={item} />
           ))}
@@ -99,7 +104,7 @@ function ReviewSummaryCard({
 
 function ReviewAvatar({ initial }: { initial: string }) {
   return (
-    <div className="flex size-[54px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.3)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] text-[28px] font-bold leading-none text-[#FF6BB7] shadow-[0_0_18px_rgba(233,30,140,0.16)]">
+    <div className="flex size-[48px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.3)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] text-[24px] font-bold leading-none text-[#FF6BB7] shadow-[0_0_18px_rgba(233,30,140,0.16)]">
       {initial}
     </div>
   );
@@ -107,7 +112,7 @@ function ReviewAvatar({ initial }: { initial: string }) {
 
 function ReviewPurchaseBadge({ label }: { label: string }) {
   return (
-    <span className="inline-flex rounded-full bg-[rgba(233,30,140,0.14)] px-2.5 py-1 text-[11px] font-bold leading-none text-[#E91E8C]">
+    <span className="inline-flex rounded-full bg-[rgba(233,30,140,0.12)] px-2.5 py-1 text-[11px] font-semibold leading-none text-[#E91E8C]/90">
       {label}
     </span>
   );
@@ -115,7 +120,7 @@ function ReviewPurchaseBadge({ label }: { label: string }) {
 
 function ReviewProductChip({ product }: { product: Section8ReviewCard["product"] }) {
   return (
-    <div className="mt-3 inline-flex items-center gap-2 rounded-[10px] border border-[rgba(233,30,140,0.14)] bg-[#181116] px-2.5 py-2">
+    <div className="mt-2.5 inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-white/[0.04] px-2.5 py-1.5">
       <div className="relative size-7 shrink-0 overflow-hidden rounded-[6px]">
         <Image
           src={product.imageSrc}
@@ -125,7 +130,7 @@ function ReviewProductChip({ product }: { product: Section8ReviewCard["product"]
           className="object-contain object-center"
         />
       </div>
-      <span className="text-[12px] font-medium leading-none text-[#E91E8C]">
+      <span className="text-[12px] font-medium leading-none tracking-tight text-white/88">
         {product.label}
       </span>
     </div>
@@ -133,34 +138,43 @@ function ReviewProductChip({ product }: { product: Section8ReviewCard["product"]
 }
 
 function ReviewCard({ review }: { review: Section8ReviewCard }) {
+  const ratingLabel = `${review.stars} จาก 5 ดาว`;
+
   return (
-    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px] min-[1280px]:min-h-[260px] min-[1280px]:rounded-[20px] min-[1280px]:p-5">
+    <li className="flex flex-col rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] p-3.5 min-h-[200px] min-[1280px]:min-h-[248px] min-[1280px]:rounded-[20px] min-[1280px]:p-5">
       <div className="flex gap-3">
         <ReviewAvatar initial={review.initial} />
 
         <div className="min-w-0 flex-1">
-          <div className="flex min-h-[42px] items-start justify-between gap-3">
+          {/* Authority-aligned metadata: author → meta → rating block */}
+          <div className="flex min-h-[40px] items-start justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="text-[16px] font-extrabold leading-[1.2] text-white">
+              <h3 className="text-[15px] font-semibold tracking-tight text-white min-[390px]:text-[16px]">
                 {review.name}
               </h3>
-              <p className="mt-1 text-[12px] leading-none text-white/62">
+              <p className="mt-1 text-[11px] leading-none text-white/55">
                 {review.meta}
               </p>
             </div>
 
-            <div className="shrink-0 text-right">
-              <div className="flex justify-end gap-0.5">
-                {Array.from({ length: review.stars }, (_, index) => (
+            <div className="shrink-0 text-right" aria-label={ratingLabel}>
+              <div className="flex justify-end gap-0.5" aria-hidden="true">
+                {Array.from({ length: 5 }, (_, index) => (
                   <Star
                     key={index}
-                    aria-hidden="true"
-                    className="size-4 fill-[#E91E8C] text-[#E91E8C]"
-                    strokeWidth={1.8}
+                    className={
+                      index < review.stars
+                        ? "size-3.5 fill-yellow-400 text-yellow-400"
+                        : "size-3.5 text-white/18"
+                    }
+                    strokeWidth={1.6}
                   />
                 ))}
               </div>
-              <p className="mt-1 text-[12px] leading-none text-white/62">
+              <p className="mt-1 text-[11px] leading-none text-white/55">
+                {ratingLabel}
+              </p>
+              <p className="mt-1 text-[11px] leading-none text-white/45">
                 {review.dateLabel}
               </p>
             </div>
@@ -170,9 +184,11 @@ function ReviewCard({ review }: { review: Section8ReviewCard }) {
             <ReviewPurchaseBadge label={review.purchaseBadge} />
           </div>
 
-          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86 min-[1280px]:min-h-0">
+          <div className="mt-2.5 min-h-[52px] space-y-1 text-[13px] leading-5 text-white/84 min-[1280px]:min-h-0">
             {review.reviewLines.map((line) => (
-              <p key={line} className="line-clamp-2 min-[1280px]:line-clamp-none">{line}</p>
+              <p key={line} className="line-clamp-2 min-[1280px]:line-clamp-none">
+                {line}
+              </p>
             ))}
           </div>
 
@@ -191,30 +207,40 @@ function MoreReviewsRow({
   return (
     <a
       aria-label={moreReviewsRow.ariaLabel}
-      href={moreReviewsRow.href}
-      className="mx-4 mt-3 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] px-4 py-3 text-left transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_20px_rgba(233,30,140,0.18)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4"
+      href={LINE_OA_URL}
+      className="mx-4 mt-3 flex min-h-11 items-center gap-2.5 rounded-[14px] border border-white/10 bg-white/[0.03] px-3.5 py-2.5 text-left transition-[transform,background-color,border-color] duration-150 ease-out hover:border-white/16 hover:bg-white/[0.05] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:rounded-[16px] min-[1280px]:px-4 min-[1280px]:py-3"
+      onClick={(e) => {
+        activateLineCta({
+          title: moreReviewsRow.ctaLabel,
+          surface: "reviews-more-line",
+          landingPage: "/",
+          intent: "inquiry",
+          source: "reviews",
+        });
+        e.preventDefault();
+      }}
     >
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
+      <div className="flex size-9 shrink-0 items-center justify-center rounded-[10px] border border-white/10 bg-white/[0.04]">
         <MessageCircleMore
           aria-hidden="true"
-          className="size-5 text-[#FF4DA6]"
-          strokeWidth={1.9}
+          className="size-[18px] text-white/70"
+          strokeWidth={1.8}
         />
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="text-[15px] font-bold leading-[1.2] text-white">
+        <p className="text-[14px] font-semibold leading-[1.2] text-white/90">
           {moreReviewsRow.title}
         </p>
-        <p className="mt-1 text-[12px] leading-[1.35] text-white/62">
+        <p className="mt-0.5 text-[11px] leading-[1.35] text-white/52">
           {moreReviewsRow.description}
         </p>
       </div>
 
       <ChevronRight
         aria-hidden="true"
-        className="size-5 shrink-0 text-[#E91E8C]"
-        strokeWidth={2.1}
+        className="size-4 shrink-0 text-white/45"
+        strokeWidth={2}
       />
     </a>
   );
@@ -293,15 +319,20 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
 
       <ReviewSummaryCard summary={content.summary} />
 
-      <ul className="space-y-3 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
+      <ul className="space-y-2.5 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.reviews.map((review) => (
           <ReviewCard key={`${review.initial}-${review.name}`} review={review} />
         ))}
       </ul>
 
+      <p className="mx-4 mt-2.5 text-[11px] leading-4 text-white/42 min-[1280px]:mx-0">
+        ตัวอย่างรีวิวและคะแนนที่แสดงในส่วนนี้ใช้เพื่อช่วยตัดสินใจ
+        ผลลัพธ์อาจแตกต่างกันตามบุคคล
+      </p>
+
       <MoreReviewsRow moreReviewsRow={content.moreReviewsRow} />
 
-      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
+      <div className="px-4 pt-4 min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
