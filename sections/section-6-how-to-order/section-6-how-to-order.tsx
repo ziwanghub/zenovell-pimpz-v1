@@ -97,7 +97,7 @@ function HowToOrderStepItem({
           <h3 className="text-[15px] font-extrabold leading-[1.25] text-white">
             {item.title}
           </h3>
-          <p className="mt-1 text-[12px] leading-[1.55] text-white/72 min-[390px]:text-[12.5px]">
+          <p className="mt-1 text-[12px] leading-[1.55] text-white/72 min-[390px]:text-[12.5px] min-[1280px]:mt-1.5 min-[1280px]:leading-[1.65]">
             {item.description}
           </p>
         </div>
@@ -141,7 +141,7 @@ function HowToOrderPromoCard({
               </p>
             </div>
           </div>
-          <p className="mt-2 text-[12px] leading-[1.5] text-white/72">
+          <p className="mt-2 text-[12px] leading-[1.5] text-white/72 min-[1280px]:mt-2.5 min-[1280px]:leading-[1.65]">
             {promo.description}
           </p>
         </div>

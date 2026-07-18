@@ -60,7 +60,7 @@ function FaqSupportCard({
         <p className="text-[15px] font-semibold leading-[1.2] tracking-tight text-white min-[390px]:text-[16px]">
           {supportCard.title}
         </p>
-        <div className="mt-1 text-[12px] leading-[1.4] text-white/62 min-[390px]:text-[13px] min-[1280px]:max-w-[420px]">
+        <div className="mt-1 text-[12px] leading-[1.4] text-white/62 min-[390px]:text-[13px] min-[1280px]:mt-1.5 min-[1280px]:max-w-[420px] min-[1280px]:space-y-1 min-[1280px]:leading-[1.55]">
           {supportCard.descriptionLines.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -231,7 +231,7 @@ function FaqItemRow({
                 className="mt-0.5 size-5 shrink-0 text-[#FF4DA6]"
                 strokeWidth={1.9}
               />
-              <div className="min-w-0 flex-1 space-y-1.5 text-[14px] leading-[1.55] text-white/78 min-[1280px]:max-w-[560px]">
+              <div className="min-w-0 flex-1 space-y-1.5 text-[14px] leading-[1.55] text-white/78 min-[1280px]:max-w-[560px] min-[1280px]:space-y-2 min-[1280px]:leading-[1.65]">
                 {item.answerLines.map((line) => (
                   <p key={line}>{line}</p>
                 ))}

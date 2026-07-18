@@ -79,7 +79,7 @@ function WhyChooseBenefitItem({
         <h3 className="text-[15px] font-extrabold leading-[1.28] text-white min-[390px]:text-[16px]">
           {item.title}
         </h3>
-        <p className="mt-1 text-[12px] leading-[1.58] text-white/72 min-[390px]:text-[12.5px]">
+        <p className="mt-1 text-[12px] leading-[1.58] text-white/72 min-[390px]:text-[12.5px] min-[1280px]:mt-1.5 min-[1280px]:leading-[1.65]">
           {item.description}
         </p>
       </div>
@@ -114,7 +114,7 @@ function WhyChoosePromoCard({
           <p className="mt-1.5 text-[15px] font-extrabold leading-[1.28] text-[#E91E8C] min-[390px]:text-[16px]">
             {promo.highlight}
           </p>
-          <p className="mt-2 max-w-[92%] text-[12px] leading-[1.5] text-white/72">
+          <p className="mt-2 max-w-[92%] text-[12px] leading-[1.5] text-white/72 min-[1280px]:mt-2.5 min-[1280px]:leading-[1.65]">
             {promo.description}
           </p>
         </div>
@@ -196,10 +196,10 @@ export function Section5WhyChooseUs({
     >
       <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-9 min-[1280px]:pb-5">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-3.5 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
+        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.2] min-[1280px]:tracking-[-0.015em]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-2.5 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-2 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-3.5 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.65]">
           {content.subtitle}
         </p>
       </div>

@@ -330,7 +330,7 @@ function ContactItem({ item }: { item: SiteContact }) {
         </p>
         <p className={valueClassName}>{item.value}</p>
         {item.subtext ? (
-          <p className="mt-1 break-words text-[11.5px] leading-[1.4] text-white/60">
+          <p className="mt-1 break-words text-[11.5px] leading-[1.4] text-white/60 min-[1280px]:mt-1.5 min-[1280px]:leading-[1.55] min-[1280px]:text-white/58">
             {item.subtext}
           </p>
         ) : null}
@@ -476,10 +476,10 @@ export function Section11Footer({
     >
       <div className="text-center">
         {/* Development section badge intentionally not rendered (S11-F09). */}
-        <h2 className="text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
+        <h2 className="text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:text-[34px] min-[1280px]:leading-[1.2] min-[1280px]:tracking-[-0.015em]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3.5 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.65]">
           {content.description}
         </p>
       </div>
@@ -526,7 +526,7 @@ export function Section11Footer({
               <h3 className="text-[12.5px] font-extrabold text-[#FF4DA6]">
                 {content.socialCard.title}
               </h3>
-              <p className="mt-1.5 text-[11.5px] leading-[1.35] text-white/65">
+              <p className="mt-1.5 text-[11.5px] leading-[1.35] text-white/65 min-[1280px]:leading-[1.55] min-[1280px]:text-white/62">
                 {content.socialCard.description}
               </p>
             </div>
@@ -555,7 +555,7 @@ export function Section11Footer({
               <p className="text-[14px] font-extrabold leading-[1.2] text-[#FF4DA6]">
                 {content.privacyPanel.title}
               </p>
-              <div className="mt-1 space-y-0.5 text-[11.5px] leading-[1.4] text-white/72">
+              <div className="mt-1 space-y-0.5 text-[11.5px] leading-[1.4] text-white/72 min-[1280px]:mt-1.5 min-[1280px]:space-y-1 min-[1280px]:leading-[1.55]">
                 {content.privacyPanel.lines.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -578,7 +578,7 @@ export function Section11Footer({
             <p className="text-[16px] font-extrabold leading-[1.15] text-[#FF4DA6]">
               {content.guarantee.title}
             </p>
-            <p className="mt-2 text-[13px] leading-[1.45] text-white/78">
+            <p className="mt-2 text-[13px] leading-[1.45] text-white/78 min-[1280px]:mt-2.5 min-[1280px]:leading-[1.6]">
               {content.guarantee.description}
             </p>
           </div>
@@ -591,16 +591,16 @@ export function Section11Footer({
             <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
               {content.brand.name}
             </p>
-            <p className="mt-2.5 text-[13px] leading-[1.35] text-white/72">
+            <p className="mt-2.5 text-[13px] leading-[1.35] text-white/72 min-[1280px]:leading-[1.55] min-[1280px]:text-white/68">
               {content.brand.tagline}
             </p>
           </div>
 
           <div className="min-w-0 space-y-1 text-right">
-            <p className="text-[12px] leading-[1.4] text-white/70">
+            <p className="text-[12px] leading-[1.4] text-white/70 min-[1280px]:leading-[1.5]">
               © {copyrightYear} {content.legal.rightsLine}
             </p>
-            <p className="text-[12px] leading-[1.4] text-white/56">
+            <p className="text-[12px] leading-[1.4] text-white/56 min-[1280px]:leading-[1.5] min-[1280px]:text-white/52">
               {content.legal.rights}
             </p>
           </div>
@@ -620,7 +620,7 @@ export function Section11Footer({
             <p className="text-[11px] font-bold leading-none text-white/92">
               {content.security.title}
             </p>
-            <p className="mt-1 text-[10px] leading-[1.2] text-white/58">
+            <p className="mt-1 text-[10px] leading-[1.2] text-white/58 min-[1280px]:mt-1.5 min-[1280px]:leading-[1.45] min-[1280px]:text-white/55">
               {content.security.description}
             </p>
           </div>

@@ -87,7 +87,7 @@ function PrivacyShippingInfoCard({ card }: { card: Section7PrivacyCard }) {
       <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white line-clamp-2">
         {card.title}
       </h3>
-      <div className="mt-2.5 space-y-1.5 text-[11.5px] leading-[1.52] text-white/72 min-h-[52px] min-[390px]:text-[12px]">
+      <div className="mt-2.5 min-h-[52px] space-y-1.5 text-[11.5px] leading-[1.52] text-white/72 min-[390px]:text-[12px] min-[1280px]:mt-3 min-[1280px]:space-y-2 min-[1280px]:leading-[1.65]">
         {card.lines.map((line) => (
           <p key={line}>{line}</p>
         ))}
@@ -131,7 +131,7 @@ function PrivacyShippingShieldCard({
             {shieldCard.checklist.map((item) => (
               <li
                 key={item.label}
-                className="flex items-start gap-2 text-[12px] leading-[1.5] text-white/76"
+                className="flex items-start gap-2 text-[12px] leading-[1.5] text-white/76 min-[1280px]:leading-[1.6]"
               >
                 <CircleCheck
                   aria-hidden="true"
@@ -147,7 +147,7 @@ function PrivacyShippingShieldCard({
             <p className="text-[11.5px] font-bold leading-[1.4] text-[#FF4DA6] min-[390px]:text-[12px]">
               {shieldCard.privacyNote.title}
             </p>
-            <p className="mt-1 text-[11.5px] leading-[1.45] text-white/72 min-[390px]:text-[12px] min-[1280px]:max-w-[420px]">
+            <p className="mt-1 text-[11.5px] leading-[1.45] text-white/72 min-[390px]:text-[12px] min-[1280px]:mt-1.5 min-[1280px]:max-w-[420px] min-[1280px]:leading-[1.6]">
               {shieldCard.privacyNote.description}
             </p>
           </div>
@@ -176,7 +176,7 @@ function PrivacyShippingSupportRow({
         <p className="text-[16px] font-extrabold leading-[1.2] tracking-[-0.01em] text-white min-[390px]:text-[16.5px]">
           {supportRow.title}
         </p>
-        <p className="mt-1 text-[12px] leading-[1.5] text-white/70 min-[390px]:text-[12.5px] min-[1280px]:max-w-[480px]">
+        <p className="mt-1 text-[12px] leading-[1.5] text-white/70 min-[390px]:text-[12.5px] min-[1280px]:mt-1.5 min-[1280px]:max-w-[480px] min-[1280px]:leading-[1.65]">
           {supportRow.description}
         </p>
       </div>

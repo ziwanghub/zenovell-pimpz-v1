@@ -113,10 +113,10 @@ function BenefitGridItem({ item }: { item: Section3Benefit }) {
           strokeWidth={1.5}
         />
       </div>
-      <p className="mt-2 text-[13px] font-semibold leading-[1.3] text-white">
+      <p className="mt-2 text-[13px] font-semibold leading-[1.3] text-white min-[1280px]:mt-2.5 min-[1280px]:leading-[1.35]">
         {item.title}
       </p>
-      <p className="mt-[3px] text-[11px] leading-[1.3] text-white/60">
+      <p className="mt-[3px] text-[11px] leading-[1.3] text-white/60 min-[1280px]:mt-1 min-[1280px]:leading-[1.45] min-[1280px]:text-white/62">
         {item.sub}
       </p>
     </li>
@@ -247,10 +247,10 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     >
       <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
         <SectionBadge label={content.sectionLabel} />
-        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white min-[1280px]:text-[19px] min-[1280px]:leading-[1.35]">
+        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white min-[1280px]:mt-3 min-[1280px]:text-[19px] min-[1280px]:leading-[1.4]">
           {content.superline}
         </p>
-        <div className="mt-1">
+        <div className="mt-1 min-[1280px]:mt-1.5">
           <Link
             href={`/products/${featuredProduct.slug}`}
             onClick={() =>
@@ -264,7 +264,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
             <ProductNameHeading text={content.productName} />
           </Link>
         </div>
-        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3 min-[1280px]:max-w-[420px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.55]">
+        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3.5 min-[1280px]:max-w-[420px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.65] min-[1280px]:text-white/78">
           {content.productTagline}
         </p>
       </div>
