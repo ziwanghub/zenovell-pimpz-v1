@@ -2,11 +2,10 @@
 
 import { useId, useState, type ComponentType } from "react";
 import {
+  ChevronDown,
   ChevronRight,
   Headset,
   LockKeyhole,
-  Minus,
-  Plus,
   ShieldCheck,
   Truck,
 } from "lucide-react";
@@ -19,9 +18,9 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionHeader } from "@/components/ui/section-header";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
-import { ctaDestinations } from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -34,25 +33,9 @@ const trustIconByName: Record<Section9TrustItem["iconName"], LucideLikeIcon> = {
   truck: Truck,
 };
 
-function FaqShieldIllustration() {
-  return (
-    <div
-      aria-hidden="true"
-      className="relative flex min-h-[88px] items-center justify-center rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.18),rgba(10,10,10,0.98)_72%)] shadow-[0_0_26px_rgba(233,30,140,0.18)] md:min-h-[112px]"
-    >
-      <div className="absolute inset-x-4 bottom-3 h-4 rounded-full bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.22),rgba(233,30,140,0)_72%)]" />
-      <div className="absolute inset-4 rounded-[16px] border border-[rgba(233,30,140,0.08)]" />
-      <ShieldCheck
-        className="size-10 text-[#FF4DA6] drop-shadow-[0_0_12px_rgba(233,30,140,0.55)] md:size-14"
-        strokeWidth={2.1}
-      />
-    </div>
-  );
-}
-
 function FaqQuestionBadge() {
   return (
-    <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.3)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.15),rgba(10,10,10,0.98)_72%)] text-[20px] font-bold leading-none text-[#FF4DA6] shadow-[0_0_14px_rgba(233,30,140,0.12)]">
+    <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[15px] font-semibold leading-none text-[#FF4DA6]">
       Q
     </div>
   );
@@ -63,22 +46,21 @@ function FaqSupportCard({
 }: {
   supportCard: Section9FaqContent["supportCard"];
 }) {
-  const resolvedHref = ctaDestinations.find((d) => d.id === supportCard.destinationId)?.href || "#";
   return (
-    <div className="mx-4 mt-4 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-3 min-[1280px]:mx-auto min-[1280px]:mt-6 min-[1280px]:max-w-[768px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4">
-      <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
+    <div className="mx-4 mt-3.5 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] px-3.5 py-3 min-[1280px]:mx-auto min-[1280px]:mt-6 min-[1280px]:max-w-[768px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4">
+      <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
         <Headset
           aria-hidden="true"
-          className="size-6 text-[#FF4DA6]"
+          className="size-5 text-[#FF4DA6]"
           strokeWidth={1.9}
         />
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="text-[18px] font-extrabold leading-[1.1] text-white">
+        <p className="text-[15px] font-semibold leading-[1.2] tracking-tight text-white min-[390px]:text-[16px]">
           {supportCard.title}
         </p>
-        <div className="mt-1 text-[13px] leading-[1.35] text-white/66">
+        <div className="mt-1 text-[12px] leading-[1.4] text-white/62 min-[390px]:text-[13px]">
           {supportCard.descriptionLines.map((line) => (
             <p key={line}>{line}</p>
           ))}
@@ -86,24 +68,19 @@ function FaqSupportCard({
       </div>
 
       <a
-        href={resolvedHref}
+        href={LINE_OA_URL}
         aria-label={supportCard.ctaAriaLabel}
         className="inline-flex h-11 shrink-0 items-center gap-2 rounded-[14px] bg-[#E91E8C] px-3 text-[14px] font-bold leading-none text-white shadow-[0_0_18px_rgba(233,30,140,0.35)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_24px_rgba(233,30,140,0.44)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
         onClick={(e) => {
-          analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
-            surface: "faq",
-            label: supportCard.ctaLabel,
-            destination: resolvedHref,
-          });
-
+          // Canonical conversion path only: activateLineCta → line_cta_click.
+          // SUPPORT_CTA_CLICK removed as legacy dual-fire (see implementation report).
           activateLineCta({
             title: supportCard.ctaLabel,
-            surface: "support-line",
+            surface: "faq-support-line",
             landingPage: "/",
             intent: "inquiry",
             source: "faq-support",
           });
-
           e.preventDefault();
         }}
       >
@@ -119,21 +96,14 @@ function FaqSupportCard({
 function FinalLineCTA({
   label,
   ariaLabel,
-  destinationId,
 }: Section9FaqContent["primaryCta"]) {
-  const resolvedHref = ctaDestinations.find((d) => d.id === destinationId)?.href || "#";
   return (
     <a
       aria-label={ariaLabel}
-      href={resolvedHref}
+      href={LINE_OA_URL}
       className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
       onClick={(e) => {
-        analytics.track(AnalyticsEvents.SUPPORT_CTA_CLICK, {
-          surface: "faq",
-          label,
-          destination: resolvedHref,
-        });
-
+        // Canonical conversion path only (no legacy SUPPORT_CTA_CLICK dual-fire).
         activateLineCta({
           title: label,
           surface: "faq-line",
@@ -141,7 +111,6 @@ function FinalLineCTA({
           intent: "high_intent",
           source: "faq",
         });
-
         e.preventDefault();
       }}
     >
@@ -194,9 +163,9 @@ function FaqItemRow({
 
   return (
     <li
-      className={`rounded-[16px] border bg-[#130D11] transition-[border-color,box-shadow] duration-150 ${
+      className={`overflow-hidden rounded-[18px] border bg-[#130D11] transition-[border-color,box-shadow] duration-150 ${
         isOpen
-          ? "border-[rgba(233,30,140,0.3)] shadow-[0_0_20px_rgba(233,30,140,0.14)]"
+          ? "border-[rgba(233,30,140,0.28)] shadow-[0_0_16px_rgba(233,30,140,0.12)]"
           : "border-[rgba(233,30,140,0.14)]"
       }`}
     >
@@ -208,6 +177,7 @@ function FaqItemRow({
         onClick={() => {
           const willExpand = !isOpen;
           onOpen();
+          // Business UX events for accordion (not conversion dual-fire).
           if (willExpand) {
             analytics.track(AnalyticsEvents.FAQ_EXPAND, {
               surface: "faq",
@@ -220,50 +190,56 @@ function FaqItemRow({
             });
           }
         }}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+        className="flex min-h-14 w-full items-center gap-3 px-3.5 py-3.5 text-left transition-colors duration-150 hover:bg-white/[0.03] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[390px]:px-4"
       >
         <FaqQuestionBadge />
         <span
-          className={`line-clamp-2 min-w-0 flex-1 text-[16px] leading-[1.35] ${
-            isOpen ? "font-extrabold text-[#FF4DA6]" : "font-medium text-white"
+          className={`line-clamp-2 min-w-0 flex-1 text-[15px] leading-[1.35] ${
+            isOpen ? "font-semibold text-[#FF4DA6]" : "font-medium text-white"
           }`}
         >
           {item.question}
         </span>
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
-          {isOpen ? (
-            <Minus
-              aria-hidden="true"
-              className="size-5 text-[#FF4DA6]"
-              strokeWidth={2.3}
-            />
-          ) : (
-            <Plus
-              aria-hidden="true"
-              className="size-5 text-[#FF4DA6]"
-              strokeWidth={2.3}
-            />
-          )}
+        <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60">
+          <ChevronDown
+            aria-hidden="true"
+            className={[
+              "size-4 transition-transform duration-200",
+              isOpen ? "rotate-180 text-[#FF4DA6]" : "",
+            ].join(" ")}
+            strokeWidth={2.1}
+          />
         </span>
       </button>
 
-      {isOpen ? (
-        <div
-          id={panelId}
-          role="region"
-          aria-labelledby={buttonId}
-          className="px-4 pb-4"
-        >
-          <div className="grid grid-cols-[88px_minmax(0,1fr)] gap-3 border-t border-[rgba(233,30,140,0.12)] pt-4 md:grid-cols-[104px_minmax(0,1fr)]">
-            <FaqShieldIllustration />
-            <div className="space-y-1.5 pt-1 text-[14px] leading-[1.55] text-white/82">
-              {item.answerLines.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
+      {/* Authority-aligned disclosure: animated grid-rows (Product FAQ language) */}
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!isOpen}
+        className={[
+          "grid transition-[grid-template-rows,opacity] duration-200 ease-out",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-70",
+        ].join(" ")}
+      >
+        <div className="overflow-hidden">
+          <div className="border-t border-white/10 px-3.5 pb-3.5 pt-3 min-[390px]:px-4">
+            <div className="flex gap-2.5">
+              <ShieldCheck
+                aria-hidden="true"
+                className="mt-0.5 size-5 shrink-0 text-[#FF4DA6]"
+                strokeWidth={1.9}
+              />
+              <div className="min-w-0 flex-1 space-y-1.5 text-[14px] leading-[1.55] text-white/78">
+                {item.answerLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      ) : null}
+      </div>
     </li>
   );
 }
@@ -288,7 +264,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
         description={content.description}
       />
 
-      <ul className="space-y-3 px-3 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:space-y-4 min-[1280px]:px-0">
+      <ul className="space-y-2.5 px-3 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:space-y-3 min-[1280px]:px-0">
         {content.items.map((item) => (
           <FaqItemRow
             key={item.id}
@@ -303,7 +279,7 @@ export function Section9Faq({ content }: Section9FaqProps) {
 
       <FaqSupportCard supportCard={content.supportCard} />
 
-      <div className="px-3 pt-3 md:px-4 md:pt-[14px] min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:px-0 min-[1280px]:pt-5">
+      <div className="px-3 pt-3.5 md:px-4 min-[1280px]:mx-auto min-[1280px]:max-w-[768px] min-[1280px]:px-0 min-[1280px]:pt-5">
         <FinalLineCTA {...content.primaryCta} />
       </div>
 
