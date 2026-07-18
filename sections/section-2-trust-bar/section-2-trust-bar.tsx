@@ -232,7 +232,8 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
         statement={content.trustStatement}
       />
 
-      <div className="px-4 pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[520px] min-[1280px]:px-0">
+      {/* Desktop ≥1280: mid-page trust CTA hidden; Header/Hero/Final CTA remain conversion path */}
+      <div className="px-4 pt-5 min-[1280px]:hidden">
         <SolidLineCTA
           label={content.cta.label}
           onClick={() =>

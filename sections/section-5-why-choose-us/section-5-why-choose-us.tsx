@@ -222,7 +222,8 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-3.5 min-[1280px]:px-0 min-[1280px]:pt-5">
+      {/* Desktop ≥1280: mid-page CTA density reduction — keep Mobile/Adaptive */}
+      <div className="px-4 pt-3.5 min-[1280px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 

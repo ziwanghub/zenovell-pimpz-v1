@@ -181,10 +181,11 @@ function PrivacyShippingSupportRow({
         </p>
       </div>
 
+      {/* Desktop ≥1280: hide support LINE pill; keep help title/description */}
       <a
         aria-label={supportRow.cta.ariaLabel}
         href={LINE_OA_URL}
-        className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold leading-none text-white shadow-[0_0_16px_rgba(233,30,140,0.34)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_24px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+        className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold leading-none text-white shadow-[0_0_16px_rgba(233,30,140,0.34)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_24px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:hidden"
         onClick={(e) => {
           activateLineCta({
             title: supportRow.cta.label,
@@ -290,7 +291,8 @@ export function Section7PrivacyShipping({
       <PrivacyShippingShieldCard shieldCard={content.shieldCard} />
       <PrivacyShippingSupportRow supportRow={content.supportRow} />
 
-      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
+      {/* Desktop ≥1280: mid-page final LINE CTA density reduction — keep Mobile/Adaptive */}
+      <div className="px-4 pt-[14px] min-[1280px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
