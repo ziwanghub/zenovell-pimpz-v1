@@ -227,11 +227,12 @@ export const siteNavigationGroups: [
     id: "products",
     label: "ข้อมูลสินค้า",
     items: [
+      // Product routes verified against content/products.ts + app/(platform)/products/[slug]
       {
         id: "nicky-pimpz-boss",
         label: "Nicky Pimpz Boss",
-        href: "#section-3",
-        kind: "anchor",
+        href: "/products/nicky-pimpz-boss",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า Nicky Pimpz Boss",
         visibility: {
           surfaces: ["footer"],
@@ -242,67 +243,63 @@ export const siteNavigationGroups: [
       {
         id: "boss-men",
         label: "Boss Men",
-        href: "#",
-        kind: "placeholder",
+        href: "/products/boss-men",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า Boss Men",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "products",
         },
         analyticsEventKey: "product_click",
-        placeholderSafe: true,
       },
       {
         id: "boss-lady",
         label: "Boss Lady",
-        href: "#",
-        kind: "placeholder",
+        href: "/products/boss-lady",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า Boss Lady",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "products",
         },
         analyticsEventKey: "product_click",
-        placeholderSafe: true,
       },
       {
         id: "np-gel",
         label: "NP Gel",
-        href: "#",
-        kind: "placeholder",
+        href: "/products/np-gel",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า NP Gel",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "products",
         },
         analyticsEventKey: "product_click",
-        placeholderSafe: true,
       },
       {
         id: "np-wipes",
         label: "NP Men's Wipes",
-        href: "#",
-        kind: "placeholder",
+        // Product Authority slug is np-mens-wipes (not np-wipes)
+        href: "/products/np-mens-wipes",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า NP Men's Wipes",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "products",
         },
         analyticsEventKey: "product_click",
-        placeholderSafe: true,
       },
       {
         id: "b21",
         label: "B21",
-        href: "#",
-        kind: "placeholder",
+        href: "/products/b21",
+        kind: "route",
         ariaLabel: "ดูข้อมูลสินค้า B21",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "products",
         },
         analyticsEventKey: "product_click",
-        placeholderSafe: true,
       },
     ],
   },
@@ -339,7 +336,7 @@ export const siteNavigationGroups: [
       {
         id: "shipping",
         label: "การจัดส่ง",
-        href: "#section-7",
+        href: "#section-7-privacy-shipping",
         kind: "anchor",
         ariaLabel: "ไปที่ข้อมูลการจัดส่ง",
         visibility: {
@@ -351,7 +348,8 @@ export const siteNavigationGroups: [
       {
         id: "payment",
         label: "การชำระเงิน",
-        href: "#section-11",
+        // Payment badges live in homepage footer; no dedicated /payment route.
+        href: "#section-11-footer",
         kind: "anchor",
         ariaLabel: "ไปที่ข้อมูลการชำระเงิน",
         visibility: {
@@ -363,33 +361,42 @@ export const siteNavigationGroups: [
       {
         id: "privacy",
         label: "ความเป็นส่วนตัว",
-        href: "#",
-        kind: "placeholder",
+        href: "/information/privacy",
+        kind: "route",
         ariaLabel: "ไปที่นโยบายความเป็นส่วนตัว",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "services",
         },
         analyticsEventKey: "footer_click",
-        placeholderSafe: true,
       },
       {
         id: "terms",
         label: "เงื่อนไขการให้บริการ",
-        href: "#",
-        kind: "placeholder",
+        href: "/information/terms",
+        kind: "route",
         ariaLabel: "ไปที่เงื่อนไขการให้บริการ",
         visibility: {
           surfaces: ["footer"],
           footerColumnId: "services",
         },
         analyticsEventKey: "footer_click",
-        placeholderSafe: true,
       },
     ],
   },
 ];
 
+/**
+ * Canonical contact authority for surfaces that need company contact data.
+ *
+ * PHONE_AUTHORITY: BLOCKED (pending owner confirmation before Ads/Production)
+ * Competing historical values in this repository:
+ * - 099-124-4289 — introduced with M9.5 siteContacts; never rendered in UI
+ * - 092-956-5523 — homepage footer runtime since content update 4de2ed9
+ * B2.7 preserves the homepage-visible runtime (092) so wiring siteContacts into
+ * the footer is not a destructive phone flip. Owner must still confirm the
+ * real support number; do not treat either value as externally verified.
+ */
 export const siteContacts: [
   SiteContact,
   SiteContact,
@@ -400,8 +407,8 @@ export const siteContacts: [
     id: "line",
     label: "LINE Official",
     value: "@zenovell",
-    href: "#line-primary",
-    kind: "placeholder",
+    href: LINE_OA_URL,
+    kind: "line",
     ariaLabel: "ติดต่อ LINE Official @zenovell",
     interactive: true,
     analyticsEventKey: "line_click",
@@ -409,11 +416,11 @@ export const siteContacts: [
   {
     id: "phone",
     label: "โทรศัพท์",
-    value: "099-124-4289",
+    value: "092-956-5523",
     subtext: "(10:00 - 22:00 น.)",
-    href: "tel:0991244289",
+    href: "tel:0929565523",
     kind: "tel",
-    ariaLabel: "โทรหาเซโนเวลล์ที่ 099-124-4289",
+    ariaLabel: "โทรหาเซโนเวลล์ที่ 092-956-5523",
     interactive: true,
     analyticsEventKey: "contact_click",
   },
@@ -521,11 +528,11 @@ export const ctaDestinations: CtaDestination[] = [
   {
     id: "footer-line",
     label: "LINE Official",
-    href: "#line-primary",
-    kind: "placeholder",
+    href: LINE_OA_URL,
+    kind: "line",
     ariaLabel: "ติดต่อ LINE Official @zenovell",
     analyticsEventKey: "line_click",
-    placeholderSafe: true,
+    placeholderSafe: false,
   },
 ];
 
