@@ -245,7 +245,8 @@ export function Section6HowToOrder({
 
       <HowToOrderPromoCard promo={content.promo} />
 
-      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
+      {/* Desktop ≥1280: mid-page CTA density reduction — keep Mobile/Adaptive */}
+      <div className="px-4 pt-[14px] min-[1280px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
