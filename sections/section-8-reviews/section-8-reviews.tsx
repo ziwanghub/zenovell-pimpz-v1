@@ -184,7 +184,7 @@ function ReviewCard({ review }: { review: Section8ReviewCard }) {
             <ReviewPurchaseBadge label={review.purchaseBadge} />
           </div>
 
-          <div className="mt-2.5 min-h-[52px] space-y-1 text-[13px] leading-5 text-white/84 min-[1280px]:min-h-0">
+          <div className="mt-2.5 min-h-[52px] space-y-1 text-[13px] leading-5 text-white/84 min-[1280px]:mt-3 min-[1280px]:min-h-0 min-[1280px]:space-y-1.5 min-[1280px]:leading-[1.65] min-[1280px]:text-white/80">
             {review.reviewLines.map((line) => (
               <p key={line} className="line-clamp-2 min-[1280px]:line-clamp-none">
                 {line}
@@ -325,7 +325,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
         ))}
       </ul>
 
-      <p className="mx-4 mt-2.5 text-[11px] leading-4 text-white/42 min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:px-0">
+      <p className="mx-4 mt-2.5 text-[11px] leading-4 text-white/42 min-[1280px]:mx-auto min-[1280px]:mt-3.5 min-[1280px]:max-w-[640px] min-[1280px]:px-0 min-[1280px]:leading-[1.55] min-[1280px]:text-white/48">
         ตัวอย่างรีวิวและคะแนนที่แสดงในส่วนนี้ใช้เพื่อช่วยตัดสินใจ
         ผลลัพธ์อาจแตกต่างกันตามบุคคล
       </p>

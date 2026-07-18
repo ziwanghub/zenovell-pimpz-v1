@@ -43,7 +43,7 @@ const microTrustIconByName: Record<Section2MicroTrustIcon, LucideLikeIcon> = {
 
 function SectionHeading({ lines }: { lines: [string, string] }) {
   return (
-    <h2 className="text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white">
+    <h2 className="text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white min-[1280px]:leading-[1.2] min-[1280px]:tracking-[-0.015em]">
       <span className="block">{lines[0]}</span>
       <span className="block">{lines[1]}</span>
     </h2>
@@ -52,7 +52,7 @@ function SectionHeading({ lines }: { lines: [string, string] }) {
 
 function SectionDescription({ text }: { text: string }) {
   return (
-    <p className="text-[14px] leading-[1.5] text-white/65 min-[1280px]:mx-auto min-[1280px]:max-w-[640px]">
+    <p className="text-[14px] leading-[1.5] text-white/65 min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:leading-[1.65]">
       {text}
     </p>
   );
@@ -105,7 +105,7 @@ function TrustStatement({
 }) {
   return (
     <div className="border-t border-white/8 pt-[14px] text-center">
-      <p className="flex items-center justify-center gap-1.5 text-[11px] leading-[1.4] text-white/75">
+      <p className="flex items-center justify-center gap-1.5 text-[11px] leading-[1.4] text-white/75 min-[1280px]:leading-[1.5] min-[1280px]:text-white/70">
         <ShieldCheck
           aria-hidden="true"
           className="size-[15px] text-[#E91E8C]"
@@ -113,7 +113,7 @@ function TrustStatement({
         />
         <span>{label}</span>
       </p>
-      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C] min-[1280px]:mx-auto min-[1280px]:max-w-[560px]">
+      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C] min-[1280px]:mx-auto min-[1280px]:mt-1.5 min-[1280px]:max-w-[560px] min-[1280px]:leading-[1.5]">
         {highlight}
       </p>
     </div>
@@ -226,7 +226,7 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
     >
       <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[720px] min-[1280px]:px-0">
         <SectionHeading lines={content.heading} />
-        <div className="mt-2">
+        <div className="mt-2 min-[1280px]:mt-3.5">
           <SectionDescription text={content.description} />
         </div>
       </div>

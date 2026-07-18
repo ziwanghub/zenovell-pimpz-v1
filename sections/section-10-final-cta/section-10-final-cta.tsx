@@ -95,7 +95,7 @@ function FinalBenefitItem({ item }: { item: Section10BenefitItem }) {
         <p className="text-[14px] font-extrabold leading-[1.15] text-white md:text-[15px]">
           {item.title}
         </p>
-        <p className="mt-1 text-[12px] leading-[1.45] text-white/74 md:mt-1.5 md:text-[13px] md:leading-[1.45]">
+        <p className="mt-1 text-[12px] leading-[1.45] text-white/74 md:mt-1.5 md:text-[13px] md:leading-[1.45] min-[1280px]:mt-1.5 min-[1280px]:leading-[1.6]">
           {item.description}
         </p>
       </div>
@@ -327,18 +327,18 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
     >
       <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4 min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
+        <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.2] min-[1280px]:tracking-[-0.015em]">
           <span className="block">
             <HeadingLine line={content.headingLines[0]} />
           </span>
-          <span className="mt-1 block">
+          <span className="mt-1 block min-[1280px]:mt-1.5">
             <HeadingLine
               line={content.headingLines[1]}
               highlightedWord={content.highlightedWord}
             />
           </span>
         </h2>
-        <p className="mt-3 text-[14px] leading-[1.5] text-white/68 min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-3 text-[14px] leading-[1.5] text-white/68 min-[1280px]:mx-auto min-[1280px]:mt-3.5 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.65]">
           {content.description}
         </p>
       </div>
@@ -382,7 +382,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
       </div>
 
       <div className="px-3 pt-4 text-center md:px-4 md:pt-5 min-[1280px]:px-0">
-        <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45] min-[1280px]:mx-auto min-[1280px]:max-w-[640px]">
+        <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45] min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:leading-[1.6] min-[1280px]:text-white/78">
           {content.finalReassurance.prefix}{" "}
           <span className="font-bold text-[#E91E8C]">
             {content.finalReassurance.highlight}

@@ -253,10 +253,10 @@ function CatalogTrustItem({ item }: { item: Section4TrustItem }) {
         className="size-5 text-[#E91E8C] min-[390px]:size-[22px]"
         strokeWidth={1.6}
       />
-      <span className="block text-[11px] font-semibold leading-[1.3] text-white min-[390px]:text-[11.5px] md:text-[12px]">
+      <span className="block text-[11px] font-semibold leading-[1.3] text-white min-[390px]:text-[11.5px] md:text-[12px] min-[1280px]:leading-[1.35]">
         {item.title}
       </span>
-      <span className="block text-[10px] leading-[1.35] text-white/70 min-[390px]:text-[10.5px] md:text-[11px]">
+      <span className="block text-[10px] leading-[1.35] text-white/70 min-[390px]:text-[10.5px] md:text-[11px] min-[1280px]:leading-[1.5] min-[1280px]:text-white/62">
         {item.sub}
       </span>
     </li>
@@ -348,7 +348,7 @@ export function Section4ProductCatalog({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:mx-auto min-[1280px]:max-w-[560px] min-[1280px]:px-0 min-[1280px]:pt-5">
+      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:mx-auto min-[1280px]:max-w-[560px] min-[1280px]:px-0 min-[1280px]:pt-5 min-[1280px]:leading-[1.5] min-[1280px]:tracking-[0.05em] min-[1280px]:text-white/48">
         {content.footerNote}
       </p>
     </section>
