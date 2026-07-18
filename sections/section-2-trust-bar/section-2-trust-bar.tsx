@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
-import Image from "next/image";
-import { useState, type ComponentType } from "react";
+import type { ComponentType } from "react";
 import {
   ChevronRight,
   EyeOff,
@@ -23,8 +22,6 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
-
-const SECTION_2_COLLAPSIBLE_CONTENT_ID = "section-2-collapsible-content";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -54,11 +51,7 @@ function SectionHeading({ lines }: { lines: [string, string] }) {
 }
 
 function SectionDescription({ text }: { text: string }) {
-  return (
-    <p className="text-[14px] leading-[1.5] text-white/65">
-      {text}
-    </p>
-  );
+  return <p className="text-[14px] leading-[1.5] text-white/65">{text}</p>;
 }
 
 function TrustCardItem({ item }: { item: Section2TrustCardItem }) {
@@ -79,7 +72,10 @@ function TrustCardItem({ item }: { item: Section2TrustCardItem }) {
             {item.title[1]}
           </p>
         ) : (
-          <p className="text-[12px] font-bold leading-[1.3] text-transparent" aria-hidden="true">
+          <p
+            className="text-[12px] font-bold leading-[1.3] text-transparent"
+            aria-hidden="true"
+          >
             &nbsp;
           </p>
         )}
@@ -128,7 +124,7 @@ function TrustCard({
   statement: Section2TrustBarContent["trustStatement"];
 }) {
   return (
-    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-0 min-[1280px]:rounded-[18px] min-[1280px]:px-6 min-[1280px]:py-5">
+    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-auto min-[1280px]:max-w-[920px] min-[1280px]:rounded-[18px] min-[1280px]:px-6 min-[1280px]:py-5">
       <ul className="grid grid-cols-4 gap-[6px] pb-[14px] min-[1280px]:gap-5 min-[1280px]:pb-4">
         {items.map((item) => (
           <TrustCardItem key={`${item.icon}-${item.title[0]}`} item={item} />
@@ -143,31 +139,17 @@ function TrustCard({
   );
 }
 
-function ProductArtwork({
-  src,
-  alt,
-  width,
-  height,
-}: Section2TrustBarContent["artwork"]) {
-  return (
-    <div className="mt-1 min-[1280px]:hidden">
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        sizes="(max-width: 430px) 100vw, 430px"
-        className="h-auto w-full"
-      />
-    </div>
-  );
-}
-
-function SolidLineCTA({ label, onClick }: { label: string; onClick?: () => void }) {
+function SolidLineCTA({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick?: () => void;
+}) {
   return (
     <button
       aria-label={label}
-      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)]"
+      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
       type="button"
       onClick={onClick}
     >
@@ -180,7 +162,11 @@ function SolidLineCTA({ label, onClick }: { label: string; onClick?: () => void 
       </span>
 
       <IconWrapper size={8} className="border border-white/35">
-        <ChevronRight aria-hidden="true" className="size-5 text-white" strokeWidth={2.2} />
+        <ChevronRight
+          aria-hidden="true"
+          className="size-5 text-white"
+          strokeWidth={2.2}
+        />
       </IconWrapper>
     </button>
   );
@@ -191,7 +177,11 @@ function MicroTrustItem({ item }: { item: Section2MicroTrustItem }) {
 
   return (
     <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-[11px] leading-none text-white/65">
-      <Icon aria-hidden="true" className="size-[14px] text-[#E91E8C]" strokeWidth={1.8} />
+      <Icon
+        aria-hidden="true"
+        className="size-[14px] text-[#E91E8C]"
+        strokeWidth={1.8}
+      />
       <span>{item.text}</span>
     </span>
   );
@@ -199,7 +189,7 @@ function MicroTrustItem({ item }: { item: Section2MicroTrustItem }) {
 
 function MicroTrustRow({ items }: { items: Section2MicroTrustItem[] }) {
   return (
-    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-[14px] pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-4 min-[1280px]:pb-0">
+    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-4 min-[1280px]:pb-2">
       {items.map((item, index) => (
         <div key={item.text} className="flex items-center gap-2">
           <MicroTrustItem item={item} />
@@ -218,65 +208,46 @@ type Section2TrustBarProps = {
   content: Section2TrustBarContent;
 };
 
+/**
+ * Section 2 — Trust Builder (always visible).
+ * Production polish: no collapsible control, no SECTION badge, no product artwork.
+ * Remains a client component solely for LINE CTA activation.
+ */
 export function Section2TrustBar({ content }: Section2TrustBarProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <section
+      id="section-2-trust-bar"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] min-[1280px]:py-5"
+      className="bg-[#0A0A0A] pt-6 pb-1 min-[1280px]:pt-8 min-[1280px]:pb-4"
     >
-      <div className="px-4 pt-7 pb-5 text-center">
-        <button
-          type="button"
-          aria-expanded={isExpanded}
-          aria-controls={SECTION_2_COLLAPSIBLE_CONTENT_ID}
-          aria-label={
-            isExpanded ? "ซ่อนเนื้อหา Section 2" : "แสดงเนื้อหา Section 2"
-          }
-          className="inline-flex rounded-full bg-[#E91E8C] px-5 py-2 text-[11px] font-bold leading-none tracking-[0.08em] text-white uppercase shadow-[0_0_14px_rgba(233,30,140,0.35)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
-          onClick={() => setIsExpanded((current) => !current)}
-        >
-          {content.sectionLabel}
-        </button>
+      <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[760px] min-[1280px]:px-0">
+        <SectionHeading lines={content.heading} />
+        <div className="mt-2">
+          <SectionDescription text={content.description} />
+        </div>
       </div>
 
-      {isExpanded ? (
-        <div id={SECTION_2_COLLAPSIBLE_CONTENT_ID}>
-          <div className="px-4 pb-5 text-center min-[1280px]:hidden">
-            <div className="mt-3">
-              <SectionHeading lines={content.heading} />
-            </div>
-            <div className="mt-2">
-              <SectionDescription text={content.description} />
-            </div>
-          </div>
+      <TrustCard
+        items={content.trustCardItems}
+        statement={content.trustStatement}
+      />
 
-          <TrustCard
-            items={content.trustCardItems}
-            statement={content.trustStatement}
-          />
+      <div className="px-4 pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[520px] min-[1280px]:px-0">
+        <SolidLineCTA
+          label={content.cta.label}
+          onClick={() =>
+            activateLineCta({
+              title: content.cta.label,
+              surface: "trust-line",
+              landingPage: "/",
+              intent: "high_intent",
+              source: "trust-bar",
+            })
+          }
+        />
+      </div>
 
-          <ProductArtwork {...content.artwork} />
-
-          <div className="px-4 pt-6 min-[1280px]:hidden">
-            <SolidLineCTA
-              label={content.cta.label}
-              onClick={() =>
-                activateLineCta({
-                  title: content.cta.label,
-                  surface: "trust-line",
-                  landingPage: "/",
-                  intent: "high_intent",
-                  source: "trust-bar",
-                })
-              }
-            />
-          </div>
-
-          <MicroTrustRow items={content.microTrustItems} />
-        </div>
-      ) : null}
+      <MicroTrustRow items={content.microTrustItems} />
     </section>
   );
 }
