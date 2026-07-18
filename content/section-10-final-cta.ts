@@ -68,7 +68,7 @@ export type Section10FinalCtaContent = {
 
 export const section10FinalCtaContent: Section10FinalCtaContent = {
   sectionLabel: "SECTION 10",
-  ariaLabel: "Final CTA",
+  ariaLabel: "พร้อมเริ่มสั่งซื้อผ่าน LINE",
   headingLines: ["พร้อมเปลี่ยนความมั่นใจ", "ให้เป็นเวอร์ชั่นที่ดีที่สุดของคุณ"],
   highlightedWord: "ดีที่สุด",
   description: "เริ่มวันนี้ เพื่อความสัมพันธ์ที่ดีขึ้นในทุกวัน",
@@ -123,8 +123,9 @@ export const section10FinalCtaContent: Section10FinalCtaContent = {
   primaryCta: {
     label: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
     description: "แชทกับทีมงานผู้เชี่ยวชาญได้ทันที",
-    ariaLabel: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
-    href: "#",
+    ariaLabel: "ปรึกษาหรือสั่งซื้อผ่าน LINE กับทีมงานผู้เชี่ยวชาญ",
+    // Runtime destination is LINE_OA_URL via activateLineCta (surface: final-cta).
+    href: "https://lin.ee/syjmYE2",
   },
   trustItems: [
     {

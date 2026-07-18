@@ -24,6 +24,7 @@ import type {
 import { LineIcon } from "@/components/ui/line-icon";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
+import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -94,7 +95,7 @@ function FinalBenefitItem({ item }: { item: Section10BenefitItem }) {
         <p className="text-[14px] font-extrabold leading-[1.15] text-white md:text-[15px]">
           {item.title}
         </p>
-        <p className="mt-1 text-[11px] leading-[1.35] text-white/70 md:mt-1.5 md:text-[12px] md:leading-[1.4]">
+        <p className="mt-1 text-[12px] leading-[1.45] text-white/74 md:mt-1.5 md:text-[13px] md:leading-[1.45]">
           {item.description}
         </p>
       </div>
@@ -249,10 +250,11 @@ function FinalLineCta({
 }) {
   return (
     <a
-      href={primaryCta.href}
+      href={LINE_OA_URL}
       aria-label={primaryCta.ariaLabel}
       className="block rounded-[22px] bg-[#E91E8C] px-4 py-3.5 text-white shadow-[0_0_24px_rgba(233,30,140,0.38)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_30px_rgba(233,30,140,0.48)] active:scale-[0.98] active:bg-[#C2185B] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] md:px-5 md:py-4"
       onClick={(e) => {
+        // Canonical Primary Conversion CTA path (ADR-006).
         activateLineCta({
           title: primaryCta.label,
           surface: "final-cta",
@@ -301,10 +303,10 @@ function FinalTrustItem({ item }: { item: Section10TrustItem }) {
         strokeWidth={1.9}
       />
       <div className="min-w-0">
-        <p className="text-[11px] font-bold leading-[1.2] text-white md:text-[12px]">
+        <p className="text-[12px] font-bold leading-[1.25] text-white md:text-[13px]">
           {item.title}
         </p>
-        <p className="mt-0.5 text-[10px] leading-[1.25] text-white/65 md:mt-1 md:text-[11px] md:leading-[1.3]">
+        <p className="mt-0.5 text-[11.5px] leading-[1.4] text-white/72 md:mt-1 md:text-[12px] md:leading-[1.4]">
           {item.description}
         </p>
       </div>
