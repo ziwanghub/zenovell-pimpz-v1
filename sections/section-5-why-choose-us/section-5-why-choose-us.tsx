@@ -5,7 +5,6 @@ import type { ComponentType } from "react";
 import {
   ChevronRight,
   Headphones,
-  LineChart,
   LockKeyhole,
   Package,
   ShieldCheck,
@@ -54,19 +53,11 @@ function WhyChooseBenefitIcon({
 
   return (
     <div className="relative flex size-[72px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.35)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.22),rgba(10,10,10,0.96)_68%)] shadow-[0_0_24px_rgba(233,30,140,0.28)]">
-      {iconName === "sparkles" ? (
-        <LineChart
-          aria-hidden="true"
-          className="size-8 text-[#FF4DA6]"
-          strokeWidth={1.9}
-        />
-      ) : (
-        <Icon
-          aria-hidden="true"
-          className="size-8 text-[#FF4DA6]"
-          strokeWidth={1.9}
-        />
-      )}
+      <Icon
+        aria-hidden="true"
+        className="size-8 text-[#FF4DA6]"
+        strokeWidth={1.9}
+      />
     </div>
   );
 }
@@ -79,23 +70,19 @@ function WhyChooseBenefitItem({
   desktopPlacement?: string;
 }) {
   return (
-    <li className={`grid min-h-[104px] grid-cols-[72px_minmax(0,1fr)_20px] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-4 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)] min-[1280px]:min-h-[126px] min-[1280px]:rounded-[22px] min-[1280px]:gap-4 min-[1280px]:px-5 min-[1280px]:py-5 ${desktopPlacement}`}>
+    <li
+      className={`grid min-h-[96px] grid-cols-[72px_minmax(0,1fr)] items-center gap-[14px] rounded-[18px] border border-[rgba(233,30,140,0.2)] bg-[linear-gradient(180deg,#160D12_0%,#120B10_100%)] px-4 py-3.5 shadow-[0_0_0_1px_rgba(233,30,140,0.02),0_14px_34px_rgba(0,0,0,0.18)] min-[1280px]:min-h-[118px] min-[1280px]:rounded-[22px] min-[1280px]:gap-4 min-[1280px]:px-5 min-[1280px]:py-4.5 ${desktopPlacement}`}
+    >
       <WhyChooseBenefitIcon iconName={item.iconName} />
 
       <div className="min-w-0">
         <h3 className="text-[15px] font-extrabold leading-[1.28] text-white min-[390px]:text-[16px]">
           {item.title}
         </h3>
-        <p className="mt-1.5 text-[11px] leading-[1.52] text-white/68 min-[390px]:text-[11.5px]">
+        <p className="mt-1 text-[12px] leading-[1.58] text-white/72 min-[390px]:text-[12.5px]">
           {item.description}
         </p>
       </div>
-
-      <ChevronRight
-        aria-hidden="true"
-        className="size-5 shrink-0 text-[#E91E8C]"
-        strokeWidth={2.2}
-      />
     </li>
   );
 }
@@ -106,7 +93,7 @@ function WhyChoosePromoCard({
   promo: Section5WhyChooseUsContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-4 min-h-[154px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)] min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[208px] min-[1280px]:rounded-[24px]">
+    <div className="relative mx-4 mt-3 min-h-[148px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:min-h-[200px] min-[1280px]:rounded-[24px]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
@@ -119,15 +106,15 @@ function WhyChoosePromoCard({
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.97)_0%,rgba(22,11,17,0.92)_34%,rgba(22,11,17,0.4)_62%,rgba(22,11,17,0.1)_100%)]" />
       </div>
 
-      <div className="relative flex min-h-[154px] items-center">
-        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-5 min-[390px]:max-w-[54%] min-[1280px]:max-w-[44%] min-[1280px]:px-7">
+      <div className="relative flex min-h-[148px] items-center">
+        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-4.5 min-[390px]:max-w-[54%] min-[1280px]:max-w-[44%] min-[1280px]:px-7">
           <p className="text-[14px] font-bold leading-[1.32] text-white min-[390px]:text-[15px]">
             {promo.title}
           </p>
           <p className="mt-1.5 text-[15px] font-extrabold leading-[1.28] text-[#E91E8C] min-[390px]:text-[16px]">
             {promo.highlight}
           </p>
-          <p className="mt-2.5 max-w-[92%] text-[12px] leading-[1.5] text-white/72">
+          <p className="mt-2 max-w-[92%] text-[12px] leading-[1.5] text-white/72">
             {promo.description}
           </p>
         </div>
@@ -205,19 +192,19 @@ export function Section5WhyChooseUs({
     <section
       id="section-5-why-choose-us"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pb-7"
+      className="bg-[#0A0A0A] pb-6"
     >
-      <div className="px-4 pt-8 pb-5 text-center min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
+      <div className="px-4 pt-7 pb-4 text-center min-[1280px]:px-0 min-[1280px]:pt-9 min-[1280px]:pb-5">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3.5 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
+        <h2 className="mt-3 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-3.5 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
           {content.heading}
         </h2>
-        <p className="mt-2.5 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-2 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-2.5 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.subtitle}
         </p>
       </div>
 
-      <ul className="space-y-3 px-4 min-[1280px]:grid min-[1280px]:grid-cols-6 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
+      <ul className="space-y-2.5 px-4 min-[1280px]:grid min-[1280px]:grid-cols-6 min-[1280px]:gap-5 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.benefits.map((item, index) => (
           <WhyChooseBenefitItem
             key={item.title}
@@ -235,11 +222,11 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-[18px] min-[1280px]:px-0 min-[1280px]:pt-6">
+      <div className="px-4 pt-3.5 min-[1280px]:px-0 min-[1280px]:pt-5">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? <span aria-hidden="true" className="text-white/28">•</span> : null}
