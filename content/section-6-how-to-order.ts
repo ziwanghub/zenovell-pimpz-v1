@@ -1,6 +1,6 @@
 export type Section6StepIcon =
   | "line-message"
-  | "message-square"
+  | "headphones"
   | "package2"
   | "clipboard-check"
   | "package"
@@ -55,7 +55,7 @@ export const section6HowToOrderContent: Section6HowToOrderContent = {
   sectionLabel: "SECTION 6",
   ariaLabel: "สั่งซื้อผ่าน LINE",
   heading: "สั่งซื้อ ง่าย ผ่าน LINE",
-  subtitle: "ไม่ยุ่งยาก ส่งไว ปลอดภัย 100%",
+  subtitle: "ทำตาม 6 ขั้นตอนง่าย ๆ ตั้งแต่กดปุ่มจนถึงรับสินค้า",
   steps: [
     {
       stepNumber: "1",
@@ -65,7 +65,7 @@ export const section6HowToOrderContent: Section6HowToOrderContent = {
     },
     {
       stepNumber: "2",
-      iconName: "message-square",
+      iconName: "headphones",
       title: "แชทกับทีมงานของเรา",
       description: "สอบถามข้อมูลสินค้า และรับคำแนะนำ",
     },
@@ -84,23 +84,23 @@ export const section6HowToOrderContent: Section6HowToOrderContent = {
     {
       stepNumber: "5",
       iconName: "package",
-      title: "จัดส่งแบบปกปิด",
-      description: "แพ็กเกจปกปิดชื่อสินค้า ไม่ระบุเนื้อหา",
+      title: "ดำเนินการจัดส่ง",
+      description: "หลังยืนยันออเดอร์ ทีมงานจัดส่งตามขั้นตอนที่ตกลง",
     },
     {
       stepNumber: "6",
       iconName: "truck",
       title: "รับสินค้าอย่างมั่นใจ",
-      description: "สินค้าอยู่ในมือคุณ อย่างรวดเร็วและปลอดภัย",
+      description: "สินค้าถึงมือคุณตามรอบจัดส่งที่แจ้งไว้",
     },
   ],
   promo: {
-    title: "มั่นใจในความปลอดภัย",
-    highlight: "และความเป็นส่วนตัว",
-    description: "ทุกออเดอร์ถูกดูแลเป็นพิเศษ",
+    title: "สั่งง่ายผ่าน LINE",
+    highlight: "ทีมงานช่วยทุกขั้นตอน",
+    description: "เริ่มจากปุ่มเดียว จนจบการสั่งซื้อ",
     imageSrc: "/images/section-6/bg-how-to-order-section6.jpeg",
     imageAlt:
-      "Nicky Pimpz Boss product box with dark floral glow supporting privacy and safety reassurance",
+      "Nicky Pimpz Boss product packaging supporting simple LINE ordering confidence",
   },
   finalCta: {
     label: "ปรึกษาหรือสั่งซื้อผ่าน LINE",
