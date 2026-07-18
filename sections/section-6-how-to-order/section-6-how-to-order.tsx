@@ -112,7 +112,7 @@ function HowToOrderPromoCard({
   promo: Section6HowToOrderContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-3 min-h-[126px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[176px] min-[1280px]:rounded-[22px]">
+    <div className="relative mx-4 mt-3 min-h-[126px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[208px] min-[1280px]:rounded-[22px]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
@@ -124,8 +124,8 @@ function HowToOrderPromoCard({
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.96)_0%,rgba(22,11,17,0.82)_40%,rgba(22,11,17,0.18)_74%,rgba(22,11,17,0.06)_100%)]" />
       </div>
 
-      <div className="relative flex min-h-[126px] items-center">
-        <div className="flex max-w-[65%] min-w-0 flex-col justify-center px-4 py-4 md:max-w-[62%] md:px-5">
+      <div className="relative flex min-h-[126px] items-center min-[1280px]:min-h-[208px]">
+        <div className="flex max-w-[65%] min-w-0 flex-col justify-center px-4 py-4 md:max-w-[62%] md:px-5 min-[1280px]:!max-w-[48%] min-[1280px]:px-6 min-[1280px]:py-5">
           <div className="flex items-center gap-3">
             <MessageCircleMore
               aria-hidden="true"

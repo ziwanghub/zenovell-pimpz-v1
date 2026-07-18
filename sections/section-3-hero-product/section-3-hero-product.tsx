@@ -281,15 +281,17 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           })
         }
       >
-        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[440px] min-[1280px]:rounded-[22px]">
-          <Image
-            src={content.artwork.src}
-            alt={content.artwork.alt}
-            fill
-            sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 50vw"
-            className="object-cover"
-            style={{ objectPosition: "center center" }}
-          />
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[400px] min-[1280px]:max-h-[460px] min-[1280px]:rounded-[22px]">
+          <div className="absolute inset-0 min-[1280px]:inset-3 min-[1280px]:overflow-hidden min-[1280px]:rounded-[18px]">
+            <Image
+              src={content.artwork.src}
+              alt={content.artwork.alt}
+              fill
+              sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 50vw"
+              className="object-cover"
+              style={{ objectPosition: "center center" }}
+            />
+          </div>
 
           {content.badges.map((badge) => (
             <ProductStageBadge key={badge.type} badge={badge} />

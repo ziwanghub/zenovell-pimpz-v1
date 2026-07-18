@@ -120,13 +120,13 @@ function ReviewPurchaseBadge({ label }: { label: string }) {
 
 function ReviewProductChip({ product }: { product: Section8ReviewCard["product"] }) {
   return (
-    <div className="mt-2.5 inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-white/[0.04] px-2.5 py-1.5">
-      <div className="relative size-7 shrink-0 overflow-hidden rounded-[6px]">
+    <div className="mt-2.5 inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-white/[0.04] px-2.5 py-1.5 min-[1280px]:mt-3 min-[1280px]:gap-2.5 min-[1280px]:rounded-[12px] min-[1280px]:px-3 min-[1280px]:py-2">
+      <div className="relative size-7 shrink-0 overflow-hidden rounded-[6px] min-[1280px]:size-9 min-[1280px]:rounded-[8px]">
         <Image
           src={product.imageSrc}
           alt={product.imageAlt}
           fill
-          sizes="28px"
+          sizes="(min-width: 1280px) 36px, 28px"
           className="object-contain object-center"
         />
       </div>
