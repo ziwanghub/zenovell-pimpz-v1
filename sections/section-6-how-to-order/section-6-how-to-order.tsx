@@ -5,9 +5,9 @@ import type { ComponentType } from "react";
 import {
   ChevronRight,
   ClipboardCheck,
+  Headphones,
   LockKeyhole,
   MessageCircleMore,
-  MessageSquareMore,
   Package,
   Package2,
   ShieldCheck,
@@ -34,7 +34,7 @@ type LucideLikeIcon = ComponentType<{
 
 const stepIconByName: Record<Section6StepIcon, LucideLikeIcon> = {
   "line-message": MessageCircleMore,
-  "message-square": MessageSquareMore,
+  headphones: Headphones,
   package2: Package2,
   "clipboard-check": ClipboardCheck,
   package: Package,
@@ -97,7 +97,7 @@ function HowToOrderStepItem({
           <h3 className="text-[15px] font-extrabold leading-[1.25] text-white">
             {item.title}
           </h3>
-          <p className="mt-1 text-[11px] leading-[1.45] text-white/68">
+          <p className="mt-1 text-[12px] leading-[1.55] text-white/72 min-[390px]:text-[12.5px]">
             {item.description}
           </p>
         </div>
@@ -127,7 +127,7 @@ function HowToOrderPromoCard({
       <div className="relative flex min-h-[126px] items-center">
         <div className="flex max-w-[65%] min-w-0 flex-col justify-center px-4 py-4 md:max-w-[62%] md:px-5">
           <div className="flex items-center gap-3">
-            <ShieldCheck
+            <MessageCircleMore
               aria-hidden="true"
               className="size-8 shrink-0 text-[#FF4DA6]"
               strokeWidth={1.9}
@@ -141,7 +141,7 @@ function HowToOrderPromoCard({
               </p>
             </div>
           </div>
-          <p className="mt-2 text-[12px] leading-[1.45] text-white/72">
+          <p className="mt-2 text-[12px] leading-[1.5] text-white/72">
             {promo.description}
           </p>
         </div>
