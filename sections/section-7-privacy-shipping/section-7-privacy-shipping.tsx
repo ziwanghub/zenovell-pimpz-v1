@@ -87,7 +87,7 @@ function PrivacyShippingInfoCard({ card }: { card: Section7PrivacyCard }) {
       <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white line-clamp-2">
         {card.title}
       </h3>
-      <div className="mt-2 space-y-1 text-[11px] leading-[1.45] text-white/68 min-h-[52px]">
+      <div className="mt-2.5 space-y-1.5 text-[11.5px] leading-[1.52] text-white/72 min-h-[52px] min-[390px]:text-[12px]">
         {card.lines.map((line) => (
           <p key={line}>{line}</p>
         ))}
@@ -102,7 +102,7 @@ function PrivacyShippingShieldCard({
   shieldCard: Section7PrivacyShippingContent["shieldCard"];
 }) {
   return (
-    <div className="relative mx-4 mt-[14px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130B11] px-4 py-4 min-[1280px]:mx-0 min-[1280px]:mt-6 min-[1280px]:px-6 min-[1280px]:py-5">
+    <div className="relative mx-4 mt-[14px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130B11] px-4 py-[18px] min-[1280px]:mx-0 min-[1280px]:mt-6 min-[1280px]:px-6 min-[1280px]:py-5">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(circle_at_18%_70%,rgba(233,30,140,0.22),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(233,30,140,0.12),transparent_26%)]"
@@ -131,7 +131,7 @@ function PrivacyShippingShieldCard({
             {shieldCard.checklist.map((item) => (
               <li
                 key={item.label}
-                className="flex items-start gap-2 text-[12px] leading-[1.45] text-white/76"
+                className="flex items-start gap-2 text-[12px] leading-[1.5] text-white/76"
               >
                 <CircleCheck
                   aria-hidden="true"
@@ -143,11 +143,11 @@ function PrivacyShippingShieldCard({
             ))}
           </ul>
 
-          <div className="mt-4 rounded-[14px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)] px-3 py-2">
-            <p className="text-[11px] font-bold leading-[1.35] text-[#FF4DA6]">
+          <div className="mt-4 rounded-[14px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)] px-3.5 py-2.5 min-[390px]:px-4 min-[390px]:py-3">
+            <p className="text-[11.5px] font-bold leading-[1.4] text-[#FF4DA6] min-[390px]:text-[12px]">
               {shieldCard.privacyNote.title}
             </p>
-            <p className="mt-1 text-[11px] leading-[1.35] text-white/72">
+            <p className="mt-1 text-[11.5px] leading-[1.45] text-white/72 min-[390px]:text-[12px]">
               {shieldCard.privacyNote.description}
             </p>
           </div>
@@ -173,10 +173,10 @@ function PrivacyShippingSupportRow({
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="text-[15px] font-extrabold leading-[1.2] text-white">
+        <p className="text-[16px] font-extrabold leading-[1.2] tracking-[-0.01em] text-white min-[390px]:text-[16.5px]">
           {supportRow.title}
         </p>
-        <p className="mt-1 text-[12px] leading-[1.45] text-white/68">
+        <p className="mt-1 text-[12px] leading-[1.5] text-white/70 min-[390px]:text-[12.5px]">
           {supportRow.description}
         </p>
       </div>
