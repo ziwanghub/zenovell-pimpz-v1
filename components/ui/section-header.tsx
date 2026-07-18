@@ -14,7 +14,7 @@ export function SectionHeader({ label, heading, description }: SectionHeaderProp
       <h2 className="mt-3 text-[26px] font-extrabold leading-[1.25] tracking-[-0.01em] text-white min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18] min-[1536px]:text-[36px]">
         {heading}
       </h2>
-      <p className="mt-2 text-[14px] leading-[1.5] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+      <p className="mt-2 text-[14px] leading-[1.5] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
         {description}
       </p>
     </div>

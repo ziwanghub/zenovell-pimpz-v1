@@ -348,7 +348,7 @@ export function Section4ProductCatalog({
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:px-0 min-[1280px]:pt-5">
+      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:mx-auto min-[1280px]:max-w-[560px] min-[1280px]:px-0 min-[1280px]:pt-5">
         {content.footerNote}
       </p>
     </section>

@@ -51,7 +51,11 @@ function SectionHeading({ lines }: { lines: [string, string] }) {
 }
 
 function SectionDescription({ text }: { text: string }) {
-  return <p className="text-[14px] leading-[1.5] text-white/65">{text}</p>;
+  return (
+    <p className="text-[14px] leading-[1.5] text-white/65 min-[1280px]:mx-auto min-[1280px]:max-w-[640px]">
+      {text}
+    </p>
+  );
 }
 
 function TrustCardItem({ item }: { item: Section2TrustCardItem }) {
@@ -109,7 +113,7 @@ function TrustStatement({
         />
         <span>{label}</span>
       </p>
-      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C]">
+      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C] min-[1280px]:mx-auto min-[1280px]:max-w-[560px]">
         {highlight}
       </p>
     </div>
@@ -220,7 +224,7 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] pt-6 pb-1 min-[1280px]:pt-8 min-[1280px]:pb-4"
     >
-      <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[760px] min-[1280px]:px-0">
+      <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[720px] min-[1280px]:px-0">
         <SectionHeading lines={content.heading} />
         <div className="mt-2">
           <SectionDescription text={content.description} />

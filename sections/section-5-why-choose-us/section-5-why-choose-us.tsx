@@ -199,7 +199,7 @@ export function Section5WhyChooseUs({
         <h2 className="mt-3 text-[26px] font-extrabold leading-[1.22] tracking-[-0.01em] text-white min-[390px]:text-[28px] min-[1280px]:mt-3.5 min-[1280px]:text-[34px] min-[1280px]:leading-[1.18]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-2.5 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-2 text-[14px] leading-[1.55] text-white/65 min-[1280px]:mx-auto min-[1280px]:mt-2.5 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.subtitle}
         </p>
       </div>

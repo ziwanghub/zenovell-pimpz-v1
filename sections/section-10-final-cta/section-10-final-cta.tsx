@@ -338,7 +338,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
             />
           </span>
         </h2>
-        <p className="mt-3 text-[14px] leading-[1.5] text-white/68 min-[1280px]:mx-auto min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-3 text-[14px] leading-[1.5] text-white/68 min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.description}
         </p>
       </div>
@@ -382,7 +382,7 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
       </div>
 
       <div className="px-3 pt-4 text-center md:px-4 md:pt-5 min-[1280px]:px-0">
-        <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45]">
+        <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45] min-[1280px]:mx-auto min-[1280px]:max-w-[640px]">
           {content.finalReassurance.prefix}{" "}
           <span className="font-bold text-[#E91E8C]">
             {content.finalReassurance.highlight}

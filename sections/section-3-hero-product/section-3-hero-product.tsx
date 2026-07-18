@@ -264,7 +264,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
             <ProductNameHeading text={content.productName} />
           </Link>
         </div>
-        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3 min-[1280px]:max-w-[460px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.55]">
+        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3 min-[1280px]:max-w-[420px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.55]">
           {content.productTagline}
         </p>
       </div>
