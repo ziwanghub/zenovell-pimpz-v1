@@ -28,8 +28,8 @@ export function ProductGallery({ items }: ProductGalleryProps) {
   const active = galleryItems[activeIndex] ?? galleryItems[0];
 
   return (
-    <section className="px-4 pt-0 text-white md:px-0">
-      <div className="mx-auto max-w-[430px]">
+    <section className="px-4 pt-0 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame">
         <div className="relative overflow-hidden rounded-[26px] border border-white/9 bg-[#111111] shadow-[0_16px_42px_rgba(0,0,0,0.32)]">
           <div className="relative aspect-[1.56/1] overflow-hidden rounded-[28px] bg-black">
             <Image

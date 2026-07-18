@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { MobileShell } from '@/components/layout/mobile-shell';
+import { PlatformAdaptiveShell } from '@/components/layout/platform-adaptive-shell';
 import { ProductPageHeader } from '@/components/platform/product-page-header';
 
 // Phase 5A: Shared layout skeleton for Product pages.
@@ -16,12 +16,12 @@ export default function ProductsLayout({ children }: { children: ReactNode }) {
       >
         Skip to product content
       </a>
-      <MobileShell>
+      <PlatformAdaptiveShell>
         <ProductPageHeader />
         <div id="product-page-content">
           {children}
         </div>
-      </MobileShell>
+      </PlatformAdaptiveShell>
     </main>
   );
 }

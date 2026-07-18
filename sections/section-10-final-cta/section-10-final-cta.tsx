@@ -323,9 +323,9 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] pb-8"
     >
-      <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4">
+      <div className="px-3 pt-6 pb-3 text-center md:px-4 md:pt-7 md:pb-4 min-[1280px]:px-0 min-[1280px]:pt-10 min-[1280px]:pb-6">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px]">
+        <h2 className="mt-3 text-[24px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white sm:text-[26px] min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           <span className="block">
             <HeadingLine line={content.headingLines[0]} />
           </span>
@@ -336,14 +336,14 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
             />
           </span>
         </h2>
-        <p className="mt-3 text-[14px] leading-[1.5] text-white/68">
+        <p className="mt-3 text-[14px] leading-[1.5] text-white/68 min-[1280px]:mx-auto min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.description}
         </p>
       </div>
 
-      <div className="px-3 md:px-4">
-        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4">
-          <div className="relative min-h-[268px] md:min-h-[312px] overflow-hidden rounded-[24px]">
+      <div className="px-3 md:px-4 min-[1280px]:px-0">
+        <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4 min-[1280px]:grid-cols-[1.15fr_0.85fr] min-[1280px]:gap-12">
+          <div className="relative min-h-[268px] overflow-hidden rounded-[24px] md:min-h-[312px] min-[1280px]:min-h-[440px] min-[1280px]:rounded-[28px]">
             <Image
               src={content.heroArtwork.src}
               alt={content.heroArtwork.alt}
@@ -362,22 +362,24 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
         </div>
       </div>
 
-      <SocialProofStrip socialProof={content.socialProof} />
-      <GuaranteeCard guaranteeCard={content.guaranteeCard} />
+      <div className="min-[1280px]:mx-auto min-[1280px]:w-full min-[1280px]:max-w-[1080px]">
+        <SocialProofStrip socialProof={content.socialProof} />
+        <GuaranteeCard guaranteeCard={content.guaranteeCard} />
+      </div>
 
-      <div className="px-3 pt-4 md:px-4 md:pt-5">
+      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:px-0 min-[1280px]:pt-7">
         <FinalLineCta primaryCta={content.primaryCta} />
       </div>
 
-      <div className="px-3 pt-4 md:px-4 md:pt-5">
-        <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5">
+      <div className="px-3 pt-4 md:px-4 md:pt-5 min-[1280px]:px-0">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-3 rounded-[18px] px-1 py-1 md:gap-x-5 md:gap-y-4.5 min-[1280px]:mx-auto min-[1280px]:max-w-[1080px] min-[1280px]:grid-cols-4 min-[1280px]:gap-6 min-[1280px]:px-0">
           {content.trustItems.map((item) => (
             <FinalTrustItem key={item.id} item={item} />
           ))}
         </div>
       </div>
 
-      <div className="px-3 pt-4 text-center md:px-4 md:pt-5">
+      <div className="px-3 pt-4 text-center md:px-4 md:pt-5 min-[1280px]:px-0">
         <p className="text-[14px] leading-[1.4] text-white/82 md:text-[15px] md:leading-[1.45]">
           {content.finalReassurance.prefix}{" "}
           <span className="font-bold text-[#E91E8C]">

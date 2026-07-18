@@ -82,7 +82,7 @@ function PrivacyIconCircle({ iconName }: { iconName: Section7PrivacyIcon }) {
 
 function PrivacyShippingInfoCard({ card }: { card: Section7PrivacyCard }) {
   return (
-    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center min-h-[170px]">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-[14px] py-4 text-center min-h-[170px] min-[1280px]:min-h-[220px] min-[1280px]:rounded-[20px] min-[1280px]:px-5 min-[1280px]:py-6">
       <PrivacyIconCircle iconName={card.iconName} />
       <h3 className="mt-4 text-[15px] font-extrabold leading-[1.3] text-white line-clamp-2">
         {card.title}
@@ -102,7 +102,7 @@ function PrivacyShippingShieldCard({
   shieldCard: Section7PrivacyShippingContent["shieldCard"];
 }) {
   return (
-    <div className="relative mx-4 mt-[14px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130B11] px-4 py-4">
+    <div className="relative mx-4 mt-[14px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130B11] px-4 py-4 min-[1280px]:mx-0 min-[1280px]:mt-6 min-[1280px]:px-6 min-[1280px]:py-5">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(circle_at_18%_70%,rgba(233,30,140,0.22),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(233,30,140,0.12),transparent_26%)]"
@@ -163,7 +163,7 @@ function PrivacyShippingSupportRow({
   supportRow: Section7PrivacyShippingContent["supportRow"];
 }) {
   return (
-    <div className="mx-4 mt-3 flex items-center gap-3 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] p-4">
+    <div className="mx-4 mt-3 flex items-center gap-3 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] p-4 min-[1280px]:mx-0 min-[1280px]:mt-6 min-[1280px]:rounded-[20px] min-[1280px]:px-6 min-[1280px]:py-5">
       <div className="flex size-[52px] shrink-0 items-center justify-center rounded-full border border-[rgba(233,30,140,0.3)] bg-[radial-gradient(circle_at_center,rgba(233,30,140,0.16),rgba(10,10,10,0.98)_72%)]">
         <Headphones
           aria-hidden="true"
@@ -212,7 +212,7 @@ function FinalLineCTA({
     <a
       aria-label={ariaLabel}
       href={LINE_OA_URL}
-      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:h-12 min-[1280px]:border min-[1280px]:border-[rgba(233,30,140,0.45)] min-[1280px]:bg-[#171717] min-[1280px]:text-[#E91E8C] min-[1280px]:shadow-none"
       onClick={(e) => {
         activateLineCta({
           title: label,
@@ -281,7 +281,7 @@ export function Section7PrivacyShipping({
         description={content.subtitle}
       />
 
-      <ul className="grid grid-cols-2 items-stretch gap-[10px] px-4">
+      <ul className="grid grid-cols-2 items-stretch gap-[10px] px-4 min-[1280px]:grid-cols-4 min-[1280px]:gap-6 min-[1280px]:px-0">
         {content.cards.map((card) => (
           <PrivacyShippingInfoCard key={card.title} card={card} />
         ))}
@@ -290,7 +290,7 @@ export function Section7PrivacyShipping({
       <PrivacyShippingShieldCard shieldCard={content.shieldCard} />
       <PrivacyShippingSupportRow supportRow={content.supportRow} />
 
-      <div className="px-4 pt-[14px]">
+      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 

@@ -198,8 +198,11 @@ export const siteNavigationGroups: [
         kind: "placeholder",
         ariaLabel: "ไปที่บทความ",
         visibility: {
-          surfaces: ["drawer", "footer"],
-          drawer: { includeInDrawer: true, priority: 70 },
+          // A2.1: Hidden from drawer until a canonical Knowledge index route exists.
+          // `/knowledge` is 404; do not wire global nav to an arbitrary article slug.
+          // Footer retention is intentional until a separate footer navigation pass.
+          surfaces: ["footer"],
+          drawer: { includeInDrawer: false, priority: 70 },
           footerColumnId: "main-menu",
         },
         analyticsEventKey: "menu_click",

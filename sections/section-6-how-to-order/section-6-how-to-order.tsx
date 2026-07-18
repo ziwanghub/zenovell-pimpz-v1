@@ -58,9 +58,11 @@ function HowToOrderStepNumber({ value }: { value: string }) {
 function HowToOrderStepItem({
   item,
   isLast,
+  showDesktopConnector,
 }: {
   item: Section6StepItem;
   isLast: boolean;
+  showDesktopConnector: boolean;
 }) {
   const Icon = stepIconByName[item.iconName];
 
@@ -70,13 +72,19 @@ function HowToOrderStepItem({
         {!isLast ? (
           <span
             aria-hidden="true"
-            className="absolute top-[54px] bottom-[-10px] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)]"
+            className="absolute top-[54px] bottom-[-10px] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)] min-[1280px]:hidden"
+          />
+        ) : null}
+        {showDesktopConnector ? (
+          <span
+            aria-hidden="true"
+            className="hidden min-[1280px]:absolute min-[1280px]:top-1/2 min-[1280px]:left-full min-[1280px]:z-0 min-[1280px]:h-px min-[1280px]:w-5 min-[1280px]:bg-[linear-gradient(90deg,rgba(233,30,140,0.55)_0%,rgba(233,30,140,0.18)_100%)] min-[1280px]:translate-x-1/2"
           />
         ) : null}
         <HowToOrderStepNumber value={item.stepNumber} />
       </div>
 
-      <div className="flex min-h-[96px] items-center gap-4 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-[14px]">
+      <div className="flex min-h-[96px] items-center gap-4 rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] px-4 py-[14px] min-[1280px]:min-h-[128px] min-[1280px]:rounded-[20px] min-[1280px]:px-5 min-[1280px]:py-5">
         <div className="flex size-[54px] shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.14)] bg-[#171017]">
           <Icon
             aria-hidden="true"
@@ -104,13 +112,13 @@ function HowToOrderPromoCard({
   promo: Section6HowToOrderContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-3 min-h-[126px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#160B11]">
+    <div className="relative mx-4 mt-3 min-h-[126px] overflow-hidden rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[176px] min-[1280px]:rounded-[22px]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
           alt={promo.imageAlt}
           fill
-          sizes="(max-width: 430px) 100vw, 430px"
+          sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 1200px"
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.96)_0%,rgba(22,11,17,0.82)_40%,rgba(22,11,17,0.18)_74%,rgba(22,11,17,0.06)_100%)]" />
@@ -224,19 +232,20 @@ export function Section6HowToOrder({
         description={content.subtitle}
       />
 
-      <ol className="space-y-2.5 px-4">
+      <ol className="space-y-2.5 px-4 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.steps.map((item, index) => (
           <HowToOrderStepItem
             key={item.stepNumber}
             item={item}
             isLast={index === content.steps.length - 1}
+            showDesktopConnector={index % 3 !== 2 && index !== content.steps.length - 1}
           />
         ))}
       </ol>
 
       <HowToOrderPromoCard promo={content.promo} />
 
-      <div className="px-4 pt-[14px]">
+      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 

@@ -21,8 +21,8 @@ export function InformationRelatedProducts({ relatedSlugs }: InformationRelatedP
   if (related.length === 0) return null;
 
   return (
-    <div className="bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-[430px]">
+    <div className="bg-zinc-950 px-6 py-10 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame">
         <h2 className="mb-6 text-xl font-semibold tracking-tight">Related Products</h2>
 
         <div className="space-y-3">

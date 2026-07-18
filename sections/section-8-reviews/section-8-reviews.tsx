@@ -63,7 +63,7 @@ function ReviewSummaryCard({
   summary: Section8ReviewsContent["summary"];
 }) {
   return (
-    <div className="mx-4 rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4">
+    <div className="mx-4 rounded-[18px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-[1280px]:mx-0 min-[1280px]:rounded-[22px] min-[1280px]:p-5">
       <div className="grid grid-cols-[40%_60%] gap-3 min-[375px]:grid-cols-[44%_56%] min-[375px]:gap-4">
         <div className="border-r border-[rgba(233,30,140,0.16)] pr-4 text-center">
           <p className="text-[14px] leading-[1.35] text-white/72">
@@ -134,7 +134,7 @@ function ReviewProductChip({ product }: { product: Section8ReviewCard["product"]
 
 function ReviewCard({ review }: { review: Section8ReviewCard }) {
   return (
-    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px]">
+    <li className="flex flex-col rounded-[16px] border border-[rgba(233,30,140,0.18)] bg-[#130D11] p-4 min-h-[210px] min-[1280px]:min-h-[260px] min-[1280px]:rounded-[20px] min-[1280px]:p-5">
       <div className="flex gap-3">
         <ReviewAvatar initial={review.initial} />
 
@@ -170,9 +170,9 @@ function ReviewCard({ review }: { review: Section8ReviewCard }) {
             <ReviewPurchaseBadge label={review.purchaseBadge} />
           </div>
 
-          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86">
+          <div className="mt-3 min-h-[60px] space-y-1.5 text-[14px] leading-[1.5] text-white/86 min-[1280px]:min-h-0">
             {review.reviewLines.map((line) => (
-              <p key={line} className="line-clamp-2">{line}</p>
+              <p key={line} className="line-clamp-2 min-[1280px]:line-clamp-none">{line}</p>
             ))}
           </div>
 
@@ -192,7 +192,7 @@ function MoreReviewsRow({
     <a
       aria-label={moreReviewsRow.ariaLabel}
       href={moreReviewsRow.href}
-      className="mx-4 mt-3 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] px-4 py-3 text-left transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_20px_rgba(233,30,140,0.18)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="mx-4 mt-3 flex items-center gap-3 rounded-[16px] border border-[rgba(233,30,140,0.16)] bg-[#130D11] px-4 py-3 text-left transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_20px_rgba(233,30,140,0.18)] active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4"
     >
       <div className="flex size-10 shrink-0 items-center justify-center rounded-[12px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
         <MessageCircleMore
@@ -293,7 +293,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
 
       <ReviewSummaryCard summary={content.summary} />
 
-      <ul className="space-y-3 px-4 pt-3">
+      <ul className="space-y-3 px-4 pt-3 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:space-y-0 min-[1280px]:px-0">
         {content.reviews.map((review) => (
           <ReviewCard key={`${review.initial}-${review.name}`} review={review} />
         ))}
@@ -301,7 +301,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
 
       <MoreReviewsRow moreReviewsRow={content.moreReviewsRow} />
 
-      <div className="px-4 pt-[14px]">
+      <div className="px-4 pt-[14px] min-[1280px]:px-0 min-[1280px]:pt-6">
         <FinalLineCTA {...content.finalCta} />
       </div>
 

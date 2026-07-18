@@ -1,5 +1,5 @@
 import { GlobalHeader } from "@/components/layout/global-header";
-import { MobileShell } from "@/components/layout/mobile-shell";
+import { HomepageAdaptiveShell } from "@/components/layout/homepage-adaptive-shell";
 import { heroContent } from "@/content/hero";
 import { siteHeaderContent } from "@/content/site-header";
 import {
@@ -44,7 +44,7 @@ export default function Home() {
       >
         Skip to main content
       </a>
-      <MobileShell>
+      <HomepageAdaptiveShell>
         <GlobalHeader {...globalHeaderProps} />
         <HeroSection content={heroContent} />
         <Section2TrustBar content={section2TrustBarContent} />
@@ -57,7 +57,7 @@ export default function Home() {
         <Section9Faq content={section9FaqContent} />
         <Section10FinalCta content={section10FinalCtaContent} />
         <Section11Footer content={section11FooterContent} />
-      </MobileShell>
+      </HomepageAdaptiveShell>
     </main>
   );
 }

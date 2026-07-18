@@ -269,30 +269,35 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
 function ContactItem({ item }: { item: Section11FooterContactItem }) {
   const Icon = contactIconByName[item.iconName];
   const sharedClassName =
-    "group flex items-start gap-3.5 rounded-[14px] border border-transparent px-2.5 py-3 transition-[border-color,background-color,color] duration-150";
+    "group flex min-h-11 items-center gap-3 rounded-[12px] border border-transparent px-2 py-2.5 transition-[border-color,background-color,color] duration-150";
 
   const resolvedHref = item.destinationId
     ? ctaDestinations.find((d) => d.id === item.destinationId)?.href || item.href || "#"
     : item.href || "#";
 
+  const valueClassName =
+    item.id === "phone" || item.id === "line"
+      ? "mt-1 whitespace-nowrap text-[14px] font-semibold leading-[1.3] text-white/90"
+      : item.id === "email"
+        ? "mt-1 break-words text-[14px] font-semibold leading-[1.35] text-white/90"
+        : "mt-1 break-words text-[14px] font-semibold leading-[1.4] text-white/90";
+
   const content = (
     <>
-      <span className="flex size-12 shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.24)] bg-[linear-gradient(180deg,rgba(233,30,140,0.12),rgba(233,30,140,0.04))] shadow-[0_0_10px_rgba(233,30,140,0.08)]">
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.24)] bg-[linear-gradient(180deg,rgba(233,30,140,0.12),rgba(233,30,140,0.04))] shadow-[0_0_10px_rgba(233,30,140,0.08)]">
         <Icon
           aria-hidden="true"
-          className="size-[22px] text-[#FF4DA6]"
+          className="size-5 text-[#FF4DA6]"
           strokeWidth={1.85}
         />
       </span>
-      <div className="min-w-0">
-        <p className="text-[12px] font-bold leading-none text-white">
+      <div className="min-w-0 flex-1">
+        <p className="text-[12.5px] font-bold leading-none text-white">
           {item.label}
         </p>
-        <p className="mt-2.5 text-[13px] font-semibold leading-[1.34] text-white/90">
-          {item.value}
-        </p>
+        <p className={valueClassName}>{item.value}</p>
         {item.subtext ? (
-          <p className="mt-2 text-[11px] leading-[1.5] text-white/60">
+          <p className="mt-1 break-words text-[11.5px] leading-[1.4] text-white/60">
             {item.subtext}
           </p>
         ) : null}
@@ -414,92 +419,93 @@ export function Section11Footer({
     <footer
       id="section-11-footer"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white"
+      className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:px-0 min-[1280px]:pt-10"
     >
       <div className="text-center">
         <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white">
+        <h2 className="mt-3 text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[13px] leading-[1.45] text-white/72">
+        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.description}
         </p>
       </div>
 
       <FooterDividerAccent />
 
-      <nav aria-label="เมนูส่วนท้าย" className="mt-6">
-        <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)]">
+      <nav aria-label="เมนูส่วนท้าย" className="mt-6 min-[1280px]:mt-8">
+        <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)] min-[1280px]:gap-x-8">
           {content.navColumns.map((column) => (
             <FooterLinkColumn key={column.id} column={column} />
           ))}
         </div>
       </nav>
 
-      <div className="mt-8 grid grid-cols-2 gap-4">
-        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
-          <div className="flex items-center gap-2.5 px-2.5">
+      <div className="mt-8 grid grid-cols-1 gap-4 min-[690px]:grid-cols-2 min-[690px]:items-start min-[1280px]:mt-10 min-[1280px]:gap-10">
+        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.05)] min-[690px]:row-span-2">
+          <div className="flex items-center gap-2.5 px-1">
             <span className="flex size-8 items-center justify-center rounded-full border border-[rgba(233,30,140,0.2)] bg-[rgba(233,30,140,0.06)]">
               <MessageCircleLineIcon
                 className="size-[17px] text-[#FF4DA6]"
                 strokeWidth={1.85}
               />
             </span>
-            <h3 className="text-[12px] font-extrabold text-[#FF4DA6]">
+            <h3 className="text-[12.5px] font-extrabold text-[#FF4DA6]">
               {content.contactTitle}
             </h3>
           </div>
 
-          <div className="mt-4 space-y-4">
+          <div className="mt-3 divide-y divide-white/[0.07]">
             {content.contacts.map((item) => (
               <ContactItem key={item.id} item={item} />
             ))}
           </div>
         </section>
 
-        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4.5 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
+        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
           <div className="text-center">
-            <h3 className="text-[12px] font-extrabold text-[#FF4DA6]">
+            <h3 className="text-[12.5px] font-extrabold text-[#FF4DA6]">
               {content.socialCard.title}
             </h3>
-            <p className="mt-1.5 text-[11px] leading-[1.3] text-white/65">
+            <p className="mt-1.5 text-[11.5px] leading-[1.35] text-white/65">
               {content.socialCard.description}
             </p>
           </div>
 
-          <div className="mt-6 flex justify-center gap-3.5">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             {content.socialCard.items.map((item) => (
               <FooterSocialIconLink key={item.id} item={item} />
             ))}
           </div>
+        </section>
 
-          <div
-            className="mt-6 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[linear-gradient(180deg,rgba(233,30,140,0.06),rgba(17,17,17,0.92))] px-4 py-4.5"
-          >
-            <div className="flex items-start gap-3">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.22)] bg-[rgba(233,30,140,0.06)]">
-                <LockKeyhole
-                  aria-hidden="true"
-                  className="size-[22px] text-[#FF4DA6]"
-                  strokeWidth={1.9}
-                />
-              </span>
-              <div className="min-w-0">
-                <p className="text-[15px] font-extrabold leading-[1.15] text-[#FF4DA6]">
-                  {content.privacyPanel.title}
-                </p>
-                <div className="mt-2.5 space-y-1.5 text-[11px] leading-[1.4] text-white/72">
-                  {content.privacyPanel.lines.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
-                </div>
+        <section
+          aria-label={content.privacyPanel.title}
+          className="min-w-0 rounded-[18px] border border-[rgba(233,30,140,0.16)] bg-[linear-gradient(180deg,rgba(233,30,140,0.06),rgba(17,17,17,0.92))] px-4 py-3.5 shadow-[0_0_12px_rgba(233,30,140,0.05)]"
+        >
+          <div className="flex items-center gap-3">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-[14px] border border-[rgba(233,30,140,0.22)] bg-[rgba(233,30,140,0.06)]">
+              <LockKeyhole
+                aria-hidden="true"
+                className="size-5 text-[#FF4DA6]"
+                strokeWidth={1.9}
+              />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[14px] font-extrabold leading-[1.2] text-[#FF4DA6]">
+                {content.privacyPanel.title}
+              </p>
+              <div className="mt-1 space-y-0.5 text-[11.5px] leading-[1.4] text-white/72">
+                {content.privacyPanel.lines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      <section className="mt-5 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-5 shadow-[0_0_16px_rgba(233,30,140,0.07)]">
+      <section className="mt-5 rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[linear-gradient(180deg,rgba(22,14,18,0.98),rgba(13,13,13,0.98))] px-4 py-5 shadow-[0_0_16px_rgba(233,30,140,0.07)] min-[1280px]:mt-8 min-[1280px]:px-6">
         <div className="flex items-center gap-3.5">
           <span className="flex size-12 shrink-0 items-center justify-center rounded-[16px] border border-[rgba(233,30,140,0.24)] bg-[rgba(233,30,140,0.06)]">
             <Award
@@ -519,7 +525,7 @@ export function Section11Footer({
         </div>
       </section>
 
-      <div className="mt-7 border-b border-white/8 pb-5">
+      <div className="mt-7 border-b border-white/8 pb-5 min-[1280px]:mt-10">
         <div className="flex flex-col gap-4 min-[390px]:flex-row min-[390px]:items-end min-[390px]:justify-between min-[390px]:gap-4">
         <div className="min-w-0">
           <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
@@ -541,7 +547,7 @@ export function Section11Footer({
         </div>
       </div>
 
-      <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] min-[390px]:items-center">
+      <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] min-[390px]:items-center min-[1280px]:gap-6">
         <div className="flex min-w-0 items-center gap-2.5 rounded-[14px] border border-white/8 bg-[rgba(255,255,255,0.03)] px-3 py-3">
           <span className="flex size-9 shrink-0 items-center justify-center rounded-[12px] border border-white/8 bg-[rgba(255,255,255,0.04)]">
             <Lock
@@ -562,7 +568,7 @@ export function Section11Footer({
 
         <div
           aria-label="วิธีชำระเงินที่รองรับ"
-          className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4"
+          className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4 min-[1280px]:gap-4"
         >
           {content.payments.map((item) => (
             <FooterPaymentBadge key={item.id} item={item} />

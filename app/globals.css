@@ -86,6 +86,14 @@
     --color-brand-pink-deep: #c2185b;
     --color-text-primary: #ffffff;
     --color-text-secondary: rgb(255 255 255 / 0.74);
+    --tablet-gutter-sm: 24px;
+    --tablet-gutter-sm-wide: 32px;
+    --tablet-gutter-md: 36px;
+    --tablet-gutter-md-wide: 40px;
+    --tablet-gutter-lg: 48px;
+    --desktop-gutter-md: 40px;
+    --desktop-gutter-lg: 48px;
+    --desktop-gutter-xl: 56px;
 }
 
 .dark {
@@ -143,5 +151,126 @@
 
   a {
     @apply transition-colors;
+  }
+}
+
+@layer components {
+  .platform-adaptive-shell {
+    --platform-shell-gutter: 0px;
+    --platform-shell-max-width: 430px;
+    padding-inline: var(--platform-shell-gutter);
+  }
+
+  .platform-adaptive-shell > [data-mobile-shell-root] {
+    max-width: var(--platform-shell-max-width) !important;
+  }
+
+  .platform-shell-frame {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 430px !important;
+  }
+
+  .platform-header-frame {
+    --platform-header-min-height: 60px;
+    --platform-header-offset: 66px;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 430px;
+    padding-inline: 16px;
+  }
+
+  @media (min-width: 690px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--tablet-gutter-sm);
+      --platform-shell-max-width: none;
+    }
+
+    .platform-shell-frame {
+      max-width: none !important;
+    }
+
+    .platform-header-frame {
+      max-width: none;
+      padding-inline: var(--tablet-gutter-sm);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--tablet-gutter-sm-wide);
+    }
+
+    .platform-header-frame {
+      padding-inline: var(--tablet-gutter-sm-wide);
+    }
+  }
+
+  @media (min-width: 820px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--tablet-gutter-md);
+    }
+
+    .platform-header-frame {
+      --platform-header-min-height: 64px;
+      --platform-header-offset: 70px;
+      padding-inline: var(--tablet-gutter-md);
+    }
+  }
+
+  @media (min-width: 912px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--tablet-gutter-md-wide);
+    }
+
+    .platform-header-frame {
+      padding-inline: var(--tablet-gutter-md-wide);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--tablet-gutter-lg);
+    }
+
+    .platform-header-frame {
+      padding-inline: var(--tablet-gutter-lg);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--desktop-gutter-md);
+      --platform-shell-max-width: 1200px;
+    }
+
+    .platform-header-frame {
+      --platform-header-min-height: 68px;
+      --platform-header-offset: 74px;
+      max-width: 1200px;
+      padding-inline: 0;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--desktop-gutter-lg);
+      --platform-shell-max-width: 1240px;
+    }
+
+    .platform-header-frame {
+      max-width: 1240px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .platform-adaptive-shell {
+      --platform-shell-gutter: var(--desktop-gutter-xl);
+      --platform-shell-max-width: 1320px;
+    }
+
+    .platform-header-frame {
+      max-width: 1320px;
+    }
   }
 }

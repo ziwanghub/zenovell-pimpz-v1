@@ -125,7 +125,7 @@ function ProductCardCTA({
     <a
       aria-label={cta.ariaLabel}
       href={cta.href}
-      className="flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[12px] font-bold leading-none text-[#E91E8C] md:text-[13px] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[12px] font-bold leading-none text-[#E91E8C] md:text-[13px] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:h-auto min-[1280px]:min-h-[44px] min-[1280px]:text-[14px]"
       onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
@@ -174,10 +174,11 @@ function ProductCardCTA({
 
 function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
   return (
-    <li className="group flex flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#121212]">
+    <li className="group flex flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#121212] min-[1280px]:min-h-[224px] min-[1280px]:rounded-[22px] min-[1280px]:flex-row min-[1280px]:gap-5">
       <Link
         href={`/products/${product.slug}`}
         aria-label={`View details for ${product.title}`}
+        className="min-[1280px]:w-[46%] min-[1280px]:shrink-0"
         onClick={() =>
           analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
             surface: "section",
@@ -186,7 +187,7 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
           })
         }
       >
-        <div className="relative h-[176px] overflow-hidden bg-[#101010] transition-transform duration-200 group-hover:scale-[1.02]">
+        <div className="relative h-[176px] overflow-hidden bg-[#101010] transition-transform duration-200 group-hover:scale-[1.02] min-[1280px]:h-auto min-[1280px]:min-h-[224px]">
           <Image
             src={product.imageSrc}
             alt={product.imageAlt}
@@ -199,10 +200,10 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col p-3.5 md:p-4">
+      <div className="flex flex-1 flex-col p-3.5 md:p-4 min-[1280px]:w-[54%] min-[1280px]:min-w-0 min-[1280px]:py-5 min-[1280px]:pr-5">
         {/* Region 2: Title + Fit - fixed min-height for identical baseline start of benefits */}
         <div className="min-h-[62px]">
-          <h3 className="line-clamp-2 text-center text-[14px] font-extrabold leading-[1.2] text-[#E91E8C] md:text-[15px]">
+          <h3 className="line-clamp-2 text-center text-[14px] font-extrabold leading-[1.2] text-[#E91E8C] md:text-[15px] min-[1280px]:text-left min-[1280px]:text-[18px]">
             <Link
               href={`/products/${product.slug}`}
               onClick={() =>
@@ -216,7 +217,7 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
               {product.title}
             </Link>
           </h3>
-          <p className="line-clamp-2 mt-1 min-h-[30px] text-center text-[11px] leading-[1.3] text-white/80 md:text-[12px] md:leading-[1.3]">
+          <p className="line-clamp-2 mt-1 min-h-[30px] text-center text-[11px] leading-[1.3] text-white/80 md:text-[12px] md:leading-[1.3] min-[1280px]:text-left min-[1280px]:text-[13px]">
             {product.subtitle}
           </p>
         </div>
@@ -329,25 +330,25 @@ export function Section4ProductCatalog({
         description={content.subtitle}
       />
 
-      <ul className="grid grid-cols-2 items-stretch gap-3 px-3 md:gap-4 md:px-4 md:grid-cols-3">
+      <ul className="grid grid-cols-2 items-stretch gap-3 px-3 md:gap-4 md:px-4 md:grid-cols-3 min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:px-0 min-[1280px]:[grid-auto-rows:1fr]">
         {content.products.map((product) => (
           <ProductCatalogCard key={product.slug} product={product} />
         ))}
       </ul>
 
-      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-3 py-3.5">
-        <ul className="grid grid-cols-4 gap-1.5">
+      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-3 py-3.5 min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[92px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
+        <ul className="grid grid-cols-4 gap-1.5 min-[1280px]:gap-7">
           {content.trustItems.map((item) => (
             <CatalogTrustItem key={item.title} item={item} />
           ))}
         </ul>
       </div>
 
-      <div className="px-4 pt-4">
+      <div className="px-4 pt-4 min-[1280px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3]">
+      <p className="px-4 pt-4 text-center text-[10px] leading-[1.3] tracking-[0.04em] text-white/45 md:text-[11px] md:leading-[1.3] min-[1280px]:px-0 min-[1280px]:pt-5">
         {content.footerNote}
       </p>
     </section>

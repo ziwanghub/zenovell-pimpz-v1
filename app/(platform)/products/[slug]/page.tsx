@@ -221,7 +221,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         fitCue={fitCue}
       />
 
-      <div className="mx-auto max-w-[430px] px-4 pb-2 md:px-0">
+      <div className="platform-shell-frame px-4 pb-2 min-[690px]:px-0">
         <ProductKnowledgeTabs
           benefits={{ items: knowledgeBenefits }}
           ingredients={{ items: knowledgeIngredients }}

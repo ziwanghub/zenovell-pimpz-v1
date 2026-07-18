@@ -16,8 +16,8 @@ export function ProductProblemSnapshot({
   fitCue,
 }: ProductProblemSnapshotProps) {
   return (
-    <section className="px-4 py-5 text-white md:px-0">
-      <div className="mx-auto max-w-[430px] overflow-hidden rounded-[28px] border border-fuchsia-500/20 bg-[radial-gradient(circle_at_top_left,_rgba(236,72,153,0.24),_transparent_38%),linear-gradient(180deg,rgba(20,11,26,0.98),rgba(8,5,11,0.98))] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.35)]">
+    <section className="px-4 py-5 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame overflow-hidden rounded-[28px] border border-fuchsia-500/20 bg-[radial-gradient(circle_at_top_left,_rgba(236,72,153,0.24),_transparent_38%),linear-gradient(180deg,rgba(20,11,26,0.98),rgba(8,5,11,0.98))] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.35)]">
         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/25 bg-fuchsia-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-fuchsia-200/90">
           <Sparkles className="h-3.5 w-3.5" />
           Problem / Outcome Fit

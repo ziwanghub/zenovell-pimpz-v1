@@ -20,8 +20,8 @@ export function KnowledgeCta({ knowledge, slug }: KnowledgeCtaProps) {
   };
 
   return (
-    <div className="bg-black px-6 py-12 text-white">
-      <div className="mx-auto max-w-[430px] text-center">
+    <div className="bg-black px-6 py-12 text-white min-[690px]:px-0">
+      <div className="platform-shell-frame text-center">
         <button
           onClick={handleLineCta}
           className="w-full rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-white/90 active:bg-white/80"
