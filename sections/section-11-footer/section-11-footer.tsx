@@ -15,15 +15,18 @@ import {
 } from "lucide-react";
 
 import type {
-  Section11FooterContactItem,
   Section11FooterContent,
-  Section11FooterLinkColumn,
   Section11FooterPaymentItem,
-  Section11FooterSocialItem,
 } from "@/content/section-11-footer";
-import { ctaDestinations } from "@/content/site-navigation";
+import {
+  siteContacts,
+  siteNavigationGroups,
+  siteSocialLinks,
+  type SiteContact,
+  type SiteLink,
+  type SiteSocialLink,
+} from "@/content/site-navigation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
-import { SectionBadge } from "@/components/ui/section-badge";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { LINE_OA_URL } from "@/lib/commerce/cta-contract";
 
@@ -32,29 +35,20 @@ type LucideLikeIcon = ComponentType<{
   strokeWidth?: number;
 }>;
 
-const columnIconByName: Record<
-  Section11FooterLinkColumn["iconName"],
-  LucideLikeIcon
-> = {
+const columnIconByName: Record<"package" | "info" | "shield-check", LucideLikeIcon> = {
   package: Package,
   info: Info,
   "shield-check": ShieldCheck,
 };
 
-const contactIconByName: Record<
-  Section11FooterContactItem["iconName"],
-  LucideLikeIcon
-> = {
+const contactIconById: Record<SiteContact["id"], LucideLikeIcon> = {
   line: MessageCircleLineIcon,
   phone: Phone,
-  mail: Mail,
-  "map-pin": MapPin,
+  email: Mail,
+  address: MapPin,
 };
 
-const socialIconByPlatform: Record<
-  Section11FooterSocialItem["platform"],
-  LucideLikeIcon
-> = {
+const socialIconByPlatform: Record<SiteSocialLink["id"], LucideLikeIcon> = {
   facebook: FacebookApproxIcon,
   instagram: InstagramApproxIcon,
   youtube: YoutubeApproxIcon,
@@ -197,8 +191,90 @@ function FooterDividerAccent() {
   );
 }
 
-function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
-  const Icon = columnIconByName[column.iconName];
+function isDeadHref(href: string | undefined): boolean {
+  return !href || href === "#" || href.trim() === "";
+}
+
+function isInteractiveLink(item: SiteLink): boolean {
+  if (item.kind === "placeholder") return false;
+  if (isDeadHref(item.href)) return false;
+  return true;
+}
+
+function FooterNavItem({ item }: { item: SiteLink }) {
+  const interactive = isInteractiveLink(item);
+  const isLineIntent = item.kind === "line" || item.id === "line-order" || item.id === "consulting";
+  const itemHref = isLineIntent ? LINE_OA_URL : item.href;
+
+  if (!interactive) {
+    return (
+      <li>
+        <span className="flex min-h-11 items-center gap-2 py-1.5 text-[11.5px] leading-[1.45] text-white/45">
+          <ChevronRight
+            aria-hidden="true"
+            className="mt-[1px] size-[13px] shrink-0 text-white/25"
+            strokeWidth={2}
+          />
+          <span>{item.label}</span>
+        </span>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <a
+        href={itemHref}
+        aria-label={item.ariaLabel}
+        className="group flex min-h-11 items-center gap-2 py-1.5 text-[11.5px] leading-[1.45] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
+        onClick={(e) => {
+          analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
+            surface: "footer",
+            label: item.label,
+            destination: itemHref,
+          });
+          if (item.id === "line-order") {
+            activateLineCta({
+              title: item.label,
+              surface: "footer-line",
+              landingPage: "/",
+              intent: "high_intent",
+              source: "footer",
+            });
+            e.preventDefault();
+          } else if (item.id === "consulting") {
+            activateLineCta({
+              title: item.label,
+              surface: "footer-consulting-line",
+              landingPage: "/",
+              intent: "inquiry",
+              source: "footer",
+            });
+            e.preventDefault();
+          }
+        }}
+      >
+        <ChevronRight
+          aria-hidden="true"
+          className="mt-[1px] size-[13px] shrink-0 text-[#E91E8C] transition-transform duration-150 group-hover:translate-x-0.5"
+          strokeWidth={2}
+        />
+        <span>{item.label}</span>
+      </a>
+    </li>
+  );
+}
+
+function FooterLinkColumn({
+  title,
+  iconName,
+  items,
+}: {
+  title: string;
+  iconName: "package" | "info" | "shield-check";
+  items: SiteLink[];
+}) {
+  const Icon = columnIconByName[iconName];
 
   return (
     <div className="min-w-0 px-2 first:pl-0 last:pr-0">
@@ -207,73 +283,30 @@ function FooterLinkColumn({ column }: { column: Section11FooterLinkColumn }) {
           <Icon aria-hidden="true" className="size-[18px]" strokeWidth={1.9} />
         </span>
         <h3 className="text-[12px] font-extrabold leading-none tracking-[-0.01em]">
-          {column.title}
+          {title}
         </h3>
       </div>
 
-      <ul className="mt-5 space-y-3">
-        {column.items.map((item) => {
-          const isLineIntent =
-            item.id === "line-order" || item.id === "consulting";
-          const itemHref = isLineIntent ? LINE_OA_URL : item.href;
-
-          return (
-          <li key={item.id}>
-            <a
-              href={itemHref}
-              aria-label={item.ariaLabel}
-              className="group flex items-start gap-2 text-[11.5px] leading-[1.45] text-white/76 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
-              onClick={(e) => {
-                analytics.track(AnalyticsEvents.FOOTER_CTA_CLICK, {
-                  surface: "footer",
-                  label: item.label,
-                  destination: itemHref,
-                })
-                if (item.id === "line-order") {
-                  activateLineCta({
-                    title: item.label,
-                    surface: "footer-line",
-                    landingPage: "/",
-                    intent: "high_intent",
-                    source: "footer",
-                  });
-                  e.preventDefault();
-                } else if (item.id === "consulting") {
-                  // RC2 F-02: footer consulting → shared LINE CTA contract
-                  activateLineCta({
-                    title: item.label,
-                    surface: "footer-consulting-line",
-                    landingPage: "/",
-                    intent: "inquiry",
-                    source: "footer",
-                  });
-                  e.preventDefault();
-                }
-              }}
-            >
-              <ChevronRight
-                aria-hidden="true"
-                className="mt-[1px] size-[13px] shrink-0 text-[#E91E8C] transition-transform duration-150 group-hover:translate-x-0.5"
-                strokeWidth={2}
-              />
-              <span>{item.label}</span>
-            </a>
-          </li>
-          );
-        })}
+      <ul className="mt-4 space-y-0.5">
+        {items.map((item) => (
+          <FooterNavItem key={item.id} item={item} />
+        ))}
       </ul>
     </div>
   );
 }
 
-function ContactItem({ item }: { item: Section11FooterContactItem }) {
-  const Icon = contactIconByName[item.iconName];
+function ContactItem({ item }: { item: SiteContact }) {
+  const Icon = contactIconById[item.id];
   const sharedClassName =
     "group flex min-h-11 items-center gap-3 rounded-[12px] border border-transparent px-2 py-2.5 transition-[border-color,background-color,color] duration-150";
 
-  const resolvedHref = item.destinationId
-    ? ctaDestinations.find((d) => d.id === item.destinationId)?.href || item.href || "#"
-    : item.href || "#";
+  const resolvedHref =
+    item.id === "line"
+      ? LINE_OA_URL
+      : item.href && !isDeadHref(item.href)
+        ? item.href
+        : undefined;
 
   const valueClassName =
     item.id === "phone" || item.id === "line"
@@ -305,7 +338,7 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
     </>
   );
 
-  if (!item.interactive) {
+  if (!item.interactive || !resolvedHref) {
     return <div className={`${sharedClassName} text-white/78`}>{content}</div>;
   }
 
@@ -319,7 +352,7 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
           surface: "footer",
           label: item.label,
           destination: resolvedHref,
-        })
+        });
         if (item.id === "line") {
           activateLineCta({
             title: item.label,
@@ -337,13 +370,21 @@ function ContactItem({ item }: { item: Section11FooterContactItem }) {
   );
 }
 
-function FooterSocialIconLink({ item }: { item: Section11FooterSocialItem }) {
-  const Icon = socialIconByPlatform[item.platform];
+function isVerifiedSocial(item: SiteSocialLink): boolean {
+  if (item.kind === "placeholder") return false;
+  if (isDeadHref(item.href)) return false;
+  return true;
+}
+
+function FooterSocialIconLink({ item }: { item: SiteSocialLink }) {
+  const Icon = socialIconByPlatform[item.id];
 
   return (
     <a
       href={item.href}
       aria-label={item.ariaLabel}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex size-12 items-center justify-center rounded-full border border-[rgba(233,30,140,0.28)] bg-[radial-gradient(circle_at_35%_30%,rgba(233,30,140,0.16),rgba(17,17,17,0.94)_72%)] text-[#FF4DA6] shadow-[0_0_12px_rgba(233,30,140,0.1)] transition-[transform,border-color,box-shadow] duration-150 hover:-translate-y-0.5 hover:border-[rgba(233,30,140,0.42)] hover:shadow-[0_0_18px_rgba(233,30,140,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
       onClick={() =>
         analytics.track(AnalyticsEvents.SOCIAL_CLICK, {
@@ -415,6 +456,18 @@ export function Section11Footer({
 }: {
   content: Section11FooterContent;
 }) {
+  const footerNavGroups = siteNavigationGroups.map((group) => ({
+    id: group.id,
+    title: group.label,
+    iconName: content.columnIcons[group.id],
+    items: group.items.filter((item) =>
+      item.visibility.surfaces.includes("footer"),
+    ),
+  }));
+
+  const verifiedSocials = siteSocialLinks.filter(isVerifiedSocial);
+  const copyrightYear = new Date().getFullYear();
+
   return (
     <footer
       id="section-11-footer"
@@ -422,8 +475,8 @@ export function Section11Footer({
       className="bg-[#0A0A0A] px-4 pb-8 pt-7 text-white min-[1280px]:px-0 min-[1280px]:pt-10"
     >
       <div className="text-center">
-        <SectionBadge label={content.sectionLabel} />
-        <h2 className="mt-3 text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:mt-4 min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
+        {/* Development section badge intentionally not rendered (S11-F09). */}
+        <h2 className="text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           {content.heading}
         </h2>
         <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
@@ -433,10 +486,15 @@ export function Section11Footer({
 
       <FooterDividerAccent />
 
-      <nav aria-label="เมนูส่วนท้าย" className="mt-6 min-[1280px]:mt-8">
+      <nav aria-label={content.navAriaLabel} className="mt-6 min-[1280px]:mt-8">
         <div className="grid grid-cols-3 gap-x-3 divide-x divide-[rgba(255,255,255,0.08)] min-[1280px]:gap-x-8">
-          {content.navColumns.map((column) => (
-            <FooterLinkColumn key={column.id} column={column} />
+          {footerNavGroups.map((column) => (
+            <FooterLinkColumn
+              key={column.id}
+              title={column.title}
+              iconName={column.iconName}
+              items={column.items}
+            />
           ))}
         </div>
       </nav>
@@ -456,28 +514,30 @@ export function Section11Footer({
           </div>
 
           <div className="mt-3 divide-y divide-white/[0.07]">
-            {content.contacts.map((item) => (
+            {siteContacts.map((item) => (
               <ContactItem key={item.id} item={item} />
             ))}
           </div>
         </section>
 
-        <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
-          <div className="text-center">
-            <h3 className="text-[12.5px] font-extrabold text-[#FF4DA6]">
-              {content.socialCard.title}
-            </h3>
-            <p className="mt-1.5 text-[11.5px] leading-[1.35] text-white/65">
-              {content.socialCard.description}
-            </p>
-          </div>
+        {verifiedSocials.length > 0 ? (
+          <section className="min-w-0 rounded-[20px] border border-[rgba(233,30,140,0.14)] bg-[linear-gradient(180deg,rgba(18,18,18,0.98),rgba(10,10,10,0.98))] px-4 py-4 shadow-[0_0_16px_rgba(233,30,140,0.05)]">
+            <div className="text-center">
+              <h3 className="text-[12.5px] font-extrabold text-[#FF4DA6]">
+                {content.socialCard.title}
+              </h3>
+              <p className="mt-1.5 text-[11.5px] leading-[1.35] text-white/65">
+                {content.socialCard.description}
+              </p>
+            </div>
 
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            {content.socialCard.items.map((item) => (
-              <FooterSocialIconLink key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              {verifiedSocials.map((item) => (
+                <FooterSocialIconLink key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section
           aria-label={content.privacyPanel.title}
@@ -527,23 +587,23 @@ export function Section11Footer({
 
       <div className="mt-7 border-b border-white/8 pb-5 min-[1280px]:mt-10">
         <div className="flex flex-col gap-4 min-[390px]:flex-row min-[390px]:items-end min-[390px]:justify-between min-[390px]:gap-4">
-        <div className="min-w-0">
-          <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
-            {content.brand.name}
-          </p>
-          <p className="mt-2.5 text-[13px] leading-[1.35] text-white/72">
-            {content.brand.tagline}
-          </p>
-        </div>
+          <div className="min-w-0">
+            <p className="text-[22px] font-extrabold leading-none tracking-[-0.04em] text-[#FF4DA6]">
+              {content.brand.name}
+            </p>
+            <p className="mt-2.5 text-[13px] leading-[1.35] text-white/72">
+              {content.brand.tagline}
+            </p>
+          </div>
 
-        <div className="min-w-0 space-y-1 text-right">
-          <p className="text-[12px] leading-[1.4] text-white/70">
-            {content.legal.copyright}
-          </p>
-          <p className="text-[12px] leading-[1.4] text-white/56">
-            {content.legal.rights}
-          </p>
-        </div>
+          <div className="min-w-0 space-y-1 text-right">
+            <p className="text-[12px] leading-[1.4] text-white/70">
+              © {copyrightYear} {content.legal.rightsLine}
+            </p>
+            <p className="text-[12px] leading-[1.4] text-white/56">
+              {content.legal.rights}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -567,7 +627,7 @@ export function Section11Footer({
         </div>
 
         <div
-          aria-label="วิธีชำระเงินที่รองรับ"
+          aria-label={content.paymentsAriaLabel}
           className="grid grid-cols-2 gap-2.5 min-[390px]:grid-cols-4 min-[414px]:grid-cols-4 min-[1280px]:gap-4"
         >
           {content.payments.map((item) => (
