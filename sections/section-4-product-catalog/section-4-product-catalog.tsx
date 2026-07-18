@@ -73,20 +73,20 @@ function ProductCardFeatureItem({
   return (
     <li
       className={[
-        "flex min-w-0 flex-col items-center px-1 text-center",
+        "flex min-w-0 flex-col items-center gap-0.5 px-0.5 text-center min-[390px]:px-1",
         withDivider ? "border-l border-white/8" : "",
       ].join(" ")}
     >
       <Icon
         aria-hidden="true"
-        className="size-[14px] text-[#E91E8C]"
+        className="size-[15px] shrink-0 text-[#E91E8C] min-[390px]:size-4"
         strokeWidth={1.5}
       />
-      <span className="mt-0.5 block h-[11px] text-[9px] font-semibold leading-[1.15] text-white/90">
+      <span className="block text-[11px] font-semibold leading-[1.25] text-white/92 min-[390px]:text-[11.5px]">
         {feature.title}
       </span>
       {feature.sub ? (
-        <span className="mt-0.5 block h-[10px] text-[8px] leading-[1.15] text-white/70">
+        <span className="block text-[10px] leading-[1.3] text-white/72 min-[390px]:text-[10.5px]">
           {feature.sub}
         </span>
       ) : null}
@@ -125,7 +125,7 @@ function ProductCardCTA({
     <a
       aria-label={cta.ariaLabel}
       href={cta.href}
-      className="flex h-10 w-full items-center justify-center gap-2 rounded-full border border-[rgba(233,30,140,0.45)] bg-[#171717] px-3 text-[12px] font-bold leading-none text-[#E91E8C] md:text-[13px] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.06] hover:shadow-[0_0_18px_rgba(233,30,140,0.22)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] min-[1280px]:h-auto min-[1280px]:min-h-[44px] min-[1280px]:text-[14px]"
+      className="flex min-h-11 w-full items-center justify-center gap-1.5 rounded-full border border-[rgba(233,30,140,0.32)] bg-transparent px-3 text-[12px] font-semibold leading-none text-[#FF4DA6]/92 transition-[transform,box-shadow,border-color,background-color,filter] duration-150 ease-out hover:border-[rgba(233,30,140,0.5)] hover:bg-[rgba(233,30,140,0.06)] hover:text-[#FF4DA6] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C] md:text-[13px] min-[1280px]:min-h-[44px] min-[1280px]:text-[14px]"
       onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
@@ -165,7 +165,7 @@ function ProductCardCTA({
       <span>{cta.label}</span>
       <ChevronRight
         aria-hidden="true"
-        className="size-4 shrink-0 text-[#E91E8C]"
+        className="size-4 shrink-0 text-[#FF4DA6]/90"
         strokeWidth={2}
       />
     </a>
@@ -201,9 +201,9 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
       </Link>
 
       <div className="flex flex-1 flex-col p-3.5 md:p-4 min-[1280px]:w-[54%] min-[1280px]:min-w-0 min-[1280px]:py-5 min-[1280px]:pr-5">
-        {/* Region 2: Title + Fit - fixed min-height for identical baseline start of benefits */}
-        <div className="min-h-[62px]">
-          <h3 className="line-clamp-2 text-center text-[14px] font-extrabold leading-[1.2] text-[#E91E8C] md:text-[15px] min-[1280px]:text-left min-[1280px]:text-[18px]">
+        {/* Region 2: Title + Fit */}
+        <div className="min-h-[58px]">
+          <h3 className="line-clamp-2 text-center text-[14px] font-extrabold leading-[1.25] text-[#E91E8C] md:text-[15px] min-[1280px]:text-left min-[1280px]:text-[18px]">
             <Link
               href={`/products/${product.slug}`}
               onClick={() =>
@@ -217,13 +217,13 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
               {product.title}
             </Link>
           </h3>
-          <p className="line-clamp-2 mt-1 min-h-[30px] text-center text-[11px] leading-[1.3] text-white/80 md:text-[12px] md:leading-[1.3] min-[1280px]:text-left min-[1280px]:text-[13px]">
+          <p className="mt-1.5 line-clamp-2 min-h-[32px] text-center text-[11.5px] leading-[1.4] text-white/82 md:text-[12px] md:leading-[1.4] min-[1280px]:min-h-0 min-[1280px]:text-left min-[1280px]:text-[13px]">
             {product.subtitle}
           </p>
         </div>
 
-        {/* Region 3: Benefits - fixed min-height for identical height */}
-        <ul className="mt-1.5 grid min-h-[40px] grid-cols-3 gap-1">
+        {/* Region 3: Benefits — readable mobile chips */}
+        <ul className="mt-2 grid min-h-[52px] grid-cols-3 items-start gap-x-1 gap-y-1.5">
           {product.features.map((feature, index) => (
             <ProductCardFeatureItem
               key={`${product.slug}-${feature.title}`}
@@ -233,8 +233,8 @@ function ProductCatalogCard({ product }: { product: Section4ProductCard }) {
           ))}
         </ul>
 
-        {/* Region 4: Price + CTA - anchored with fixed price region height for baseline */}
-        <div className="mt-auto flex flex-col gap-1.5">
+        {/* Region 4: Price + secondary LINE CTA (hierarchy vs final CTA) */}
+        <div className="mt-auto flex flex-col gap-2 pt-1">
           <ProductCardPriceBlock pricing={product.pricing} />
           <ProductCardCTA cta={product.cta} product={product} />
         </div>
@@ -247,16 +247,16 @@ function CatalogTrustItem({ item }: { item: Section4TrustItem }) {
   const Icon = trustIconByName[item.iconName];
 
   return (
-    <li className="flex flex-col items-center px-1 text-center">
+    <li className="flex flex-col items-center gap-1 px-0.5 text-center min-[390px]:px-1">
       <Icon
         aria-hidden="true"
-        className="size-[20px] text-[#E91E8C]"
+        className="size-5 text-[#E91E8C] min-[390px]:size-[22px]"
         strokeWidth={1.6}
       />
-      <span className="mt-1.5 block text-[9px] font-semibold leading-[1.2] text-white md:text-[10px] md:leading-[1.2]">
+      <span className="block text-[11px] font-semibold leading-[1.3] text-white min-[390px]:text-[11.5px] md:text-[12px]">
         {item.title}
       </span>
-      <span className="mt-0.5 block text-[8px] leading-[1.15] text-white/65">
+      <span className="block text-[10px] leading-[1.35] text-white/70 min-[390px]:text-[10.5px] md:text-[11px]">
         {item.sub}
       </span>
     </li>
@@ -272,7 +272,7 @@ function FinalLineCTA({
     <a
       aria-label={ariaLabel}
       href={href}
-      className="flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+      className="flex min-h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_24px_rgba(233,30,140,0.5)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_32px_rgba(233,30,140,0.65)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
       onClick={(e) => {
         analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
           surface: "section",
@@ -296,7 +296,7 @@ function FinalLineCTA({
         <LineIcon size={24} />
       </IconWrapper>
 
-      <span className="min-w-0 flex-1 text-[17px] font-bold leading-none">
+      <span className="min-w-0 flex-1 text-[17px] font-bold leading-none tracking-[-0.01em]">
         {label}
       </span>
 
@@ -336,15 +336,15 @@ export function Section4ProductCatalog({
         ))}
       </ul>
 
-      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-3 py-3.5 min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[92px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
-        <ul className="grid grid-cols-4 gap-1.5 min-[1280px]:gap-7">
+      <div className="mx-4 mt-5 rounded-[14px] border border-white/10 bg-[#161616] px-2.5 py-3.5 min-[390px]:px-3 min-[1280px]:mx-0 min-[1280px]:mt-7 min-[1280px]:min-h-[92px] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5">
+        <ul className="grid grid-cols-4 gap-1 min-[390px]:gap-1.5 min-[1280px]:gap-7">
           {content.trustItems.map((item) => (
             <CatalogTrustItem key={item.title} item={item} />
           ))}
         </ul>
       </div>
 
-      <div className="px-4 pt-4 min-[1280px]:hidden">
+      <div className="px-4 pt-5 min-[1280px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
