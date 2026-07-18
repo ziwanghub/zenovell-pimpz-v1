@@ -479,7 +479,7 @@ export function Section11Footer({
         <h2 className="text-[20px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white min-[1280px]:text-[34px] min-[1280px]:leading-[1.14]">
           {content.heading}
         </h2>
-        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[760px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
+        <p className="mt-2 text-[13px] leading-[1.45] text-white/72 min-[1280px]:mx-auto min-[1280px]:mt-3 min-[1280px]:max-w-[640px] min-[1280px]:text-[15px] min-[1280px]:leading-[1.6]">
           {content.description}
         </p>
       </div>

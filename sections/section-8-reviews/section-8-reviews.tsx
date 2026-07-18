@@ -325,7 +325,7 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
         ))}
       </ul>
 
-      <p className="mx-4 mt-2.5 text-[11px] leading-4 text-white/42 min-[1280px]:mx-0">
+      <p className="mx-4 mt-2.5 text-[11px] leading-4 text-white/42 min-[1280px]:mx-auto min-[1280px]:max-w-[640px] min-[1280px]:px-0">
         ตัวอย่างรีวิวและคะแนนที่แสดงในส่วนนี้ใช้เพื่อช่วยตัดสินใจ
         ผลลัพธ์อาจแตกต่างกันตามบุคคล
       </p>
