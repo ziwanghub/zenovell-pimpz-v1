@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import type { ComponentType } from "react";
+import { useState, type ComponentType } from "react";
 import {
   ChevronRight,
   EyeOff,
@@ -21,9 +21,10 @@ import type {
   Section2TrustCardItem,
 } from "@/content/section-2-trust-bar";
 import { LineIcon } from "@/components/ui/line-icon";
-import { SectionBadge } from "@/components/ui/section-badge";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
+
+const SECTION_2_COLLAPSIBLE_CONTENT_ID = "section-2-collapsible-content";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -218,44 +219,64 @@ type Section2TrustBarProps = {
 };
 
 export function Section2TrustBar({ content }: Section2TrustBarProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <section
       aria-label={content.ariaLabel}
       className="bg-[#0A0A0A] min-[1280px]:py-5"
     >
-      <div className="px-4 pt-7 pb-5 text-center min-[1280px]:hidden">
-        <SectionBadge label={content.sectionLabel} />
-        <div className="mt-3">
-          <SectionHeading lines={content.heading} />
-        </div>
-        <div className="mt-2">
-          <SectionDescription text={content.description} />
-        </div>
-      </div>
-
-      <TrustCard
-        items={content.trustCardItems}
-        statement={content.trustStatement}
-      />
-
-      <ProductArtwork {...content.artwork} />
-
-      <div className="px-4 pt-6 min-[1280px]:hidden">
-        <SolidLineCTA
-          label={content.cta.label}
-          onClick={() =>
-            activateLineCta({
-              title: content.cta.label,
-              surface: "trust-line",
-              landingPage: "/",
-              intent: "high_intent",
-              source: "trust-bar",
-            })
+      <div className="px-4 pt-7 pb-5 text-center">
+        <button
+          type="button"
+          aria-expanded={isExpanded}
+          aria-controls={SECTION_2_COLLAPSIBLE_CONTENT_ID}
+          aria-label={
+            isExpanded ? "ซ่อนเนื้อหา Section 2" : "แสดงเนื้อหา Section 2"
           }
-        />
+          className="inline-flex rounded-full bg-[#E91E8C] px-5 py-2 text-[11px] font-bold leading-none tracking-[0.08em] text-white uppercase shadow-[0_0_14px_rgba(233,30,140,0.35)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]"
+          onClick={() => setIsExpanded((current) => !current)}
+        >
+          {content.sectionLabel}
+        </button>
       </div>
 
-      <MicroTrustRow items={content.microTrustItems} />
+      {isExpanded ? (
+        <div id={SECTION_2_COLLAPSIBLE_CONTENT_ID}>
+          <div className="px-4 pb-5 text-center min-[1280px]:hidden">
+            <div className="mt-3">
+              <SectionHeading lines={content.heading} />
+            </div>
+            <div className="mt-2">
+              <SectionDescription text={content.description} />
+            </div>
+          </div>
+
+          <TrustCard
+            items={content.trustCardItems}
+            statement={content.trustStatement}
+          />
+
+          <ProductArtwork {...content.artwork} />
+
+          <div className="px-4 pt-6 min-[1280px]:hidden">
+            <SolidLineCTA
+              label={content.cta.label}
+              onClick={() =>
+                activateLineCta({
+                  title: content.cta.label,
+                  surface: "trust-line",
+                  landingPage: "/",
+                  intent: "high_intent",
+                  source: "trust-bar",
+                })
+              }
+            />
+          </div>
+
+          <MicroTrustRow items={content.microTrustItems} />
+        </div>
+      ) : null}
     </section>
   );
 }
