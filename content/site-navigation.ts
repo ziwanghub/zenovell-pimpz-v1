@@ -389,13 +389,10 @@ export const siteNavigationGroups: [
 /**
  * Canonical contact authority for surfaces that need company contact data.
  *
- * PHONE_AUTHORITY: BLOCKED (pending owner confirmation before Ads/Production)
- * Competing historical values in this repository:
- * - 099-124-4289 — introduced with M9.5 siteContacts; never rendered in UI
- * - 092-956-5523 — homepage footer runtime since content update 4de2ed9
- * B2.7 preserves the homepage-visible runtime (092) so wiring siteContacts into
- * the footer is not a destructive phone flip. Owner must still confirm the
- * real support number; do not treat either value as externally verified.
+ * PHONE_AUTHORITY: CONFIRMED (SA / Business Owner 2026-07-19)
+ * CANONICAL_PHONE: 092-956-5523
+ * Single Source of Truth — all UI consumers must read from `siteContacts`.
+ * Do not hardcode phone numbers in section content files.
  */
 export const siteContacts: [
   SiteContact,

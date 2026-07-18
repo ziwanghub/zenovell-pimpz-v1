@@ -21,7 +21,7 @@ However, the footer is **not yet safe as a system-wide Footer Authority**:
 |---|---|
 | **22 / 27** footer links are `href="#"` placeholders (nav, products, legal, social) | **MUST_FIX** (pre-production) |
 | Footer content is **duplicated** vs `content/site-navigation.ts` (hrefs, phone, LINE) | **MUST_FIX** (shared-surface) |
-| Phone number **diverges** (`092-956-5523` in footer vs `099-124-4289` in `siteContacts`) | **MUST_FIX** (trust) |
+| Phone number **diverges** (`092-956-5523` in footer vs `[OBSOLETE_PHONE_REMOVED_PG01_CLOSED]` in `siteContacts`) | **MUST_FIX** (trust) |
 | Social + Privacy/Terms are dead links | **MUST_FIX** / **LEGAL** |
 | Nav column touch targets ~**17px** height (below ~44px) | **SHOULD_POLISH** |
 | Platform product / knowledge / information pages **do not** mount this footer | **FUTURE** / authority gap |
@@ -131,7 +131,7 @@ FOOTER_AUTHORITY: PARTIAL
 |---|---|
 | `siteNavigationGroups` anchors (`#section-4-product-catalog`, etc.) | All main-menu / product / most service `href: "#"` |
 | `siteNavigationGroups` LINE services → `LINE_OA_URL` | Runtime override for `line-order` / `consulting` only |
-| `siteContacts.phone` `099-124-4289` | Footer `092-956-5523` |
+| `siteContacts.phone` `[OBSOLETE_PHONE_REMOVED_PG01_CLOSED]` | Footer `092-956-5523` |
 | `siteContacts.line` placeholder `#line-primary` | Footer resolves via `destinationId: "header-line"` → live OA |
 | `siteSocialLinks` all `#` | Footer social all `#` (aligned but both incomplete) |
 | `ctaDestinations.footer-line` still placeholder in nav file | Footer contact LINE bypasses via `header-line` id |
@@ -310,7 +310,7 @@ Also tracks `footer_cta_click` / `contact_click` / `social_click` via `Analytics
 
 - **Category:** TRUST / CONTENT  
 - **Severity:** MUST_FIX  
-- **Evidence:** `content/section-11-footer.ts` → `092-956-5523`; `content/site-navigation.ts` `siteContacts` → `099-124-4289`.  
+- **Evidence:** `content/section-11-footer.ts` → `092-956-5523`; `content/site-navigation.ts` `siteContacts` → `[OBSOLETE_PHONE_REMOVED_PG01_CLOSED]`.  
 - **Impact:** Conflicting company identity; support risk; Ads/compliance risk.  
 - **Recommendation:** Single canonical phone in one contacts authority; both surfaces consume it. SA must pick canonical number.  
 - **Implementation:** NOT AUTHORIZED.
