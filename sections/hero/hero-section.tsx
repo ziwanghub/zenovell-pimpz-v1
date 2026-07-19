@@ -170,7 +170,7 @@ export function HeroSection({ content }: HeroSectionProps) {
       <section
         id="hero"
         aria-label="Hero - Nicky Pimpz Boss"
-        className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[520px] min-[768px]:min-h-[540px] min-[820px]:min-h-[560px] min-[1024px]:min-h-[580px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1280px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1400px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px] min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
+        className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[540px] min-[768px]:min-h-[560px] min-[820px]:min-h-[580px] min-[1024px]:min-h-[600px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1280px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1400px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px] min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
       >
         {/* Mobile authority only — ZZ-01 immutable below 690px (mounted when !wide) */}
         {!isTabletOrDesktop ? (
@@ -205,7 +205,7 @@ export function HeroSection({ content }: HeroSectionProps) {
               priority
               fetchPriority="high"
               sizes="(max-width: 1023px) 100vw, (max-width: 1279px) 100vw, (max-width: 1535px) 1280px, 1440px"
-              className="object-cover object-[82%_42%] min-[768px]:object-[84%_44%] min-[820px]:object-[86%_46%] min-[1024px]:object-[88%_48%] min-[1280px]:object-[92%_50%] min-[1366px]:object-[90%_50%] min-[1536px]:object-[86%_48%] min-[1920px]:object-[82%_46%]"
+              className="object-cover object-[86%_40%] min-[768px]:object-[88%_42%] min-[820px]:object-[89%_44%] min-[1024px]:object-[90%_46%] min-[1280px]:object-[92%_50%] min-[1366px]:object-[90%_50%] min-[1536px]:object-[86%_48%] min-[1920px]:object-[82%_46%]"
             />
           </div>
         ) : null}
@@ -285,21 +285,25 @@ export function HeroSection({ content }: HeroSectionProps) {
           </div>
         ) : null}
 
-        <div className="hero-content-wrapper relative z-[20] min-[690px]:max-w-[56%] min-[768px]:max-w-[54%] min-[820px]:max-w-[48%] min-[1024px]:max-w-[46%] min-[1280px]:max-w-[520px]">
+        {/*
+          T1B Tablet (690–1279): deliberate content measure + rhythm.
+          Desktop (>=1280) authorities restored explicitly — do not inherit tablet % widths.
+        */}
+        <div className="hero-content-wrapper relative z-[20] min-[690px]:max-w-[60%] min-[768px]:max-w-[58%] min-[820px]:max-w-[56%] min-[912px]:max-w-[54%] min-[1024px]:max-w-[52%] min-[1180px]:max-w-[50%] min-[1280px]:max-w-[520px]">
           <div className="contents min-[1280px]:block">
-            <div className="hero-content-column max-w-[52%] px-4 pt-[12px] min-[375px]:max-w-[51%] min-[375px]:pt-[16px] min-[414px]:max-w-[50%] min-[414px]:pt-[20px] min-[690px]:max-w-none min-[690px]:px-[var(--platform-shell-gutter)] min-[690px]:pt-8 min-[768px]:pt-10 min-[820px]:pt-12 min-[1024px]:pt-14 min-[1280px]:max-w-[520px] min-[1280px]:px-0 min-[1280px]:pt-0">
-              <p className="hero-subbrand mb-[10px] text-[10px] font-bold tracking-[0.22em] text-[#E91E8C] uppercase min-[690px]:mb-3 min-[690px]:text-[11px] min-[690px]:tracking-[0.16em] min-[820px]:text-[12px] min-[820px]:tracking-[0.12em] min-[1280px]:mb-[14px] min-[1280px]:text-[13px] min-[1280px]:tracking-[0.08em]">
+            <div className="hero-content-column max-w-[52%] px-4 pt-[12px] min-[375px]:max-w-[51%] min-[375px]:pt-[16px] min-[414px]:max-w-[50%] min-[414px]:pt-[20px] min-[690px]:max-w-none min-[690px]:px-[var(--platform-shell-gutter)] min-[690px]:pt-9 min-[768px]:pt-10 min-[820px]:pt-11 min-[1024px]:pt-12 min-[1280px]:max-w-[520px] min-[1280px]:px-0 min-[1280px]:pt-0">
+              <p className="hero-subbrand mb-[10px] text-[10px] font-bold tracking-[0.22em] text-[#E91E8C] uppercase min-[690px]:mb-3.5 min-[690px]:text-[11px] min-[690px]:tracking-[0.16em] min-[820px]:text-[12px] min-[820px]:tracking-[0.12em] min-[1280px]:mb-[14px] min-[1280px]:text-[13px] min-[1280px]:tracking-[0.08em]">
                 {content.brand.subbrand}
               </p>
 
               <h1
-                className="hero-headline mb-4 font-extrabold tracking-[0em] text-[clamp(28px,8.4vw,36px)] leading-[1.24] [text-shadow:0_2px_12px_rgba(0,0,0,0.18)] min-[375px]:mb-[18px] min-[375px]:text-[clamp(30px,8.5vw,39px)] min-[375px]:leading-[1.2] min-[414px]:mb-5 min-[414px]:tracking-[-0.004em] min-[414px]:text-[clamp(33px,8.4vw,43px)] min-[414px]:leading-[1.16] min-[690px]:mb-5 min-[690px]:text-[clamp(38px,5.8vw,44px)] min-[690px]:leading-[1.2] min-[690px]:tracking-[-0.008em] min-[820px]:mb-6 min-[820px]:text-[clamp(42px,5vw,50px)] min-[820px]:leading-[1.18] min-[1024px]:text-[clamp(46px,4.6vw,54px)] min-[1024px]:leading-[1.16] min-[1280px]:mb-6 min-[1280px]:max-w-none min-[1280px]:text-[clamp(48px,3.8vw,54px)] min-[1280px]:leading-[1.14] min-[1280px]:tracking-[-0.01em] min-[1366px]:text-[clamp(52px,4vw,58px)] min-[1536px]:text-[clamp(56px,3.9vw,62px)]"
+                className="hero-headline mb-4 font-extrabold tracking-[0em] text-[clamp(28px,8.4vw,36px)] leading-[1.24] [text-shadow:0_2px_12px_rgba(0,0,0,0.18)] min-[375px]:mb-[18px] min-[375px]:text-[clamp(30px,8.5vw,39px)] min-[375px]:leading-[1.2] min-[414px]:mb-5 min-[414px]:tracking-[-0.004em] min-[414px]:text-[clamp(33px,8.4vw,43px)] min-[414px]:leading-[1.16] min-[690px]:mb-5 min-[690px]:max-w-[16ch] min-[690px]:text-[clamp(36px,5.2vw,42px)] min-[690px]:leading-[1.22] min-[690px]:tracking-[-0.006em] min-[768px]:max-w-[17ch] min-[768px]:text-[clamp(38px,4.9vw,44px)] min-[820px]:mb-6 min-[820px]:max-w-[18ch] min-[820px]:text-[clamp(40px,4.6vw,46px)] min-[820px]:leading-[1.2] min-[1024px]:max-w-[19ch] min-[1024px]:text-[clamp(42px,4.2vw,48px)] min-[1024px]:leading-[1.18] min-[1180px]:max-w-none min-[1280px]:mb-6 min-[1280px]:max-w-none min-[1280px]:text-[clamp(48px,3.8vw,54px)] min-[1280px]:leading-[1.14] min-[1280px]:tracking-[-0.01em] min-[1366px]:text-[clamp(52px,4vw,58px)] min-[1536px]:text-[clamp(56px,3.9vw,62px)]"
               >
                 <span className="block text-white min-[1280px]:mb-[4px]">{headlineLightLine}</span>
                 <span className="block text-[#E91E8C]">{headlineAccentLine}</span>
               </h1>
 
-              <p className="hero-subheadline mb-6 max-w-[90%] text-[13px] leading-[1.68] text-white/78 min-[375px]:mb-7 min-[375px]:max-w-[88%] min-[375px]:text-[14px] min-[375px]:leading-[1.62] min-[690px]:mb-7 min-[690px]:max-w-[88%] min-[690px]:text-[15px] min-[690px]:leading-[1.56] min-[820px]:mb-8 min-[820px]:max-w-[92%] min-[820px]:text-[16px] min-[820px]:leading-[1.56] min-[1024px]:text-[18px] min-[1024px]:leading-[1.52] min-[1280px]:mb-8 min-[1280px]:max-w-[440px] min-[1280px]:text-[17px] min-[1280px]:leading-[1.5] min-[1366px]:max-w-[480px] min-[1366px]:text-[18px]">
+              <p className="hero-subheadline mb-6 max-w-[90%] text-[13px] leading-[1.68] text-white/78 min-[375px]:mb-7 min-[375px]:max-w-[88%] min-[375px]:text-[14px] min-[375px]:leading-[1.62] min-[690px]:mb-8 min-[690px]:max-w-[34ch] min-[690px]:text-[15px] min-[690px]:leading-[1.58] min-[820px]:mb-8 min-[820px]:max-w-[36ch] min-[820px]:text-[16px] min-[820px]:leading-[1.56] min-[1024px]:max-w-[38ch] min-[1024px]:text-[17px] min-[1024px]:leading-[1.54] min-[1280px]:mb-8 min-[1280px]:max-w-[440px] min-[1280px]:text-[17px] min-[1280px]:leading-[1.5] min-[1366px]:max-w-[480px] min-[1366px]:text-[18px]">
                 {content.subheadline.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -309,21 +313,21 @@ export function HeroSection({ content }: HeroSectionProps) {
 
               <div
                 aria-hidden="true"
-                className="hero-divider mb-6 h-[2.5px] w-[34px] rounded-[2px] bg-[#E91E8C] min-[375px]:mb-7 min-[690px]:mb-7 min-[690px]:w-10 min-[820px]:mb-8 min-[820px]:w-11 min-[1280px]:mb-8 min-[1280px]:w-12"
+                className="hero-divider mb-6 h-[2.5px] w-[34px] rounded-[2px] bg-[#E91E8C] min-[375px]:mb-7 min-[690px]:mb-8 min-[690px]:w-10 min-[820px]:mb-8 min-[820px]:w-11 min-[1280px]:mb-8 min-[1280px]:w-12"
                 style={dividerStyle}
               />
 
-              <ul className="hero-benefits flex list-none flex-col gap-[16px] p-0 min-[375px]:gap-[18px] min-[690px]:max-w-[340px] min-[690px]:gap-[14px] min-[820px]:max-w-[400px] min-[820px]:gap-[16px] min-[1024px]:max-w-[420px] min-[1280px]:max-w-[420px] min-[1280px]:gap-3">
+              <ul className="hero-benefits flex list-none flex-col gap-[16px] p-0 min-[375px]:gap-[18px] min-[690px]:max-w-[360px] min-[690px]:gap-[16px] min-[820px]:max-w-[400px] min-[820px]:gap-[18px] min-[1024px]:max-w-[420px] min-[1024px]:gap-[18px] min-[1280px]:max-w-[420px] min-[1280px]:gap-3">
                 {content.benefits.map((item) => (
                   <BenefitListItem key={item.title} item={item} />
                 ))}
               </ul>
             </div>
 
-            <div className="hero-cta-block px-[14px] pt-[30px] pb-[28px] min-[375px]:pt-[34px] min-[414px]:pt-[38px] min-[690px]:max-w-[360px] min-[690px]:px-[var(--platform-shell-gutter)] min-[690px]:pt-8 min-[690px]:pb-8 min-[820px]:max-w-[380px] min-[820px]:pt-8 min-[1024px]:max-w-[400px] min-[1280px]:max-w-[440px] min-[1280px]:px-0 min-[1280px]:pt-9 min-[1280px]:pb-0">
+            <div className="hero-cta-block px-[14px] pt-[30px] pb-[28px] min-[375px]:pt-[34px] min-[414px]:pt-[38px] min-[690px]:max-w-[340px] min-[690px]:px-[var(--platform-shell-gutter)] min-[690px]:pt-9 min-[690px]:pb-9 min-[820px]:max-w-[360px] min-[820px]:pt-9 min-[1024px]:max-w-[380px] min-[1280px]:max-w-[440px] min-[1280px]:px-0 min-[1280px]:pt-9 min-[1280px]:pb-0">
               <button
                 aria-label={content.cta.label}
-                className="hero-primary-cta flex min-h-[52px] w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left min-[690px]:min-h-[54px] min-[690px]:max-w-[320px] min-[820px]:min-h-[56px] min-[820px]:max-w-[336px] min-[1280px]:inline-flex min-[1280px]:min-h-[52px] min-[1280px]:w-auto min-[1280px]:min-w-[190px] min-[1280px]:max-w-none min-[1280px]:gap-3 min-[1280px]:bg-[#E91E8C] min-[1280px]:px-6 min-[1280px]:py-0"
+                className="hero-primary-cta flex min-h-[52px] w-full items-center gap-[14px] rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(8,8,8,0.72)] px-[14px] py-3 text-left min-[690px]:min-h-[54px] min-[690px]:max-w-[300px] min-[820px]:min-h-[56px] min-[820px]:max-w-[318px] min-[1024px]:max-w-[332px] min-[1280px]:inline-flex min-[1280px]:min-h-[52px] min-[1280px]:w-auto min-[1280px]:min-w-[190px] min-[1280px]:max-w-none min-[1280px]:gap-3 min-[1280px]:bg-[#E91E8C] min-[1280px]:px-6 min-[1280px]:py-0"
                 style={ctaButtonStyle}
                 type="button"
                 onClick={() => {
