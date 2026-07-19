@@ -222,11 +222,15 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-3.5 min-[1280px]:px-0 min-[1280px]:pt-5">
+      {/*
+        ZZ-04: hide generic LINE CTA on Tablet/Desktop (>=690).
+        Mobile keeps full conversion pill; no matchMedia / no handler removal.
+      */}
+      <div className="px-4 pt-3.5 min-[690px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center min-[690px]:pt-4">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? <span aria-hidden="true" className="text-white/28">•</span> : null}
