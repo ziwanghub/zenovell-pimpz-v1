@@ -1,7 +1,12 @@
 'use client';
 
 import Image from "next/image";
-import type { CSSProperties, ComponentType } from "react";
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type ComponentType,
+} from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -23,6 +28,19 @@ import { LineIcon } from "@/components/ui/line-icon";
 
 const MOBILE_BACKGROUND_IMAGE_SRC = "/images/hero/bg-ph6d-section-1-hero-v2.jpeg";
 const DESKTOP_BACKGROUND_IMAGE_SRC = "/images/hero/desktop-section-01-hero-desktop.jpeg";
+
+/** ZZ-01: mount only one Hero background Image to avoid dual downloads. */
+function useMinWidth(px: number): boolean {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${px}px)`);
+    const update = () => setMatches(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [px]);
+  return matches;
+}
 
 const ctaButtonStyle: CSSProperties = {
   boxShadow:
@@ -134,6 +152,9 @@ function ScrollIndicator() {
 }
 
 export function HeroSection({ content }: HeroSectionProps) {
+  // false during SSR + first paint → Mobile asset path (immutable authority).
+  // After hydrate, >=690 mounts tablet/desktop background only.
+  const isTabletOrDesktop = useMinWidth(690);
   const heroBadgeLabel = featuredProduct.badge?.label;
   const headlineLightLine = content.headline
     .filter((line) => line.tone === "light")
@@ -151,43 +172,48 @@ export function HeroSection({ content }: HeroSectionProps) {
         aria-label="Hero - Nicky Pimpz Boss"
         className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[520px] min-[768px]:min-h-[540px] min-[820px]:min-h-[560px] min-[1024px]:min-h-[580px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1280px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1400px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px] min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
       >
-        <div className="absolute inset-0 min-[1280px]:hidden">
-          <Image
-            src={MOBILE_BACKGROUND_IMAGE_SRC}
-            alt=""
-            aria-hidden="true"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 689px) 100vw, (max-width: 819px) 62vw, (max-width: 1279px) 58vw"
-            className="hero-background object-cover object-[74%_18%] min-[690px]:object-[82%_18%] min-[820px]:object-[88%_22%] min-[1024px]:object-[90%_24%]"
-          />
-        </div>
+        {/* Mobile authority only — ZZ-01 immutable below 690px (mounted when !wide) */}
+        {!isTabletOrDesktop ? (
+          <div className="absolute inset-0">
+            <Image
+              src={MOBILE_BACKGROUND_IMAGE_SRC}
+              alt=""
+              aria-hidden="true"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              className="hero-background object-cover object-[74%_18%]"
+            />
+          </div>
+        ) : null}
 
         {/*
-          Desktop image field: starts further right on wider shells so the 1536w
-          asset is not stretched full-shell (DWC-02A SOFT_WARNING composition).
+          ZZ-01: Tablet (>=690) + Desktop (>=1280) shared full-bleed background.
+          Mounted only when matchMedia >=690 so Mobile never downloads this asset.
         */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-[30%] hidden min-[1280px]:block min-[1366px]:left-[34%] min-[1536px]:left-[40%] min-[1920px]:left-[42%]"
-          style={{ right: "0" }}
-        >
-          <Image
-            src={DESKTOP_BACKGROUND_IMAGE_SRC}
-            alt=""
+        {isTabletOrDesktop ? (
+          <div
             aria-hidden="true"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 1279px) 0px, (max-width: 1365px) 720px, (max-width: 1535px) 780px, (max-width: 1919px) 840px, 860px"
-            className="object-cover object-[96%_center] min-[1366px]:object-[90%_center] min-[1536px]:object-[84%_center] min-[1920px]:object-[80%_center]"
-          />
-        </div>
+            className="pointer-events-none absolute inset-0 z-0"
+          >
+            <Image
+              src={DESKTOP_BACKGROUND_IMAGE_SRC}
+              alt=""
+              aria-hidden="true"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(max-width: 1023px) 100vw, (max-width: 1279px) 100vw, (max-width: 1535px) 1280px, 1440px"
+              className="object-cover object-[82%_42%] min-[768px]:object-[84%_44%] min-[820px]:object-[86%_46%] min-[1024px]:object-[88%_48%] min-[1280px]:object-[92%_50%] min-[1366px]:object-[90%_50%] min-[1536px]:object-[86%_48%] min-[1920px]:object-[82%_46%]"
+            />
+          </div>
+        ) : null}
 
+        {/* Mobile-only scrims (<690) — frozen */}
         <div
           aria-hidden="true"
-          className="hero-scrim-left pointer-events-none absolute inset-0 z-[1] min-[1280px]:hidden"
+          className="hero-scrim-left pointer-events-none absolute inset-0 z-[1] min-[690px]:hidden"
           style={{
             background:
               "linear-gradient(90deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.62) 28%, rgba(10,10,10,0.34) 45%, rgba(10,10,10,0.1) 63%, rgba(10,10,10,0.02) 79%, transparent 100%)",
@@ -195,7 +221,7 @@ export function HeroSection({ content }: HeroSectionProps) {
         />
         <div
           aria-hidden="true"
-          className="hero-scrim-top pointer-events-none absolute top-0 right-0 left-0 z-[1] h-24 min-[1280px]:hidden"
+          className="hero-scrim-top pointer-events-none absolute top-0 right-0 left-0 z-[1] h-24 min-[690px]:hidden"
           style={{
             background:
               "linear-gradient(to bottom, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.16) 58%, transparent 100%)",
@@ -203,43 +229,44 @@ export function HeroSection({ content }: HeroSectionProps) {
         />
         <div
           aria-hidden="true"
-          className="hero-scrim-bottom pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-[196px] min-[1280px]:hidden"
+          className="hero-scrim-bottom pointer-events-none absolute right-0 bottom-0 left-0 z-[1] h-[196px] min-[690px]:hidden"
           style={{
             background:
               "linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.56) 34%, rgba(10,10,10,0.18) 58%, transparent 100%)",
           }}
         />
+
+        {/* Tablet + Desktop scrims (>=690) — text-safe left field + light brand glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 z-[6] hidden min-[1280px]:block"
+          className="pointer-events-none absolute inset-y-0 left-0 z-[6] hidden min-[690px]:block min-[690px]:right-[8%] min-[1024px]:right-[6%] min-[1280px]:right-[6%]"
           style={{
-            right: "6%",
             background:
-              "linear-gradient(90deg, #0A0A0A 0%, rgba(10,10,10,0.96) 22%, rgba(10,10,10,0.82) 34%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0) 100%)",
+              "linear-gradient(90deg, #0A0A0A 0%, rgba(10,10,10,0.96) 20%, rgba(10,10,10,0.84) 34%, rgba(10,10,10,0.36) 52%, rgba(10,10,10,0) 100%)",
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 left-0 z-[7] hidden h-24 min-[1280px]:block"
+          className="pointer-events-none absolute top-0 right-0 left-0 z-[7] hidden h-24 min-[690px]:block"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,10,10,0.74) 0%, rgba(10,10,10,0.18) 56%, transparent 100%)",
+              "linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.16) 56%, transparent 100%)",
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 bottom-0 left-0 z-[7] hidden h-28 min-[1280px]:block"
+          className="pointer-events-none absolute right-0 bottom-0 left-0 z-[7] hidden h-28 min-[690px]:block min-[690px]:h-32"
           style={{
             background:
-              "linear-gradient(to top, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.18) 52%, transparent 100%)",
+              "linear-gradient(to top, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.18) 52%, transparent 100%)",
           }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[8] hidden min-[1280px]:block"
+          className="pointer-events-none absolute inset-0 z-[8] hidden min-[690px]:block"
           style={{
             background:
-              "radial-gradient(ellipse at 76% 58%, rgba(233,30,140,0.16) 0%, rgba(233,30,140,0.08) 24%, rgba(233,30,140,0.02) 46%, transparent 64%)",
+              "radial-gradient(ellipse at 78% 56%, rgba(233,30,140,0.14) 0%, rgba(233,30,140,0.07) 24%, rgba(233,30,140,0.02) 46%, transparent 64%)",
           }}
         />
 
