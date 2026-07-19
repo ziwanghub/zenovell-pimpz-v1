@@ -243,7 +243,7 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
     <section
       id="section-3-hero-product"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1536px]:max-w-[1320px] min-[1536px]:gap-x-10 min-[1536px]:px-14"
+      className="bg-[#0A0A0A] min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12 min-[1366px]:max-w-[1280px] min-[1366px]:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] min-[1366px]:gap-x-10 min-[1366px]:px-12 min-[1536px]:max-w-[1400px] min-[1536px]:gap-x-12 min-[1536px]:px-14 min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
     >
       <div className="px-4 pt-7 pb-4 text-center min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
         <SectionBadge label={content.sectionLabel} />
@@ -281,15 +281,15 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           })
         }
       >
-        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[400px] min-[1280px]:max-h-[460px] min-[1280px]:rounded-[22px]">
-          <div className="absolute inset-0 min-[1280px]:inset-3 min-[1280px]:overflow-hidden min-[1280px]:rounded-[18px]">
+        <div className="relative h-[300px] overflow-hidden bg-[#0A0A0A] min-[1280px]:h-auto min-[1280px]:min-h-[400px] min-[1280px]:max-h-[480px] min-[1280px]:rounded-[22px] min-[1536px]:min-h-[420px] min-[1536px]:max-h-[520px]">
+          <div className="absolute inset-0 min-[1280px]:inset-3 min-[1280px]:overflow-hidden min-[1280px]:rounded-[18px] min-[1536px]:inset-4">
             <Image
               src={content.artwork.src}
               alt={content.artwork.alt}
               fill
-              sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, 50vw"
+              sizes="(max-width: 430px) 100vw, (max-width: 1279px) 430px, (max-width: 1535px) 560px, 640px"
               className="object-cover"
-              style={{ objectPosition: "center center" }}
+              style={{ objectPosition: "center 42%" }}
             />
           </div>
 

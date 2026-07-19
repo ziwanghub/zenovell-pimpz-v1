@@ -149,7 +149,7 @@ export function HeroSection({ content }: HeroSectionProps) {
       <section
         id="hero"
         aria-label="Hero - Nicky Pimpz Boss"
-        className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[520px] min-[768px]:min-h-[540px] min-[820px]:min-h-[560px] min-[1024px]:min-h-[580px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1240px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1320px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px]"
+        className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[520px] min-[768px]:min-h-[540px] min-[820px]:min-h-[560px] min-[1024px]:min-h-[580px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1280px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1400px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px] min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
       >
         <div className="absolute inset-0 min-[1280px]:hidden">
           <Image
@@ -164,10 +164,14 @@ export function HeroSection({ content }: HeroSectionProps) {
           />
         </div>
 
+        {/*
+          Desktop image field: starts further right on wider shells so the 1536w
+          asset is not stretched full-shell (DWC-02A SOFT_WARNING composition).
+        */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-[28%] hidden min-[1280px]:block min-[1366px]:left-[33%] min-[1536px]:left-[38%]"
-          style={{ right: "calc((100vw - 100%) / -2)" }}
+          className="pointer-events-none absolute inset-y-0 left-[30%] hidden min-[1280px]:block min-[1366px]:left-[34%] min-[1536px]:left-[40%] min-[1920px]:left-[42%]"
+          style={{ right: "0" }}
         >
           <Image
             src={DESKTOP_BACKGROUND_IMAGE_SRC}
@@ -176,8 +180,8 @@ export function HeroSection({ content }: HeroSectionProps) {
             fill
             priority
             fetchPriority="high"
-            sizes="(max-width: 1279px) 0px, (max-width: 1535px) 56vw, 60vw"
-            className="object-cover object-[100%_center] min-[1366px]:object-[92%_center] min-[1536px]:object-[78%_center]"
+            sizes="(max-width: 1279px) 0px, (max-width: 1365px) 720px, (max-width: 1535px) 780px, (max-width: 1919px) 840px, 860px"
+            className="object-cover object-[96%_center] min-[1366px]:object-[90%_center] min-[1536px]:object-[84%_center] min-[1920px]:object-[80%_center]"
           />
         </div>
 
