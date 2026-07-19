@@ -120,13 +120,13 @@ function ReviewPurchaseBadge({ label }: { label: string }) {
 
 function ReviewProductChip({ product }: { product: Section8ReviewCard["product"] }) {
   return (
-    <div className="mt-2.5 inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-white/[0.04] px-2.5 py-1.5">
-      <div className="relative size-7 shrink-0 overflow-hidden rounded-[6px]">
+    <div className="mt-2.5 inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-white/[0.04] px-2.5 py-1.5 min-[1280px]:mt-3 min-[1280px]:gap-2.5 min-[1280px]:rounded-[12px] min-[1280px]:px-3 min-[1280px]:py-2">
+      <div className="relative size-7 shrink-0 overflow-hidden rounded-[6px] min-[1280px]:size-9 min-[1280px]:rounded-[8px]">
         <Image
           src={product.imageSrc}
           alt={product.imageAlt}
           fill
-          sizes="28px"
+          sizes="(min-width: 1280px) 36px, 28px"
           className="object-contain object-center"
         />
       </div>
@@ -330,13 +330,19 @@ export function Section8Reviews({ content }: Section8ReviewsProps) {
         ผลลัพธ์อาจแตกต่างกันตามบุคคล
       </p>
 
+      {/* Contextual review CTA — keep on Mobile, Tablet, and Desktop */}
       <MoreReviewsRow moreReviewsRow={content.moreReviewsRow} />
 
-      <div className="px-4 pt-4 min-[1280px]:px-0 min-[1280px]:pt-6">
+      {/*
+        ZZ-04: hide generic consultation/purchase LINE CTA on Tablet/Desktop (>=690).
+        Preserve contextual “ดูรีวิวเพิ่มเติมใน LINE” (MoreReviewsRow) at all breakpoints.
+        Mobile keeps full conversion pill; no matchMedia / no handler removal.
+      */}
+      <div className="px-4 pt-4 min-[690px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 pt-4 text-center min-[690px]:pt-5">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? (

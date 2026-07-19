@@ -273,4 +273,29 @@
       max-width: 1320px;
     }
   }
+
+  /*
+   * DWC-02A — Homepage-only Desktop Wide Canvas shell ladder.
+   * Scoped exclusively via HomepageAdaptiveShell marker.
+   * Platform routes use .platform-adaptive-shell without .homepage-wide-canvas
+   * and keep 1200 / 1240 / 1320. Header frame intentionally NOT widened here.
+   * 1280–1365: inherits global 1200px (no override).
+   */
+  @media (min-width: 1366px) {
+    .platform-adaptive-shell.homepage-wide-canvas {
+      --platform-shell-max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .platform-adaptive-shell.homepage-wide-canvas {
+      --platform-shell-max-width: 1400px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .platform-adaptive-shell.homepage-wide-canvas {
+      --platform-shell-max-width: 1440px;
+    }
+  }
 }

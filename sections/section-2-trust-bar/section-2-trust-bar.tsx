@@ -62,22 +62,22 @@ function TrustCardItem({ item }: { item: Section2TrustCardItem }) {
   const Icon = trustCardIconByName[item.icon];
 
   return (
-    <li className="flex flex-col items-center px-[2px] text-center">
-      <div className="mb-2 flex h-[34px] items-center justify-center">
+    <li className="flex flex-col items-center px-[2px] text-center min-[690px]:px-1 min-[1280px]:px-2">
+      <div className="mb-2 flex h-[34px] items-center justify-center min-[690px]:mb-2.5 min-[1280px]:h-9">
         <Icon className="size-7 text-[#E91E8C]" strokeWidth={1.65} />
       </div>
 
       <div className="min-h-[34px]">
-        <p className="text-[12px] font-bold leading-[1.3] text-white">
+        <p className="text-[12px] font-bold leading-[1.3] text-white min-[1280px]:text-[13px] min-[1280px]:leading-[1.35]">
           {item.title[0]}
         </p>
         {item.title[1] ? (
-          <p className="text-[12px] font-bold leading-[1.3] text-white">
+          <p className="text-[12px] font-bold leading-[1.3] text-white min-[1280px]:text-[13px] min-[1280px]:leading-[1.35]">
             {item.title[1]}
           </p>
         ) : (
           <p
-            className="text-[12px] font-bold leading-[1.3] text-transparent"
+            className="text-[12px] font-bold leading-[1.3] text-transparent min-[1280px]:text-[13px]"
             aria-hidden="true"
           >
             &nbsp;
@@ -87,7 +87,10 @@ function TrustCardItem({ item }: { item: Section2TrustCardItem }) {
 
       <div className="mt-1 flex flex-col gap-px">
         {item.subText.map((line) => (
-          <p key={line} className="text-[10px] leading-[1.4] text-white/55">
+          <p
+            key={line}
+            className="text-[10px] leading-[1.4] text-white/55 min-[1280px]:text-[11px] min-[1280px]:leading-[1.45]"
+          >
             {line}
           </p>
         ))}
@@ -104,7 +107,7 @@ function TrustStatement({
   highlight: string;
 }) {
   return (
-    <div className="border-t border-white/8 pt-[14px] text-center">
+    <div className="border-t border-white/8 pt-[14px] text-center min-[690px]:pt-4 min-[1280px]:pt-[18px]">
       <p className="flex items-center justify-center gap-1.5 text-[11px] leading-[1.4] text-white/75 min-[1280px]:leading-[1.5] min-[1280px]:text-white/70">
         <ShieldCheck
           aria-hidden="true"
@@ -113,13 +116,17 @@ function TrustStatement({
         />
         <span>{label}</span>
       </p>
-      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C] min-[1280px]:mx-auto min-[1280px]:mt-1.5 min-[1280px]:max-w-[560px] min-[1280px]:leading-[1.5]">
+      <p className="mt-1 text-[13px] font-semibold leading-[1.4] text-[#E91E8C] min-[1280px]:mx-auto min-[1280px]:mt-1.5 min-[1280px]:max-w-[720px] min-[1280px]:leading-[1.5] min-[1536px]:max-w-[800px]">
         {highlight}
       </p>
     </div>
   );
 }
 
+/**
+ * ZZ-02: Section-2-local trust card width ladder (does not touch global shells).
+ * Mobile <690 unchanged. Desktop replaces previous max-w 920 with Wide Canvas–aware caps.
+ */
 function TrustCard({
   items,
   statement,
@@ -128,8 +135,27 @@ function TrustCard({
   statement: Section2TrustBarContent["trustStatement"];
 }) {
   return (
-    <div className="mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)] min-[1280px]:mx-auto min-[1280px]:max-w-[920px] min-[1280px]:rounded-[18px] min-[1280px]:px-6 min-[1280px]:py-5">
-      <ul className="grid grid-cols-4 gap-[6px] pb-[14px] min-[1280px]:gap-5 min-[1280px]:pb-4">
+    <div
+      className={[
+        "mx-4 rounded-[14px] border border-white/8 bg-[#1A1A1A] p-4 shadow-[0_0_24px_rgba(0,0,0,0.2)]",
+        // Tablet: full adaptive width under existing gutters
+        "min-[690px]:mx-[var(--platform-shell-gutter,1rem)] min-[690px]:px-5 min-[690px]:py-[18px]",
+        // Desktop ladder: ~1120 → 1200 → 1280 → 1320 hard cap
+        "min-[1280px]:mx-auto min-[1280px]:max-w-[1120px] min-[1280px]:rounded-[18px] min-[1280px]:px-8 min-[1280px]:py-6",
+        "min-[1366px]:max-w-[1200px] min-[1366px]:px-10",
+        "min-[1536px]:max-w-[1280px]",
+        "min-[1920px]:max-w-[1320px]",
+      ].join(" ")}
+    >
+      <ul
+        className={[
+          "grid grid-cols-4 gap-[6px] pb-[14px]",
+          "min-[690px]:gap-3 min-[690px]:pb-4",
+          "min-[820px]:gap-4",
+          "min-[1280px]:gap-6 min-[1280px]:pb-5",
+          "min-[1366px]:gap-8",
+        ].join(" ")}
+      >
         {items.map((item) => (
           <TrustCardItem key={`${item.icon}-${item.title[0]}`} item={item} />
         ))}
@@ -193,7 +219,15 @@ function MicroTrustItem({ item }: { item: Section2MicroTrustItem }) {
 
 function MicroTrustRow({ items }: { items: Section2MicroTrustItem[] }) {
   return (
-    <div className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-6 min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-4 min-[1280px]:pb-2">
+    <div
+      className={[
+        // Mobile base unchanged (pt-4 pb-6)
+        "flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-6",
+        // ZZ-02: after CTA hide on >=690, tighten S2→S3 rhythm (no CTA-sized void)
+        "min-[690px]:gap-3 min-[690px]:pt-5 min-[690px]:pb-5",
+        "min-[1280px]:gap-4 min-[1280px]:px-0 min-[1280px]:pt-5 min-[1280px]:pb-3",
+      ].join(" ")}
+    >
       {items.map((item, index) => (
         <div key={item.text} className="flex items-center gap-2">
           <MicroTrustItem item={item} />
@@ -216,13 +250,16 @@ type Section2TrustBarProps = {
  * Section 2 — Trust Builder (always visible).
  * Production polish: no collapsible control, no SECTION badge, no product artwork.
  * Remains a client component solely for LINE CTA activation.
+ *
+ * ZZ-02: Tablet/Desktop hide Section 2 LINE CTA (conversion hierarchy);
+ * expand trust card width locally. Mobile <690 immutable.
  */
 export function Section2TrustBar({ content }: Section2TrustBarProps) {
   return (
     <section
       id="section-2-trust-bar"
       aria-label={content.ariaLabel}
-      className="bg-[#0A0A0A] pt-6 pb-1 min-[1280px]:pt-8 min-[1280px]:pb-4"
+      className="bg-[#0A0A0A] pt-6 pb-1 min-[690px]:pb-2 min-[1280px]:pt-8 min-[1280px]:pb-4"
     >
       <div className="px-4 pb-4 text-center min-[1280px]:mx-auto min-[1280px]:max-w-[720px] min-[1280px]:px-0">
         <SectionHeading lines={content.heading} />
@@ -236,7 +273,11 @@ export function Section2TrustBar({ content }: Section2TrustBarProps) {
         statement={content.trustStatement}
       />
 
-      <div className="px-4 pt-5 min-[1280px]:mx-auto min-[1280px]:max-w-[520px] min-[1280px]:px-0">
+      {/*
+        ZZ-02 HIDE_AT_690_AND_ABOVE:
+        Keep Mobile CTA fully intact; CSS hide on Tablet/Desktop (no matchMedia / no DOM delete).
+      */}
+      <div className="px-4 pt-5 min-[690px]:hidden">
         <SolidLineCTA
           label={content.cta.label}
           onClick={() =>

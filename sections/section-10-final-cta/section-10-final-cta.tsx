@@ -345,15 +345,17 @@ export function Section10FinalCta({ content }: Section10FinalCtaProps) {
 
       <div className="px-3 md:px-4 min-[1280px]:px-0">
         <div className="grid grid-cols-[1.08fr_0.92fr] items-center gap-3 md:gap-4 min-[1280px]:grid-cols-[1.15fr_0.85fr] min-[1280px]:gap-12">
-          <div className="relative min-h-[268px] overflow-hidden rounded-[24px] md:min-h-[312px] min-[1280px]:min-h-[440px] min-[1280px]:rounded-[28px]">
-            <Image
-              src={content.heroArtwork.src}
-              alt={content.heroArtwork.alt}
-              fill
-              sizes="(max-width: 430px) 52vw, 223px"
-              className="object-contain object-center drop-shadow-[0_0_12px_rgba(233,30,140,0.12)]"
-              priority
-            />
+          <div className="relative min-h-[268px] overflow-hidden rounded-[24px] md:min-h-[312px] min-[1280px]:!h-[380px] min-[1280px]:!min-h-[380px] min-[1280px]:max-h-[420px] min-[1280px]:rounded-[28px]">
+            <div className="absolute inset-0 min-[1280px]:inset-x-4 min-[1280px]:inset-y-3">
+              <Image
+                src={content.heroArtwork.src}
+                alt={content.heroArtwork.alt}
+                fill
+                sizes="(max-width: 430px) 52vw, (max-width: 1279px) 40vw, 520px"
+                className="object-contain object-center drop-shadow-[0_0_12px_rgba(233,30,140,0.12)]"
+                priority
+              />
+            </div>
           </div>
 
           <ul className="space-y-0">

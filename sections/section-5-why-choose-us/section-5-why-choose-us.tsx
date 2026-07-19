@@ -93,7 +93,7 @@ function WhyChoosePromoCard({
   promo: Section5WhyChooseUsContent["promo"];
 }) {
   return (
-    <div className="relative mx-4 mt-3 min-h-[148px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:min-h-[200px] min-[1280px]:rounded-[24px]">
+    <div className="relative mx-4 mt-3 min-h-[148px] overflow-hidden rounded-[20px] border border-[rgba(233,30,140,0.18)] bg-[#160B11] shadow-[0_16px_36px_rgba(0,0,0,0.22)] min-[1280px]:mx-0 min-[1280px]:mt-5 min-[1280px]:min-h-[184px] min-[1280px]:rounded-[24px]">
       <div className="absolute inset-0">
         <Image
           src={promo.imageSrc}
@@ -106,8 +106,8 @@ function WhyChoosePromoCard({
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,11,17,0.97)_0%,rgba(22,11,17,0.92)_34%,rgba(22,11,17,0.4)_62%,rgba(22,11,17,0.1)_100%)]" />
       </div>
 
-      <div className="relative flex min-h-[148px] items-center">
-        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-4.5 min-[390px]:max-w-[54%] min-[1280px]:max-w-[44%] min-[1280px]:px-7">
+      <div className="relative flex min-h-[148px] items-center min-[1280px]:min-h-[184px]">
+        <div className="flex max-w-[56%] min-w-0 flex-col justify-center px-5 py-4.5 min-[390px]:max-w-[54%] min-[1280px]:max-w-[50%] min-[1280px]:px-8 min-[1280px]:py-5">
           <p className="text-[14px] font-bold leading-[1.32] text-white min-[390px]:text-[15px]">
             {promo.title}
           </p>
@@ -222,11 +222,15 @@ export function Section5WhyChooseUs({
 
       <WhyChoosePromoCard promo={content.promo} />
 
-      <div className="px-4 pt-3.5 min-[1280px]:px-0 min-[1280px]:pt-5">
+      {/*
+        ZZ-04: hide generic LINE CTA on Tablet/Desktop (>=690).
+        Mobile keeps full conversion pill; no matchMedia / no handler removal.
+      */}
+      <div className="px-4 pt-3.5 min-[690px]:hidden">
         <FinalLineCTA {...content.finalCta} />
       </div>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center">
+      <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 pt-3 text-center min-[690px]:pt-4">
         {content.trustRow.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 ? <span aria-hidden="true" className="text-white/28">•</span> : null}
