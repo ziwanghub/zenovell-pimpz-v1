@@ -1,0 +1,1594 @@
+{
+  "base": "https://beta.zenovell.com",
+  "title": "ZENOVELL | Premium Wellness Products",
+  "finalUrl": "https://beta.zenovell.com/?t1g=1784472176168",
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "s-maxage=31536000",
+    "content-encoding": "br",
+    "content-security-policy": "upgrade-insecure-requests",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Sun, 19 Jul 2026 14:42:56 GMT",
+    "etag": "\"39nlaq0v5z6nrj\"",
+    "panel": "hpanel",
+    "platform": "hostinger",
+    "server": "hcdn",
+    "x-hcdn-cache-status": "BYPASS",
+    "x-hcdn-request-id": "266fb7db0cf5935752ba9e4a451ad9ca-nme-edge6",
+    "x-hcdn-upstream-rt": "0.031",
+    "x-nextjs-cache": "HIT",
+    "x-nextjs-prerender": "1",
+    "x-nextjs-stale-time": "300",
+    "x-powered-by": "Next.js"
+  },
+  "results": [
+    {
+      "width": 389,
+      "vw": 389,
+      "overflowX": false,
+      "scrollW": 389,
+      "hero": {
+        "w": 389,
+        "h": 607.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 389,
+        "h": 607.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 166.4,
+        "h": 158.7,
+        "fontSize": "33.065px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 4,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 146.4,
+        "h": 45.3,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "maxWidth": "88%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 166.4,
+        "h": 150,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 361,
+        "h": 74,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 122
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "objectPosition": "74% 18%",
+      "shot": "beta-389.png"
+    },
+    {
+      "width": 390,
+      "vw": 390,
+      "overflowX": false,
+      "scrollW": 390,
+      "hero": {
+        "w": 390,
+        "h": 608,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 390,
+        "h": 608,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 166.9,
+        "h": 159.1,
+        "fontSize": "33.15px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 4,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 146.9,
+        "h": 45.3,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "maxWidth": "88%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 166.9,
+        "h": 150,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 362,
+        "h": 74,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 122
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "objectPosition": "74% 18%",
+      "shot": "beta-390.png"
+    },
+    {
+      "width": 430,
+      "vw": 430,
+      "overflowX": false,
+      "scrollW": 430,
+      "hero": {
+        "w": 430,
+        "h": 626.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 430,
+        "h": 626.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 183,
+        "h": 167.6,
+        "fontSize": "36.12px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 4,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 161,
+        "h": 45.3,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "maxWidth": "88%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 183,
+        "h": 150,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 402,
+        "h": 74,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 122
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "objectPosition": "74% 18%",
+      "shot": "beta-430.png"
+    },
+    {
+      "width": 689,
+      "vw": 689,
+      "overflowX": false,
+      "scrollW": 689,
+      "hero": {
+        "w": 430,
+        "h": 658.3,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 430,
+        "h": 658.3,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 183,
+        "h": 199.5,
+        "fontSize": "43px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 4,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 161,
+        "h": 45.3,
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "maxWidth": "88%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 183,
+        "h": 150,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 402,
+        "h": 74,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 122
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+      "objectPosition": "74% 18%",
+      "shot": "beta-689.png"
+    },
+    {
+      "width": 690,
+      "vw": 690,
+      "overflowX": false,
+      "scrollW": 690,
+      "hero": {
+        "w": 642,
+        "h": 584.2,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 385.2,
+        "h": 584.2,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "60%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 328.3,
+        "h": 87.8,
+        "fontSize": "36px",
+        "fontWeight": "800",
+        "maxWidth": "328.32px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 280.5,
+        "h": 47.4,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "maxWidth": "280.5px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 337.2,
+        "h": 152,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "360px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "16px"
+      },
+      "cta": {
+        "w": 292,
+        "h": 72,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "300px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 137
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=750&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=750&q=75",
+      "objectPosition": "86% 40%",
+      "shot": "beta-690.png"
+    },
+    {
+      "width": 691,
+      "vw": 691,
+      "overflowX": false,
+      "scrollW": 691,
+      "hero": {
+        "w": 643,
+        "h": 584.2,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 385.8,
+        "h": 584.2,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "60%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 328.3,
+        "h": 87.8,
+        "fontSize": "36px",
+        "fontWeight": "800",
+        "maxWidth": "328.32px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 280.5,
+        "h": 47.4,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "maxWidth": "280.5px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 337.8,
+        "h": 152,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "360px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "16px"
+      },
+      "cta": {
+        "w": 292,
+        "h": 72,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "300px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 137
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=750&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=750&q=75",
+      "objectPosition": "86% 40%",
+      "shot": "beta-691.png"
+    },
+    {
+      "width": 768,
+      "vw": 768,
+      "overflowX": false,
+      "scrollW": 768,
+      "hero": {
+        "w": 704,
+        "h": 593.1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 408.3,
+        "h": 593.1,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "58%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 344.3,
+        "h": 92.7,
+        "fontSize": "38px",
+        "fontWeight": "800",
+        "maxWidth": "368.22px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 280.5,
+        "h": 47.4,
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "maxWidth": "280.5px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 344.3,
+        "h": 152,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "360px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "16px"
+      },
+      "cta": {
+        "w": 276,
+        "h": 72,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "300px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 137
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75",
+      "objectPosition": "88% 42%",
+      "shot": "beta-768.png"
+    },
+    {
+      "width": 820,
+      "vw": 820,
+      "overflowX": false,
+      "scrollW": 820,
+      "hero": {
+        "w": 748,
+        "h": 612.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 418.9,
+        "h": 612.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "56%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 346.9,
+        "h": 96,
+        "fontSize": "40px",
+        "fontWeight": "800",
+        "maxWidth": "410.4px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 316.8,
+        "h": 49.9,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "316.8px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 346.9,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "400px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 288,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "318px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75",
+      "objectPosition": "89% 44%",
+      "shot": "beta-820.png"
+    },
+    {
+      "width": 912,
+      "vw": 912,
+      "overflowX": false,
+      "scrollW": 912,
+      "hero": {
+        "w": 832,
+        "h": 617.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 449.3,
+        "h": 617.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "54%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 369.3,
+        "h": 100.7,
+        "fontSize": "41.952px",
+        "fontWeight": "800",
+        "maxWidth": "430.407px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 316.8,
+        "h": 49.9,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "316.8px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 369.3,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "400px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 280,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "318px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1080&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1080&q=75",
+      "objectPosition": "89% 44%",
+      "shot": "beta-912.png"
+    },
+    {
+      "width": 1024,
+      "vw": 1024,
+      "overflowX": false,
+      "scrollW": 1024,
+      "hero": {
+        "w": 928,
+        "h": 624.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 482.5,
+        "h": 624.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "52%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 386.5,
+        "h": 101.5,
+        "fontSize": "43.008px",
+        "fontWeight": "800",
+        "maxWidth": "465.69px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 355.3,
+        "h": 52.3,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "355.3px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 386.5,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 284,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "332px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1080&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1080&q=75",
+      "objectPosition": "90% 46%",
+      "shot": "beta-1024.png"
+    },
+    {
+      "width": 1180,
+      "vw": 1180,
+      "overflowX": false,
+      "scrollW": 1180,
+      "hero": {
+        "w": 1084,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 542,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "50%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 446,
+        "h": 113.3,
+        "fontSize": "48px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 355.3,
+        "h": 52.3,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "355.3px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 284,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "332px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1200&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1200&q=75",
+      "objectPosition": "90% 46%",
+      "shot": "beta-1180.png"
+    },
+    {
+      "width": 1278,
+      "vw": 1278,
+      "overflowX": false,
+      "scrollW": 1278,
+      "hero": {
+        "w": 1182,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 591,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "50%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 495,
+        "h": 113.3,
+        "fontSize": "48px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 355.3,
+        "h": 52.3,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "355.3px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 284,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "332px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "90% 46%",
+      "shot": "beta-1278.png"
+    },
+    {
+      "width": 1279,
+      "vw": 1279,
+      "overflowX": false,
+      "scrollW": 1279,
+      "hero": {
+        "w": 1183,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 591.5,
+        "h": 636.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "50%",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 495.5,
+        "h": 113.3,
+        "fontSize": "48px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 355.3,
+        "h": 52.3,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "355.3px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 158.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "18px"
+      },
+      "cta": {
+        "w": 284,
+        "h": 70,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "332px",
+        "bg": "rgba(8, 8, 8, 0.72)",
+        "display": "flex",
+        "gap": "14px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "block",
+        "h": 153
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "90% 46%",
+      "shot": "beta-1279.png"
+    },
+    {
+      "width": 1280,
+      "vw": 1280,
+      "overflowX": false,
+      "scrollW": 1280,
+      "hero": {
+        "w": 1200,
+        "h": 674.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "1200px",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 520,
+        "h": 538.4,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "520px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 520,
+        "h": 114.9,
+        "fontSize": "48.64px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 440,
+        "h": 51,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "440px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 160.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "12px"
+      },
+      "cta": {
+        "w": 241.9,
+        "h": 52,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(233, 30, 140)",
+        "display": "inline-flex",
+        "gap": "12px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "none",
+        "h": 0
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "92% 50%",
+      "shot": "beta-1280.png"
+    },
+    {
+      "width": 1281,
+      "vw": 1281,
+      "overflowX": false,
+      "scrollW": 1281,
+      "hero": {
+        "w": 1200,
+        "h": 674.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "1200px",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 520,
+        "h": 538.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "520px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 520,
+        "h": 115,
+        "fontSize": "48.678px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 440,
+        "h": 51,
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "maxWidth": "440px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 160.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "12px"
+      },
+      "cta": {
+        "w": 241.9,
+        "h": 52,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(233, 30, 140)",
+        "display": "inline-flex",
+        "gap": "12px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "none",
+        "h": 0
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "92% 50%",
+      "shot": "beta-1281.png"
+    },
+    {
+      "width": 1440,
+      "vw": 1440,
+      "overflowX": false,
+      "scrollW": 1440,
+      "hero": {
+        "w": 1280,
+        "h": 709.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "1280px",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 520,
+        "h": 561.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "520px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 520,
+        "h": 135.3,
+        "fontSize": "57.6px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 480,
+        "h": 54,
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "maxWidth": "480px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 160.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "12px"
+      },
+      "cta": {
+        "w": 241.9,
+        "h": 52,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(233, 30, 140)",
+        "display": "inline-flex",
+        "gap": "12px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "none",
+        "h": 0
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "90% 50%",
+      "shot": "beta-1440.png"
+    },
+    {
+      "width": 1920,
+      "vw": 1920,
+      "overflowX": false,
+      "scrollW": 1920,
+      "hero": {
+        "w": 1440,
+        "h": 731.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "1440px",
+        "bg": "rgb(10, 10, 10)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "content": {
+        "w": 520,
+        "h": 571.8,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "520px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal"
+      },
+      "headline": {
+        "w": 520,
+        "h": 145.3,
+        "fontSize": "62px",
+        "fontWeight": "800",
+        "maxWidth": "none",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2,
+        "text": "ปลุกความมั่นใจ | ให้กลับมาเป็นคุณ"
+      },
+      "sub": {
+        "w": 480,
+        "h": 54,
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "maxWidth": "480px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "gap": "normal",
+        "lines": 2
+      },
+      "benefits": {
+        "w": 420,
+        "h": 160.5,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "420px",
+        "bg": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "gap": "12px"
+      },
+      "cta": {
+        "w": 241.9,
+        "h": 52,
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "maxWidth": "none",
+        "bg": "rgb(233, 30, 140)",
+        "display": "inline-flex",
+        "gap": "12px",
+        "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+        "tag": "BUTTON",
+        "type": "button"
+      },
+      "trust": {
+        "display": "none",
+        "h": 0
+      },
+      "heroImgs": 1,
+      "imgSrc": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "imgSrcShort": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75",
+      "objectPosition": "82% 46%",
+      "shot": "beta-1920.png"
+    }
+  ],
+  "network": {
+    "net390": {
+      "width": 390,
+      "heroRequestCount": 1,
+      "requests": [
+        {
+          "url": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=640&q=75",
+          "status": 200
+        }
+      ],
+      "settled": {
+        "imgs": 1,
+        "srcs": [
+          "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=640&q=75"
+        ]
+      }
+    },
+    "net768": {
+      "width": 768,
+      "heroRequestCount": 2,
+      "requests": [
+        {
+          "url": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75",
+          "status": 200
+        },
+        {
+          "url": "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75",
+          "status": 200
+        }
+      ],
+      "settled": {
+        "imgs": 1,
+        "srcs": [
+          "https://beta.zenovell.com/_next/image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=828&q=75"
+        ]
+      }
+    }
+  },
+  "cta": {
+    "ctaPre": {
+      "aria": "ปรึกษาผู้เชี่ยวชาญผ่าน LINE",
+      "tag": "BUTTON",
+      "type": "button",
+      "dataLayerLen": 3
+    },
+    "ctaPost": {
+      "dataLayerLen": 5,
+      "lastEvents": [
+        {
+          "event": "gtm.js",
+          "surface": null,
+          "source": null,
+          "intent": null,
+          "link_url": null,
+          "keys": [
+            "gtm.start",
+            "event",
+            "gtm.uniqueEventId"
+          ]
+        },
+        {
+          "event": "gtm.dom",
+          "surface": null,
+          "source": null,
+          "intent": null,
+          "link_url": null,
+          "keys": [
+            "event",
+            "gtm.uniqueEventId"
+          ]
+        },
+        {
+          "event": "gtm.load",
+          "surface": null,
+          "source": null,
+          "intent": null,
+          "link_url": null,
+          "keys": [
+            "event",
+            "gtm.uniqueEventId"
+          ]
+        },
+        {
+          "event": "hero_cta_click",
+          "surface": null,
+          "source": null,
+          "intent": null,
+          "link_url": null,
+          "keys": [
+            "event",
+            "event_version",
+            "cta_location",
+            "page_path",
+            "gtm.uniqueEventId"
+          ]
+        },
+        {
+          "event": "line_cta_click",
+          "surface": null,
+          "source": "hero",
+          "intent": "high_intent",
+          "link_url": "https://lin.ee/syjmYE2",
+          "keys": [
+            "event",
+            "event_version",
+            "cta_location",
+            "destination",
+            "page_path",
+            "link_url",
+            "source",
+            "intent",
+            "gtm.uniqueEventId"
+          ]
+        }
+      ]
+    },
+    "popupUrl": "https://line.me/R/ti/p/@362lupso?oat_content=url&ts=07101734",
+    "afterUrl": "https://beta.zenovell.com/?cta=1&t=1784472200184",
+    "navUrls": []
+  },
+  "rangeProof": {
+    "689": {
+      "contentMax": "none",
+      "contentW": 430,
+      "ctaBg": "rgba(8, 8, 8, 0.72)",
+      "ctaW": 402,
+      "ctaH": 74,
+      "obj": "74% 18%",
+      "hlFs": "43px",
+      "hlLines": 4,
+      "heroH": 658.3,
+      "trust": "block",
+      "img": "image?url=%2Fimages%2Fhero%2Fbg-ph6d-section-1-hero-v2.jpeg&w=828&q=75"
+    },
+    "690": {
+      "contentMax": "60%",
+      "contentW": 385.2,
+      "ctaBg": "rgba(8, 8, 8, 0.72)",
+      "ctaW": 292,
+      "ctaH": 72,
+      "obj": "86% 40%",
+      "hlFs": "36px",
+      "hlLines": 2,
+      "heroH": 584.2,
+      "trust": "block",
+      "img": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=750&q=75"
+    },
+    "1279": {
+      "contentMax": "50%",
+      "contentW": 591.5,
+      "ctaBg": "rgba(8, 8, 8, 0.72)",
+      "ctaW": 284,
+      "ctaH": 70,
+      "obj": "90% 46%",
+      "hlFs": "48px",
+      "hlLines": 2,
+      "heroH": 636.5,
+      "trust": "block",
+      "img": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75"
+    },
+    "1280": {
+      "contentMax": "520px",
+      "contentW": 520,
+      "ctaBg": "rgb(233, 30, 140)",
+      "ctaW": 241.9,
+      "ctaH": 52,
+      "obj": "92% 50%",
+      "hlFs": "48.64px",
+      "hlLines": 2,
+      "heroH": 674.4,
+      "trust": "none",
+      "img": "image?url=%2Fimages%2Fhero%2Fdesktop-section-01-hero-desktop.jpeg&w=1920&q=75"
+    }
+  },
+  "consoleLogs": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "pageErrors": [],
+  "failedReqs": [
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-J8HYPV9S4N&gtm=45je67g0h2v9257982186z89257967047za20gzb9257967047zd9257967047&_p=1784472176955&gcd=13l3l3l3l1l1&npa=0&dma=0&are=1&cid=486951674.178",
+      "err": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-J8HYPV9S4N&gtm=45je67g0h2v9257982186z89257967047za20gzb9257967047zd9257967047&_p=1784472193512&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAAQ&are=1&cid=4",
+      "err": "net::ERR_ABORTED"
+    }
+  ]
+}
