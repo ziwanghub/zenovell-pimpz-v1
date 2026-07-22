@@ -64,16 +64,16 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
       aria-labelledby={titleId}
     >
       <div className="platform-shell-frame">
-        <div className="overflow-hidden rounded-[24px] border border-[#E91E8C]/25 bg-[radial-gradient(circle_at_85%_50%,rgba(233,30,140,0.18),transparent_42%),linear-gradient(180deg,rgba(22,12,20,0.98),rgba(8,6,10,0.99))] p-5 shadow-[0_20px_48px_rgba(0,0,0,0.32)] min-[900px]:p-5 min-[1280px]:p-6">
+        <div className="overflow-hidden rounded-[24px] border border-[#E91E8C]/25 bg-[radial-gradient(circle_at_85%_50%,rgba(233,30,140,0.18),transparent_42%),linear-gradient(180deg,rgba(22,12,20,0.98),rgba(8,6,10,0.99))] p-5 shadow-[0_20px_48px_rgba(0,0,0,0.32)] min-[768px]:p-5 min-[1280px]:p-6">
           {/*
-            Tablet 768–899: stacked (CSS default grid 1 col)
-            Tablet 900–1279: content | visual, CTA full width below
+            Tablet 768–1279 (P-PRODUCT-TABLET-02): content | visual, CTA full width (desktop composition, reduced density)
             Desktop ≥1280: 5/5/2 band
           */}
           <div
             className={[
               'grid items-center gap-5',
-              'min-[900px]:max-[1280px]:grid-cols-2 min-[900px]:max-[1280px]:gap-5',
+              'min-[768px]:max-[1280px]:grid-cols-2 min-[768px]:max-[1280px]:gap-4',
+              'min-[900px]:max-[1280px]:gap-5',
               'min-[1280px]:grid-cols-[minmax(0,5fr)_minmax(0,5fr)_minmax(0,2fr)] min-[1280px]:gap-6',
             ].join(' ')}
           >
@@ -83,7 +83,7 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
               </p>
               <h2
                 id={titleId}
-                className="mt-2 text-[20px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white min-[900px]:text-[22px] min-[1280px]:text-[26px]"
+                className="mt-2 text-[20px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white min-[768px]:text-[20px] min-[900px]:text-[22px] min-[1280px]:text-[26px]"
               >
                 {product.title} + {pair.title}
               </h2>
@@ -109,8 +109,8 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
               </div>
             </div>
 
-            <div className="flex min-w-0 items-center justify-center gap-2 min-[900px]:gap-3">
-              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
+            <div className="flex min-w-0 items-center justify-center gap-2 min-[768px]:gap-2.5 min-[900px]:gap-3">
+              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[768px]:h-[120px] min-[768px]:w-[120px] min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
                 {product.imageSrc ? (
                   <Image
                     src={product.imageSrc}
@@ -122,8 +122,8 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
                   />
                 ) : null}
               </div>
-              <Plus className="h-5 w-5 shrink-0 text-[#E91E8C] min-[900px]:h-6 min-[900px]:w-6" aria-hidden="true" />
-              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
+              <Plus className="h-5 w-5 shrink-0 text-[#E91E8C] min-[768px]:h-5 min-[768px]:w-5 min-[900px]:h-6 min-[900px]:w-6" aria-hidden="true" />
+              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[768px]:h-[120px] min-[768px]:w-[120px] min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
                 {pair.imageSrc ? (
                   <Image
                     src={pair.imageSrc}
@@ -137,7 +137,7 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
               </div>
             </div>
 
-            <div className="flex min-w-0 flex-col justify-center gap-2 min-[900px]:max-[1280px]:col-span-2">
+            <div className="flex min-w-0 flex-col justify-center gap-2 min-[768px]:max-[1280px]:col-span-2">
               <button
                 type="button"
                 onClick={handleLine}

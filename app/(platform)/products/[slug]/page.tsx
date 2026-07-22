@@ -253,22 +253,25 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <ProductBreadcrumb productTitle={product.title} />
 
       {/*
-        ATF composition (P-PRODUCT-TABLET-01 + frozen Desktop ATF):
-        - <900: stack (mobile frozen + tablet stack 768–899)
-        - 900–1279: compact 2-col 46/54, NOT sticky
+        ATF composition (P-PRODUCT-TABLET-02 ADR + frozen Desktop ATF):
+        - <768: Mobile stack (frozen)
+        - 768–1279: Desktop composition (2-col), reduced density, NOT sticky
         - ≥1280: 48/52 + sticky buy (Desktop frozen)
       */}
       <div
         className={[
-          'min-[900px]:max-[1280px]:grid min-[900px]:max-[1280px]:grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)]',
-          'min-[900px]:max-[1280px]:items-start min-[900px]:max-[1280px]:gap-x-5 min-[900px]:max-[1280px]:pb-6',
-          'min-[1024px]:max-[1280px]:gap-x-6',
+          // Tablet 768–1279: same composition as desktop, tighter density
+          'min-[768px]:max-[1280px]:grid min-[768px]:max-[1280px]:items-start min-[768px]:max-[1280px]:pb-5',
+          'min-[768px]:max-[1280px]:grid-cols-[minmax(0,0.43fr)_minmax(0,0.57fr)] min-[768px]:max-[1280px]:gap-x-4',
+          'min-[820px]:max-[1280px]:grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)] min-[820px]:max-[1280px]:gap-x-5',
+          'min-[1024px]:max-[1280px]:gap-x-6 min-[1024px]:max-[1280px]:pb-6',
+          // Desktop ≥1280
           'min-[1280px]:grid min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)]',
           'min-[1280px]:items-start min-[1280px]:gap-x-8 min-[1440px]:gap-x-10',
           'min-[1280px]:pb-8',
         ].join(' ')}
       >
-        <div className="min-[900px]:min-w-0">
+        <div className="min-[768px]:min-w-0">
           <ProductGallery
             items={galleryItems}
             badgeLabel={product.badge?.label}
@@ -276,7 +279,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div
           className={[
-            'min-[900px]:min-w-0',
+            'min-[768px]:min-w-0',
             // Sticky buy: Desktop only — tablet never sticky
             'min-[1280px]:sticky min-[1280px]:top-[calc(var(--platform-header-offset,74px)+12px)]',
             'min-[1280px]:z-10',
