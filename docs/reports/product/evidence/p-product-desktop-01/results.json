@@ -1,0 +1,175 @@
+[
+  {
+    "name": "mobile-390",
+    "w": 390,
+    "expect": "stack",
+    "layout": "stack",
+    "imageLeft": false,
+    "objectFit": "cover",
+    "sticky": "static",
+    "ctaCount": 1,
+    "ctaTexts": [
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 4,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 0,
+      "y": 108,
+      "width": 390,
+      "height": 329.203125
+    },
+    "b": {
+      "x": 0,
+      "y": 437.203125,
+      "width": 390,
+      "height": 346.171875
+    }
+  },
+  {
+    "name": "desktop-1280",
+    "w": 1280,
+    "expect": "two-col",
+    "layout": "two-col",
+    "imageLeft": true,
+    "objectFit": "contain",
+    "sticky": "sticky",
+    "ctaCount": 2,
+    "ctaTexts": [
+      "ปรึกษาผ่าน LINE",
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 3,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 40,
+      "y": 108,
+      "width": 560.625,
+      "height": 669.65625
+    },
+    "b": {
+      "x": 632.625,
+      "y": 108,
+      "width": 607.375,
+      "height": 388.09375
+    }
+  },
+  {
+    "name": "desktop-1366",
+    "w": 1366,
+    "expect": "two-col",
+    "layout": "two-col",
+    "imageLeft": true,
+    "objectFit": "contain",
+    "sticky": "sticky",
+    "ctaCount": 2,
+    "ctaTexts": [
+      "ปรึกษาผ่าน LINE",
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 3,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 63,
+      "y": 108,
+      "width": 579.828125,
+      "height": 674.46875
+    },
+    "b": {
+      "x": 674.828125,
+      "y": 108,
+      "width": 628.15625,
+      "height": 388.09375
+    }
+  },
+  {
+    "name": "desktop-1440",
+    "w": 1440,
+    "expect": "two-col",
+    "layout": "two-col",
+    "imageLeft": true,
+    "objectFit": "contain",
+    "sticky": "sticky",
+    "ctaCount": 2,
+    "ctaTexts": [
+      "ปรึกษาผ่าน LINE",
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 3,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 100,
+      "y": 108,
+      "width": 576,
+      "height": 673.5
+    },
+    "b": {
+      "x": 716,
+      "y": 108,
+      "width": 624,
+      "height": 388.09375
+    }
+  },
+  {
+    "name": "desktop-1536",
+    "w": 1536,
+    "expect": "two-col",
+    "layout": "two-col",
+    "imageLeft": true,
+    "objectFit": "contain",
+    "sticky": "sticky",
+    "ctaCount": 2,
+    "ctaTexts": [
+      "ปรึกษาผ่าน LINE",
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 3,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 108,
+      "y": 108,
+      "width": 614.390625,
+      "height": 683.109375
+    },
+    "b": {
+      "x": 762.390625,
+      "y": 108,
+      "width": 665.59375,
+      "height": 388.09375
+    }
+  },
+  {
+    "name": "desktop-1920",
+    "w": 1920,
+    "expect": "two-col",
+    "layout": "two-col",
+    "imageLeft": true,
+    "objectFit": "contain",
+    "sticky": "sticky",
+    "ctaCount": 2,
+    "ctaTexts": [
+      "ปรึกษาผ่าน LINE",
+      "สั่งซื้อผ่าน LINE"
+    ],
+    "trustVisible": 3,
+    "overflowX": false,
+    "pass": true,
+    "g": {
+      "x": 300,
+      "y": 108,
+      "width": 614.390625,
+      "height": 683.109375
+    },
+    "b": {
+      "x": 954.390625,
+      "y": 108,
+      "width": 665.59375,
+      "height": 388.09375
+    }
+  }
+]
