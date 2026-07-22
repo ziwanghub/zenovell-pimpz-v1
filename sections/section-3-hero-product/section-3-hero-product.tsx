@@ -29,7 +29,7 @@ import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { activateLineCta } from "@/lib/commerce/cta-activation";
 import { analytics, AnalyticsEvents } from "@/lib/analytics";
 import { featuredProduct } from "@/content/products";
-import Link from 'next/link';
+import Link from "next/link";
 
 type LucideLikeIcon = ComponentType<{
   className?: string;
@@ -49,9 +49,23 @@ const miniTrustIconByName: Record<Section3MiniTrustIcon, LucideLikeIcon> = {
   Headphones,
 };
 
+/**
+ * Product name scale:
+ * Mobile/stack base 30 · Tablet two-column intermediate · Desktop 42 frozen.
+ * Tailwind v4: max-[Npx] ≡ width < N → use max-[1280px] for inclusive 1279.
+ */
 function ProductNameHeading({ text }: { text: string }) {
   return (
-    <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-[0.02em] text-[#E91E8C] min-[1280px]:text-[42px] min-[1280px]:leading-[1.02] min-[1536px]:text-[46px]">
+    <h2
+      className={[
+        "text-[30px] font-extrabold leading-[1.1] tracking-[0.02em] text-[#E91E8C]",
+        // Tablet two-column intermediate (below Desktop 42)
+        "min-[768px]:max-[1280px]:text-[34px] min-[768px]:max-[1280px]:leading-[1.05]",
+        "min-[1024px]:max-[1280px]:text-[36px]",
+        // Desktop frozen
+        "min-[1280px]:text-[42px] min-[1280px]:leading-[1.02] min-[1536px]:text-[46px]",
+      ].join(" ")}
+    >
       {text}
     </h2>
   );
@@ -64,11 +78,19 @@ function ProductStageBadge({ badge }: { badge: Section3Badge }) {
     <div
       aria-label={badge.caption}
       className={[
-        "absolute right-4 flex flex-col items-center",
-        // Mobile top offsets frozen; tablet/desktop track taller image stages
+        "absolute right-3 flex flex-col items-center min-[690px]:right-4",
         isBestSeller
           ? "top-4"
-          : "top-[132px] min-[690px]:top-[156px] min-[820px]:top-[168px] min-[1024px]:top-[180px] min-[1280px]:top-[148px] min-[1536px]:top-[160px]",
+          : [
+              "top-[132px]",
+              // Stack tablet only
+              "min-[690px]:max-[768px]:top-[156px]",
+              // Two-column stage placement
+              "min-[768px]:max-[1280px]:top-[42%]",
+              // Desktop frozen
+              "min-[1280px]:top-[148px]",
+              "min-[1536px]:top-[160px]",
+            ].join(" "),
       ].join(" ")}
     >
       <div className="flex size-[74px] flex-col items-center justify-center rounded-full border-[1.5px] border-[rgba(233,30,140,0.5)] bg-[rgba(0,0,0,0.55)]">
@@ -109,17 +131,31 @@ function BenefitGridItem({ item }: { item: Section3Benefit }) {
 
   return (
     <li className="flex flex-col items-center text-center">
-      <div className="flex h-5 items-center justify-center">
+      <div className="flex h-5 items-center justify-center min-[768px]:max-[1280px]:h-7">
         <Icon
           aria-hidden="true"
-          className="size-5 text-[#E91E8C]"
+          className="size-5 text-[#E91E8C] min-[768px]:max-[1280px]:size-[26px]"
           strokeWidth={1.5}
         />
       </div>
-      <p className="mt-2 text-[13px] font-semibold leading-[1.3] text-white min-[690px]:mt-2.5 min-[1280px]:mt-2.5 min-[1280px]:leading-[1.35]">
+      <p
+        className={[
+          "mt-2 text-[13px] font-semibold leading-[1.3] text-white",
+          "min-[690px]:mt-2.5",
+          "min-[768px]:max-[1280px]:mt-2.5 min-[768px]:max-[1280px]:text-[14px] min-[768px]:max-[1280px]:leading-[1.35]",
+          "min-[1280px]:mt-2.5 min-[1280px]:leading-[1.35]",
+        ].join(" ")}
+      >
         {item.title}
       </p>
-      <p className="mt-[3px] text-[11px] leading-[1.3] text-white/60 min-[690px]:mt-1 min-[1280px]:mt-1 min-[1280px]:leading-[1.45] min-[1280px]:text-white/62">
+      <p
+        className={[
+          "mt-[3px] text-[11px] leading-[1.3] text-white/60",
+          "min-[690px]:mt-1",
+          "min-[768px]:max-[1280px]:mt-1 min-[768px]:max-[1280px]:text-[12px] min-[768px]:max-[1280px]:leading-[1.35]",
+          "min-[1280px]:mt-1 min-[1280px]:leading-[1.45] min-[1280px]:text-white/62",
+        ].join(" ")}
+      >
         {item.sub}
       </p>
     </li>
@@ -137,8 +173,11 @@ function PriceBlock({
       className={[
         // Mobile frozen card chrome
         "mx-4 flex items-center justify-between rounded-[12px] border border-white/8 bg-[#1A1A1A] px-4 py-[14px]",
-        // ZZ-03A: inside purchase row at >=690 — no outer margin (row owns gutters)
+        // Stack / purchase-row from 690
         "min-[690px]:mx-0 min-[690px]:min-h-[80px] min-[690px]:px-4 min-[690px]:py-3.5",
+        // Tablet two-column denser price module
+        "min-[768px]:max-[1280px]:min-h-[76px] min-[768px]:max-[1280px]:gap-2 min-[768px]:max-[1280px]:px-3 min-[768px]:max-[1280px]:py-3",
+        // Desktop frozen
         "min-[1280px]:min-h-[84px] min-[1280px]:px-4 min-[1280px]:py-3.5",
       ].join(" ")}
     >
@@ -146,7 +185,14 @@ function PriceBlock({
         <span className="text-[12px] leading-[1.3] text-white/[0.65]">
           {pricing.label}
         </span>
-        <span className="mt-1 text-[32px] font-extrabold leading-none text-[#E91E8C] min-[1280px]:text-[36px]">
+        <span
+          className={[
+            "mt-1 text-[32px] font-extrabold leading-none text-[#E91E8C]",
+            "min-[768px]:max-[1280px]:text-[30px]",
+            "min-[1024px]:max-[1280px]:text-[32px]",
+            "min-[1280px]:text-[36px]",
+          ].join(" ")}
+        >
           {pricing.salePrice}
         </span>
       </div>
@@ -178,8 +224,8 @@ function SolidLineCTA({
       className={[
         // Mobile frozen pill CTA
         "flex h-14 w-full items-center gap-3 rounded-full bg-[#E91E8C] px-5 text-left text-white shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-[transform,box-shadow,filter] duration-150 ease-out hover:brightness-[1.08] hover:shadow-[0_0_28px_rgba(233,30,140,0.6)] active:scale-[0.98] active:bg-[#C2185B] active:shadow-[0_0_14px_rgba(233,30,140,0.3)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#E91E8C]",
-        // ZZ-03A: fill purchase-row track; keep pill height (not a tall card)
         "min-[690px]:h-[52px] min-[690px]:w-full min-[690px]:min-w-0 min-[690px]:shrink-0 min-[690px]:px-4",
+        "min-[768px]:max-[1280px]:h-[52px] min-[768px]:max-[1280px]:px-3.5",
         "min-[1280px]:h-[52px] min-[1280px]:px-5",
       ].join(" ")}
       href={href || "#"}
@@ -254,9 +300,12 @@ type Section3HeroProductProps = {
 };
 
 /**
- * ZZ-03 / ZZ-03A: Tablet/Desktop product presentation polish.
- * Mobile <690 frozen (stage h-300, object-position center 42%, stacked Price→CTA).
- * ZZ-03A: Price + LINE CTA share one purchase row from 690px (CSS only).
+ * Section 3 — Featured Product
+ *
+ * Mobile <690: frozen stack (stage h-300, stacked Price→CTA).
+ * 690–767: transitional stack + purchase row (no 2-column).
+ * P8C-TABLET-S3-01 768–1279: Tablet 2-column (image left · info right).
+ * Desktop ≥1280: frozen two-column authority — do not mutate.
  */
 export function Section3HeroProduct({ content }: Section3HeroProductProps) {
   return (
@@ -265,19 +314,43 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
       aria-label={content.ariaLabel}
       className={[
         "bg-[#0A0A0A]",
-        // Desktop two-column (unchanged activation threshold 1280); slight image bias + Wide Canvas ladder
+        // --- P8C Tablet 2-column (768–1279 only; max-[1280px] = width < 1280) ---
+        // 768–819: 43 / 57
+        "min-[768px]:max-[1280px]:mx-auto min-[768px]:max-[1280px]:grid min-[768px]:max-[1280px]:max-w-[1200px] min-[768px]:max-[1280px]:grid-cols-[minmax(0,0.43fr)_minmax(0,0.57fr)] min-[768px]:max-[1280px]:items-center min-[768px]:max-[1280px]:gap-x-4 min-[768px]:max-[1280px]:gap-y-0 min-[768px]:max-[1280px]:px-[var(--platform-shell-gutter,1rem)] min-[768px]:max-[1280px]:py-7",
+        // 820–1023: 46 / 54
+        "min-[820px]:max-[1280px]:grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)] min-[820px]:max-[1280px]:gap-x-5 min-[820px]:max-[1280px]:py-8",
+        // 1024–1279: 48 / 52
+        "min-[1024px]:max-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] min-[1024px]:max-[1280px]:gap-x-6 min-[1024px]:max-[1280px]:py-9",
+        // --- Desktop frozen ≥1280 ---
         "min-[1280px]:mx-auto min-[1280px]:grid min-[1280px]:max-w-[1200px] min-[1280px]:grid-cols-[minmax(0,0.52fr)_minmax(0,0.48fr)] min-[1280px]:items-center min-[1280px]:gap-x-8 min-[1280px]:gap-y-0 min-[1280px]:px-10 min-[1280px]:py-12",
         "min-[1366px]:max-w-[1280px] min-[1366px]:grid-cols-[minmax(0,0.52fr)_minmax(0,0.48fr)] min-[1366px]:gap-x-10 min-[1366px]:px-12",
         "min-[1536px]:max-w-[1400px] min-[1536px]:gap-x-12 min-[1536px]:px-14",
         "min-[1920px]:max-w-[1440px] min-[1920px]:px-16",
       ].join(" ")}
     >
-      <div className="px-4 pt-7 pb-4 text-center min-[690px]:px-[var(--platform-shell-gutter,1rem)] min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left">
+      {/* Identity: stack first; tablet 2-col / Desktop → content column top */}
+      <div
+        className={[
+          "px-4 pt-7 pb-4 text-center",
+          // Stack gutters 690–767 only
+          "min-[690px]:max-[768px]:px-[var(--platform-shell-gutter,1rem)]",
+          // Tablet 2-column content column
+          "min-[768px]:max-[1280px]:col-start-2 min-[768px]:max-[1280px]:row-start-1 min-[768px]:max-[1280px]:px-0 min-[768px]:max-[1280px]:pt-0 min-[768px]:max-[1280px]:pb-0 min-[768px]:max-[1280px]:text-left",
+          // Desktop frozen
+          "min-[1280px]:col-start-2 min-[1280px]:row-start-1 min-[1280px]:px-0 min-[1280px]:pt-0 min-[1280px]:pb-0 min-[1280px]:text-left",
+        ].join(" ")}
+      >
         <SectionBadge label={content.sectionLabel} />
-        <p className="mt-[10px] text-[18px] font-semibold leading-[1.3] text-white min-[1280px]:mt-3 min-[1280px]:text-[19px] min-[1280px]:leading-[1.4]">
+        <p
+          className={[
+            "mt-[10px] text-[18px] font-semibold leading-[1.3] text-white",
+            "min-[768px]:max-[1280px]:mt-2.5 min-[768px]:max-[1280px]:text-[19px] min-[768px]:max-[1280px]:leading-[1.35]",
+            "min-[1280px]:mt-3 min-[1280px]:text-[19px] min-[1280px]:leading-[1.4]",
+          ].join(" ")}
+        >
           {content.superline}
         </p>
-        <div className="mt-1 min-[1280px]:mt-1.5">
+        <div className="mt-1 min-[768px]:max-[1280px]:mt-1 min-[1280px]:mt-1.5">
           <Link
             href={`/products/${featuredProduct.slug}`}
             onClick={() =>
@@ -291,15 +364,25 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
             <ProductNameHeading text={content.productName} />
           </Link>
         </div>
-        <p className="mt-1.5 text-[14px] leading-[1.5] text-white/80 min-[1280px]:mt-3.5 min-[1280px]:max-w-[420px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.65] min-[1280px]:text-white/78">
+        <p
+          className={[
+            "mt-1.5 text-[14px] leading-[1.5] text-white/80",
+            "min-[768px]:max-[1280px]:mt-2 min-[768px]:max-[1280px]:max-w-none min-[768px]:max-[1280px]:text-[15px] min-[768px]:max-[1280px]:leading-[1.55]",
+            "min-[1280px]:mt-3.5 min-[1280px]:max-w-[420px] min-[1280px]:text-[16px] min-[1280px]:leading-[1.65] min-[1280px]:text-white/78",
+          ].join(" ")}
+        >
           {content.productTagline}
         </p>
       </div>
 
+      {/* Product stage: stack full-bleed; tablet/desktop left column */}
       <Link
         href={`/products/${featuredProduct.slug}`}
         aria-label={`View details for ${content.productName}`}
-        className="min-[1280px]:col-start-1 min-[1280px]:row-start-1 min-[1280px]:row-span-2"
+        className={[
+          "min-[768px]:max-[1280px]:col-start-1 min-[768px]:max-[1280px]:row-start-1 min-[768px]:max-[1280px]:row-span-2",
+          "min-[1280px]:col-start-1 min-[1280px]:row-start-1 min-[1280px]:row-span-2",
+        ].join(" ")}
         onClick={() =>
           analytics.track(AnalyticsEvents.PRODUCT_CLICK, {
             surface: "section",
@@ -312,29 +395,39 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
           className={[
             // Mobile frozen stage
             "relative h-[300px] overflow-hidden bg-[#0A0A0A]",
-            // ZZ-03 tablet stage ladder — more vertical room so cover crop is less aggressive
-            "min-[690px]:h-[360px] min-[768px]:h-[380px] min-[820px]:h-[400px] min-[912px]:h-[420px] min-[1024px]:h-[440px]",
-            // Desktop stage with quality ceiling (do not grow unbounded at 1920)
+            // Stack-only 690–767
+            "min-[690px]:max-[768px]:h-[360px]",
+            // Tablet 2-column product stage (not landscape banner)
+            "min-[768px]:max-[1280px]:h-auto min-[768px]:max-[1280px]:min-h-[340px] min-[768px]:max-[1280px]:max-h-[440px] min-[768px]:max-[1280px]:rounded-[18px]",
+            "min-[820px]:max-[1280px]:min-h-[380px] min-[820px]:max-[1280px]:max-h-[480px]",
+            "min-[1024px]:max-[1280px]:min-h-[400px] min-[1024px]:max-[1280px]:max-h-[500px] min-[1024px]:max-[1280px]:rounded-[20px]",
+            // Desktop frozen stage
             "min-[1280px]:h-auto min-[1280px]:min-h-[420px] min-[1280px]:max-h-[500px] min-[1280px]:rounded-[22px]",
             "min-[1366px]:min-h-[440px] min-[1366px]:max-h-[520px]",
             "min-[1536px]:min-h-[460px] min-[1536px]:max-h-[540px]",
             "min-[1920px]:min-h-[460px] min-[1920px]:max-h-[540px]",
           ].join(" ")}
         >
-          <div className="absolute inset-0 min-[1280px]:inset-3 min-[1280px]:overflow-hidden min-[1280px]:rounded-[18px] min-[1536px]:inset-4">
+          <div
+            className={[
+              "absolute inset-0",
+              "min-[768px]:max-[1280px]:inset-2.5 min-[768px]:max-[1280px]:overflow-hidden min-[768px]:max-[1280px]:rounded-[14px]",
+              "min-[1024px]:max-[1280px]:inset-3 min-[1024px]:max-[1280px]:rounded-[16px]",
+              "min-[1280px]:inset-3 min-[1280px]:overflow-hidden min-[1280px]:rounded-[18px] min-[1536px]:inset-4",
+            ].join(" ")}
+          >
             <Image
               src={content.artwork.src}
               alt={content.artwork.alt}
               fill
-              // Accurate candidates: full shell on tablet stack; ~half shell on desktop two-column
-              sizes="(max-width: 689px) 100vw, (max-width: 1279px) 100vw, (max-width: 1535px) 52vw, 640px"
+              sizes="(max-width: 689px) 100vw, (max-width: 767px) 100vw, (max-width: 1279px) 48vw, (max-width: 1535px) 52vw, 640px"
               className={[
                 "object-cover object-[center_42%]",
-                // Breakpoint art direction (CSS only) — keep bottle/cap/ingredients/stone in frame
-                "min-[690px]:object-[center_40%]",
-                "min-[768px]:object-[center_38%]",
-                "min-[820px]:object-[center_36%]",
-                "min-[1024px]:object-[center_35%]",
+                // Stack crop only
+                "min-[690px]:max-[768px]:object-[center_40%]",
+                // Tablet 2-col product-first
+                "min-[768px]:max-[1280px]:object-[center_42%]",
+                // Desktop frozen
                 "min-[1280px]:object-[center_40%]",
                 "min-[1366px]:object-[center_42%]",
                 "min-[1536px]:object-[center_44%]",
@@ -349,12 +442,24 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         </div>
       </Link>
 
-      <div className="min-[1280px]:col-start-2 min-[1280px]:row-start-2 min-[1280px]:flex min-[1280px]:flex-col min-[1280px]:gap-6">
+      {/* Benefits + purchase + trust */}
+      <div
+        className={[
+          "min-[768px]:max-[1280px]:col-start-2 min-[768px]:max-[1280px]:row-start-2 min-[768px]:max-[1280px]:flex min-[768px]:max-[1280px]:flex-col min-[768px]:max-[1280px]:gap-4",
+          "min-[820px]:max-[1280px]:gap-5",
+          "min-[1280px]:col-start-2 min-[1280px]:row-start-2 min-[1280px]:flex min-[1280px]:flex-col min-[1280px]:gap-6",
+        ].join(" ")}
+      >
         <ul
           className={[
             "grid grid-cols-3 gap-x-2 px-4 py-5",
-            "min-[690px]:gap-x-4 min-[690px]:px-[var(--platform-shell-gutter,1rem)] min-[690px]:py-6",
-            "min-[820px]:gap-x-5",
+            // Stack 690–767
+            "min-[690px]:max-[768px]:gap-x-4 min-[690px]:max-[768px]:px-[var(--platform-shell-gutter,1rem)] min-[690px]:max-[768px]:py-6",
+            // Tablet 2-col content
+            "min-[768px]:max-[1280px]:gap-x-3 min-[768px]:max-[1280px]:px-0 min-[768px]:max-[1280px]:py-0",
+            "min-[820px]:max-[1280px]:gap-x-4",
+            "min-[1024px]:max-[1280px]:gap-x-5",
+            // Desktop frozen
             "min-[1280px]:grid-cols-3 min-[1280px]:gap-6 min-[1280px]:px-0 min-[1280px]:py-0",
           ].join(" ")}
         >
@@ -364,16 +469,21 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         </ul>
 
         {/*
-          ZZ-03A Purchase Action Row
-          Mobile: display:contents → Price + CTA remain stacked siblings (baseline).
-          >=690: wrapper becomes grid → Price | CTA as one purchase cluster.
+          Purchase Action Row
+          Mobile: display:contents → stacked Price → CTA
+          ≥690: Price | CTA cluster
         */}
         <div
           className={[
             "contents",
-            "min-[690px]:grid min-[690px]:grid-cols-[minmax(0,1fr)_minmax(250px,280px)] min-[690px]:items-center min-[690px]:gap-4 min-[690px]:px-[var(--platform-shell-gutter,1rem)]",
-            "min-[768px]:grid-cols-[minmax(0,1fr)_minmax(260px,290px)] min-[768px]:gap-5",
-            "min-[1024px]:grid-cols-[minmax(0,1fr)_minmax(270px,300px)]",
+            "min-[690px]:grid min-[690px]:items-center",
+            // Stack purchase 690–767
+            "min-[690px]:max-[768px]:grid-cols-[minmax(0,1fr)_minmax(250px,280px)] min-[690px]:max-[768px]:gap-4 min-[690px]:max-[768px]:px-[var(--platform-shell-gutter,1rem)]",
+            // Tablet 2-col purchase module
+            "min-[768px]:max-[1280px]:grid-cols-[minmax(150px,1fr)_minmax(170px,210px)] min-[768px]:max-[1280px]:gap-3 min-[768px]:max-[1280px]:px-0",
+            "min-[820px]:max-[1280px]:grid-cols-[minmax(160px,1fr)_minmax(190px,230px)] min-[820px]:max-[1280px]:gap-3.5",
+            "min-[1024px]:max-[1280px]:grid-cols-[minmax(170px,1fr)_minmax(210px,250px)] min-[1024px]:max-[1280px]:gap-4",
+            // Desktop frozen
             "min-[1280px]:grid-cols-[minmax(0,1fr)_minmax(240px,260px)] min-[1280px]:gap-4 min-[1280px]:px-0",
           ].join(" ")}
         >
@@ -403,11 +513,21 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         <div
           className={[
             "mx-4 mb-4 rounded-[12px] border border-white/8 bg-[#1A1A1A] px-3 py-4",
-            "min-[690px]:mx-[var(--platform-shell-gutter,1rem)] min-[690px]:mb-5 min-[690px]:px-4 min-[690px]:py-5",
+            "min-[690px]:max-[768px]:mx-[var(--platform-shell-gutter,1rem)] min-[690px]:max-[768px]:mb-5 min-[690px]:max-[768px]:px-4 min-[690px]:max-[768px]:py-5",
+            "min-[768px]:max-[1280px]:mx-0 min-[768px]:max-[1280px]:mb-0 min-[768px]:max-[1280px]:rounded-[14px] min-[768px]:max-[1280px]:px-3 min-[768px]:max-[1280px]:py-3.5",
+            "min-[1024px]:max-[1280px]:rounded-[16px] min-[1024px]:max-[1280px]:px-4 min-[1024px]:max-[1280px]:py-4",
+            // Desktop frozen
             "min-[1280px]:mx-0 min-[1280px]:mb-0 min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-4.5",
           ].join(" ")}
         >
-          <ul className="grid grid-cols-4 gap-1 min-[690px]:gap-2 min-[1280px]:gap-3.5">
+          <ul
+            className={[
+              "grid grid-cols-4 gap-1",
+              "min-[690px]:max-[768px]:gap-2",
+              "min-[768px]:max-[1280px]:gap-2",
+              "min-[1280px]:gap-3.5",
+            ].join(" ")}
+          >
             {content.miniTrust.map((item) => (
               <MiniTrustCardItem key={item.title.join("-")} item={item} />
             ))}
@@ -415,7 +535,8 @@ export function Section3HeroProduct({ content }: Section3HeroProductProps) {
         </div>
       </div>
 
-      <div className="min-[1280px]:col-span-2 min-[1280px]:hidden">
+      {/* Scroll: stack mobile/transitional only — hide on tablet 2-col + Desktop */}
+      <div className="min-[768px]:hidden">
         <ScrollIndicator />
       </div>
     </section>
