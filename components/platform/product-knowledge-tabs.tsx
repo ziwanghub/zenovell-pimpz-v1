@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { BadgeCheck, Check, CircleAlert, Leaf, ShieldCheck } from 'lucide-react';
 
 type KnowledgeTabId = 'benefits' | 'ingredients' | 'usage' | 'important';
@@ -65,7 +65,7 @@ export function ProductKnowledgeTabs({
     tab.focus();
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     switch (event.key) {
       case 'ArrowRight':
         event.preventDefault();
@@ -89,20 +89,23 @@ export function ProductKnowledgeTabs({
   };
 
   return (
-    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={`${baseId}-heading`}>
+    <section className="px-4 py-4 text-white min-[690px]:px-0 min-[1280px]:px-0" aria-labelledby={`${baseId}-heading`}>
       <div className="platform-shell-frame">
-        <div className="rounded-[24px] border border-white/9 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-4 shadow-[0_16px_34px_rgba(0,0,0,0.2)]">
+        <div className="rounded-[24px] border border-white/9 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-4 shadow-[0_16px_34px_rgba(0,0,0,0.2)] min-[1280px]:rounded-[18px] min-[1280px]:px-5 min-[1280px]:py-5">
           <div className="mb-2.5">
             <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
-              Product Knowledge
+              Product Information
             </div>
-            <h2 id={`${baseId}-heading`} className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white">
+            <h2 id={`${baseId}-heading`} className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white min-[1280px]:text-[22px]">
               ข้อมูลสินค้าเพื่อช่วยตัดสินใจได้ชัดขึ้น
             </h2>
           </div>
 
           <div
-            className="scrollbar-none -mx-1 mb-3 flex gap-4 overflow-x-auto border-b border-white/10 px-1"
+            className={[
+              'scrollbar-none -mx-1 mb-3 flex gap-4 overflow-x-auto border-b border-white/10 px-1',
+              'min-[1280px]:mx-0 min-[1280px]:grid min-[1280px]:grid-cols-4 min-[1280px]:gap-0 min-[1280px]:overflow-visible',
+            ].join(' ')}
             role="tablist"
             aria-label="ข้อมูลสินค้า"
           >
@@ -124,8 +127,9 @@ export function ProductKnowledgeTabs({
                   onClick={() => setSelectedTab(tab.id)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   className={[
-                    'relative min-h-11 shrink-0 whitespace-nowrap pb-3 pt-1 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f96] focus-visible:ring-offset-2 focus-visible:ring-offset-[#120c18]',
-                    isSelected ? 'text-[#ff4ba5]' : 'text-white/55 hover:text-white/78',
+                    'relative min-h-11 shrink-0 whitespace-nowrap pb-3 pt-1 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#120c18]',
+                    'min-[1280px]:min-w-0 min-[1280px]:flex-1 min-[1280px]:text-center',
+                    isSelected ? 'text-[#E91E8C]' : 'text-white/55 hover:text-white/78',
                   ].join(' ')}
                 >
                   {tab.label}
@@ -133,7 +137,7 @@ export function ProductKnowledgeTabs({
                     aria-hidden="true"
                     className={[
                       'absolute inset-x-0 bottom-0 h-[2px] rounded-full transition-opacity',
-                      isSelected ? 'bg-[#ff2f96] opacity-100' : 'bg-transparent opacity-0',
+                      isSelected ? 'bg-[#E91E8C] opacity-100' : 'bg-transparent opacity-0',
                     ].join(' ')}
                   />
                 </button>

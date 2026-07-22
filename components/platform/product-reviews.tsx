@@ -69,7 +69,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
             <p className="mt-1 text-[13px] leading-5 text-white/64">
               ใช้ข้อมูลรีวิวจริงจากหน้าสินค้าเพื่อช่วยให้ตัดสินใจได้อย่างมั่นใจมากขึ้น
             </p>
-            <p className="mt-1 text-[11px] leading-4 text-white/42">
+            <p className="mt-1 text-[11px] leading-4 text-white/42 min-[1280px]:hidden">
               เลื่อนในแนวนอนเพื่อดูรีวิวเพิ่มเติม
             </p>
           </div>
@@ -100,9 +100,16 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
           </div>
         </div>
 
+        {/*
+          Mobile/tablet: horizontal carousel (frozen presentation).
+          Desktop ≥1280: 3 equal-height cards grid (contract density).
+        */}
         <div
-          className="scrollbar-none -mx-1 mt-3.5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]"
-          aria-label="รีวิวจากลูกค้า เลื่อนในแนวนอนเพื่อดูรีวิวเพิ่มเติม"
+          className={[
+            'scrollbar-none -mx-1 mt-3.5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]',
+            'min-[1280px]:mx-0 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-4 min-[1280px]:overflow-visible min-[1280px]:px-0 min-[1280px]:pb-0 min-[1280px]:snap-none',
+          ].join(' ')}
+          aria-label="รีวิวจากลูกค้า"
           tabIndex={0}
         >
           {reviews.map((review, index) => {
@@ -115,7 +122,10 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
             return (
               <article
                 key={`${review.author}-${index}`}
-                className="w-[84%] shrink-0 snap-start rounded-[20px] border border-white/10 bg-white/[0.05] p-3"
+                className={[
+                  'w-[84%] shrink-0 snap-start rounded-[20px] border border-white/10 bg-white/[0.05] p-3',
+                  'min-[1280px]:flex min-[1280px]:h-full min-[1280px]:w-auto min-[1280px]:shrink min-[1280px]:flex-col min-[1280px]:snap-align-none min-[1280px]:p-4',
+                ].join(' ')}
                 aria-label={`รีวิวจาก ${review.author}`}
               >
                 <div className="flex items-start justify-between gap-3">
@@ -148,7 +158,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
                   )}
                 </div>
 
-                <p className="mt-2 text-[13px] leading-5 text-white/84">
+                <p className="mt-2 text-[13px] leading-5 text-white/84 min-[1280px]:mt-3 min-[1280px]:flex-1 min-[1280px]:text-[14px] min-[1280px]:leading-6">
                   {review.quote}
                 </p>
               </article>

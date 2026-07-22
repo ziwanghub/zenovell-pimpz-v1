@@ -17,6 +17,7 @@ import { ProductFinalCta } from '@/components/platform/product-final-cta';
 import { ProductBreadcrumb } from '@/components/platform/product-breadcrumb';
 import { ProductKnowledgeTabs } from '@/components/platform/product-knowledge-tabs';
 import { ProductExpectationAuthority } from '@/components/platform/product-expectation-authority';
+import { ProductBundle } from '@/components/platform/product-bundle';
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -203,17 +204,42 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const structuredData = generateProductStructuredData(product);
   // S5 channel assets (SEO/AI-SEO/LINE/Ads/Marketplace) referenced via product.commerceContext and entity for cross-channel consistency.
 
-  // S1 + S2 + S3 + S4 + S5 INTEGRATION (WP3): Full Channel & Commerce Ready Pilot Page
-  // P-PRODUCT-DESKTOP-01: Desktop ≥1280 above-the-fold 48/52 grid (gallery | buy).
-  // Mobile <768 frozen; below-fold unchanged; tablet layout deferred.
+  // Bundle pair: first real related product from catalog authority (no invented SKU).
+  const bundlePair = relatedProducts[0] ?? null;
+
+  // Shared information modules (same data; factory so dual trees are independent).
+  const renderProductInformation = () => (
+    <>
+      <ProductProblemSnapshot
+        title={problemTitle}
+        outcome={product.subtitle}
+        detail={problemDetail}
+        fitCue={fitCue}
+      />
+      <div className="platform-shell-frame px-4 pb-2 min-[690px]:px-0 min-[1280px]:px-0">
+        <ProductKnowledgeTabs
+          benefits={{ items: knowledgeBenefits }}
+          ingredients={{ items: knowledgeIngredients }}
+          usage={{ items: knowledgeUsage }}
+          importantInformation={{ items: knowledgeImportantInformation }}
+        />
+        <ProductExpectationAuthority
+          timeline={timelineData}
+          expectedResults={expectedData}
+          disclaimer={expectationDisclaimer || undefined}
+          safetyNotes={product.qualificationDetails?.safetyNotes}
+          consultationAdvice={expectationConsultationAdvice}
+        />
+      </div>
+    </>
+  );
+
+  // S1–S5 + P-PRODUCT-DESKTOP-01 ATF + P-PRODUCT-DESKTOP-02 BTF (desktop ≥1280 only).
   return (
     <>
       <ProductBreadcrumb productTitle={product.title} />
 
-      {/*
-        Desktop ATF shell — two-column only at min-[1280px].
-        Below 1280: document order Gallery → Buy (stack; mobile frozen).
-      */}
+      {/* Desktop ATF — frozen for this task (P-PRODUCT-DESKTOP-01) */}
       <div
         className={[
           'min-[1280px]:grid min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)]',
@@ -227,8 +253,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             badgeLabel={product.badge?.label}
           />
         </div>
-
-        {/* Sticky buy column — desktop only; stop within ATF grid row */}
         <div
           className={[
             'min-[1280px]:sticky min-[1280px]:top-[calc(var(--platform-header-offset,74px)+12px)]',
@@ -241,36 +265,38 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </div>
 
-      <ProductTrustSignals trustSignals={trustSignals} evidence={evidenceSnapshot} />
-      <ProductProblemSnapshot
-        title={problemTitle}
-        outcome={product.subtitle}
-        detail={problemDetail}
-        fitCue={fitCue}
-      />
-
-      <div className="platform-shell-frame px-4 pb-2 min-[690px]:px-0">
-        <ProductKnowledgeTabs
-          benefits={{ items: knowledgeBenefits }}
-          ingredients={{ items: knowledgeIngredients }}
-          usage={{ items: knowledgeUsage }}
-          importantInformation={{ items: knowledgeImportantInformation }}
-        />
-
-        <ProductExpectationAuthority
-          timeline={timelineData}
-          expectedResults={expectedData}
-          disclaimer={expectationDisclaimer || undefined}
-          safetyNotes={product.qualificationDetails?.safetyNotes}
-          consultationAdvice={expectationConsultationAdvice}
-        />
+      {/*
+        Below-the-fold: dual composition preserves <1280 order (mobile-era)
+        while Desktop ≥1280 uses contract order:
+        Information → Reviews → Related → Bundle → FAQ
+        (Final CTA mobile-only; Bundle carries desktop conversion.)
+      */}
+      <div className="min-[1280px]:hidden">
+        <ProductTrustSignals trustSignals={trustSignals} evidence={evidenceSnapshot} />
+        {renderProductInformation()}
+        <ProductReviews reviews={reviews} />
+        <ProductFAQ faq={faq} defaultOpenIndex={0} />
+        <ProductRelatedProducts relatedProducts={relatedProducts} />
+        <ProductFinalCta product={product} />
       </div>
 
-      <ProductReviews reviews={reviews} />
-      <ProductFAQ faq={faq} />
-      <ProductRelatedProducts relatedProducts={relatedProducts} />
-
-      <ProductFinalCta product={product} />
+      <div className="hidden min-[1280px]:block">
+        <div className="space-y-1 pb-6" data-desktop-btf="product-information">
+          {renderProductInformation()}
+        </div>
+        <div data-desktop-btf="reviews">
+          <ProductReviews reviews={reviews} />
+        </div>
+        <div data-desktop-btf="related">
+          <ProductRelatedProducts relatedProducts={relatedProducts} />
+        </div>
+        <div data-desktop-btf="bundle">
+          <ProductBundle product={product} pair={bundlePair} />
+        </div>
+        <div data-desktop-btf="faq">
+          <ProductFAQ faq={faq} defaultOpenIndex={-1} />
+        </div>
+      </div>
 
       {/* Structured Data */}
       <script
