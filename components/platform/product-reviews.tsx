@@ -75,7 +75,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
             <p className="mt-1 text-[13px] leading-5 text-white/64">
               ใช้ข้อมูลรีวิวจริงจากหน้าสินค้าเพื่อช่วยให้ตัดสินใจได้อย่างมั่นใจมากขึ้น
             </p>
-            <p className="mt-1 text-[11px] leading-4 text-white/42 min-[1280px]:hidden">
+            <p className="mt-1 text-[11px] leading-4 text-white/42 min-[900px]:hidden">
               เลื่อนในแนวนอนเพื่อดูรีวิวเพิ่มเติม
             </p>
           </div>
@@ -113,7 +113,9 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
         <div
           className={[
             'scrollbar-none -mx-1 mt-3.5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]',
-            'min-[1280px]:mx-0 min-[1280px]:grid min-[1280px]:grid-cols-3 min-[1280px]:gap-4 min-[1280px]:overflow-visible min-[1280px]:px-0 min-[1280px]:pb-0 min-[1280px]:snap-none',
+            // Tablet 900–1279: 2-up grid; Desktop: 3-up
+            'min-[900px]:mx-0 min-[900px]:grid min-[900px]:grid-cols-2 min-[900px]:gap-3 min-[900px]:overflow-visible min-[900px]:px-0 min-[900px]:pb-0 min-[900px]:snap-none',
+            'min-[1280px]:grid-cols-3 min-[1280px]:gap-4',
           ].join(' ')}
           aria-label="รีวิวจากลูกค้า"
           tabIndex={0}
@@ -130,7 +132,8 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
                 key={`${review.author}-${index}`}
                 className={[
                   'w-[84%] shrink-0 snap-start rounded-[20px] border border-white/10 bg-white/[0.05] p-3',
-                  'min-[1280px]:flex min-[1280px]:h-full min-[1280px]:w-auto min-[1280px]:shrink min-[1280px]:flex-col min-[1280px]:snap-align-none min-[1280px]:p-4',
+                  'min-[900px]:flex min-[900px]:h-full min-[900px]:w-auto min-[900px]:shrink min-[900px]:flex-col min-[900px]:snap-align-none min-[900px]:p-3.5',
+                  'min-[1280px]:p-4',
                 ].join(' ')}
                 aria-label={`รีวิวจาก ${review.author}`}
               >

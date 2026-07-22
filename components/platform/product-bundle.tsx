@@ -64,26 +64,36 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
       aria-labelledby={titleId}
     >
       <div className="platform-shell-frame">
-        <div className="overflow-hidden rounded-[24px] border border-[#E91E8C]/25 bg-[radial-gradient(circle_at_85%_50%,rgba(233,30,140,0.18),transparent_42%),linear-gradient(180deg,rgba(22,12,20,0.98),rgba(8,6,10,0.99))] p-5 shadow-[0_20px_48px_rgba(0,0,0,0.32)] min-[1280px]:p-6">
-          <div className="grid items-center gap-5 min-[1280px]:grid-cols-[minmax(0,5fr)_minmax(0,5fr)_minmax(0,2fr)] min-[1280px]:gap-6">
-            {/* Copy ~38–42% */}
+        <div className="overflow-hidden rounded-[24px] border border-[#E91E8C]/25 bg-[radial-gradient(circle_at_85%_50%,rgba(233,30,140,0.18),transparent_42%),linear-gradient(180deg,rgba(22,12,20,0.98),rgba(8,6,10,0.99))] p-5 shadow-[0_20px_48px_rgba(0,0,0,0.32)] min-[900px]:p-5 min-[1280px]:p-6">
+          {/*
+            Tablet 768–899: stacked (CSS default grid 1 col)
+            Tablet 900–1279: content | visual, CTA full width below
+            Desktop ≥1280: 5/5/2 band
+          */}
+          <div
+            className={[
+              'grid items-center gap-5',
+              'min-[900px]:max-[1280px]:grid-cols-2 min-[900px]:max-[1280px]:gap-5',
+              'min-[1280px]:grid-cols-[minmax(0,5fr)_minmax(0,5fr)_minmax(0,2fr)] min-[1280px]:gap-6',
+            ].join(' ')}
+          >
             <div className="min-w-0 text-left">
               <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#E91E8C]/90">
                 {bandLabel}
               </p>
               <h2
                 id={titleId}
-                className="mt-2 text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white min-[1280px]:text-[26px]"
+                className="mt-2 text-[20px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white min-[900px]:text-[22px] min-[1280px]:text-[26px]"
               >
                 {product.title} + {pair.title}
               </h2>
-              <p className="mt-2 text-[14px] leading-[1.55] text-white/72">
+              <p className="mt-2 text-[13px] leading-[1.55] text-white/72 min-[1280px]:text-[14px]">
                 {bandDescription}
               </p>
               <div className="mt-3 flex flex-wrap items-end gap-3">
                 <div>
                   <p className="text-[11px] text-white/45">{product.title}</p>
-                  <p className="text-[22px] font-extrabold leading-none text-[#E91E8C]">
+                  <p className="text-[20px] font-extrabold leading-none text-[#E91E8C] min-[1280px]:text-[22px]">
                     {product.pricing.sale.display}
                   </p>
                 </div>
@@ -92,16 +102,15 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
                 </span>
                 <div>
                   <p className="text-[11px] text-white/45">{pair.title}</p>
-                  <p className="text-[18px] font-semibold leading-none text-white/90">
+                  <p className="text-[16px] font-semibold leading-none text-white/90 min-[1280px]:text-[18px]">
                     {pair.pricing.sale.display}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Visual ~38–42% */}
-            <div className="flex min-w-0 items-center justify-center gap-3">
-              <div className="relative h-[140px] w-[140px] overflow-hidden rounded-[18px] border border-white/10 bg-black min-[1280px]:h-[160px] min-[1280px]:w-[160px]">
+            <div className="flex min-w-0 items-center justify-center gap-2 min-[900px]:gap-3">
+              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
                 {product.imageSrc ? (
                   <Image
                     src={product.imageSrc}
@@ -113,8 +122,8 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
                   />
                 ) : null}
               </div>
-              <Plus className="h-6 w-6 shrink-0 text-[#E91E8C]" aria-hidden="true" />
-              <div className="relative h-[140px] w-[140px] overflow-hidden rounded-[18px] border border-white/10 bg-black min-[1280px]:h-[160px] min-[1280px]:w-[160px]">
+              <Plus className="h-5 w-5 shrink-0 text-[#E91E8C] min-[900px]:h-6 min-[900px]:w-6" aria-hidden="true" />
+              <div className="relative h-[120px] w-[120px] overflow-hidden rounded-[16px] border border-white/10 bg-black min-[900px]:h-[140px] min-[900px]:w-[140px] min-[1280px]:h-[160px] min-[1280px]:w-[160px] min-[1280px]:rounded-[18px]">
                 {pair.imageSrc ? (
                   <Image
                     src={pair.imageSrc}
@@ -128,13 +137,12 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
               </div>
             </div>
 
-            {/* CTA ~18–24% */}
-            <div className="flex min-w-0 flex-col justify-center gap-2">
+            <div className="flex min-w-0 flex-col justify-center gap-2 min-[900px]:max-[1280px]:col-span-2">
               <button
                 type="button"
                 onClick={handleLine}
                 aria-label={`สอบถามการใช้ ${product.title} ร่วมกับ ${pair.title} ผ่าน LINE`}
-                className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold text-white shadow-[0_0_22px_rgba(233,30,140,0.4)] transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
+                className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold text-white shadow-[0_0_22px_rgba(233,30,140,0.4)] transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C] min-[1280px]:h-[52px]"
               >
                 <LineIcon size={18} />
                 สอบถามผ่าน LINE

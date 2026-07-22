@@ -21,7 +21,7 @@ export function ProductFinalCta({ product }: ProductFinalCtaProps) {
   return (
     <section
       id="line-cta"
-      className="px-4 py-4 text-white min-[690px]:px-0 min-[1280px]:hidden"
+      className="px-4 py-4 text-white min-[690px]:px-0 min-[768px]:hidden"
     >
       <div className="platform-shell-frame overflow-hidden rounded-[28px] border border-fuchsia-500/18 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.18),_transparent_40%),linear-gradient(180deg,rgba(20,11,26,0.98),rgba(8,5,11,0.98))] p-5 shadow-[0_20px_54px_rgba(0,0,0,0.38)]">
         <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-fuchsia-500/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-fuchsia-100/90">
