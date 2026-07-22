@@ -1,0 +1,130 @@
+{
+  "phase": "RC-HOTFIX-01-SMOKE-RETEST",
+  "base": "https://beta.zenovell.com",
+  "mainCommit": "98e7571",
+  "timestamp": "2026-07-22T15:29:57.763Z",
+  "httpResults": [
+    {
+      "route": "/",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/nicky-pimpz-boss",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/privacy",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/buying-guide",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "ct": "text/plain"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "ct": "application/xml"
+    },
+    {
+      "route": "/search",
+      "status": 404,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/images/og-default.jpg",
+      "status": 200,
+      "ct": "image/jpeg"
+    },
+    {
+      "route": "/images/logo.png",
+      "status": 200,
+      "ct": "image/png"
+    }
+  ],
+  "home": {
+    "title": "ZENOVELL | Premium Wellness Products",
+    "header": true,
+    "footer": true,
+    "s3": true,
+    "ogImage": "https://zenovell.com/images/og-default.jpg",
+    "orgLogo": "https://zenovell.com/images/logo.png",
+    "gtm": true,
+    "dataLayer": true
+  },
+  "productMatrix": [
+    {
+      "w": 390,
+      "h": 844,
+      "band": "mobile",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": false,
+      "sticky": false,
+      "overflowX": false
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "band": "tablet",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": false,
+      "overflowX": false
+    },
+    {
+      "w": 1280,
+      "h": 800,
+      "band": "desktop",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": true,
+      "overflowX": false
+    }
+  ],
+  "lineUrl": "https://line.me/R/ti/p/@362lupso?oat_content=url&ts=07101734",
+  "dl": {
+    "gtm": true,
+    "recent": [
+      "gtm.js",
+      "gtm.dom",
+      "gtm.load",
+      "line_cta_click"
+    ]
+  },
+  "findings": [
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "/search returns 404 (SearchAction target)",
+      "detail": ""
+    },
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "robots.txt Sitemap points to production host",
+      "detail": "User-agent: *\nAllow: /\n\nSitemap: https://zenovell.com/sitemap.xml"
+    },
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "sitemap.xml uses production absolute URLs",
+      "detail": ""
+    }
+  ],
+  "counts": {
+    "Critical": 0,
+    "High": 0,
+    "Medium": 3,
+    "Low": 0
+  },
+  "verdict": "PASS_WITH_WARNINGS",
+  "highClosed": true
+}

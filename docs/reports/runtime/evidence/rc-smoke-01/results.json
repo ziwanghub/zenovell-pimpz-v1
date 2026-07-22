@@ -1,0 +1,440 @@
+{
+  "phase": "RC-SMOKE-01",
+  "base": "https://beta.zenovell.com",
+  "mainCommit": "096107d",
+  "timestamp": "2026-07-22T15:20:46.853Z",
+  "deployment": {
+    "platform": "Hostinger hcdn / Next.js",
+    "mainCommit": "096107d",
+    "ciMain": "GREEN (latest main CI success prior to smoke)",
+    "botChallenge": "CLEARED",
+    "commitHashOnDeploy": "NOT_EXPOSED_IN_HTML (no build-id meta); static chunks present, Next prerender HIT"
+  },
+  "httpResults": [
+    {
+      "route": "/",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/nicky-pimpz-boss",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/boss-men",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/boss-lady",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/np-gel",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/np-mens-wipes",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/b21",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/about",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/quality",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/privacy",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/shipping",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/contact",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/information/terms",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/ingredient-guide",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/product-usage-guide",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/buying-guide",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/line-ordering-guide",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/safe-purchase-education",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/knowledge/wellness-education",
+      "status": 200,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "ct": "text/plain"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "ct": "application/xml"
+    },
+    {
+      "route": "/search",
+      "status": 404,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/images/og-default.jpg",
+      "status": 404,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/images/logo.png",
+      "status": 404,
+      "ct": "text/html; charset=utf-8"
+    }
+  ],
+  "robots": "User-agent: *\nAllow: /\n\nSitemap: https://zenovell.com/sitemap.xml",
+  "sitemapUrlCount": 19,
+  "home": {
+    "title": "ZENOVELL | Premium Wellness Products",
+    "challengeCleared": true,
+    "header": true,
+    "footer": true,
+    "s3": true,
+    "s2": true,
+    "s4": true,
+    "s5": true,
+    "s6": true,
+    "s8": true,
+    "s9": true,
+    "s10": true,
+    "s11": true,
+    "lineCount": 25,
+    "overflowX": false,
+    "textLen": 7835,
+    "gtm": true,
+    "dataLayer": true,
+    "dataLayerLen": 3,
+    "jsonLd": 1,
+    "ogTitle": "ZENOVELL | Premium Wellness Products"
+  },
+  "homeM": {
+    "overflowX": false,
+    "s3": true,
+    "header": true,
+    "lineCount": 22
+  },
+  "productMatrix": [
+    {
+      "w": 390,
+      "h": 844,
+      "band": "mobile",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": false,
+      "sticky": false,
+      "dualCta": 3,
+      "finalCta": true,
+      "bundle": false,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "cover"
+    },
+    {
+      "w": 430,
+      "h": 932,
+      "band": "mobile",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": false,
+      "sticky": false,
+      "dualCta": 3,
+      "finalCta": true,
+      "bundle": false,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "cover"
+    },
+    {
+      "w": 768,
+      "h": 1024,
+      "band": "tablet",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": false,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    },
+    {
+      "w": 820,
+      "h": 1180,
+      "band": "tablet",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": false,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    },
+    {
+      "w": 1024,
+      "h": 1366,
+      "band": "tablet",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": false,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    },
+    {
+      "w": 1280,
+      "h": 800,
+      "band": "desktop",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": true,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    },
+    {
+      "w": 1440,
+      "h": 900,
+      "band": "desktop",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": true,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "band": "desktop",
+      "title": "NICKY PIMPZ BOSS",
+      "twoCol": true,
+      "sticky": true,
+      "dualCta": 3,
+      "finalCta": false,
+      "bundle": true,
+      "overflowX": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "imgOk": 15,
+      "imgZero": 0,
+      "footer": false,
+      "header": true,
+      "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+      "objectFit": "contain"
+    }
+  ],
+  "line": {
+    "product": "https://line.me/R/ti/p/@362lupso?oat_content=url&ts=07101734",
+    "productLabel": "สั่งซื้อผ่าน LINE",
+    "homepage": "https://line.me/R/ti/p/@362lupso?oat_content=url&ts=07101734",
+    "expected": "https://lin.ee/syjmYE2 (resolves to line.me OA)"
+  },
+  "analytics": {
+    "gtm": true,
+    "dataLayer": true,
+    "dataLayerAfterClick": {
+      "exists": true,
+      "len": 4,
+      "recent": [
+        "gtm.js",
+        "gtm.dom",
+        "gtm.load",
+        "line_cta_click"
+      ]
+    },
+    "status": "PASS"
+  },
+  "productSeo": {
+    "w": 1280,
+    "h": 800,
+    "band": "desktop",
+    "title": "NICKY PIMPZ BOSS",
+    "twoCol": true,
+    "sticky": true,
+    "dualCta": 3,
+    "finalCta": false,
+    "bundle": true,
+    "overflowX": false,
+    "titleInView": true,
+    "ctaInView": true,
+    "imgOk": 15,
+    "imgZero": 0,
+    "footer": false,
+    "header": true,
+    "canonical": "https://zenovell.com/products/nicky-pimpz-boss",
+    "objectFit": "contain"
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "pageErrors": [],
+  "netFail": [
+    {
+      "url": "https://beta.zenovell.com/",
+      "status": 403
+    },
+    {
+      "url": "https://beta.zenovell.com/search",
+      "status": 404
+    },
+    {
+      "url": "https://beta.zenovell.com/images/og-default.jpg",
+      "status": 404
+    },
+    {
+      "url": "https://beta.zenovell.com/images/logo.png",
+      "status": 404
+    }
+  ],
+  "lighthouse": {
+    "error": "Command failed: npx --yes lighthouse@11.7.1 https://beta.zenovell.com/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\"--headless=new --no-sandbox --disable-dev-shm-usage\" --output=json --output-path=\"/Users/zinwang/Wor"
+  },
+  "findings": [
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "/search returns 404 (SearchAction target)",
+      "detail": "JSON-LD SearchAction points to missing route"
+    },
+    {
+      "severity": "High",
+      "area": "Assets",
+      "title": "Missing asset /images/og-default.jpg",
+      "detail": "404 on beta"
+    },
+    {
+      "severity": "High",
+      "area": "Assets",
+      "title": "Missing asset /images/logo.png",
+      "detail": "404 on beta"
+    },
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "robots.txt Sitemap points to production host",
+      "detail": "User-agent: *\nAllow: /\n\nSitemap: https://zenovell.com/sitemap.xml"
+    },
+    {
+      "severity": "Medium",
+      "area": "SEO",
+      "title": "sitemap.xml uses production absolute URLs",
+      "detail": "Authoritative for zenovell.com; beta-specific crawl may confuse"
+    },
+    {
+      "severity": "Low",
+      "area": "Performance",
+      "title": "Lighthouse baseline not collected",
+      "detail": "Command failed: npx --yes lighthouse@11.7.1 https://beta.zenovell.com/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\""
+    }
+  ],
+  "counts": {
+    "Critical": 0,
+    "High": 2,
+    "Medium": 3,
+    "Low": 1
+  },
+  "verdict": "FAIL"
+}
