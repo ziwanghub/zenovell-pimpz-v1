@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -29,6 +30,8 @@ function getProductTypeLabel(title: string) {
 }
 
 export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProductsProps) {
+  const headingId = useId();
+
   if (!relatedProducts || relatedProducts.length === 0) {
     return (
       <section className="px-4 py-4 text-white min-[690px]:px-0">
@@ -40,14 +43,14 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
   }
 
   return (
-    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby="related-products-title">
+    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={headingId}>
       <div className="platform-shell-frame">
         <div className="mb-3">
           <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
             Related Products
           </div>
           <h2
-            id="related-products-title"
+            id={headingId}
             className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white"
           >
             สินค้าที่เกี่ยวข้อง
@@ -57,15 +60,25 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
           </p>
         </div>
 
+        {/*
+          Mobile/tablet: horizontal carousel.
+          Desktop ≥1280: 4 equal-height cards (contract).
+        */}
         <div
-          className="scrollbar-none -mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]"
-          aria-label="สินค้าที่เกี่ยวข้อง เลื่อนในแนวนอนเพื่อดูสินค้าเพิ่มเติม"
+          className={[
+            'scrollbar-none -mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]',
+            'min-[1280px]:mx-0 min-[1280px]:grid min-[1280px]:grid-cols-4 min-[1280px]:gap-4 min-[1280px]:overflow-visible min-[1280px]:px-0 min-[1280px]:pb-0 min-[1280px]:snap-none',
+          ].join(' ')}
+          aria-label="สินค้าที่เกี่ยวข้อง"
         >
           {relatedProducts.map((product) => (
             <Link
               key={product.slug}
               href={`/products/${product.slug}`}
-              className="group flex min-h-[314px] w-[75%] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_14px_32px_rgba(0,0,0,0.2)]"
+              className={[
+                'group flex min-h-[314px] w-[75%] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_14px_32px_rgba(0,0,0,0.2)]',
+                'min-[1280px]:h-full min-[1280px]:w-auto min-[1280px]:min-h-[300px] min-[1280px]:shrink min-[1280px]:snap-align-none',
+              ].join(' ')}
             >
               {product.imageSrc ? (
                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-900">
@@ -73,8 +86,9 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
                     src={product.imageSrc}
                     alt={product.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 430px) 76vw, 320px"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 min-[1280px]:object-contain min-[1280px]:group-hover:scale-100"
+                    sizes="(max-width: 1279px) 76vw, 280px"
+                    loading="lazy"
                   />
                 </div>
               ) : (

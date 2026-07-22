@@ -10,11 +10,16 @@ interface FAQItem {
 
 interface ProductFAQProps {
   faq?: FAQItem[];
+  /**
+   * Initial open panel index. Use -1 for all closed (Desktop contract default).
+   * Mobile default remains 0 for continuity.
+   */
+  defaultOpenIndex?: number;
 }
 
-export function ProductFAQ({ faq }: ProductFAQProps) {
+export function ProductFAQ({ faq, defaultOpenIndex = 0 }: ProductFAQProps) {
   const baseId = useId();
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(defaultOpenIndex);
 
   if (!faq || faq.length === 0) {
     return (
@@ -30,7 +35,7 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
   }
 
   const toggle = (index: number) => {
-    setOpenIndex(index);
+    setOpenIndex((current) => (current === index ? -1 : index));
   };
 
   return (
@@ -42,7 +47,7 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
           </div>
           <h2
             id={`${baseId}-heading`}
-            className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white"
+            className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white min-[1280px]:text-[22px]"
           >
             คำถามที่มักเกิดก่อนตัดสินใจ
           </h2>
@@ -51,7 +56,8 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
           </p>
         </div>
 
-        <div className="space-y-2.5">
+        {/* Desktop ≥1280: 2-column accordion when width allows */}
+        <div className="space-y-2.5 min-[1280px]:grid min-[1280px]:grid-cols-2 min-[1280px]:items-start min-[1280px]:gap-3 min-[1280px]:space-y-0">
           {faq.map((item, index) => {
             const isOpen = openIndex === index;
             const triggerId = `${baseId}-faq-trigger-${index}`;
@@ -66,7 +72,7 @@ export function ProductFAQ({ faq }: ProductFAQProps) {
                   id={triggerId}
                   type="button"
                   onClick={() => toggle(index)}
-                  className="flex min-h-14 w-full items-center justify-between gap-4 px-4.5 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f96] focus-visible:ring-offset-2 focus-visible:ring-offset-[#120c18]"
+                  className="flex min-h-14 w-full items-center justify-between gap-4 px-4.5 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#120c18]"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                 >
