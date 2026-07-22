@@ -1,0 +1,962 @@
+{
+  "commitBase": "53fbc67",
+  "phase": "P-PRODUCT-TABLET-01D",
+  "mode": "field-correction-verification",
+  "results": [
+    {
+      "id": "ipad-mini-portrait",
+      "name": "iPad Mini portrait",
+      "w": 768,
+      "h": 1024,
+      "orientation": "portrait",
+      "primary": true,
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 768,
+        "h": 1024
+      },
+      "visualViewport": {
+        "w": 768,
+        "h": 1024
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": false,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 768,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 1,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "36px",
+      "stage": {
+        "w": 380,
+        "h": 380,
+        "aspect": 1,
+        "x": 194,
+        "y": 109
+      },
+      "galleryOuterH": 568,
+      "buyY": 676,
+      "buyBottom": 1000,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "ipad-air-portrait",
+      "name": "iPad Air portrait",
+      "w": 820,
+      "h": 1180,
+      "orientation": "portrait",
+      "primary": true,
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 820,
+        "h": 1180
+      },
+      "visualViewport": {
+        "w": 820,
+        "h": 1180
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": false,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 820,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 1,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "36px",
+      "stage": {
+        "w": 380,
+        "h": 380,
+        "aspect": 1,
+        "x": 220,
+        "y": 109
+      },
+      "galleryOuterH": 579,
+      "buyY": 687,
+      "buyBottom": 1011,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "ipad-mini-landscape",
+      "name": "iPad Mini landscape",
+      "w": 1024,
+      "h": 768,
+      "orientation": "landscape",
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1024,
+        "h": 768
+      },
+      "visualViewport": {
+        "w": 1024,
+        "h": 768
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1024,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "34px",
+      "stage": {
+        "w": 414,
+        "h": 414,
+        "aspect": 1,
+        "x": 49,
+        "y": 109
+      },
+      "galleryOuterH": 529,
+      "buyY": 108,
+      "buyBottom": 489,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "ipad-air-landscape",
+      "name": "iPad Air landscape",
+      "w": 1180,
+      "h": 820,
+      "orientation": "landscape",
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1180,
+        "h": 820
+      },
+      "visualViewport": {
+        "w": 1180,
+        "h": 820
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1180,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "34px",
+      "stage": {
+        "w": 486,
+        "h": 420,
+        "aspect": 1.156,
+        "x": 49,
+        "y": 109
+      },
+      "galleryOuterH": 553,
+      "buyY": 108,
+      "buyBottom": 468,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "ipad-mini-alt-744",
+      "name": "iPad Mini alt CSS",
+      "w": 744,
+      "h": 1133,
+      "orientation": "portrait",
+      "band": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 744,
+        "h": 1133
+      },
+      "visualViewport": {
+        "w": 744,
+        "h": 1133
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": false,
+        "min900": false,
+        "min1280": false,
+        "max767": true
+      },
+      "overflowX": false,
+      "scrollWidth": 744,
+      "mobileTree": true,
+      "tabletTree": false,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "finalCta": true,
+      "bundle": false,
+      "faq": true,
+      "footer": false,
+      "order": [],
+      "priceFont": "48px",
+      "stage": {
+        "w": 694,
+        "h": 445,
+        "aspect": 1.56,
+        "x": 25,
+        "y": 109
+      },
+      "galleryOuterH": 630,
+      "buyY": 738,
+      "buyBottom": 1073,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "ipad-pro11-portrait",
+      "name": "iPad Pro 11 portrait",
+      "w": 834,
+      "h": 1194,
+      "orientation": "portrait",
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 834,
+        "h": 1194
+      },
+      "visualViewport": {
+        "w": 834,
+        "h": 1194
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": false,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 834,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 1,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "36px",
+      "stage": {
+        "w": 380,
+        "h": 380,
+        "aspect": 1,
+        "x": 227,
+        "y": 109
+      },
+      "galleryOuterH": 582,
+      "buyY": 690,
+      "buyBottom": 1015,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "tablet-mid-810",
+      "name": "Intermediate tablet",
+      "w": 810,
+      "h": 1080,
+      "orientation": "portrait",
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 810,
+        "h": 1080
+      },
+      "visualViewport": {
+        "w": 810,
+        "h": 1080
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": false,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 810,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 1,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "36px",
+      "stage": {
+        "w": 380,
+        "h": 380,
+        "aspect": 1,
+        "x": 215,
+        "y": 109
+      },
+      "galleryOuterH": 578,
+      "buyY": 686,
+      "buyBottom": 1011,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "mobile-390",
+      "name": "Mobile 390",
+      "w": 390,
+      "h": 844,
+      "orientation": "portrait",
+      "bandExpect": "mobile",
+      "band": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 390,
+        "h": 844
+      },
+      "visualViewport": {
+        "w": 390,
+        "h": 844
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": false,
+        "min900": false,
+        "min1280": false,
+        "max767": true
+      },
+      "overflowX": false,
+      "scrollWidth": 390,
+      "mobileTree": true,
+      "tabletTree": false,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "finalCta": true,
+      "bundle": false,
+      "faq": true,
+      "footer": false,
+      "order": [],
+      "priceFont": "48px",
+      "stage": {
+        "w": 356,
+        "h": 228,
+        "aspect": 1.56,
+        "x": 17,
+        "y": 109
+      },
+      "galleryOuterH": 329,
+      "buyY": 437,
+      "buyBottom": 783,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "mobile-430",
+      "name": "Mobile 430",
+      "w": 430,
+      "h": 932,
+      "orientation": "portrait",
+      "bandExpect": "mobile",
+      "band": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 430,
+        "h": 932
+      },
+      "visualViewport": {
+        "w": 430,
+        "h": 932
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": false,
+        "min900": false,
+        "min1280": false,
+        "max767": true
+      },
+      "overflowX": false,
+      "scrollWidth": 430,
+      "mobileTree": true,
+      "tabletTree": false,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "finalCta": true,
+      "bundle": false,
+      "faq": true,
+      "footer": false,
+      "order": [],
+      "priceFont": "48px",
+      "stage": {
+        "w": 396,
+        "h": 254,
+        "aspect": 1.56,
+        "x": 17,
+        "y": 109
+      },
+      "galleryOuterH": 365,
+      "buyY": 473,
+      "buyBottom": 806,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "tablet-2col-900",
+      "name": "Tablet 2col 900",
+      "w": 900,
+      "h": 1200,
+      "orientation": "portrait",
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 900,
+        "h": 1200
+      },
+      "visualViewport": {
+        "w": 900,
+        "h": 1200
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 900,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "34px",
+      "stage": {
+        "w": 370,
+        "h": 370,
+        "aspect": 1,
+        "x": 37,
+        "y": 109
+      },
+      "galleryOuterH": 474,
+      "buyY": 108,
+      "buyBottom": 489,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "tablet-2col-1024",
+      "name": "Tablet 2col 1024",
+      "w": 1024,
+      "h": 1366,
+      "orientation": "portrait",
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1024,
+        "h": 1366
+      },
+      "visualViewport": {
+        "w": 1024,
+        "h": 1366
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1024,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "34px",
+      "stage": {
+        "w": 414,
+        "h": 414,
+        "aspect": 1,
+        "x": 49,
+        "y": 109
+      },
+      "galleryOuterH": 529,
+      "buyY": 108,
+      "buyBottom": 489,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "tablet-2col-1279",
+      "name": "Tablet edge 1279",
+      "w": 1279,
+      "h": 900,
+      "orientation": "landscape",
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1279,
+        "h": 900
+      },
+      "visualViewport": {
+        "w": 1279,
+        "h": 900
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": false,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1279,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "34px",
+      "stage": {
+        "w": 531,
+        "h": 420,
+        "aspect": 1.265,
+        "x": 49,
+        "y": 109
+      },
+      "galleryOuterH": 565,
+      "buyY": 108,
+      "buyBottom": 468,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "desktop-1280",
+      "name": "Desktop 1280",
+      "w": 1280,
+      "h": 800,
+      "orientation": "landscape",
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1280,
+        "h": 800
+      },
+      "visualViewport": {
+        "w": 1280,
+        "h": 800
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": true,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "38px",
+      "stage": {
+        "w": 559,
+        "h": 520,
+        "aspect": 1.074,
+        "x": 41,
+        "y": 109
+      },
+      "galleryOuterH": 670,
+      "buyY": 108,
+      "buyBottom": 496,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "desktop-1440",
+      "name": "Desktop 1440",
+      "w": 1440,
+      "h": 900,
+      "orientation": "landscape",
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1440,
+        "h": 900
+      },
+      "visualViewport": {
+        "w": 1440,
+        "h": 900
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": true,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1440,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "38px",
+      "stage": {
+        "w": 574,
+        "h": 520,
+        "aspect": 1.104,
+        "x": 101,
+        "y": 109
+      },
+      "galleryOuterH": 674,
+      "buyY": 108,
+      "buyBottom": 496,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    },
+    {
+      "id": "desktop-1920",
+      "name": "Desktop 1920",
+      "w": 1920,
+      "h": 1080,
+      "orientation": "landscape",
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "mediaWidth": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "cssViewport": {
+        "w": 1920,
+        "h": 1080
+      },
+      "visualViewport": {
+        "w": 1920,
+        "h": 1080
+      },
+      "dpr": 1,
+      "mediaQueries": {
+        "min768": true,
+        "min900": true,
+        "min1280": true,
+        "max767": false
+      },
+      "overflowX": false,
+      "scrollWidth": 1920,
+      "mobileTree": false,
+      "tabletTree": true,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "faq": true,
+      "footer": false,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "priceFont": "38px",
+      "stage": {
+        "w": 612,
+        "h": 520,
+        "aspect": 1.178,
+        "x": 301,
+        "y": 109
+      },
+      "galleryOuterH": 683,
+      "buyY": 108,
+      "buyBottom": 496,
+      "buyVisibleInViewport": true,
+      "titleVisibleInViewport": true
+    }
+  ],
+  "homepage": {
+    "390": {
+      "s3": true,
+      "overflowX": false,
+      "title": "ZENOVELL | Premium Wellness Products",
+      "pass": true,
+      "w": 390,
+      "h": 844
+    },
+    "1280": {
+      "s3": true,
+      "overflowX": false,
+      "title": "ZENOVELL | Premium Wellness Products",
+      "pass": true,
+      "w": 1280,
+      "h": 800
+    }
+  },
+  "consoleErrors": [],
+  "summary": {
+    "allPass": true,
+    "primaryPass": true,
+    "failIds": []
+  }
+}

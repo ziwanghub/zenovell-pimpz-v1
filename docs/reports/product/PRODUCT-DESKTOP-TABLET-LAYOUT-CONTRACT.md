@@ -1,14 +1,14 @@
 # PRODUCT-DESKTOP-TABLET-LAYOUT-CONTRACT
 
 **Document ID:** `P-PRODUCT-BP-01`
-**Revision tasks:** `P-PRODUCT-BP-03` (v1.1 content) · `P-PRODUCT-BP-04` (docs freeze)
-**Version:** `1.1`
+**Revision tasks:** `P-PRODUCT-BP-03` (v1.1) · `P-PRODUCT-BP-04` (docs freeze) · **`P-PRODUCT-TABLET-02` (v1.2 ADR)**
+**Version:** `1.2`
 **Date:** `2026-07-22`
-**Status:** `SA_APPROVED_ENGINEERING_AUTHORITY` · **DOCS_FROZEN**
+**Status:** `SA_APPROVED_ENGINEERING_AUTHORITY` · **TABLET COMPOSITION REVISED (v1.2)**
 **Final readiness:** `IMPLEMENTATION_READY`
-**Authority freeze:** `BLUEPRINT_FROZEN_READY_FOR_RUNTIME`
+**Authority freeze:** Product Mobile + Desktop sticky rules remain frozen; **tablet stack band SUPERSEDED**
 **Mode:** Translate existing visual + system authority into implementable Desktop/Tablet Product layout
-**Runtime change:** `FORBIDDEN` by this document alone (implementation requires separate authorized ticket)
+**Runtime change:** Authorized under `P-PRODUCT-TABLET-02` for product route only
 
 ```text
 NOT A REDESIGN
@@ -44,8 +44,9 @@ APPROVED → DOCS FROZEN → READY FOR RUNTIME IMPLEMENTATION
 | v1.0 | Draft engineering authority (`DOCUMENT_READY_FOR_IMPLEMENTATION`) |
 | v1.1 | SA-directed authority corrections (FAQ, reuse, crop, density) |
 | v1.1 freeze | `P-PRODUCT-BP-04` — official Engineering Authority before Runtime |
-| Next | Desktop Runtime implementation under separate ticket |
-| Not yet | Runtime · ZZ Visual Review · Product Desktop/Tablet Freeze |
+| **v1.2** | **`P-PRODUCT-TABLET-02` ADR — Tablet uses Desktop composition from 768 (no stack, no sticky)** |
+| Next | Field re-verification · SA merge gate · Product Freeze |
+| Not yet | Product Desktop/Tablet Freeze · Production |
 
 ---
 
@@ -253,13 +254,26 @@ QUANTITY_STATE = FORBIDDEN (no cart qty mutation)
 | FAQ | Mobile FAQ **frozen** — content shared; **presentation/layout not altered** by this work |
 | This document | **Does not authorize** mobile layout edits |
 
-### 4.2 Tablet
+### 4.2 Tablet — **v1.2 ADR (P-PRODUCT-TABLET-02)**
+
+```text
+PREVIOUS (v1.1) — SUPERSEDED
+  768–899  Stack (mobile composition)
+  900–1279 Compact two-column
+
+CURRENT (v1.2) — APPROVED BY SA FIELD EVIDENCE
+  390–767  Mobile (frozen)
+  768–1279 Desktop composition · reduced density · NO sticky
+  ≥1280    Desktop + Sticky Buy (frozen)
+```
+
+**Rationale:** Field evidence (iPad Mini 768×1024, iPad Air 820×1180) showed stack composition wastes portrait ATF — gallery dominates, price/CTA below fold. Tablet has sufficient width for Desktop composition; tablet differs by **density only**, not hierarchy.
 
 | Band | Composition | Grid |
 |------|-------------|------|
-| **`768–899px`** | **Stacked** (gallery → buy module → below-fold) | Single column |
-| **`900–1279px`** | **Compact two-column** | Gallery **LEFT** · Buy module **RIGHT** |
+| **`768–1279px`** | **Desktop composition** (same hierarchy) | Gallery **LEFT** · Buy module **RIGHT** |
 | **Sticky** | **None** (see §5) | — |
+| **Density** | Reduced vs desktop (type, gap, gallery max-h) | — |
 
 #### Tablet container / gutters
 
@@ -273,17 +287,18 @@ QUANTITY_STATE = FORBIDDEN (no cart qty mutation)
 Outer canvas: `#050505` / panel `#0A0A0A`.
 Product route may exit `430px` MobileShell for **tablet/desktop product composition only**.
 
-#### Tablet compact two-column (`900–1279`)
+#### Tablet two-column (`768–1279`) — desktop composition
 
 | Token | Value |
 |-------|-------|
-| Grid | `grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)]` |
-| Column gap | `20px` · `24px` from `1024` |
+| Grid `768–819` | `grid-cols-[minmax(0,0.43fr)_minmax(0,0.57fr)]` · gap `16px` |
+| Grid `820–1279` | `grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)]` · gap `20–24px` |
 | Gallery / buy | Left / Right · **not sticky** |
-| Gallery stage | 1:1 frame; max-h `min(52vh, 420px)` |
-| Thumbs | 4-up; gap `8–10px` |
-| CTA row | See §3 equal/stack rules |
-| Trust row | **3** cards equal width under CTA (Desktop prototype density on tablet 2-col) |
+| Gallery stage | 1:1 frame; max-h **smaller than desktop** (`min(42–48vh, 320–400px)` progressive) |
+| Image fit | **contain** (crop protection) |
+| Thumbs | 4-up under stage |
+| CTA row | **Desktop dual LINE** (Secondary · Primary) — not mobile single CTA |
+| Trust row | **3** cards under CTA (desktop hierarchy) |
 
 ### 4.3 Desktop `≥1280px`
 
@@ -343,13 +358,13 @@ Product route may exit `430px` MobileShell for **tablet/desktop product composit
 
 ### Layout
 
-| Token | Desktop `≥1280` | Tablet `900–1279` | Tablet stack `768–899` |
-|-------|-----------------|-------------------|------------------------|
-| Main stage | Left column | Left column | Full width first |
-| Aspect ratio | **1:1** stage frame | **1:1** | **1:1** |
-| Min / max stage h | `360` / `520` | `300` / `420` | `280` / `380` |
-| Corner radius | `18–22px` | `16–18px` | `16px` |
-| Background | Dark stage + optional pink ambient | same | same |
+| Token | Desktop `≥1280` | Tablet `768–1279` (v1.2) | Mobile `<768` |
+|-------|-----------------|--------------------------|---------------|
+| Main stage | Left column | Left column (same composition) | Full width stack |
+| Aspect ratio | **1:1** stage frame | **1:1** | **1.56** frozen |
+| Min / max stage h | `360` / `520` | **smaller** — progressive `240–280` / `320–400` | Frozen mobile |
+| Corner radius | `18–22px` | `14–18px` | Frozen |
+| Fit | **contain** | **contain** | **cover** frozen |
 | Distortion | **Forbidden** | | |
 
 ### Crop-protection (product preservation) — required
@@ -833,6 +848,7 @@ PRODUCT_MOBILE_MODIFIED: NO
 | `1.0` | P-PRODUCT-BP-01 | Initial Desktop/Tablet layout contract |
 | `1.1` | P-PRODUCT-BP-03 | FAQ Desktop/Tablet authority finalized; Component Reuse Contract added; Gallery crop protection added; Review density locked; Related product density locked; Bundle measurement locked; Acceptance Criteria expanded; Runtime scope protected |
 | `1.1` freeze | **P-PRODUCT-BP-04** | **Official docs freeze** as Engineering Authority before Runtime implementation; no runtime changes |
+| **`1.2`** | **`P-PRODUCT-TABLET-02`** | **SA ADR: reject tablet stack 768–899. Tablet 768–1279 uses Desktop composition (2-col), dual CTA, 3-trust, contain gallery, reduced density, no sticky. Stack band removed. Field-driven (iPad Mini/Air).** |
 
 ### P-PRODUCT-BP-03 revision detail (v1.1 content)
 

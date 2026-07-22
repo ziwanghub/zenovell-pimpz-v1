@@ -67,7 +67,10 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
         <div
           className={[
             'scrollbar-none -mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 [overscroll-behavior-inline:contain]',
-            'min-[1280px]:mx-0 min-[1280px]:grid min-[1280px]:grid-cols-4 min-[1280px]:gap-4 min-[1280px]:overflow-visible min-[1280px]:px-0 min-[1280px]:pb-0 min-[1280px]:snap-none',
+            // Tablet: 2–3 cards; Desktop: 4
+            'min-[768px]:mx-0 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:gap-3 min-[768px]:overflow-visible min-[768px]:px-0 min-[768px]:pb-0 min-[768px]:snap-none',
+            'min-[900px]:grid-cols-3',
+            'min-[1280px]:grid-cols-4 min-[1280px]:gap-4',
           ].join(' ')}
           aria-label="สินค้าที่เกี่ยวข้อง"
         >
@@ -77,7 +80,8 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
               href={`/products/${product.slug}`}
               className={[
                 'group flex min-h-[314px] w-[75%] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_14px_32px_rgba(0,0,0,0.2)]',
-                'min-[1280px]:h-full min-[1280px]:w-auto min-[1280px]:min-h-[300px] min-[1280px]:shrink min-[1280px]:snap-align-none',
+                'min-[768px]:h-full min-[768px]:w-auto min-[768px]:min-h-[280px] min-[768px]:shrink min-[768px]:snap-align-none',
+                'min-[1280px]:min-h-[300px]',
               ].join(' ')}
             >
               {product.imageSrc ? (
@@ -86,8 +90,8 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
                     src={product.imageSrc}
                     alt={product.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105 min-[1280px]:object-contain min-[1280px]:group-hover:scale-100"
-                    sizes="(max-width: 1279px) 76vw, 280px"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 min-[768px]:object-contain min-[768px]:group-hover:scale-100"
+                    sizes="(max-width: 767px) 76vw, (max-width: 1279px) 33vw, 280px"
                     loading="lazy"
                   />
                 </div>

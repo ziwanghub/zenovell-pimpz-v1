@@ -252,15 +252,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <>
       <ProductBreadcrumb productTitle={product.title} />
 
-      {/* Desktop ATF — frozen for this task (P-PRODUCT-DESKTOP-01) */}
+      {/*
+        ATF composition (P-PRODUCT-TABLET-02 ADR + frozen Desktop ATF):
+        - <768: Mobile stack (frozen)
+        - 768–1279: Desktop composition (2-col), reduced density, NOT sticky
+        - ≥1280: 48/52 + sticky buy (Desktop frozen)
+      */}
       <div
         className={[
+          // Tablet 768–1279: same composition as desktop, tighter density
+          'min-[768px]:max-[1280px]:grid min-[768px]:max-[1280px]:items-start min-[768px]:max-[1280px]:pb-5',
+          'min-[768px]:max-[1280px]:grid-cols-[minmax(0,0.43fr)_minmax(0,0.57fr)] min-[768px]:max-[1280px]:gap-x-4',
+          'min-[820px]:max-[1280px]:grid-cols-[minmax(0,0.46fr)_minmax(0,0.54fr)] min-[820px]:max-[1280px]:gap-x-5',
+          'min-[1024px]:max-[1280px]:gap-x-6 min-[1024px]:max-[1280px]:pb-6',
+          // Desktop ≥1280
           'min-[1280px]:grid min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)]',
           'min-[1280px]:items-start min-[1280px]:gap-x-8 min-[1440px]:gap-x-10',
           'min-[1280px]:pb-8',
         ].join(' ')}
       >
-        <div className="min-[1280px]:min-w-0">
+        <div className="min-[768px]:min-w-0">
           <ProductGallery
             items={galleryItems}
             badgeLabel={product.badge?.label}
@@ -268,8 +279,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div
           className={[
+            'min-[768px]:min-w-0',
+            // Sticky buy: Desktop only — tablet never sticky
             'min-[1280px]:sticky min-[1280px]:top-[calc(var(--platform-header-offset,74px)+12px)]',
-            'min-[1280px]:z-10 min-[1280px]:min-w-0',
+            'min-[1280px]:z-10',
             'min-[1280px]:max-h-[calc(100vh-var(--platform-header-offset,74px)-28px)]',
             'min-[1280px]:overflow-y-auto min-[1280px]:overscroll-contain',
           ].join(' ')}
@@ -279,18 +292,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
 
       {/*
-        Below-the-fold: dual composition preserves <1280 order (mobile-era)
-        while Desktop ≥1280 uses contract order:
-        Information → Reviews → Related → Bundle → FAQ
-        (Final CTA mobile-only; Bundle carries desktop conversion.)
+        BTF dual trees (unique useId per instance):
+        - Mobile <768: frozen mobile-era order + Final CTA
+        - Tablet+Desktop ≥768: Info → Reviews → Related → Bundle → FAQ
+          (Bundle authority unchanged; Final CTA mobile-only)
       */}
-      {/*
-        Dual trees: inactive tree is display:none (not focusable).
-        Each instance uses useId() for unique heading/tab/FAQ IDs (02A safety).
-        inert is set on the hidden tree when JS runs for extra focus hardening;
-        server markup still relies on CSS display:none for the inactive tree.
-      */}
-      <div className="min-[1280px]:hidden" data-btf-tree="mobile">
+      <div className="min-[768px]:hidden" data-btf-tree="mobile">
         <ProductTrustSignals trustSignals={trustSignals} evidence={evidenceSnapshot} />
         {renderProductInformation()}
         <ProductReviews reviews={reviews} />
@@ -299,7 +306,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductFinalCta product={product} />
       </div>
 
-      <div className="hidden min-[1280px]:block" data-btf-tree="desktop">
+      <div className="hidden min-[768px]:block" data-btf-tree="tablet-desktop">
         <div className="space-y-1 pb-6" data-desktop-btf="product-information">
           {renderProductInformation()}
         </div>

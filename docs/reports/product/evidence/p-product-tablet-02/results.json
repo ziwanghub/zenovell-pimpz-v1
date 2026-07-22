@@ -1,0 +1,467 @@
+{
+  "phase": "P-PRODUCT-TABLET-02",
+  "authority": "v1.2-desktop-composition-from-768",
+  "results": [
+    {
+      "id": "t-768",
+      "w": 768,
+      "h": 1024,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 768,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 294,
+        "h": 294,
+        "x": 33,
+        "y": 109
+      },
+      "buy": {
+        "w": 392,
+        "h": 345,
+        "x": 344,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-820",
+      "w": 820,
+      "h": 1180,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 820,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 333,
+        "h": 333,
+        "x": 37,
+        "y": 109
+      },
+      "buy": {
+        "w": 393,
+        "h": 345,
+        "x": 391,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-900",
+      "w": 900,
+      "h": 1200,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 900,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 370,
+        "h": 360,
+        "x": 37,
+        "y": 109
+      },
+      "buy": {
+        "w": 436,
+        "h": 349,
+        "x": 428,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-1024",
+      "w": 1024,
+      "h": 1366,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1024,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 414,
+        "h": 400,
+        "x": 49,
+        "y": 109
+      },
+      "buy": {
+        "w": 488,
+        "h": 330,
+        "x": 488,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-1112",
+      "w": 1112,
+      "h": 834,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1112,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 454,
+        "h": 400,
+        "x": 49,
+        "y": 109
+      },
+      "buy": {
+        "w": 536,
+        "h": 330,
+        "x": 528,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-1180",
+      "w": 1180,
+      "h": 820,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1180,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 486,
+        "h": 394,
+        "x": 49,
+        "y": 109
+      },
+      "buy": {
+        "w": 572,
+        "h": 330,
+        "x": 560,
+        "y": 108
+      }
+    },
+    {
+      "id": "t-1279",
+      "w": 1279,
+      "h": 900,
+      "expect": "tablet",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1279,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 531,
+        "h": 400,
+        "x": 49,
+        "y": 109
+      },
+      "buy": {
+        "w": 626,
+        "h": 330,
+        "x": 605,
+        "y": 108
+      }
+    },
+    {
+      "id": "m-390",
+      "w": 390,
+      "h": 844,
+      "expect": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 390,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "finalCta": true,
+      "bundle": false,
+      "mobileTree": true,
+      "tabletTree": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 356,
+        "h": 228,
+        "x": 17,
+        "y": 109
+      },
+      "buy": {
+        "w": 390,
+        "h": 346,
+        "x": 0,
+        "y": 436
+      }
+    },
+    {
+      "id": "m-430",
+      "w": 430,
+      "h": 932,
+      "expect": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 430,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "finalCta": true,
+      "bundle": false,
+      "mobileTree": true,
+      "tabletTree": false,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 396,
+        "h": 254,
+        "x": 17,
+        "y": 109
+      },
+      "buy": {
+        "w": 430,
+        "h": 333,
+        "x": 0,
+        "y": 471
+      }
+    },
+    {
+      "id": "d-1280",
+      "w": 1280,
+      "h": 800,
+      "expect": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 559,
+        "h": 520,
+        "x": 41,
+        "y": 109
+      },
+      "buy": {
+        "w": 607,
+        "h": 388,
+        "x": 633,
+        "y": 108
+      }
+    },
+    {
+      "id": "d-1440",
+      "w": 1440,
+      "h": 900,
+      "expect": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1440,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 574,
+        "h": 520,
+        "x": 101,
+        "y": 109
+      },
+      "buy": {
+        "w": 624,
+        "h": 388,
+        "x": 716,
+        "y": 108
+      }
+    },
+    {
+      "id": "d-1920",
+      "w": 1920,
+      "h": 1080,
+      "expect": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1920,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "finalCta": false,
+      "bundle": true,
+      "mobileTree": false,
+      "tabletTree": true,
+      "titleInView": true,
+      "ctaInView": true,
+      "stage": {
+        "w": 612,
+        "h": 520,
+        "x": 301,
+        "y": 109
+      },
+      "buy": {
+        "w": 666,
+        "h": 388,
+        "x": 954,
+        "y": 108
+      }
+    }
+  ],
+  "homepage": {
+    "390": {
+      "s3": true,
+      "overflowX": false,
+      "pass": true
+    },
+    "1280": {
+      "s3": true,
+      "overflowX": false,
+      "pass": true
+    }
+  },
+  "consoleErrors": [],
+  "summary": {
+    "allPass": true,
+    "fails": []
+  }
+}

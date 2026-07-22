@@ -56,8 +56,8 @@ export function ProductFAQ({ faq, defaultOpenIndex = 0 }: ProductFAQProps) {
           </p>
         </div>
 
-        {/* Desktop ≥1280: 2-column accordion when width allows */}
-        <div className="space-y-2.5 min-[1280px]:grid min-[1280px]:grid-cols-2 min-[1280px]:items-start min-[1280px]:gap-3 min-[1280px]:space-y-0">
+        {/* Tablet 900+ + Desktop: 2-column accordion when width allows */}
+        <div className="space-y-2.5 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:items-start min-[768px]:gap-3 min-[768px]:space-y-0">
           {faq.map((item, index) => {
             const isOpen = openIndex === index;
             const triggerId = `${baseId}-faq-trigger-${index}`;

@@ -1,0 +1,16 @@
+{
+  "phase": "P-PRODUCT-TABLET-01D",
+  "beforeCommit": "53fbc67",
+  "primary": {
+    "ipad-mini-portrait": {
+      "viewport": "768x1024",
+      "before": { "stage": "702x450", "aspect": 1.56, "objectFit": "cover", "priceFont": "48px", "buyY": 746, "galleryOuterH": 638, "field": "FAIL" },
+      "after": { "stage": "380x380", "aspect": 1.0, "objectFit": "contain", "priceFont": "36px", "buyY": 676, "field": "PASS" }
+    },
+    "ipad-air-portrait": {
+      "viewport": "820x1180",
+      "before": { "stage": "746x478", "aspect": 1.56, "objectFit": "cover", "priceFont": "48px", "buyY": 785, "galleryOuterH": 677, "field": "FAIL" },
+      "after": { "stage": "380x380", "aspect": 1.0, "objectFit": "contain", "priceFont": "36px", "buyY": 687, "field": "PASS" }
+    }
+  }
+}
