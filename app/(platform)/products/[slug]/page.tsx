@@ -204,15 +204,43 @@ export default async function ProductPage({ params }: ProductPageProps) {
   // S5 channel assets (SEO/AI-SEO/LINE/Ads/Marketplace) referenced via product.commerceContext and entity for cross-channel consistency.
 
   // S1 + S2 + S3 + S4 + S5 INTEGRATION (WP3): Full Channel & Commerce Ready Pilot Page
-  // Full order: ... (S1-S4) + SEO/AI-SEO metadata (S5) + LINE/Ads/Marketplace handoff (S5) + Commerce Context
-  // Verified: Entity consistency, CTA continuity, cross-channel asset mapping, commerce flow.
-  // SEO/AI-SEO, LINE, Ads, Marketplace assets linked via product entity + commerceContext.
-  // MobileShell max-w-[430px] respected.
+  // P-PRODUCT-DESKTOP-01: Desktop ≥1280 above-the-fold 48/52 grid (gallery | buy).
+  // Mobile <768 frozen; below-fold unchanged; tablet layout deferred.
   return (
     <>
       <ProductBreadcrumb productTitle={product.title} />
-      <ProductGallery items={galleryItems} />
-      <ProductHero product={product} />
+
+      {/*
+        Desktop ATF shell — two-column only at min-[1280px].
+        Below 1280: document order Gallery → Buy (stack; mobile frozen).
+      */}
+      <div
+        className={[
+          'min-[1280px]:grid min-[1280px]:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)]',
+          'min-[1280px]:items-start min-[1280px]:gap-x-8 min-[1440px]:gap-x-10',
+          'min-[1280px]:pb-8',
+        ].join(' ')}
+      >
+        <div className="min-[1280px]:min-w-0">
+          <ProductGallery
+            items={galleryItems}
+            badgeLabel={product.badge?.label}
+          />
+        </div>
+
+        {/* Sticky buy column — desktop only; stop within ATF grid row */}
+        <div
+          className={[
+            'min-[1280px]:sticky min-[1280px]:top-[calc(var(--platform-header-offset,74px)+12px)]',
+            'min-[1280px]:z-10 min-[1280px]:min-w-0',
+            'min-[1280px]:max-h-[calc(100vh-var(--platform-header-offset,74px)-28px)]',
+            'min-[1280px]:overflow-y-auto min-[1280px]:overscroll-contain',
+          ].join(' ')}
+        >
+          <ProductHero product={product} />
+        </div>
+      </div>
+
       <ProductTrustSignals trustSignals={trustSignals} evidence={evidenceSnapshot} />
       <ProductProblemSnapshot
         title={problemTitle}
