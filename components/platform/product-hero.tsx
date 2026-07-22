@@ -19,8 +19,9 @@ interface ProductHeroProps {
 
 /**
  * Buy module / product identity column.
- * Mobile layout frozen.
- * Tablet 900–1279: dual LINE CTAs, 3-card trust, intermediate type (P-PRODUCT-TABLET-01).
+ * Mobile layout frozen <768.
+ * Tablet stack 768–899: intermediate type scale (still single CTA / stack ATF).
+ * Tablet 900–1279: dual LINE CTAs, 3-card trust, intermediate type.
  * Desktop ≥1280: denser type, dual LINE CTAs, 3-card trust.
  */
 export function ProductHero({ product }: ProductHeroProps) {
@@ -132,8 +133,8 @@ export function ProductHero({ product }: ProductHeroProps) {
           </div>
         )}
 
-        <div className="mt-1.5 flex items-end gap-2 min-[900px]:mt-2.5 min-[1280px]:mt-3 min-[1280px]:gap-3">
-          <div className="text-[48px] font-extrabold leading-none tracking-[-0.055em] text-[#E91E8C] min-[900px]:text-[34px] min-[1280px]:text-[38px] min-[1280px]:tracking-[-0.04em]">
+        <div className="mt-1.5 flex items-end gap-2 min-[768px]:mt-2 min-[900px]:mt-2.5 min-[1280px]:mt-3 min-[1280px]:gap-3">
+          <div className="text-[48px] font-extrabold leading-none tracking-[-0.055em] text-[#E91E8C] min-[768px]:text-[36px] min-[768px]:tracking-[-0.04em] min-[900px]:text-[34px] min-[1280px]:text-[38px]">
             {product.pricing.sale.display}
           </div>
           {hasDiscount && (

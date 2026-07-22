@@ -21,9 +21,10 @@ interface ProductGalleryProps {
 
 /**
  * Product gallery.
- * Mobile layout frozen (aspect, cover crop, thumbs).
- * Tablet 900–1279: square stage, contain-first (P-PRODUCT-TABLET-01).
- * Desktop ≥1280: square stage, contain-first crop protection.
+ * Mobile layout frozen <768 (aspect 1.56, cover crop, thumbs).
+ * Tablet stack 768–899: 1:1 stage, min/max 280–380, contain-first (contract §6).
+ * Tablet 900–1279: square stage, min/max 300–420, contain-first.
+ * Desktop ≥1280: square stage, min/max 360–520, contain-first.
  */
 export function ProductGallery({ items, badgeLabel }: ProductGalleryProps) {
   const galleryItems = useMemo(() => items.filter((item) => item.src), [items]);
@@ -73,15 +74,18 @@ export function ProductGallery({ items, badgeLabel }: ProductGalleryProps) {
           aria-label="แกลเลอรีสินค้า"
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="relative overflow-hidden rounded-[26px] border border-white/9 bg-[#111111] shadow-[0_16px_42px_rgba(0,0,0,0.32)] outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C]/60 min-[900px]:rounded-[20px]"
+          className="relative overflow-hidden rounded-[26px] border border-white/9 bg-[#111111] shadow-[0_16px_42px_rgba(0,0,0,0.32)] outline-none focus-visible:ring-2 focus-visible:ring-[#E91E8C]/60 min-[768px]:rounded-[20px]"
         >
           <div
             className={[
               'relative overflow-hidden rounded-[28px] bg-black',
-              // Mobile frozen + tablet stack <900 aspect
+              // Mobile <768 frozen: wide stage
               'aspect-[1.56/1]',
-              // Tablet compact 2-col + Desktop: square product stage
-              'min-[900px]:aspect-square min-[900px]:min-h-[300px] min-[900px]:max-h-[420px] min-[900px]:rounded-[16px]',
+              // Tablet stack 768–899 (contract §6): 1:1, 280–380, capped so portrait ATF is not mobile-blown
+              'min-[768px]:mx-auto min-[768px]:aspect-square min-[768px]:min-h-[280px] min-[768px]:max-h-[380px] min-[768px]:w-full min-[768px]:max-w-[min(100%,380px)] min-[768px]:rounded-[16px]',
+              // Tablet compact 2-col 900–1279: fill column; 300–420
+              'min-[900px]:mx-0 min-[900px]:max-w-none min-[900px]:min-h-[300px] min-[900px]:max-h-[420px]',
+              // Desktop ≥1280: 360–520
               'min-[1280px]:min-h-[360px] min-[1280px]:max-h-[520px] min-[1280px]:rounded-[18px]',
             ].join(' ')}
           >
@@ -90,20 +94,20 @@ export function ProductGallery({ items, badgeLabel }: ProductGalleryProps) {
               alt={active.alt}
               fill
               priority
-              sizes="(max-width: 899px) 100vw, (max-width: 1279px) 46vw, (max-width: 1535px) 48vw, 640px"
+              sizes="(max-width: 767px) 100vw, (max-width: 899px) 380px, (max-width: 1279px) 46vw, (max-width: 1535px) 48vw, 640px"
               className={[
                 // Mobile frozen cover crop
                 'object-cover transition duration-300',
-                // Tablet 900+ + Desktop: contain-first crop protection
-                'min-[900px]:object-contain min-[900px]:object-center min-[900px]:scale-100',
+                // Tablet stack + 2-col + Desktop: contain-first crop protection (contract §6)
+                'min-[768px]:object-contain min-[768px]:object-center min-[768px]:!scale-100',
               ].join(' ')}
               style={{
                 objectPosition: active.objectPosition ?? 'center 44%',
-                // Mobile-only zoom for packshot framing (disabled ≥900 via scale-100)
+                // Mobile-only zoom for packshot framing; ≥768 beaten by !scale-100
                 transform: `scale(${(active.scale ?? 1) * 1.04})`,
               }}
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.14),rgba(0,0,0,0.05)_35%,rgba(0,0,0,0.38)_100%)] min-[900px]:bg-[linear-gradient(180deg,rgba(0,0,0,0.08),transparent_40%,rgba(0,0,0,0.22)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.14),rgba(0,0,0,0.05)_35%,rgba(0,0,0,0.38)_100%)] min-[768px]:bg-[linear-gradient(180deg,rgba(0,0,0,0.08),transparent_40%,rgba(0,0,0,0.22)_100%)]" />
 
             <div className="absolute left-3.5 top-3.5 z-10 min-[1280px]:left-4 min-[1280px]:top-4">
               <div className="inline-flex rounded-[8px] bg-[#E91E8C] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_18px_rgba(233,30,140,0.3)]">
@@ -159,7 +163,7 @@ export function ProductGallery({ items, badgeLabel }: ProductGalleryProps) {
                       sizes="100px"
                       className={[
                         'object-cover transition duration-300 group-hover:scale-105',
-                        'min-[900px]:object-contain min-[900px]:group-hover:scale-100',
+                        'min-[768px]:object-contain min-[768px]:group-hover:scale-100',
                       ].join(' ')}
                       style={{
                         objectPosition: item.objectPosition ?? 'center 44%',

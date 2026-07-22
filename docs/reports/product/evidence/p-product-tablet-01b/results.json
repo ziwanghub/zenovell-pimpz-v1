@@ -1,0 +1,559 @@
+{
+  "commit": "53fbc67",
+  "pr": 37,
+  "mode": "independent-browser-verification",
+  "results": [
+    {
+      "w": 390,
+      "band": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": true,
+      "bundle": false,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [],
+      "colRatio": null,
+      "footerPresent": true,
+      "g": {
+        "x": 0,
+        "y": 108,
+        "w": 390,
+        "h": 329
+      },
+      "b": {
+        "x": 0,
+        "y": 437,
+        "w": 390,
+        "h": 346
+      }
+    },
+    {
+      "w": 430,
+      "band": "mobile",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": true,
+      "bundle": false,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [],
+      "colRatio": null,
+      "footerPresent": true,
+      "g": {
+        "x": 0,
+        "y": 108,
+        "w": 430,
+        "h": 365
+      },
+      "b": {
+        "x": 0,
+        "y": 473,
+        "w": 430,
+        "h": 333
+      }
+    },
+    {
+      "w": 768,
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": null,
+      "footerPresent": true,
+      "g": {
+        "x": 32,
+        "y": 108,
+        "w": 704,
+        "h": 638
+      },
+      "b": {
+        "x": 32,
+        "y": 746,
+        "w": 704,
+        "h": 335
+      }
+    },
+    {
+      "w": 820,
+      "band": "tablet-stack",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "twoCol": false,
+      "sticky": false,
+      "objectFit": "cover",
+      "dualCta": 1,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": null,
+      "footerPresent": true,
+      "g": {
+        "x": 36,
+        "y": 108,
+        "w": 748,
+        "h": 677
+      },
+      "b": {
+        "x": 36,
+        "y": 785,
+        "w": 748,
+        "h": 335
+      }
+    },
+    {
+      "w": 900,
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 900,
+      "innerWidth": 900,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "46/54",
+      "footerPresent": true,
+      "g": {
+        "x": 36,
+        "y": 108,
+        "w": 372,
+        "h": 474
+      },
+      "b": {
+        "x": 428,
+        "y": 108,
+        "w": 436,
+        "h": 381
+      }
+    },
+    {
+      "w": 1024,
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "46/54",
+      "footerPresent": true,
+      "g": {
+        "x": 48,
+        "y": 108,
+        "w": 416,
+        "h": 529
+      },
+      "b": {
+        "x": 488,
+        "y": 108,
+        "w": 488,
+        "h": 381
+      }
+    },
+    {
+      "w": 1112,
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1112,
+      "innerWidth": 1112,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "46/54",
+      "footerPresent": true,
+      "g": {
+        "x": 48,
+        "y": 108,
+        "w": 456,
+        "h": 546
+      },
+      "b": {
+        "x": 528,
+        "y": 108,
+        "w": 536,
+        "h": 360
+      }
+    },
+    {
+      "w": 1279,
+      "band": "tablet-2col",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1279,
+      "innerWidth": 1279,
+      "twoCol": true,
+      "sticky": false,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "46/54",
+      "footerPresent": true,
+      "g": {
+        "x": 48,
+        "y": 108,
+        "w": 533,
+        "h": 565
+      },
+      "b": {
+        "x": 605,
+        "y": 108,
+        "w": 626,
+        "h": 360
+      }
+    },
+    {
+      "w": 1280,
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "48/52",
+      "footerPresent": true,
+      "g": {
+        "x": 40,
+        "y": 108,
+        "w": 561,
+        "h": 670
+      },
+      "b": {
+        "x": 633,
+        "y": 108,
+        "w": 607,
+        "h": 388
+      }
+    },
+    {
+      "w": 1440,
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "48/52",
+      "footerPresent": true,
+      "g": {
+        "x": 100,
+        "y": 108,
+        "w": 576,
+        "h": 674
+      },
+      "b": {
+        "x": 716,
+        "y": 108,
+        "w": 624,
+        "h": 388
+      }
+    },
+    {
+      "w": 1920,
+      "band": "desktop",
+      "pass": true,
+      "checks": {
+        "title": true,
+        "overflow": true,
+        "ctaOverlap": true,
+        "galleryBuy": true,
+        "faq": true,
+        "footer": true,
+        "layout": true
+      },
+      "title": "NICKY PIMPZ BOSS",
+      "overflowX": false,
+      "scrollWidth": 1920,
+      "innerWidth": 1920,
+      "twoCol": true,
+      "sticky": true,
+      "objectFit": "contain",
+      "dualCta": 2,
+      "ctaOverlap": false,
+      "galleryBuyOverlap": false,
+      "finalCta": false,
+      "bundle": true,
+      "faqShown": true,
+      "reviewsVisible": 4,
+      "relatedVisible": 4,
+      "order": [
+        "product-information",
+        "reviews",
+        "related",
+        "bundle",
+        "faq"
+      ],
+      "colRatio": "48/52",
+      "footerPresent": true,
+      "g": {
+        "x": 300,
+        "y": 108,
+        "w": 614,
+        "h": 683
+      },
+      "b": {
+        "x": 954,
+        "y": 108,
+        "w": 666,
+        "h": 388
+      }
+    }
+  ],
+  "homepage": {
+    "390": {
+      "s3": true,
+      "overflowX": false,
+      "pass": true
+    },
+    "1280": {
+      "s3": true,
+      "overflowX": false,
+      "title": "ZENOVELL | Premium Wellness Products",
+      "pass": true
+    }
+  },
+  "consoleErrors": []
+}
