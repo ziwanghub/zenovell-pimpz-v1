@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Image from 'next/image';
 import { MessageCircleMore, Plus } from 'lucide-react';
 
@@ -16,17 +17,30 @@ type BundlePair = {
 
 interface ProductBundleProps {
   product: Product;
+  /** Resolved pair from product.bundle.pairedProductSlug authority */
   pair?: BundlePair | null;
 }
 
 /**
- * Desktop bundle promotion band (P-PRODUCT-DESKTOP-02).
- * LINE-only conversion. Real product pairing only — no invented discounts.
+ * Desktop companion / co-use band (P-PRODUCT-DESKTOP-02 / 02A).
+ * LINE-only. Pairing must come from explicit product.bundle authority.
  */
 export function ProductBundle({ product, pair }: ProductBundleProps) {
-  if (!pair) {
+  const titleId = useId();
+
+  if (!pair || !product.bundle?.pairedProductSlug) {
     return null;
   }
+
+  // Guard: only render when pair matches explicit authority slug
+  if (pair.slug !== product.bundle.pairedProductSlug) {
+    return null;
+  }
+
+  const bandLabel = product.bundle.label || 'แนะนำให้ใช้ร่วมกัน';
+  const bandDescription =
+    product.bundle.description ||
+    `แนะนำให้ใช้ ${product.title} ร่วมกับ ${pair.title} — สอบถามรายละเอียดผ่าน LINE`;
 
   const handleLine = () => {
     activateLineCta({
@@ -40,14 +54,14 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
       landingPage: `/products/${product.slug}`,
       intent: 'high_intent',
       source: 'product-bundle-desktop',
-      campaign: `bundle-with-${pair.slug}`,
+      campaign: `co-use-${product.bundle?.pairedProductSlug}`,
     });
   };
 
   return (
     <section
       className="px-4 py-5 text-white min-[690px]:px-0"
-      aria-labelledby="product-bundle-title"
+      aria-labelledby={titleId}
     >
       <div className="platform-shell-frame">
         <div className="overflow-hidden rounded-[24px] border border-[#E91E8C]/25 bg-[radial-gradient(circle_at_85%_50%,rgba(233,30,140,0.18),transparent_42%),linear-gradient(180deg,rgba(22,12,20,0.98),rgba(8,6,10,0.99))] p-5 shadow-[0_20px_48px_rgba(0,0,0,0.32)] min-[1280px]:p-6">
@@ -55,17 +69,16 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
             {/* Copy ~38–42% */}
             <div className="min-w-0 text-left">
               <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#E91E8C]/90">
-                แพ็กคู่แนะนำ
+                {bandLabel}
               </p>
               <h2
-                id="product-bundle-title"
+                id={titleId}
                 className="mt-2 text-[22px] font-extrabold leading-[1.15] tracking-[-0.02em] text-white min-[1280px]:text-[26px]"
               >
-                พร้อมเริ่มต้นกับ {product.title}
+                {product.title} + {pair.title}
               </h2>
               <p className="mt-2 text-[14px] leading-[1.55] text-white/72">
-                จับคู่กับ {pair.title} จากแคตตาล็อกจริง — สอบถามแพ็กและการใช้งานผ่าน LINE
-                โดยไม่สร้างส่วนลดหรือสต็อกสมมติ
+                {bandDescription}
               </p>
               <div className="mt-3 flex flex-wrap items-end gap-3">
                 <div>
@@ -120,15 +133,15 @@ export function ProductBundle({ product, pair }: ProductBundleProps) {
               <button
                 type="button"
                 onClick={handleLine}
-                aria-label={`สอบถามแพ็ก ${product.title} กับ ${pair.title} ผ่าน LINE`}
+                aria-label={`สอบถามการใช้ ${product.title} ร่วมกับ ${pair.title} ผ่าน LINE`}
                 className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[#E91E8C] px-4 text-[14px] font-bold text-white shadow-[0_0_22px_rgba(233,30,140,0.4)] transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E91E8C]"
               >
                 <LineIcon size={18} />
-                สอบถามแพ็กผ่าน LINE
+                สอบถามผ่าน LINE
               </button>
               <p className="text-center text-[11px] leading-4 text-white/50">
                 <MessageCircleMore className="mr-1 inline h-3.5 w-3.5 align-text-bottom" aria-hidden="true" />
-                LINE-first · ไม่มีตะกร้าหรือ checkout
+                LINE-first · ไม่มีตะกร้า · ไม่มีส่วนลดสมมติ
               </p>
             </div>
           </div>

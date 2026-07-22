@@ -93,6 +93,16 @@ export type Product = {
     campaignMetadata?: { defaultCampaign: string; sources: string[] };
     consumerMapping?: { intent: string; surfaces: string[] };
   };
+  /**
+   * Explicit desktop bundle pairing authority (P-PRODUCT-DESKTOP-02A).
+   * Deterministic catalog relationship — never derived from related-products array order.
+   * No invented discounts; LINE-first handoff only.
+   */
+  bundle?: {
+    pairedProductSlug: string;
+    label?: string;
+    description?: string;
+  };
 };
 
 export const products: Product[] = [
@@ -224,6 +234,13 @@ export const products: Product[] = [
         intent: "high_intent",
         surfaces: ["hero", "product-card", "final-cta", "line-rich"]
       }
+    },
+    // Desktop bundle pairing (explicit authority — BOSS MEN is catalog product BSM-002)
+    bundle: {
+      pairedProductSlug: "boss-men",
+      label: "แนะนำให้ใช้ร่วมกัน",
+      description:
+        "จับคู่ NICKY PIMPZ BOSS กับ BOSS MEN จากแคตตาล็อกจริง — สอบถามการใช้งานผ่าน LINE โดยไม่อ้างส่วนลดหรือโปรโมชันที่ไม่มีใน authority",
     },
   },
   {

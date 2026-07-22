@@ -1,68 +1,80 @@
 # P-PRODUCT-DESKTOP-02 — Desktop Below-the-Fold Closeout
 
-**Task:** P-PRODUCT-DESKTOP-02
+**Task:** P-PRODUCT-DESKTOP-02 (+ **02A** authority/safety gate)
 **Date:** 2026-07-22
 **Branch:** `feature/product-desktop-btf-02`
-**Base:** `main` @ `9e4b6b8` (P-PRODUCT-DESKTOP-01 merged)
-**Status:** Implementation complete — **awaiting SA review / do not merge without approval**
+**Base:** `main` @ `9e4b6b8`
+**PR:** #35 — **HOLD MERGE** until SA re-review after 02A
+**Status:** `READY_FOR_SA_MERGE_REVIEW` (after 02A corrections)
 
 ## Authority
 
 | Role | Reference |
 |------|-----------|
-| Engineering | `docs/reports/product/PRODUCT-DESKTOP-TABLET-LAYOUT-CONTRACT.md` v1.1 |
+| Engineering | Layout Contract v1.1 DOCS_FROZEN |
 | Visual | `desktop-prodects-page-ต้นแบบ.png` |
-| ATF frozen | P-PRODUCT-DESKTOP-01 on main |
+| ATF | P-PRODUCT-DESKTOP-01 frozen on main |
 
-## Reuse map
+---
 
-| Surface | Action |
-|---------|--------|
-| ProductKnowledgeTabs | Reuse + desktop densify (equal tabs) |
-| ProductProblemSnapshot / Expectation | Reuse inside Information composition |
-| ProductReviews | Reuse + desktop 3-col grid |
-| ProductRelatedProducts | Reuse + desktop 4-col grid |
-| ProductFAQ | Reuse + desktop 2-col + closed default on desktop |
-| ProductFinalCta | Mobile/tablet only (`min-[1280px]:hidden`) |
-| ProductBundle | **New** route-local component; LINE via `activateLineCta` |
-| Product data | `products.ts` / entity loader only |
-| Gallery / Hero | Unchanged (ATF frozen) |
+## P-PRODUCT-DESKTOP-02A — Bundle authority
 
-## Desktop section order (after)
+| Field | Value |
+|-------|--------|
+| **Paired product** | **BOSS MEN** (`boss-men` / BSM-002) |
+| **Authority source** | `content/products.ts` → `products[nicky-pimpz-boss].bundle.pairedProductSlug` |
+| **Shape** | `bundle?: { pairedProductSlug; label?; description? }` on `Product` |
+| **First-related derivation removed?** | **Yes** — page resolves only via explicit slug + catalog lookup |
+| **Deterministic?** | **Yes** |
+| **Invented discount/promo?** | **No** — neutral co-use copy; prices shown as individual list prices only |
+| **Copy** | label: `แนะนำให้ใช้ร่วมกัน` · description explains co-use + LINE, no fake bundle savings |
+
+---
+
+## P-PRODUCT-DESKTOP-02A — Dual-tree safety
+
+| Check | Result |
+|-------|--------|
+| Implementation | Dual BTF trees: `data-btf-tree="mobile"` / `"desktop"` with CSS `display:none` on inactive tree |
+| Duplicate IDs **before** | Static `product-reviews-title`, `related-products-title` (and risk of collision across trees) |
+| Duplicate IDs **after** | **0** in `#product-page-content` and full document (verified 390–1920) |
+| Correction | `useId()` for reviews/related/bundle headings; knowledge/FAQ/expectation already used `useId` per instance |
+| ARIA refs (product root) | **0 broken** |
+| Hidden focusable | **Cannot focus** controls inside `display:none` trees |
+| Keyboard tabs (desktop) | **PASS** |
+| Keyboard FAQ (desktop) | **PASS** |
+| JSON-LD | Single pair (product + breadcrumb) — not duplicated by BTF trees |
+| Hydration | No pageerror observed in audit run |
+| Analytics | Bundle/Final CTA only on their visible trees; no double-render of Final CTA on desktop |
+
+### Viewport matrix (02A audit)
+
+| Width | Bundle visible | Order | prodDups | hiddenFocus | Result |
+|------:|:--------------:|-------|:--------:|:-----------:|--------|
+| 390–1279 | no | mobile tree | 0 | false | PASS |
+| 1280 / 1440 / 1920 | yes | info→reviews→related→bundle→faq | 0 | false | PASS |
+
+Evidence: `docs/reports/product/evidence/p-product-desktop-02/dom-safety-audit.json`
+
+---
+
+## Reuse map (unchanged intent)
+
+Knowledge tabs, problem, expectation, reviews, related, FAQ accordion, LINE activation, catalog entities.
+**New:** `ProductBundle` + optional `Product.bundle` field.
+
+## Desktop order
 
 ```text
-ATF (Gallery | Buy)
-→ Product Information (Problem + Knowledge tabs + Expectation)
-→ Reviews
-→ Related Products
-→ Bundle Promotion
-→ FAQ
-→ Footer
+ATF → Information → Reviews → Related → Bundle → FAQ → Footer
+Final CTA: mobile tree only
 ```
 
-Final CTA is **not** in Desktop sequence (Bundle carries LINE conversion).
+## Mobile / &lt;1280
 
-## Mobile / &lt;1280 order (preserved)
+Preserved mobile-era order and Final CTA. Bundle not shown.
 
-```text
-TrustSignals → Information modules → Reviews → FAQ → Related → Final CTA
-```
-
-Dual composition wrappers (`min-[1280px]:hidden` / `hidden min-[1280px]:block`).
-
-## Browser evidence
-
-`docs/reports/product/evidence/p-product-desktop-02/`
-
-| Viewport | Result | Notes |
-|----------|--------|-------|
-| 1280–1920 | **PASS** | order info>reviews>related>bundle>faq; no Final CTA; sticky ATF; no overflow |
-| 390–1279 | **PASS** | mobile-era order; Final CTA visible; bundle hidden |
-| Homepage 1280 | **PASS** | S3 present |
-
-Source metrics: `evidence/p-product-desktop-02/results.json`
-
-## Quality gates
+## Quality gates (02A)
 
 | Gate | Result |
 |------|--------|
@@ -72,17 +84,15 @@ Source metrics: `evidence/p-product-desktop-02/results.json`
 
 ## Known warnings
 
-1. Dual composition duplicates markup trees for breakpoint-safe order (display:none hides inactive tree from a11y).
-2. Related products = 4 real catalog SKUs excluding current.
-3. Bundle pairs first related product (e.g. BOSS MEN) — no invented discount.
-4. Review count is authority-backed (3 real reviews on pilot); desktop grid shows all real cards without fabrication.
-5. Tablet compact 2-col still pending (not this task).
-6. Gallery multi-angle assets still interim (ATF scope).
+1. Dual trees still duplicate **content nodes** (not IDs); inactive tree `display:none`
+2. Frozen GlobalHeader may have drawer `aria-controls` when panel unmounted — **out of BTF scope** (not product-root)
+3. Tablet compact layout still pending
+4. Bundle is co-use recommendation, not a priced promotional bundle SKU
 
-## Explicit non-goals confirmed
+## Files touched in 02A
 
-- Tablet implementation: **not done**
-- Product Mobile changes: **not done**
-- Homepage / Header / Footer: **not done**
-- Packages / security: **not done**
-- Cart/checkout: **not done**
+- `content/products.ts` — `bundle` type + Nicky explicit pair
+- `app/(platform)/products/[slug]/page.tsx` — explicit pair resolve
+- `product-bundle.tsx` — authority guard + neutral copy
+- `product-reviews.tsx` / `product-related-products.tsx` — unique IDs
+- closeout + `dom-safety-audit.json`

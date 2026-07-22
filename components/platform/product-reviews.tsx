@@ -1,3 +1,7 @@
+'use client';
+
+import { useId } from 'react';
+
 interface ReviewItem {
   author: string;
   quote: string;
@@ -28,11 +32,13 @@ function formatReviewDate(date?: string) {
 }
 
 export function ProductReviews({ reviews }: ProductReviewsProps) {
+  const headingId = useId();
+
   if (!reviews || reviews.length === 0) {
     return (
-      <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby="product-reviews-title">
+      <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={headingId}>
         <div className="platform-shell-frame rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.96),rgba(8,8,10,0.98))] px-5 py-6 text-center text-sm text-white/55">
-          <h2 id="product-reviews-title" className="text-lg font-semibold text-white">
+          <h2 id={headingId} className="text-lg font-semibold text-white">
             รีวิวจากลูกค้า
           </h2>
           <p className="mt-2">รีวิวจากลูกค้าจะปรากฏที่นี่เมื่อมีข้อมูลพร้อมแสดงผล</p>
@@ -53,7 +59,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
     : `มีรีวิวจากลูกค้า ${reviewCount} รายการ`;
 
   return (
-    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby="product-reviews-title">
+    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={headingId}>
       <div className="platform-shell-frame rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(250,204,21,0.12),transparent_30%),linear-gradient(180deg,rgba(22,22,26,0.96),rgba(8,8,10,0.99))] p-4 shadow-[0_18px_48px_rgba(0,0,0,0.28)]">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
@@ -61,7 +67,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
               Reviews
             </p>
             <h2
-              id="product-reviews-title"
+              id={headingId}
               className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-white"
             >
               รีวิวจากลูกค้า

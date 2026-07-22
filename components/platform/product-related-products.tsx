@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -29,6 +30,8 @@ function getProductTypeLabel(title: string) {
 }
 
 export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProductsProps) {
+  const headingId = useId();
+
   if (!relatedProducts || relatedProducts.length === 0) {
     return (
       <section className="px-4 py-4 text-white min-[690px]:px-0">
@@ -40,14 +43,14 @@ export function ProductRelatedProducts({ relatedProducts }: ProductRelatedProduc
   }
 
   return (
-    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby="related-products-title">
+    <section className="px-4 py-4 text-white min-[690px]:px-0" aria-labelledby={headingId}>
       <div className="platform-shell-frame">
         <div className="mb-3">
           <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
             Related Products
           </div>
           <h2
-            id="related-products-title"
+            id={headingId}
             className="mt-1.5 text-[20px] font-semibold tracking-[-0.02em] text-white"
           >
             สินค้าที่เกี่ยวข้อง

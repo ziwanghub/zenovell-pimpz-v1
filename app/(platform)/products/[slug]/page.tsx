@@ -204,8 +204,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const structuredData = generateProductStructuredData(product);
   // S5 channel assets (SEO/AI-SEO/LINE/Ads/Marketplace) referenced via product.commerceContext and entity for cross-channel consistency.
 
-  // Bundle pair: first real related product from catalog authority (no invented SKU).
-  const bundlePair = relatedProducts[0] ?? null;
+  // Bundle pair: explicit product.bundle.pairedProductSlug authority only (P-PRODUCT-DESKTOP-02A).
+  // Never derived from related-products array order.
+  const bundlePairEntity = product.bundle?.pairedProductSlug
+    ? allProducts.find(
+        (p) => p.slug === product.bundle?.pairedProductSlug && p.slug !== product.slug && p.active,
+      )
+    : undefined;
+  const bundlePair = bundlePairEntity
+    ? {
+        slug: bundlePairEntity.slug,
+        title: bundlePairEntity.title,
+        pricing: bundlePairEntity.pricing,
+        imageSrc: bundlePairEntity.imageSrc,
+      }
+    : null;
 
   // Shared information modules (same data; factory so dual trees are independent).
   const renderProductInformation = () => (
@@ -271,7 +284,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         Information → Reviews → Related → Bundle → FAQ
         (Final CTA mobile-only; Bundle carries desktop conversion.)
       */}
-      <div className="min-[1280px]:hidden">
+      {/*
+        Dual trees: inactive tree is display:none (not focusable).
+        Each instance uses useId() for unique heading/tab/FAQ IDs (02A safety).
+        inert is set on the hidden tree when JS runs for extra focus hardening;
+        server markup still relies on CSS display:none for the inactive tree.
+      */}
+      <div className="min-[1280px]:hidden" data-btf-tree="mobile">
         <ProductTrustSignals trustSignals={trustSignals} evidence={evidenceSnapshot} />
         {renderProductInformation()}
         <ProductReviews reviews={reviews} />
@@ -280,7 +299,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductFinalCta product={product} />
       </div>
 
-      <div className="hidden min-[1280px]:block">
+      <div className="hidden min-[1280px]:block" data-btf-tree="desktop">
         <div className="space-y-1 pb-6" data-desktop-btf="product-information">
           {renderProductInformation()}
         </div>
