@@ -1,12 +1,7 @@
 'use client';
 
-import Image from "next/image";
-import {
-  useEffect,
-  useState,
-  type CSSProperties,
-  type ComponentType,
-} from "react";
+import { getImageProps } from "next/image";
+import { type CSSProperties, type ComponentType } from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -29,18 +24,44 @@ import { LineIcon } from "@/components/ui/line-icon";
 const MOBILE_BACKGROUND_IMAGE_SRC = "/images/hero/bg-ph6d-section-1-hero-v2.jpeg";
 const DESKTOP_BACKGROUND_IMAGE_SRC = "/images/hero/desktop-section-01-hero-desktop.jpeg";
 
-/** ZZ-01: mount only one Hero background Image to avoid dual downloads. */
-function useMinWidth(px: number): boolean {
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia(`(min-width: ${px}px)`);
-    const update = () => setMatches(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, [px]);
-  return matches;
-}
+/**
+ * H1.2 — Browser-native art direction (no useMinWidth / matchMedia image swap).
+ * Official Next.js 16 pattern: getImageProps + <picture> + <source media>.
+ * Mobile (<690): bg-ph6d… · Tablet/Desktop (≥690): desktop-section-01…
+ */
+const MOBILE_HERO_SIZES = "100vw";
+const DESKTOP_HERO_SIZES =
+  "(max-width: 1023px) 100vw, (max-width: 1279px) 100vw, (max-width: 1535px) 1280px, 1440px";
+
+const {
+  props: { srcSet: desktopHeroSrcSet },
+} = getImageProps({
+  alt: "",
+  fill: true,
+  sizes: DESKTOP_HERO_SIZES,
+  src: DESKTOP_BACKGROUND_IMAGE_SRC,
+});
+
+const {
+  props: {
+    srcSet: mobileHeroSrcSet,
+    style: mobileHeroFillStyle,
+    ...mobileHeroImgProps
+  },
+} = getImageProps({
+  alt: "",
+  fill: true,
+  sizes: MOBILE_HERO_SIZES,
+  src: MOBILE_BACKGROUND_IMAGE_SRC,
+});
+
+/** Fill-box styles from getImageProps + cover crop (object-position via className). */
+const heroBackgroundImgStyle: CSSProperties = {
+  ...(typeof mobileHeroFillStyle === "object" && mobileHeroFillStyle
+    ? mobileHeroFillStyle
+    : {}),
+  objectFit: "cover",
+};
 
 const ctaButtonStyle: CSSProperties = {
   boxShadow:
@@ -152,9 +173,6 @@ function ScrollIndicator() {
 }
 
 export function HeroSection({ content }: HeroSectionProps) {
-  // false during SSR + first paint → Mobile asset path (immutable authority).
-  // After hydrate, >=690 mounts tablet/desktop background only.
-  const isTabletOrDesktop = useMinWidth(690);
   const heroBadgeLabel = featuredProduct.badge?.label;
   const headlineLightLine = content.headline
     .filter((line) => line.tone === "light")
@@ -172,43 +190,50 @@ export function HeroSection({ content }: HeroSectionProps) {
         aria-label="Hero - Nicky Pimpz Boss"
         className="hero-root relative overflow-hidden bg-[#0A0A0A] min-[690px]:min-h-[540px] min-[768px]:min-h-[560px] min-[820px]:min-h-[580px] min-[1024px]:min-h-[600px] min-[1280px]:mx-auto min-[1280px]:max-w-[1200px] min-[1280px]:px-10 min-[1280px]:pt-[72px] min-[1280px]:pb-[64px] min-[1280px]:min-h-[580px] min-[1366px]:max-w-[1280px] min-[1366px]:px-12 min-[1366px]:pt-[78px] min-[1366px]:pb-[70px] min-[1536px]:max-w-[1400px] min-[1536px]:px-14 min-[1536px]:pt-[84px] min-[1536px]:pb-[76px] min-[1536px]:min-h-[620px] min-[1920px]:max-w-[1440px] min-[1920px]:px-16"
       >
-        {/* Mobile authority only — ZZ-01 immutable below 690px (mounted when !wide) */}
-        {!isTabletOrDesktop ? (
-          <div className="absolute inset-0">
-            <Image
-              src={MOBILE_BACKGROUND_IMAGE_SRC}
-              alt=""
-              aria-hidden="true"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="100vw"
-              className="hero-background object-cover object-[74%_18%]"
-            />
-          </div>
-        ) : null}
-
         {/*
-          ZZ-01: Tablet (>=690) + Desktop (>=1280) shared full-bleed background.
-          Mounted only when matchMedia >=690 so Mobile never downloads this asset.
+          H1.2 Browser-native art direction (Next.js getImageProps + picture).
+          ≥690 → desktop/tablet master · <690 → mobile master.
+          No React matchMedia swap — correct asset on first paint.
+          object-position ladder remains CSS (authority preserved).
         */}
-        {isTabletOrDesktop ? (
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0"
-          >
-            <Image
-              src={DESKTOP_BACKGROUND_IMAGE_SRC}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+        >
+          <picture>
+            <source
+              media="(min-width: 690px)"
+              srcSet={desktopHeroSrcSet}
+              sizes={DESKTOP_HERO_SIZES}
+            />
+            <img
+              {...mobileHeroImgProps}
               alt=""
               aria-hidden="true"
-              fill
-              priority
+              srcSet={mobileHeroSrcSet}
+              sizes={MOBILE_HERO_SIZES}
+              // Override getImageProps default lazy — Hero is LCP / above-the-fold
+              loading="eager"
               fetchPriority="high"
-              sizes="(max-width: 1023px) 100vw, (max-width: 1279px) 100vw, (max-width: 1535px) 1280px, 1440px"
-              className="object-cover object-[86%_40%] min-[768px]:object-[88%_42%] min-[820px]:object-[89%_44%] min-[1024px]:object-[90%_46%] min-[1280px]:object-[92%_50%] min-[1366px]:object-[90%_50%] min-[1536px]:object-[86%_48%] min-[1920px]:object-[82%_46%]"
+              decoding="async"
+              className={[
+                "hero-background",
+                // Mobile crop authority
+                "object-cover object-[74%_18%]",
+                // Tablet + Desktop object-position ladder (unchanged authority)
+                "min-[690px]:object-[86%_40%]",
+                "min-[768px]:object-[88%_42%]",
+                "min-[820px]:object-[89%_44%]",
+                "min-[1024px]:object-[90%_46%]",
+                "min-[1280px]:object-[92%_50%]",
+                "min-[1366px]:object-[90%_50%]",
+                "min-[1536px]:object-[86%_48%]",
+                "min-[1920px]:object-[82%_46%]",
+              ].join(" ")}
+              style={heroBackgroundImgStyle}
             />
-          </div>
-        ) : null}
+          </picture>
+        </div>
 
         {/* Mobile-only scrims (<690) — frozen */}
         <div
